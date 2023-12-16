@@ -1,0 +1,366 @@
+// ignore_for_file: sort_child_properties_last, prefer_interpolation_to_compose_strings, use_build_context_synchronously, avoid_print
+
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import '../Common/ApiUrl.dart';
+import '../Common/CommercialProperty.dart';
+import 'AddNewCompany.dart';
+import 'Model/GetCompanyModel.dart';
+import 'ViewCompanyDetails.dart';
+
+class commerialdashboard extends StatefulWidget {
+  const commerialdashboard({super.key});
+
+  @override
+  State<commerialdashboard> createState() => _commerialdashboardState();
+}
+
+List<GetCompany> companylist = [];
+bool isloaidng = false;
+
+class _commerialdashboardState extends State<commerialdashboard> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getcompanyfunct();
+    setState(() {
+      isloaidng = true;
+    });
+  }
+
+  getcompanyfunct() async {
+    companylist = await getcompany();
+    setState(() {});
+  }
+
+  Future<List<GetCompany>> getcompany() async {
+    try {
+      SharedPreferences logindata = await SharedPreferences.getInstance();
+      String? userid = logindata.getString("userId");
+      log("userid in add compnay===" + userid.toString());
+      Map data = {
+        'userid': userid,
+      };
+      final headerss = {
+        'Content-Type': 'application/json',
+      };
+      final response = await http.post(
+        Uri.parse(ApiUrl.getcompany),
+        headers: headerss,
+        body: jsonEncode(data),
+      );
+
+      setState(() {
+        isloaidng = false;
+      });
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> jsonData = jsonDecode(response.body);
+        List res = jsonData["data"];
+
+        return res.map((e) => GetCompany.fromJson(e)).toList();
+      }
+    } catch (e) {}
+    return companylist;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        backgroundColor: Colors.grey[300],
+        // flexibleSpace: Container(
+        //   decoration: const BoxDecoration(
+        //  color: grey[300],
+        //   ),
+        // ),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          Container(
+            child: Expanded(
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
+                    child: const Icon(
+                      Icons.arrow_back,
+                      size: 30,
+                    ),
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       Text("Comertial"),
+                  //       // Text(
+                  //       //   "ab@gmail.com",
+                  //       //   style: TextStyle(fontWeight: FontWeight.bold),
+                  //       // )
+                  //     ],
+                  //   ),
+                  // ),
+                  // Flexible(fit: FlexFit.tight, child: SizedBox()),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Icon(
+                  //     Icons.search,
+                  //     size: 24,
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Container(
+                  //       padding: EdgeInsets.all(10),
+                  //       decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           borderRadius: BorderRadius.circular(40)),
+                  //       //alignment: Alignment.center,
+                  //       child: Icon(
+                  //         Icons.qr_code_scanner_outlined,
+                  //         size: 20,
+                  //       )
+                  //     // Text(
+                  //     //   'Premium',
+                  //     //   style: TextStyle(
+                  //     //     fontSize: 18,
+                  //     //     fontWeight: FontWeight.bold,
+                  //     //   ),
+                  //     //   textAlign: TextAlign.center,
+                  //     // ),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Container(
+                  //       padding: EdgeInsets.all(10),
+                  //       decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           borderRadius: BorderRadius.circular(40)),
+                  //       //alignment: Alignment.center,
+                  //       child: Icon(
+                  //         Icons.mobile_screen_share_rounded,
+                  //         size: 20,
+                  //       )
+                  //     // Text(
+                  //     //   'Premium',
+                  //     //   style: TextStyle(
+                  //     //     fontSize: 18,
+                  //     //     fontWeight: FontWeight.bold,
+                  //     //   ),
+                  //     //   textAlign: TextAlign.center,
+                  //     // ),
+                  //   ),
+                  // ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: isloaidng == true
+          ? const Center(child: SizedBox(height: 60, width: 60, child: CircularProgressIndicator()))
+          : companylist.isEmpty
+              ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
+              : ListView.builder(
+                  itemCount: companylist.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () => Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => ViewCompanyDetails(id: companylist[index].id, name: companylist[index].companyname, address: companylist[index].address))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(25)),
+                          //    color: Colors.white,
+                          height: 150,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        companylist[index].companyname,
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        companylist[index].address,
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    InkWell(
+                                      onTap: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => addnewcompany(
+                                                    type: "1",
+                                                    comapnyid: companylist[index].id,
+                                                  ))),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey,
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(8),
+                                          child: Icon(Icons.edit),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    InkWell(
+                                      onTap: () => showAlertDialog(context, companylist[index].id),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey,
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(8),
+                                          child: Icon(Icons.delete_outline),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: FloatingActionButton(
+        // isExtended: true,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => addnewcompany(
+                        type: "0",
+                        comapnyid: "0",
+                      )));
+        },
+      ),
+    );
+  }
+
+  showAlertDialog(BuildContext context, String companyid) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: const Text("Cancel"),
+      onPressed: () {
+        Navigator.pop(context);
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //         builder: (context) => const productview()));
+      },
+    );
+    Widget continueButton = TextButton(
+      child: const Text("Continue"),
+      onPressed: () {
+        deletecompany(companyid);
+
+        /// Navigator.pop(context);
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Confirmation"),
+      content: const Text("Are you sure want to delete ?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  Future<void> deletecompany(String companyid) async {
+    setState(() {
+      isloading = true;
+    });
+    SharedPreferences logindata = await SharedPreferences.getInstance();
+    String? userid = logindata.getString("userId");
+    log("userid in add compnay===" + userid.toString());
+    Map data = {
+      'userid': userid,
+      'companyid': companyid,
+    };
+    final headerss = {
+      'Content-Type': 'application/json',
+    };
+    print(data.toString());
+    final response = await http.post(
+      Uri.parse(ApiUrl.deletecompany),
+      headers: headerss,
+      body: jsonEncode(data),
+    );
+    setState(() {
+      isloading = false;
+    });
+    print(response.body);
+    if (response.statusCode == 200) {
+      Map<String, dynamic> resposne = jsonDecode(response.body);
+
+      if (resposne['respCode'].toString().contains("200")) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const commerialdashboard()));
+
+        print("Login Successfully Completed !!!!!!!!!!!!!!!!");
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Deletion failed.........'),
+          backgroundColor: Colors.green,
+        ));
+      }
+    } else {
+      print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
+  }
+}

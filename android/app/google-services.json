@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "966686413441",
+    "project_id": "renttas-main-project",
+    "storage_bucket": "renttas-main-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966686413441:android:c1a5662e1b5f4c50137380",
+        "android_client_info": {
+          "package_name": "com.ganlaxmine.renttas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3Ht-tmztUqz5DRaFS4lioSOI12eDFm4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
