@@ -44,37 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAACrY4NCTXG3QXw5f3gPMfVXN8EyOgqGE',
-    appId: '1:966686413441:web:d708e79d9b8c6543137380',
-    messagingSenderId: '966686413441',
-    projectId: 'renttas-main-project',
-    authDomain: 'renttas-main-project.firebaseapp.com',
-    storageBucket: 'renttas-main-project.appspot.com',
+    apiKey: 'AIzaSyAMCrhOkOWB7ZzIYLTGjgJyHAeVfzd-20Y',
+    appId: '1:115824667190:web:1b4596c0452457d4a90697',
+    messagingSenderId: '115824667190',
+    projectId: 'renttas-8eb75',
+    authDomain: 'renttas-8eb75.firebaseapp.com',
+    storageBucket: 'renttas-8eb75.appspot.com',
+    measurementId: 'G-17TNQ46E2K',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB3Ht-tmztUqz5DRaFS4lioSOI12eDFm4Q',
-    appId: '1:966686413441:android:c1a5662e1b5f4c50137380',
-    messagingSenderId: '966686413441',
-    projectId: 'renttas-main-project',
-    storageBucket: 'renttas-main-project.appspot.com',
+    apiKey: 'AIzaSyCO6WDfqQ3qeW9OL4ouR7LwTW67-iZCjxE',
+    appId: '1:115824667190:android:fead76cce4d14d44a90697',
+    messagingSenderId: '115824667190',
+    projectId: 'renttas-8eb75',
+    storageBucket: 'renttas-8eb75.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyApRpKiuspWYmU_nJkNlhH9FpUEBRZSEhk',
-    appId: '1:966686413441:ios:58a6aa642292914e137380',
-    messagingSenderId: '966686413441',
-    projectId: 'renttas-main-project',
-    storageBucket: 'renttas-main-project.appspot.com',
-    iosBundleId: 'com.example.rentos',
+    apiKey: 'AIzaSyAlLikkR7hjtqzuPniJdDgs3KNgVT-m7pU',
+    appId: '1:115824667190:ios:10168919e60d7f9aa90697',
+    messagingSenderId: '115824667190',
+    projectId: 'renttas-8eb75',
+    storageBucket: 'renttas-8eb75.appspot.com',
+    iosBundleId: 'com.example.renttasFlutterApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyApRpKiuspWYmU_nJkNlhH9FpUEBRZSEhk',
-    appId: '1:966686413441:ios:58a6aa642292914e137380',
-    messagingSenderId: '966686413441',
-    projectId: 'renttas-main-project',
-    storageBucket: 'renttas-main-project.appspot.com',
-    iosBundleId: 'com.example.rentos',
+    apiKey: 'AIzaSyAlLikkR7hjtqzuPniJdDgs3KNgVT-m7pU',
+    appId: '1:115824667190:ios:f698172175e1c2fda90697',
+    messagingSenderId: '115824667190',
+    projectId: 'renttas-8eb75',
+    storageBucket: 'renttas-8eb75.appspot.com',
+    iosBundleId: 'com.example.renttasFlutterApp.RunnerTests',
   );
 }

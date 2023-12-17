@@ -64,7 +64,8 @@ dependencies:
   # country_codes: ^2.0.1
   easy_localization: ^3.0.1
   change_app_package_name:
-  firebase_auth: ^4.7.2
+  # firebase_auth: ^4.7.2
+  # firebase_auth: 
   pinput:
   in_app_review: ^2.0.8
   rating_dialog: ^2.0.1
@@ -85,6 +86,7 @@ dependencies:
   firebase_analytics: ^10.7.3
   country_codes: ^2.2.0
   flutter_facebook_auth: ^4.4.1+1
+  firebase_auth: ^4.15.3
 
   # http: ^0.13.3
   # shared_preferences: ^2.0.10

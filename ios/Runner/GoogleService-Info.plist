@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAlLikkR7hjtqzuPniJdDgs3KNgVT-m7pU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>115824667190</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.renttasFlutterApp</string>
+	<key>PROJECT_ID</key>
+	<string>renttas-8eb75</string>
+	<key>STORAGE_BUCKET</key>
+	<string>renttas-8eb75.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:115824667190:ios:10168919e60d7f9aa90697</string>
+</dict>
+</plist>

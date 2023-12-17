@@ -1,21 +1,40 @@
 {
   "project_info": {
-    "project_number": "966686413441",
-    "project_id": "renttas-main-project",
-    "storage_bucket": "renttas-main-project.appspot.com"
+    "project_number": "115824667190",
+    "project_id": "renttas-8eb75",
+    "storage_bucket": "renttas-8eb75.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:966686413441:android:c1a5662e1b5f4c50137380",
+        "mobilesdk_app_id": "1:115824667190:android:6ddcfe24dbe147eaa90697",
         "android_client_info": {
-          "package_name": "com.ganlaxmine.renttas"
+          "package_name": "com.example.rentos"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB3Ht-tmztUqz5DRaFS4lioSOI12eDFm4Q"
+          "current_key": "AIzaSyCO6WDfqQ3qeW9OL4ouR7LwTW67-iZCjxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115824667190:android:fead76cce4d14d44a90697",
+        "android_client_info": {
+          "package_name": "com.example.renttas_flutter_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO6WDfqQ3qeW9OL4ouR7LwTW67-iZCjxE"
         }
       ],
       "services": {
