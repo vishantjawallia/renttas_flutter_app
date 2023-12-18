@@ -14,55 +14,58 @@ class LandlordAddProperty extends StatefulWidget {
 class _LandlordAddPropertyState extends State<LandlordAddProperty> {
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
-        appBar: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.green,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.black,
+                Colors.green,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
-          title: Text('Add Property'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>AddPropertyLanlord(type:"1", userid: "0"'',)));
-                },
-                child: PropertyCard(
-                  title: 'Residential Property',
-                  description: 'A beautiful home in a peaceful neighborhood.',
-                  icon: Icons.home,
-                  color: Colors.blue,
-                ),
+        title: const Text('Add Property'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddPropertyLanlord(
+                      type: "1",
+                      userid: "0" '',
+                    ),
+                  ),
+                );
+              },
+              child: PropertyCard(
+                title: 'Residential Property',
+                description: 'A beautiful home in a peaceful neighborhood.',
+                icon: Icons.home,
+                color: Colors.blue,
               ),
-              SizedBox(height: 20),
-              GestureDetector(
-                onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>PropertyCardsApp()));
-
-                },
-                child: PropertyCard(
-                  title: 'Commercial Property',
-                  description: 'A prime location for your business venture.',
-                  icon: Icons.business,
-                  color: Colors.orange,
-                ),
+            ),
+            const SizedBox(height: 20),
+            GestureDetector(
+              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
+              child: PropertyCard(
+                title: 'Commercial Property',
+                description: 'A prime location for your business venture.',
+                icon: Icons.business,
+                color: Colors.orange,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-
+      ),
     );
   }
 }

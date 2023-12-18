@@ -17,137 +17,128 @@ class _TypeUserState extends State<TypeUser> {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
-    return SafeArea(
-      child: Scaffold(
-          body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-                left: screenWidth * 0.1, top: screenHeight * 0.1),
-            child: Text(
-              'Select \nuser type',
-              style: GoogleFonts.kanit(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                height: 1.0,
-              ),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff54854C),
+        title: const Text(
+          'Select user type',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const LanlordRegister()));
-            },
-            child: SizedBox(
-              width: screenWidth * 0.95,
-              height: screenHeight * 0.26,
-              child: Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.05),
-                child: Card(
-                  elevation: 8,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30), // Rounded corners
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 9),
-                        child: SizedBox(
-                          width: screenWidth * 0.3,
-                          height: screenHeight * 0.2,
-                          child: Image(
-                            image: AssetImage("assets/images/house-owner.png"),
-                            fit: BoxFit.cover,
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(right: 20, left: 20, top: 100),
+        child: Column(
+          children: [
+            // Row(
+            //   children: [
+            //     BackButton(),
+            //     // const SizedBox(width: 0.0, height: 30),
+            //     const Text(
+            //       'Select user type',
+            //       style: TextStyle(
+            //         fontSize: 30,
+            //         fontWeight: FontWeight.w600,
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // const SizedBox(width: 0.0, height: 40),
+            InkWell(
+              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LanlordRegister())),
+              child: Container(
+                padding: const EdgeInsets.all(18.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: const [
+                    BoxShadow(offset: Offset(0.5, 0.7), color: Colors.grey, blurRadius: 7),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    const SizedBox(
+                      width: 100,
+                      child: Image(
+                        image: AssetImage("assets/images/house-owner.png"),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    const SizedBox(width: 20, height: 0.0),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Landlord",
+                          style: GoogleFonts.kanit(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
                           ),
                         ),
-                      ),
-                      SizedBox(width: screenWidth * 0.10,),
-                      Padding(
-                        padding: EdgeInsets.only(
-                           top: screenHeight * 0.1),
-                        child: Column(
-                          children: [
-                            Text(
-                              "Landlord",
-                              style: GoogleFonts.kanit(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            Text(
-                              "CreateProperty and\n manage Property",
-                              style: GoogleFonts.kanit(
-                                fontSize: 13,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                        Text(
+                          "Create property and manage Property",
+                          style: GoogleFonts.kanit(
+                            fontSize: 13,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const TenantRegister()));
-            },
-            child: SizedBox(
-              width: screenWidth * 0.95,
-              height: screenHeight * 0.26,
-              child: Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.05),
-                child: Card(
-                  elevation: 8,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30), // Rounded corners
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 9),
-                        child: SizedBox(
-                          width: screenWidth * 0.3,
-                          height: screenHeight * 0.2,
-                          child: Image(
-                            image: AssetImage("assets/images/tandent.png"),
-                            fit: BoxFit.cover,
+            const SizedBox(width: 0.0, height: 18),
+            InkWell(
+              // borderRadius: BorderRadius.circular(8),
+              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const TenantRegister())),
+              child: Container(
+                padding: const EdgeInsets.all(18.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: const [
+                    BoxShadow(offset: Offset(0.5, 0.7), color: Colors.grey, blurRadius: 7),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    const SizedBox(
+                      width: 100,
+                      child: Image(
+                        image: AssetImage("assets/images/tandent.png"),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    const SizedBox(width: 20, height: 0.0),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Tenant",
+                          style: GoogleFonts.kanit(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
                           ),
                         ),
-                      ),
-                      SizedBox(width: screenWidth * 0.10,),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: screenHeight * 0.1),
-                        child: Column(
-                          children: [
-                            Text(
-                              "Tenant",
-                              style: GoogleFonts.kanit(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            Text(
-                              "Veiw Info Added \nby Your landlord",
-                              style: GoogleFonts.kanit(
-                                fontSize: 13,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                        Text(
+                          "Veiw Info Added by Your landlord",
+                          style: GoogleFonts.kanit(
+                            fontSize: 13,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
-          )
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }

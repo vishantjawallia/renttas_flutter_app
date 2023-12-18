@@ -89,18 +89,21 @@ class _AboutTabState extends State<AboutTab> {
       body: isloaidngfirst == true
           ? const Center(child: CircularProgressIndicator())
           : Padding(
-              padding: const EdgeInsets.only(left: 0),
+              padding: const EdgeInsets.only(left: 8, right: 8),
               child: Column(
                 children: [
                   Container(
                     margin: const EdgeInsets.only(top: 50),
                     height: 50,
-                    color: Colors.white,
+                    // color: Colors.white,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     child: const TabBar(
                       isScrollable: true,
                       indicator: BoxDecoration(
                         color: Colors.blue,
-                        // borderRadius:  BorderRadius.circular(25.0)
                       ),
                       labelColor: Colors.white,
                       unselectedLabelColor: Colors.black,
@@ -128,13 +131,14 @@ class _AboutTabState extends State<AboutTab> {
                           // ),
 
                           Container(
-                              alignment: Alignment.topLeft,
-                              margin: const EdgeInsets.only(top: 20, left: 10),
-                              child: const Text(
-                                'Details:',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.left,
-                              )),
+                            alignment: Alignment.topLeft,
+                            margin: const EdgeInsets.only(top: 20, left: 10),
+                            child: const Text(
+                              'Details:',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
 
                           const Divider(
                             //  margin:EdgeInsets.only(top: 10),
@@ -263,34 +267,85 @@ class _AboutTabState extends State<AboutTab> {
                               color: Colors.grey,
                             ),
                           stcodeadd == "201"
-                              ? Row(
-                                  children: [
-                                    if (!isLocationTheir)
-                                      Container(
-                                          margin: const EdgeInsets.only(left: 10, top: 15),
-                                          child: InkWell(
-                                              child: const Text(
-                                                '+ Property Address',
-                                                style: TextStyle(color: Colors.blue),
-                                              ),
-                                              onTap: () async {
-                                                // _openBottomSheet(context);
-                                                _showAddressModal(context);
-                                              })),
-                                    if (!isPanTheir)
-                                      Container(
-                                        margin: const EdgeInsets.only(left: 10, top: 15),
-                                        child: InkWell(
-                                            child: const Text(
-                                              '+ Property Owner Details',
-                                              style: TextStyle(color: Colors.blue),
+                              ? Padding(
+                                  padding: const EdgeInsets.only(left: 8, top: 8),
+                                  child: Row(
+                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      if (!isLocationTheir)
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 45),
+                                          child: OutlinedButton(
+                                            style: const ButtonStyle(
+                                                // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
+                                                // iconColor: MaterialStateProperty.all(Colors.white),
+                                                // foregroundColor: MaterialStateProperty.all(Colors.white),
+                                                // backgroundColor: MaterialStateProperty.all(Colors.blue.shade100),
+                                                ),
+                                            onPressed: () => _showAddressModal(context),
+                                            child: const Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(Icons.add),
+                                                SizedBox(width: 6, height: 0.0),
+                                                Text(
+                                                  'Address',
+                                                  style: TextStyle(fontSize: 16),
+                                                ),
+                                              ],
                                             ),
-                                            onTap: () async {
-                                              /* _opneBottomOwnerDetatils(context);*/
-                                              _openBottomOwnerDetails(context);
-                                            }),
-                                      ),
-                                  ],
+                                          ),
+                                        ),
+                                      // Container(
+                                      //   margin: const EdgeInsets.only(left: 10, top: 15),
+                                      //   child: InkWell(
+                                      //     child: const Text(
+                                      //       '+ Property Address',
+                                      //       style: TextStyle(color: Colors.blue),
+                                      //     ),
+                                      //     onTap: () async => _showAddressModal(context),
+                                      //   ),
+                                      // ),
+                                      if (!isPanTheir)
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 8.0),
+                                          child: OutlinedButton(
+                                            style: const ButtonStyle(
+                                                // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
+                                                // iconColor: MaterialStateProperty.all(Colors.white),
+                                                // foregroundColor: MaterialStateProperty.all(Colors.white),
+                                                // backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                                ),
+                                            onPressed: () => _openBottomOwnerDetails(context),
+                                            child: const Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(Icons.add),
+                                                SizedBox(width: 6, height: 0.0),
+                                                Text(
+                                                  'Owner Details',
+                                                  style: TextStyle(fontSize: 16),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      // Container(
+                                      //   margin: const EdgeInsets.only(left: 10, top: 15),
+                                      //   child: InkWell(
+                                      //       child: const Text(
+                                      //         '+ Property Owner Details',
+                                      //         style: TextStyle(color: Colors.blue),
+                                      //       ),
+                                      //       onTap: () async {
+                                      //         /* _opneBottomOwnerDetatils(context);*/
+                                      //         _openBottomOwnerDetails(context);
+                                      //       }),
+                                      // ),
+                                    ],
+                                  ),
                                 )
                               : Expanded(
                                   child: SingleChildScrollView(
@@ -298,55 +353,57 @@ class _AboutTabState extends State<AboutTab> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: SizedBox(
                                         height: 400,
-                                        child: Column(children: [
-                                          const Text(
-                                            "Property address",
-                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                                          ),
-                                          const SizedBox(
-                                            height: 15,
-                                          ),
-                                          Text(
-                                            "Address : $address",
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            "Pincode : $pincode",
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                                          ),
-                                          const SizedBox(
-                                            height: 25,
-                                          ),
-                                          const Text(
-                                            "Owner details",
-                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                                          ),
-                                          const SizedBox(
-                                            height: 15,
-                                          ),
-                                          Text(
-                                            "Owner name : $ownername",
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            "Document Name : $Docname",
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          Image.network(
-                                            ApiUrl.imageurl + image,
-                                            height: 150,
-                                            width: 200,
-                                          )
-                                        ]),
+                                        child: Column(
+                                          children: [
+                                            const Text(
+                                              "Property address",
+                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                            ),
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+                                            Text(
+                                              "Address : $address",
+                                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              "Pincode : $pincode",
+                                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                            ),
+                                            const SizedBox(
+                                              height: 25,
+                                            ),
+                                            const Text(
+                                              "Owner details",
+                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                            ),
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+                                            Text(
+                                              "Owner name : $ownername",
+                                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              "Document Name : $Docname",
+                                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Image.network(
+                                              ApiUrl.imageurl + image,
+                                              height: 150,
+                                              width: 200,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

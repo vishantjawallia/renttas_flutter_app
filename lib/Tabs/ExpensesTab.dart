@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -58,11 +60,17 @@ class _ExpensesTabState extends State<ExpensesTab> {
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddExpenses()));
           },
-          label: Text('Add  Expenses'),
-          icon: Icon(Icons.add),
+          label: const Text(
+            'Expense',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          icon: const Icon(Icons.add),
           backgroundColor: Colors.blue,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(8.0),
           ),
         ),
         body: Padding(
@@ -71,7 +79,14 @@ class _ExpensesTabState extends State<ExpensesTab> {
             children: [
               // Other widgets
               isLoading
-                  ? Center(child: CircularProgressIndicator())
+                  ? const Flexible(
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 60.0),
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                    )
                   : Visibility(
                       visible: isExpensesTheir,
                       child: Expanded(
@@ -96,7 +111,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                       SizedBox(width: screenWidth * 0.02),
                                       Text(
                                         expense.expensesDate.split('T')[0],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -107,16 +122,16 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                         children: [
                                           Text(
                                             expense.name,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.grey,
                                             ),
                                           ),
-                                          SizedBox(width: 10),
+                                          const SizedBox(width: 10),
                                           Text(
                                             currency,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.blue,
@@ -125,7 +140,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                           Text(
                                             " " + expense.amount,
                                             // Convert amount to string
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 13,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.red,
@@ -133,10 +148,10 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(width: 50),
+                                      const SizedBox(width: 50),
                                       IconButton(
                                         onPressed: () => showAlertDialogdelete(context, expense.id),
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.delete,
                                           color: Colors.redAccent,
                                         ),
@@ -148,7 +163,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                     child: Text(
                                       expense.description.toString(),
                                       // Convert amount to string
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.grey,
@@ -161,17 +176,32 @@ class _ExpensesTabState extends State<ExpensesTab> {
                           },
                         ),
                       ),
-                      replacement: Padding(
-                        padding: const EdgeInsets.only(top: 230, left: 90),
-                        child: Text(
-                          'No Expenses found',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                      replacement: const Flexible(
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 60.0),
+                            child: Text(
+                              'Expense not found !',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
                       ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 230, left: 90),
+                      //   child: Text(
+                      //     'No Expenses found',
+                      //     style: TextStyle(
+                      //       fontSize: 18,
+                      //       fontWeight: FontWeight.bold,
+                      //       color: Colors.grey,
+                      //     ),
+                      //   ),
+                      // ),
                     ),
             ],
           ),
@@ -228,12 +258,12 @@ class _ExpensesTabState extends State<ExpensesTab> {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text("Confirmation"),
+              title: const Text("Confirmation"),
               content: Text(contentText),
               actions: <Widget>[
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text("Cancel"),
+                  child: const Text("Cancel"),
                 ),
                 TextButton(
                   onPressed: () async {

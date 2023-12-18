@@ -72,17 +72,30 @@ class _DocumentsTabState extends State<DocumentsTab> {
         onPressed: () {
           _pickImage();
         },
-        label: Text('Add Document'),
+        label: Text(
+          'Document',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         icon: Icon(Icons.add),
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
       body: Column(
         children: [
           isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? Flexible(
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 60.0),
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                )
               : Visibility(
                   visible: documents.isNotEmpty,
                   child: Expanded(
@@ -165,14 +178,18 @@ class _DocumentsTabState extends State<DocumentsTab> {
                       },
                     ),
                   ),
-                  replacement: Padding(
-                    padding: const EdgeInsets.only(top: 250, left: 90),
-                    child: Text(
-                      'No Document found',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                  replacement: Flexible(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 60.0),
+                        child: Text(
+                          'Document not found !',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                     ),
                   ),

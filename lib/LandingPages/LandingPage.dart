@@ -1,7 +1,10 @@
-// ignore_for_file: camel_case_types, use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: must_be_immutable, use_super_parameters, camel_case_types
+
 import 'package:flutter/material.dart';
+
 import '../Wellcome/Landingmodel.dart';
 import '../Wellcome/LoginPage.dart';
+import '../Wellcome/LoginPageNew.dart';
 
 class landingpage extends StatefulWidget {
   const landingpage({super.key});
@@ -35,98 +38,101 @@ class _landingpageState extends State<landingpage> {
         direction: Axis.vertical,
         children: [
           Flexible(
-            child: //Text("SDds"),
-            PageView.builder(
-                scrollDirection: Axis.horizontal,
-                controller: _controller,
-                onPageChanged: (value) {
-                  setState(() {
-                    currentIndex = value;
-                  });
-                },
-                itemCount: slides.length,
-                itemBuilder: (context, index) {
-                //  return Text("data");
-                  // contents of slider
-                  return Slider(
-                    image: slides[index].getImage()!,
-                    text: slides[index].getText()!,
-                    description: slides[index].getDescription()!,
-                  );
-                }),
+            child: PageView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: _controller,
+              onPageChanged: (value) => setState(() => currentIndex = value),
+              itemCount: slides.length,
+              itemBuilder: (context, index) {
+                return Slider(
+                  image: slides[index].getImage()!,
+                  text: slides[index].getText()!,
+                  description: slides[index].getDescription()!,
+                );
+              },
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                  height: 60,
-                  margin: const EdgeInsets.all(40),
-                  width: 60,
-                  // color: Colors.green,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LandlordLogin()),
-                      );
-                    },
-                    icon: const Row(
+          Container(
+            // width: 400,
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.only(
+              bottom: 80,
+              left: 62,
+              right: 62,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LandlordLogin()),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Text(
+                          'Skip',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple,
+                            fontSize: 17,
+                          ),
+                        ),
+                        SizedBox(width: 4, height: 0.0),
                         Icon(
                           Icons.skip_next,
                           color: Colors.purple,
-                          size: 42,
+                          size: 30,
                         ),
                       ],
                     ),
-                  )
-                  // TextButton(
-                  //   child: Text(
-                  //       currentIndex == slides.length - 1 ? "Continue" : "Next"),
-                  //   onPressed: () {
-                  //
-                  //   },
-                  //   // textColor: Colors.white,
-                  //   // shape: RoundedRectangleBorder(
-                  //   // borderRadius: BorderRadius.circular(25),
-                  //   // ),
-                  // ),
                   ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  slides.length,
-                  (index) => buildDot(index, context),
                 ),
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  height: 60,
-                  margin: const EdgeInsets.all(40),
-                  width: 40,
-                  child: IconButton(
-                    onPressed: () {
-                      if (currentIndex == slides.length - 1) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LandlordLogin()),
-                        );
-                      }
-                      _controller.nextPage(
-                          duration: const Duration(milliseconds: 100),
-                          curve: Curves.bounceIn);
-                    },
-                    icon: const Icon(
-                      Icons.play_arrow,
-                      color: Colors.blue,
-                      size: 42,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: List.generate(
+                    slides.length,
+                    (index) => buildDot(index, context),
+                  ),
+                ),
+
+                // Text('Hrlling,'),
+                InkWell(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  onTap: () => rightArrowHandler(context),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Next',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                            fontSize: 17,
+                          ),
+                        ),
+                        SizedBox(width: 4, height: 0.0),
+                        Icon(
+                          // Icons.arrow_forward_rounded,
+                          Icons.arrow_circle_right_outlined,
+                          color: Colors.blue,
+                          size: 30,
+                        ),
+                      ],
                     ),
-                  )),
-            ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -134,9 +140,20 @@ class _landingpageState extends State<landingpage> {
     );
   }
 
+  void rightArrowHandler(BuildContext context) {
+    if (currentIndex == slides.length - 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LandlordLoginNew()),
+      );
+    }
+    _controller.nextPage(duration: const Duration(milliseconds: 100), curve: Curves.bounceIn);
+  }
+
 // container created for dots
   Container buildDot(int index, BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       height: 10,
       width: currentIndex == index ? 25 : 10,
       margin: const EdgeInsets.only(right: 5),
@@ -148,39 +165,65 @@ class _landingpageState extends State<landingpage> {
   }
 }
 
-
 // slider declared
 class Slider extends StatelessWidget {
-  String? image, text, description;
+  String? image;
+  String? text;
+  String? description;
 
-  Slider({this.image, this.text, this.description});
+  Slider({
+    Key? key,
+    this.image,
+    this.text,
+    this.description,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // image given in slider
-        SizedBox(height:250,child: Image(image: AssetImage(image!))),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          text!,
-          style: const TextStyle(
+    return Padding(
+      padding: const EdgeInsets.all(34),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 24),
+          // !(image!.contains("step"))
+          // ?
+          Image(
+            height: 320,
+            image: AssetImage(image!),
+            fit: BoxFit.contain,
+          ),
+          // : Align(
+          //     heightFactor: 0.74111,
+          //     alignment: Alignment.center,
+          //     child: Image(
+          //       image: AssetImage(image!),
+          //       fit: BoxFit.contain,
+          //     ),
+          //   ),
+          const SizedBox(height: 14),
+          Text(
+            text!,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black,
-              fontSize: 24),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          description!,
-          style: const TextStyle(color: Colors.black, fontSize: 15),
-        ),
-        const SizedBox(height: 25),
-      ],
+              fontSize: 24,
+            ),
+            // textAlign: TextAlign.start,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            description!,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 25),
+        ],
+      ),
     );
   }
 }

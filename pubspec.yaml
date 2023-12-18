@@ -87,6 +87,7 @@ dependencies:
   country_codes: ^2.2.0
   flutter_facebook_auth: ^4.4.1+1
   firebase_auth: ^4.15.3
+  logger: ^2.0.2+1
 
   # http: ^0.13.3
   # shared_preferences: ^2.0.10

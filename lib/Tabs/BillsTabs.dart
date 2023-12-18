@@ -60,282 +60,46 @@ class _BillsTabsState extends State<BillsTabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            if (widget.data == false) {
-              snack("Add Room first", context);
-            } else {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillTabAction()));
-            }
-          },
-          label: Text('Add Rent Bill'),
-          icon: Icon(Icons.add),
-          backgroundColor: Colors.blue,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          if (widget.data == false) {
+            snack("Add Room first", context);
+          } else {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillTabAction()));
+          }
+        },
+        label: Text(
+          'Rent Bill',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Column(
-            children: [
-              // Other widgets
-              isLoading
-                  ? Center(child: CircularProgressIndicator())
-                  : widget.data == false
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 250, left: 130),
-                          child: Text(
-                            'No Bill found',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        )
-                      : Visibility(
-                          visible: isBillTheir,
-                          child: Expanded(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: billData.length,
-                              itemBuilder: (context, index) {
-                                final bill = billData[index];
-                                return Padding(
-                                  padding: const EdgeInsets.all(6.0),
-                                  child: Card(
-                                    elevation: 5,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        SizedBox(height: 10),
-                                        Row(
-                                          children: [
-                                            SizedBox(width: 5),
-                                            Text(
-                                              bill.rentStartDate,
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                            SizedBox(width: 5),
-                                            Text(
-                                              selectedSubPropertyName,
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                            SizedBox(width: 30),
-                                            Container(
-                                              color: Colors.red[100],
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(6.0),
-                                                child: Column(
-                                                  children: [
-                                                    Text(
-                                                      "₹ " + bill.previousBalance.toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 11,
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.red,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      "(balance)",
-                                                      style: TextStyle(
-                                                        fontSize: 11,
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.red,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              color: Colors.green[100],
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(6.0),
-                                                child: Column(
-                                                  children: [
-                                                    Text(
-                                                      "₹ " + bill.rentAmount.toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 11,
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.green,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      "(recieved)",
-                                                      style: TextStyle(
-                                                        fontSize: 11,
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.green,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            IconButton(
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) => BillViewPage(
-                                                                Data: bill,
-                                                                type: '1',
-                                                              )));
-                                                },
-                                                icon: Icon(Icons.arrow_forward_ios)),
-                                          ],
-                                        ),
-                                        // Divider(
-                                        //   color: Colors.grey,
-                                        //   height: 30,
-                                        // ),
-                                        SizedBox(
-                                          height: 18,
-                                        ),
-                                        Container(
-                                          color: Colors.black12,
-                                          height: 2,
-                                          width: 500,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            // SizedBox(
-                                            //   width: 30,
-                                            // ),
-                                            Column(
-                                              children: [
-                                                IconButton(
-                                                  onPressed: () {
-                                                    showbottomsheet(context, bill.id);
-                                                    //   _showBottomSheet(
-                                                    // context, bill['id']);
-                                                  },
-                                                  icon: Icon(Icons.add_box),
-                                                ),
-                                                Text('Receive'),
-                                              ],
-                                            ),
-                                            // SizedBox(
-                                            //   width: 50,
-                                            // ),
-                                            Container(
-                                              color: Colors.black12,
-                                              height: 70,
-                                              width: 2,
-                                            ),
-                                            // SizedBox(
-                                            //   width: 50,
-                                            // ),
-                                            Column(
-                                              children: [
-                                                IconButton(
-                                                  onPressed: () {
-                                                    // String message =
-                                                    //     "Hii their your Bill form is ";
-                                                    // shareOnWhatsApp(message);
-
-                                                    Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                        builder: (builder) => PdfPreviewPage(invoice: bill, subname: selectedSubPropertyName),
-                                                      ),
-                                                    );
-
-                                                    //Share.share('Check');
-                                                  },
-                                                  icon: Icon(Icons.share),
-                                                ),
-                                                Text('Share'),
-                                              ],
-                                            ),
-                                            Container(
-                                              color: Colors.black12,
-                                              height: 70,
-                                              width: 2,
-                                            ),
-                                            Column(
-                                              children: [
-                                                IconButton(
-                                                  onPressed: () {
-                                                    shareOnWhatsApp("Hello");
-                                                    /* _showBottomSheet(
-                                              context, bill['id']);*/
-                                                  },
-                                                  icon: Image.asset(
-                                                    "assets/images/wi.png",
-                                                    height: 43,
-                                                    width: 43,
-                                                  ),
-                                                ),
-                                                Text('Remind'),
-                                              ],
-                                            ),
-                                            // SizedBox(
-                                            //   width: 30,
-                                            // ),
-                                            Container(
-                                              color: Colors.black12,
-                                              height: 70,
-                                              width: 2,
-                                            ),
-                                            // SizedBox(
-                                            //   width: 30,
-                                            // ),
-
-                                            Column(
-                                              children: [
-                                                IconButton(
-                                                  onPressed: () async {
-                                                    if (Platform.isAndroid) {
-                                                      var status = await Permission.storage.status;
-                                                      if (status != PermissionStatus.granted) {
-                                                        status = await Permission.storage.request();
-                                                      }
-                                                      if (status.isGranted) {
-                                                        //   const downloadsFolderPath = '/storage/emulated/0/Download/';
-                                                        //   Directory dir = Directory(downloadsFolderPath);
-                                                        // var file=  makePdf(bill,selectedSubPropertyName);
-                                                        //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
-
-                                                        Navigator.of(context).push(
-                                                          MaterialPageRoute(
-                                                            builder: (builder) => PdfPreviewPage(invoice: bill, subname: selectedSubPropertyName),
-                                                          ),
-                                                        );
-                                                      }
-                                                    }
-                                                  },
-                                                  icon: Icon(Icons.downloading_outlined),
-                                                ),
-                                                Text('Download'),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                          replacement: Padding(
-                            padding: const EdgeInsets.only(top: 250, left: 130),
+        icon: Icon(Icons.add),
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Column(
+          children: [
+            // Other widgets
+            isLoading
+                ? Flexible(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 60.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  )
+                : widget.data == false
+                    ? Flexible(
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 60.0),
                             child: Text(
-                              'No Bill found',
+                              'Bill not found !',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -344,9 +108,265 @@ class _BillsTabsState extends State<BillsTabs> {
                             ),
                           ),
                         ),
-            ],
-          ),
-        ));
+                      )
+                    : Visibility(
+                        visible: isBillTheir,
+                        child: Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: billData.length,
+                            itemBuilder: (context, index) {
+                              final bill = billData[index];
+                              return Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Card(
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 10),
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 5),
+                                          Text(
+                                            bill.rentStartDate,
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            selectedSubPropertyName,
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          SizedBox(width: 30),
+                                          Container(
+                                            color: Colors.red[100],
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(6.0),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "₹ " + bill.previousBalance.toString(),
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.red,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "(balance)",
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.red,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            color: Colors.green[100],
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(6.0),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "₹ " + bill.rentAmount.toString(),
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.green,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "(recieved)",
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.green,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          IconButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) => BillViewPage(
+                                                              Data: bill,
+                                                              type: '1',
+                                                            )));
+                                              },
+                                              icon: Icon(Icons.arrow_forward_ios)),
+                                        ],
+                                      ),
+                                      // Divider(
+                                      //   color: Colors.grey,
+                                      //   height: 30,
+                                      // ),
+                                      SizedBox(
+                                        height: 18,
+                                      ),
+                                      Container(
+                                        color: Colors.black12,
+                                        height: 2,
+                                        width: 500,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          // SizedBox(
+                                          //   width: 30,
+                                          // ),
+                                          Column(
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  showbottomsheet(context, bill.id);
+                                                  //   _showBottomSheet(
+                                                  // context, bill['id']);
+                                                },
+                                                icon: Icon(Icons.add_box),
+                                              ),
+                                              Text('Receive'),
+                                            ],
+                                          ),
+                                          // SizedBox(
+                                          //   width: 50,
+                                          // ),
+                                          Container(
+                                            color: Colors.black12,
+                                            height: 70,
+                                            width: 2,
+                                          ),
+                                          // SizedBox(
+                                          //   width: 50,
+                                          // ),
+                                          Column(
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  // String message =
+                                                  //     "Hii their your Bill form is ";
+                                                  // shareOnWhatsApp(message);
+
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder: (builder) => PdfPreviewPage(invoice: bill, subname: selectedSubPropertyName),
+                                                    ),
+                                                  );
+
+                                                  //Share.share('Check');
+                                                },
+                                                icon: Icon(Icons.share),
+                                              ),
+                                              Text('Share'),
+                                            ],
+                                          ),
+                                          Container(
+                                            color: Colors.black12,
+                                            height: 70,
+                                            width: 2,
+                                          ),
+                                          Column(
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  shareOnWhatsApp("Hello");
+                                                  /* _showBottomSheet(
+                                              context, bill['id']);*/
+                                                },
+                                                icon: Image.asset(
+                                                  "assets/images/wi.png",
+                                                  height: 43,
+                                                  width: 43,
+                                                ),
+                                              ),
+                                              Text('Remind'),
+                                            ],
+                                          ),
+                                          // SizedBox(
+                                          //   width: 30,
+                                          // ),
+                                          Container(
+                                            color: Colors.black12,
+                                            height: 70,
+                                            width: 2,
+                                          ),
+                                          // SizedBox(
+                                          //   width: 30,
+                                          // ),
+
+                                          Column(
+                                            children: [
+                                              IconButton(
+                                                onPressed: () async {
+                                                  if (Platform.isAndroid) {
+                                                    var status = await Permission.storage.status;
+                                                    if (status != PermissionStatus.granted) {
+                                                      status = await Permission.storage.request();
+                                                    }
+                                                    if (status.isGranted) {
+                                                      //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                                                      //   Directory dir = Directory(downloadsFolderPath);
+                                                      // var file=  makePdf(bill,selectedSubPropertyName);
+                                                      //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
+
+                                                      Navigator.of(context).push(
+                                                        MaterialPageRoute(
+                                                          builder: (builder) => PdfPreviewPage(invoice: bill, subname: selectedSubPropertyName),
+                                                        ),
+                                                      );
+                                                    }
+                                                  }
+                                                },
+                                                icon: Icon(Icons.downloading_outlined),
+                                              ),
+                                              Text('Download'),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        replacement: Flexible(
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 60.0),
+                              child: Text(
+                                'Bill not found !',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+          ],
+        ),
+      ),
+    );
   }
 
   DateTime dateTime = DateTime.now();

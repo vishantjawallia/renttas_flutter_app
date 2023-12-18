@@ -180,337 +180,354 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
     return WillPopScope(
-        onWillPop: () async {
-          return await _showExitConfirmationDialog(context);
-        },
-        child: DefaultTabController(
-            length: 5,
-            child: Scaffold(
-              resizeToAvoidBottomInset: false,
-              appBar: AppBar(
-                flexibleSpace: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.black,
-                        Colors.green,
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
-                  ),
+      onWillPop: () async {
+        return await _showExitConfirmationDialog(context);
+      },
+      child: DefaultTabController(
+        length: 5,
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black,
+                    Colors.green,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                 ),
-                toolbarHeight: isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
-                automaticallyImplyLeading: false,
-                actions: <Widget>[
-                  Container(
-                    child: Expanded(
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 1),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                        builder: (context) => const lanlordProfile(),
-                                      ),
-                                    );
-                                  },
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    radius: 20,
-                                    child: Text(
-                                      firstName == null ? "A" : firstName.substring(0, 1).toUpperCase(),
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+              ),
+            ),
+            toolbarHeight: isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
+            automaticallyImplyLeading: false,
+            actions: <Widget>[
+              Container(
+                child: Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(width: 10),
+                                Container(
+                                  margin: EdgeInsets.only(left: 1),
+                                  child: GestureDetector(
+                                    onTap: () => Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (context) => const lanlordProfile()),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              isLoading // Check if the data is still loading
-                                  ? Center(
-                                      child: CircularProgressIndicator(), // Show circular progress indicator
-                                    )
-                                  : TextButton(
-                                      onPressed: () {
-                                        _openBottomSheet(context);
-                                      },
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      radius: 22,
                                       child: Text(
-                                        selectedPropertyName,
-                                        style: TextStyle(color: Colors.blue),
+                                        firstName == null ? "A" : firstName.substring(0, 1).toUpperCase(),
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
                                       ),
                                     ),
-                              IconButton(
-                                onPressed: () {
-                                  _openBottomSheet(context);
-                                },
-                                icon: Icon(
-                                  Icons.arrow_drop_down,
-                                  size: 40,
-                                ),
-                              ),
-                              Flexible(fit: FlexFit.tight, child: SizedBox()),
-                              InkWell(
-                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => notificationview())),
-                                child: Container(
-                                    alignment: Alignment.center,
-                                    child: Icon(
-                                      Icons.notification_add,
-                                      color: Colors.white,
-                                    )),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => premiumescreen()));
-                                },
-                                child: Icon(
-                                  Icons.star,
-                                  color: Colors.orange,
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => premiumescreen()));
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.all(2),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    ' Premium',
-                                    style: TextStyle(
-                                      color: Colors.orange,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.center,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Text(
-                                "title".tr().toString(),
-                                // 'Rooms:',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(
-                                width: screenWidth * 0.3,
-                              ),
-                              Flexible(fit: FlexFit.tight, child: SizedBox()),
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddSubproperties(selectedId: selectedPropertyId)));
-                                },
-                                icon: Icon(
-                                  Icons.add_box,
-                                  size: 30,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddSubproperties(selectedId: selectedPropertyId)));
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
-                                  child: Text(
-                                    'Add Room',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: screenHeight * 0.04,
-                          ),
-                          if (isSubproperty)
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: StatefulBuilder(
-                                builder: (BuildContext context, StateSetter setState) {
-                                  return SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            // when click on all it will get all datas under the property
-                                            setState(() {
-                                              alldt = true;
-                                            });
-                                          },
-                                          child: Container(
-                                            decoration: alldt == false
-                                                ? BoxDecoration(border: Border.all(width: 1, color: Colors.white))
-                                                : BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(2)),
-                                            margin: const EdgeInsets.only(left: 10),
-                                            padding: const EdgeInsets.all(10),
-                                            height: 38,
-                                            // color: Colors.greenAccent,
-                                            child: Text(
-                                              "All",
-                                              style: TextStyle(color: alldt == true ? Colors.lightGreen : Colors.white, fontWeight: FontWeight.bold),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 12),
+                                  child: isLoading
+                                      ? SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 3))
+                                      : InkWell(
+                                          borderRadius: BorderRadius.circular(6),
+                                          onTap: () => _openBottomSheet(context),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left: 6),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  selectedPropertyName,
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                                Icon(Icons.arrow_drop_down, size: 34)
+                                              ],
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 10,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                InkWell(
+                                  borderRadius: BorderRadius.circular(6),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => notificationview())),
+                                  child: Container(
+                                    padding: EdgeInsets.all(6),
+                                    child: Icon(
+                                      Icons.notification_add,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 8, height: 0),
+                                InkWell(
+                                  borderRadius: BorderRadius.circular(6),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => premiumescreen())),
+                                  child: Container(
+                                    padding: EdgeInsets.all(6),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.star, color: Colors.orange),
+                                        Container(
+                                          padding: EdgeInsets.all(6),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            ' Premium',
+                                            style: TextStyle(
+                                              color: Colors.orange,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
                                         ),
-                                        Center(
-                                            child: Container(
-                                          color: Colors.white,
-                                          height: 35,
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, top: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "title".tr().toString().toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              InkWell(
+                                borderRadius: BorderRadius.circular(6),
+                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddSubproperties(selectedId: selectedPropertyId))),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Row(
+                                    children: const [
+                                      Icon(Icons.add_box, size: 26, color: Colors.white),
+                                      SizedBox(width: 6, height: 0.0),
+                                      Padding(
+                                        padding: EdgeInsets.only(right: 8.0),
+                                        child: Text(
+                                          'ADD ROOM',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: screenHeight * 0.04,
+                        ),
+                        if (isSubproperty)
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: StatefulBuilder(
+                              builder: (BuildContext context, StateSetter setState) {
+                                return SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          // when click on all it will get all datas under the property
+                                          setState(() {
+                                            alldt = true;
+                                          });
+                                        },
+                                        child: Container(
+                                          decoration: alldt == false
+                                              ? BoxDecoration(border: Border.all(width: 1, color: Colors.white), borderRadius: BorderRadius.circular(4))
+                                              : BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(4)),
+                                          margin: const EdgeInsets.only(left: 10),
+                                          padding: const EdgeInsets.all(10),
+                                          height: 38,
+                                          // p
+                                          // color: Colors.greenAccent,
+                                          child: Text(
+                                            "All",
+                                            style: TextStyle(color: alldt == true ? Colors.black : Colors.white, fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 16,
+                                      ),
+                                      Align(
+                                        heightFactor: 1.55,
+                                        alignment: Alignment.center,
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey.shade300,
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
+                                          height: 22,
                                           width: 2,
-                                        )),
-                                        SizedBox(
-                                          width: 10,
                                         ),
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: List.generate(
-                                            selectedSubProperty.length,
-                                            (index) => GestureDetector(
-                                              onTap: () async {
-                                                setState(() {
-                                                  alldt = false;
+                                      ),
+                                      SizedBox(
+                                        width: 2,
+                                      ),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: List.generate(
+                                          selectedSubProperty.length,
+                                          (index) => GestureDetector(
+                                            onTap: () async {
+                                              setState(() {
+                                                alldt = false;
 
-                                                  var firstElementIndex = selectedSubProperty[0];
+                                                var firstElementIndex = selectedSubProperty[0];
 
-                                                  print("Index of first element: $firstElementIndex");
-                                                  selectedSubProperties = index;
-                                                  selectedSubpropertyName = selectedSubProperty[index].subPropertyName;
-                                                  selectedSubPropertyId = selectedSubProperty[index].id;
-                                                  print("selectedSubpropertyID: $selectedPropertyId");
-                                                  navigateToFirstTab();
-                                                });
-                                                await saveSelectedSubProperty(selectedSubPropertyId, selectedSubpropertyName);
-                                              },
-                                              child: Container(
-                                                margin: const EdgeInsets.only(left: 8),
-                                                padding: const EdgeInsets.all(8),
-                                                height: 35,
-                                                decoration: alldt == false
-                                                    ? index == selectedSubProperties
-                                                        ? BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(2))
-                                                        : BoxDecoration(border: Border.all(color: Colors.blueAccent))
-                                                    : BoxDecoration(border: Border.all(color: Colors.blueAccent)),
-                                                // color:
-                                                //     index == selectedSubProperties
-                                                //         ? Colors.blueAccent
-                                                //         : Colors.white,
-                                                child: Text(
-                                                  selectedSubProperty[index].subPropertyName,
-                                                  style: TextStyle(color: index == selectedSubProperties ? Colors.lightGreen : Colors.white, fontWeight: FontWeight.bold),
+                                                print("Index of first element: $firstElementIndex");
+                                                selectedSubProperties = index;
+                                                selectedSubpropertyName = selectedSubProperty[index].subPropertyName;
+                                                selectedSubPropertyId = selectedSubProperty[index].id;
+                                                print("selectedSubpropertyID: $selectedPropertyId");
+                                                navigateToFirstTab();
+                                              });
+                                              await saveSelectedSubProperty(selectedSubPropertyId, selectedSubpropertyName);
+                                            },
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              margin: const EdgeInsets.only(left: 14),
+                                              padding: const EdgeInsets.all(8),
+                                              height: 38,
+                                              decoration: alldt == false
+                                                  ? index == selectedSubProperties
+                                                      ? BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(4))
+                                                      : BoxDecoration(border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(4))
+                                                  : BoxDecoration(border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(4)),
+                                              // color:
+                                              //     index == selectedSubProperties
+                                              //         ? Colors.blueAccent
+                                              //         : Colors.white,
+                                              child: Text(
+                                                selectedSubProperty[index].subPropertyName,
+                                                style: TextStyle(
+                                                  color: index == selectedSubProperties ? Colors.black : Colors.white,
+                                                  fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             ),
-                        ],
-                      ),
+                          ),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 50,
-                    color: Colors.white,
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: TabBar(
-                        padding: EdgeInsets.all(5),
-                        isScrollable: true,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        tabAlignment: TabAlignment.start,
-                        indicator: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.blue,
-                              width: 2.0,
-                            ),
-                          ),
-                        ),
-                        // BoxDecoration(
-                        //     //color: Colors.green[300],
-                        //     borderRadius: BorderRadius.circular(4.0)),
-                        labelColor: Colors.blue,
-                        unselectedLabelColor: Colors.black,
-                        controller: _tabController,
-                        tabs: const [
-                          Tab(
-                            text: 'Bills',
-                          ),
-                          Tab(
-                            text: 'Tenants',
-                          ),
-                          Tab(
-                            text: 'Expenses',
-                          ),
-                          Tab(
-                            text: 'Documents',
-                          ),
-                          Tab(
-                            text: 'About',
-                          ),
-                        ],
+            ],
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 50,
+                padding: EdgeInsets.symmetric(horizontal: 6),
+                color: Colors.white,
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: TabBar(
+                    padding: EdgeInsets.all(5),
+                    isScrollable: true,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    tabAlignment: TabAlignment.start,
+                    labelStyle: TextStyle(
+                      fontSize: 18,
+                    ),
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(3),
+                        bottomRight: Radius.circular(3),
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(0),
+                      ),
+                      border: Border(
+                        bottom: BorderSide(color: Colors.green, width: 4.0),
+                        top: BorderSide(color: Colors.green, width: 0),
+                        left: BorderSide(color: Colors.green, width: 0),
+                        right: BorderSide(color: Colors.green, width: 0),
                       ),
                     ),
-                  ),
-                  // if (loadTabBar && selectedSubProperty.isNotEmpty)
-                  Expanded(
-                      child: TabBarView(
+                    // BoxDecoration(
+                    //     //color: Colors.green[300],
+                    //     borderRadius: BorderRadius.circular(4.0)),
+                    labelColor: Colors.green,
+                    unselectedLabelColor: Colors.black,
                     controller: _tabController,
-                    children: [
-                      BillsTabs(data: isSubproperty),
-                      TenantsTab(),
-                      ExpensesTab(),
-                      DocumentsTab(),
-                      AboutTab(),
+                    tabs: const [
+                      Tab(text: 'Bills'),
+                      Tab(text: 'Tenants'),
+                      Tab(text: 'Expenses'),
+                      Tab(text: 'Documents'),
+                      Tab(text: 'About'),
                     ],
-                  )),
-                  //  if (!loadTabBar) CircularProgressIndicator(),
-                ],
+                  ),
+                ),
               ),
-            )));
+              // if (loadTabBar && selectedSubProperty.isNotEmpty)
+              Expanded(
+                  child: TabBarView(
+                controller: _tabController,
+                children: [
+                  BillsTabs(data: isSubproperty),
+                  TenantsTab(),
+                  ExpensesTab(),
+                  DocumentsTab(),
+                  AboutTab(),
+                ],
+              )),
+              //  if (!loadTabBar) CircularProgressIndicator(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   String getCurrency() {

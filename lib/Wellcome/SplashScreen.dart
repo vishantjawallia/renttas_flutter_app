@@ -1,96 +1,85 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, non_constant_identifier_names, unnecessary_overrides, prefer_const_constructors, unused_import
+// ignore_for_file: file_names, use_build_context_synchronously
 
+import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../LandingPages/LandingPage.dart';
 import '../landlord/LandloardDashBord.dart';
 import '../tandent/Tenantdashbord.dart';
 
-import 'package:http/http.dart' as http;
-
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  late bool newuser = true;
-  late String sw;
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+  // late bool newuser = true;
+  // late String sw;
 
   @override
   void initState() {
     super.initState();
-    check_if_already_login();
-    Future.delayed(Duration(seconds: 3), () {
-      newuser == false
-          ? sw=="1"?Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return LandloardDashBord();
-                //  LandlordLogin();
-              }),
-            ):Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) {
-          return Tenantdashbord();
-          //  LandlordLogin();
-        }),
-      )
-          : Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) {
-              return landingpage();
-              //  LandlordLogin();
-            }));
-    });
+    checkIfAlreadyLogin();
   }
-
-  // Navigate to the home screen after the splash animation completes
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Hero(
-          tag: 'logo', // unique tag for the Hero animation
+          tag: 'logo',
           child: Container(
-            height: 200,
-            width: 200,
+            margin: const EdgeInsets.all(18),
             decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage("assets/images/renttas.png"),
-              fit: BoxFit.cover,
-            )),
+              image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/splash_logo.png",
+                ),
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
         ),
       ),
     );
   }
 
-  void check_if_already_login() async {
-    SharedPreferences prefs= await SharedPreferences.getInstance();
-    newuser = (prefs.getBool('login') ?? true);
-    sw=(prefs.getString("sw")?? "0");
-    print("newwwww----" + newuser.toString());
+  void checkIfAlreadyLogin() async {
+    await Future.delayed(const Duration(seconds: 3));
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    setState(() {
-      newuser = (prefs.getBool('login') ?? true);
-      sw=(prefs.getString("sw")?? "3");
-    });
+    bool newuser = (prefs.getBool('login') ?? true);
+    String sw = (prefs.getString("sw") ?? "0");
+    // prefs.clear();
+    log(sw.toString());
+    log(newuser.toString());
 
-    // if (newuser == false) {
-    //   ///String? name= pref.getString("userid");
-    //   Navigator.pushReplacement(
-    //       context,
-    //       new MaterialPageRoute(
-    //           builder: (context) => BottomNavigationScreen()));
-    // }
+    newuser == false
+        ? sw == "1"
+            ? Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LandloardDashBord()),
+              )
+            : Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Tenantdashbord()),
+              )
+        : Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const landingpage()),
+          );
+
+    if (kDebugMode) {
+      print("newwwww----$newuser");
+    }
+
+    // setState(() {
+    //   newuser = (prefs.getBool('login') ?? true);
+    //   sw = (prefs.getString("sw") ?? "3");
+    // });
   }
 }

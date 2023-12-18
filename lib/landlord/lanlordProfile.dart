@@ -117,7 +117,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
+            Navigator.of(context).pop();
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
           },
           icon: const Icon(Icons.arrow_back),
           color: Colors.black,
@@ -125,613 +126,529 @@ class _lanlordProfileState extends State<lanlordProfile> {
         title: const Text('My Account ', style: TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          color: const Color(0xB7B0B0FF),
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(right: 5, left: 5),
-                //    alignment: Alignment.center,
-
-                width: double.infinity,
-                child: Card(
-                  // color: Colors.white70,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Column(children: <Widget>[
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.only(top: 5, left: 10),
-                      child: Row(
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: Icon(Icons.verified_user),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              name,
-                              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
-                      ),
+      body: Container(
+        height: double.infinity,
+        color: const Color(0xB7B0B0FF),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0, right: 8),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10, left: 5),
+                  padding: const EdgeInsets.only(left: 15),
+                  height: 20,
+                  width: double.infinity,
+                  // color: Colors.grey,
+                  child: const Text(
+                    'User Detail:',
+                    style: TextStyle(
+                      fontSize: 16,
                     ),
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.only(top: 5, left: 10),
-                      child: Row(
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: Icon(Icons.email),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              email,
-                              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.only(top: 10, left: 10),
-                      child: Row(
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: Icon(Icons.phone),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Text(
-                              phone,
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ]),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 10, left: 5),
-                padding: const EdgeInsets.only(left: 15),
-                height: 20,
-                width: double.infinity,
-                // color: Colors.grey,
-                child: const Text(
-                  'Help & Support',
-                  style: TextStyle(
-                    fontSize: 16,
                   ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
-                //    alignment: Alignment.center,
-                height: 200,
-
-                width: double.infinity,
-                child: Card(
-                  // color: Colors.white70,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Column(children: <Widget>[
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.only(top: 12, left: 10),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const languageswitchscreen()));
-                        },
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              height: 30,
-                              width: 30,
-                              child: Icon(Icons.language),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: const Text(
-                                'Choose language ',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    // Container(
-                    //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    //   child: Divider(
-                    //     color: Colors.grey,
-                    //   ),
-                    // ),
-                    //
-                    // Container(
-                    //   width: double.infinity,
-                    //   margin: EdgeInsets.only(top: 12, left: 10),
-                    //   child: GestureDetector(
-                    //     onTap: () {
-                    //       // Navigator.of(context).push(MaterialPageRoute(
-                    //       //      builder: (context) =>
-                    //       //          PropertyPage(userId: userId)));
-                    //     },
-                    //     child: Row(
-                    //       children: [
-                    //         Container(
-                    //           height: 30,
-                    //           width: 30,
-                    //           child: Icon(Icons.manage_history_outlined),
-                    //         ),
-                    //         Container(
-                    //           padding: EdgeInsets.only(left: 10),
-                    //           child: Text(
-                    //             'Manage Properties ',
-                    //             style: TextStyle(fontSize: 16),
-                    //           ),
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                      child: const Divider(
-                        color: Colors.grey,
-                      ),
-                    ),
-                    // InkWell(
-                    //   onTap: (){
-                    //     /// chat whats app
-                    //     _launchWhatsapp("8139084095");
-                    //   },
-                    //   child: Container(
-                    //     width: double.infinity,
-                    //     margin: EdgeInsets.only(top: 5, left: 10),
-                    //     child: Row(
-                    //       children: [
-                    //         Container(
-                    //           height: 30,
-                    //           width: 30,
-                    //           child: Icon(Icons.whatshot),
-                    //         ),
-                    //         Container(
-                    //           padding: EdgeInsets.only(left: 15),
-                    //           child: Text(
-                    //             'Chat on Whatsapp ',
-                    //             style: TextStyle(
-                    //               fontSize: 16,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    //   child: Divider(
-                    //     color: Colors.grey,
-                    //   ),
-                    // ),
-                    // InkWell(
-                    //   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    //       builder: (context) =>
-                    //           accountsreport(userid: userId))),
-                    //   child: Container(
-                    //     width: double.infinity,
-                    //     margin: EdgeInsets.only(top: 5, left: 10),
-                    //     child: Row(
-                    //       children: [
-                    //         Container(
-                    //           height: 30,
-                    //           width: 30,
-                    //           child: Icon(Icons.report),
-                    //         ),
-                    //         Container(
-                    //           padding: EdgeInsets.only(left: 15),
-                    //           child: Text(
-                    //             'Accounts Report ',
-                    //             style: TextStyle(
-                    //               fontSize: 16,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    //
-                    // Container(
-                    //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    //   child: Divider(
-                    //     color: Colors.grey,
-                    //   ),
-                    // ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty()));
-
-                        /// chat whats app
-                        // _launchWhatsapp("8139084095");
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 5, left: 10),
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              height: 30,
-                              width: 30,
-                              child: Icon(Icons.merge),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: const Text(
-                                'Merge Properties ',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                      child: const Divider(
-                        color: Colors.grey,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthGate()));
-
-                        /// chat whats app
-                        // _launchWhatsapp("8139084095");
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 5, left: 10),
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              height: 30,
-                              width: 30,
-                              child: Icon(Icons.chat),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: const Text(
-                                'Live chat',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    // Container(
-                    //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    //   child: Divider(
-                    //     color: Colors.grey,
-                    //   ),
-                    // ),
-
-                    // Container(
-                    //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    //   child: Divider(
-                    //     color: Colors.grey,
-                    //   ),
-                    // ),
-                    // InkWell(
-                    //   onTap: () =>
-                    //
-                    //       Navigator.of(context).push(MaterialPageRoute(
-                    //       builder: (context) =>
-                    //           Tenantdashbord())),
-                    //   child: Container(
-                    //     width: double.infinity,
-                    //     margin: EdgeInsets.only(top: 5, left: 10),
-                    //     child: Row(
-                    //       children: [
-                    //         Container(
-                    //           height: 30,
-                    //           width: 30,
-                    //           child: Icon(Icons.switch_access_shortcut),
-                    //         ),
-                    //         Container(
-                    //           padding: EdgeInsets.only(left: 15),
-                    //           child: Text(
-                    //             'Switch to Tenant View ',
-                    //             style: TextStyle(
-                    //               fontSize: 16,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                  ]),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 10, left: 5),
-                padding: const EdgeInsets.only(left: 15),
-                height: 20,
-                width: double.infinity,
-                // color: Colors.grey,
-                child: const Text(
-                  'Others',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
-                  //    alignment: Alignment.center,
-                  height: 300,
-
+                Container(
+                  margin: const EdgeInsets.only(left: 5),
                   width: double.infinity,
                   child: Card(
-                    // color: Colors.white70,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    child: Column(children: <Widget>[
-                      InkWell(
-                        onTap: () async {
-                          showDialog(
-                            context: context,
-                            builder: (context) => _dialog,
-                          );
-                          // final InAppReview inAppReview = InAppReview.instance;
-                          //
-                          // if (await inAppReview.isAvailable()) {
-                          //   inAppReview.requestReview();
-                          // }
-                          if (kDebugMode) {
-                            print("Object clickeddd");
-                          }
-                        },
-                        child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 12, bottom: 20, right: 4, left: 4),
+                      child: Column(children: <Widget>[
+                        Container(
                           width: double.infinity,
-                          margin: const EdgeInsets.only(top: 12, left: 10),
+                          margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
                           child: Row(
                             children: [
                               const SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: Icon(Icons.reviews_outlined),
+                                // height: 30,
+                                // width: 30,
+                                child: Icon(Icons.verified_user),
                               ),
                               Container(
                                 padding: const EdgeInsets.only(left: 10),
-                                child: const Text(
-                                  'Rate this app ',
-                                  style: TextStyle(fontSize: 16),
+                                child: Text(
+                                  name,
+                                  style: const TextStyle(
+                                    fontSize: 19,
+                                    // fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               )
                             ],
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                        child: const Divider(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas');
-                        },
-                        child: Container(
+                        const SizedBox(width: 0.0, height: 5),
+                        Container(
                           width: double.infinity,
-                          margin: const EdgeInsets.only(top: 12, left: 10),
+                          margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
                           child: Row(
                             children: [
                               const SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: Icon(Icons.share),
+                                // height: 30,
+                                // width: 30,
+                                child: Icon(Icons.email),
                               ),
                               Container(
                                 padding: const EdgeInsets.only(left: 10),
-                                child: const Text(
-                                  'Share App ',
-                                  style: TextStyle(fontSize: 16),
+                                child: Text(
+                                  email,
+                                  style: const TextStyle(
+                                    fontSize: 19,
+                                    // fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               )
                             ],
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                        child: const Divider(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 5, left: 10),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const TermCondition()));
-                          },
-                          child: Row(
-                            children: [
-                              const SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
-                              Container(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: const Text(
-                                  'Terms & Conditions ',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                        child: const Divider(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 5, left: 10),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicy()));
-                          },
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: Icon(Icons.note_alt_outlined),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: const Text(
-                                  'Privacy Policy ',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                        child: const Divider(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          showAlertDialog(context);
-                        },
-                        child: Container(
+                        Container(
                           width: double.infinity,
-                          margin: const EdgeInsets.only(top: 5, left: 10),
+                          margin: const EdgeInsets.only(top: 10, left: 10),
                           child: Row(
                             children: [
                               const SizedBox(
-                                height: 30,
-                                width: 30,
-                                child: Icon(Icons.power_settings_new_outlined),
+                                // height: 30,
+                                // width: 30,
+                                child: Icon(Icons.phone),
                               ),
                               Container(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: const Text(
-                                  'Logout',
-                                  style: TextStyle(
-                                    fontSize: 16,
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  phone,
+                                  style: const TextStyle(
+                                    fontSize: 19,
+                                    // fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                    ]),
+                      ]),
+                    ),
                   ),
                 ),
-              ),
-              // Container(
-              //   margin: EdgeInsets.only(top: 15),
-              //   height: 60,
-              //   width: double.infinity,
-              //   color: Colors.white,
-              //   child: Row(
-              //     children: [
-              //       Column(
-              //         children: [
-              //           GestureDetector(
-              //               onTap: () {
-              //                 Navigator.of(context).push(MaterialPageRoute(
-              //                     builder: (context) => SettingsPage()));
-              //               },
-              //               child: Container(
-              //                   margin: EdgeInsets.only(top: 10, left: 30),
-              //                   height: 20,
-              //                   child: Image.asset('assets/images/setting.png'))),
-              //           SizedBox(
-              //             height: 4,
-              //           ),
-              //           Container(
-              //               margin: EdgeInsets.only(left: 30),
-              //               child: Text('Settings'))
-              //         ],
-              //       ),
-              //       Column(
-              //         children: [
-              //           GestureDetector(
-              //               onTap: () {
-              //                 Navigator.of(context).push(MaterialPageRoute(
-              //                     builder: (context) => typeUser()));
-              //               },
-              //               child: Container(
-              //                   margin: EdgeInsets.only(top: 10, left: 75),
-              //                   height: 20,
-              //                   child: Image.asset('assets/images/home.png'))),
-              //           SizedBox(
-              //             height: 4,
-              //           ),
-              //           Container(
-              //               margin: EdgeInsets.only(left: 75),
-              //               child: Text('Home'))
-              //         ],
-              //       ),
-              //       Column(
-              //         children: [
-              //           Container(
-              //               margin: EdgeInsets.only(top: 10, left: 85),
-              //               height: 20,
-              //               child: Image.asset('assets/images/edit.png')),
-              //           SizedBox(
-              //             height: 4,
-              //           ),
-              //           Container(
-              //               margin: EdgeInsets.only(left: 85),
-              //               child: Text('Profile'))
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // )
-            ],
+                Container(
+                  margin: const EdgeInsets.only(top: 10, left: 5),
+                  padding: const EdgeInsets.only(left: 15),
+                  height: 20,
+                  width: double.infinity,
+                  // color: Colors.grey,
+                  child: const Text(
+                    'Help & Support',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
+                  height: 178,
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.only(top: 12, left: 10),
+                          child: GestureDetector(
+                            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const languageswitchscreen())),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Icon(Icons.language),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: const Text(
+                                    'Choose language ',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        // Container(
+                        //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
+                        //   child: Divider(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+                        //
+                        // Container(
+                        //   width: double.infinity,
+                        //   margin: EdgeInsets.only(top: 12, left: 10),
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       // Navigator.of(context).push(MaterialPageRoute(
+                        //       //      builder: (context) =>
+                        //       //          PropertyPage(userId: userId)));
+                        //     },
+                        //     child: Row(
+                        //       children: [
+                        //         Container(
+                        //           height: 30,
+                        //           width: 30,
+                        //           child: Icon(Icons.manage_history_outlined),
+                        //         ),
+                        //         Container(
+                        //           padding: EdgeInsets.only(left: 10),
+                        //           child: Text(
+                        //             'Manage Properties ',
+                        //             style: TextStyle(fontSize: 16),
+                        //           ),
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                          child: const Divider(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        // InkWell(
+                        //   onTap: (){
+                        //     /// chat whats app
+                        //     _launchWhatsapp("8139084095");
+                        //   },
+                        //   child: Container(
+                        //     width: double.infinity,
+                        //     margin: EdgeInsets.only(top: 5, left: 10),
+                        //     child: Row(
+                        //       children: [
+                        //         Container(
+                        //           height: 30,
+                        //           width: 30,
+                        //           child: Icon(Icons.whatshot),
+                        //         ),
+                        //         Container(
+                        //           padding: EdgeInsets.only(left: 15),
+                        //           child: Text(
+                        //             'Chat on Whatsapp ',
+                        //             style: TextStyle(
+                        //               fontSize: 16,
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        // Container(
+                        //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
+                        //   child: Divider(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+                        // InkWell(
+                        //   onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        //       builder: (context) =>
+                        //           accountsreport(userid: userId))),
+                        //   child: Container(
+                        //     width: double.infinity,
+                        //     margin: EdgeInsets.only(top: 5, left: 10),
+                        //     child: Row(
+                        //       children: [
+                        //         Container(
+                        //           height: 30,
+                        //           width: 30,
+                        //           child: Icon(Icons.report),
+                        //         ),
+                        //         Container(
+                        //           padding: EdgeInsets.only(left: 15),
+                        //           child: Text(
+                        //             'Accounts Report ',
+                        //             style: TextStyle(
+                        //               fontSize: 16,
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        //
+                        // Container(
+                        //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
+                        //   child: Divider(
+                        //     color: Colors.grey,
+                        //   ),
+                        // ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty()));
+
+                            /// chat whats app
+                            // _launchWhatsapp("8139084095");
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.only(top: 5, left: 10),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Icon(Icons.merge),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: const Text(
+                                    'Merge Properties ',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                          child: const Divider(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthGate()));
+
+                            /// chat whats app
+                            // _launchWhatsapp("8139084095");
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.only(top: 5, left: 10),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Icon(Icons.chat),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: const Text(
+                                    'Live chat',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10, left: 5),
+                  padding: const EdgeInsets.only(left: 15),
+                  height: 20,
+                  width: double.infinity,
+                  // color: Colors.grey,
+                  child: const Text(
+                    'Others',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
+                    //    alignment: Alignment.center,
+                    height: 300,
+
+                    width: double.infinity,
+                    child: Card(
+                      // color: Colors.white70,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(children: <Widget>[
+                        InkWell(
+                          onTap: () async {
+                            showDialog(
+                              context: context,
+                              builder: (context) => _dialog,
+                            );
+                            // final InAppReview inAppReview = InAppReview.instance;
+                            //
+                            // if (await inAppReview.isAvailable()) {
+                            //   inAppReview.requestReview();
+                            // }
+                            if (kDebugMode) {
+                              print("Object clickeddd");
+                            }
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.only(top: 12, left: 10),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Icon(Icons.reviews_outlined),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: const Text(
+                                    'Rate this app ',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                          child: const Divider(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas');
+                          },
+                          child: Container(
+                            // width: double.infinity,
+                            margin: const EdgeInsets.only(top: 5, left: 10),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Icon(Icons.share),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: const Text(
+                                    'Share App ',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                          child: const Divider(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.only(top: 5, left: 10),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const TermCondition()));
+                            },
+                            child: Row(
+                              children: [
+                                const SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: const Text(
+                                    'Terms & Conditions ',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                          child: const Divider(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.only(top: 5, left: 10),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicy()));
+                            },
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Icon(Icons.note_alt_outlined),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: const Text(
+                                    'Privacy Policy ',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                          child: const Divider(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () => showAlertDialog(context),
+                          child: Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.only(top: 5, left: 10),
+                            child: Row(
+                              children: [
+                                const SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: Icon(Icons.power_settings_new_outlined),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: const Text(
+                                    'Logout',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -775,18 +692,18 @@ showAlertDialog(BuildContext context) {
     child: const Text("Continue"),
     onPressed: () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setBool("login", true);
+      await prefs.setBool("login", false);
 
-      prefs.setString('userId', "");
-      prefs.setString('email', "");
-      prefs.setString('phone', "");
-      prefs.setString('name', "");
-      prefs.setString('mbno', "");
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const LandlordLogin(),
-        ),
-      );
+      await prefs.setString('userId', "");
+      await prefs.setString('email', "");
+      await prefs.setString('phone', "");
+      await prefs.setString('name', "");
+      await prefs.setString('mbno', "");
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const LandlordLogin(),
+          ),
+          (route) => false);
     },
   );
 

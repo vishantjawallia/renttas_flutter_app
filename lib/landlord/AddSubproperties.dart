@@ -1,7 +1,9 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -20,35 +22,50 @@ class AddSubproperties extends StatefulWidget {
 class _AddSubpropertiesState extends State<AddSubproperties> {
   TextEditingController subPropertyController = TextEditingController();
   bool isLoading = false;
-  var _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: ListView(
-          children: [
-            Form(
-              key: _formKey,
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const LandloardDashBord()),
+          ),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      body: ListView(
+        children: [
+          Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.001, top: screenHeight * 0.1),
+                  const SizedBox(height: 80),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 18.0),
                     child: Text(
-                      'Add \n Property',
-                      style: GoogleFonts.kanit(
+                      'Add Property',
+                      style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        height: 1.0,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: screenHeight * 0.1,
-                  ),
+                  const SizedBox(height: 80),
                   SizedBox(
                     width: screenWidth * 0.95,
                     height: screenHeight * 0.26,
@@ -56,30 +73,32 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
                       padding: EdgeInsets.only(left: screenWidth * 0.05),
                       child: Column(
                         children: [
-                          TextFormField(
-                            controller: subPropertyController,
-                            decoration: const InputDecoration(
-                              icon: Icon(Icons.home),
-                              hintText: 'Enter your Address details',
-                              labelText: 'Property *',
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            child: TextFormField(
+                              controller: subPropertyController,
+                              decoration: const InputDecoration(
+                                // icon: Icon(Icons.home),
+                                hintText: 'Enter your Address details',
+                                labelText: 'Property *',
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your property name!';
+                                }
+                                return null;
+                              },
                             ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Please enter your property name!';
-                              }
-                              return null;
-                            },
                           ),
+                          const SizedBox(height: 20),
                           SizedBox(
-                            height: screenHeight * 0.060,
-                          ),
-                          SizedBox(
-                            width: screenWidth * 0.8,
+                            width: double.infinity,
                             height: screenHeight * 0.06,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color.fromARGB(255, 76, 16, 181),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderRadius: BorderRadius.circular(9.0),
                                 ),
                               ),
                               onPressed: isLoading
@@ -96,7 +115,7 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
                               child: isLoading
                                   ? const CircularProgressIndicator()
                                   : const Text(
-                                      'Add Proprety',
+                                      'ADD PROPERTY',
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
@@ -110,9 +129,9 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
                   ),
                 ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
