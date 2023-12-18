@@ -68,7 +68,8 @@ class _ExpensesTabState extends State<ExpensesTab> {
             ),
           ),
           icon: const Icon(Icons.add),
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xff54854C),
+          // backgroundColor: Colors.blue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),

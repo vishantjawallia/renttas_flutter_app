@@ -103,7 +103,8 @@ class _AboutTabState extends State<AboutTab> {
                     child: const TabBar(
                       isScrollable: true,
                       indicator: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xff54854C),
+                        // color: Colors.blue,
                       ),
                       labelColor: Colors.white,
                       unselectedLabelColor: Colors.black,
@@ -276,12 +277,13 @@ class _AboutTabState extends State<AboutTab> {
                                         Padding(
                                           padding: const EdgeInsets.only(right: 45),
                                           child: OutlinedButton(
-                                            style: const ButtonStyle(
-                                                // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
-                                                // iconColor: MaterialStateProperty.all(Colors.white),
-                                                // foregroundColor: MaterialStateProperty.all(Colors.white),
-                                                // backgroundColor: MaterialStateProperty.all(Colors.blue.shade100),
-                                                ),
+                                            style: ButtonStyle(
+                                              foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                                              // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
+                                              // iconColor: MaterialStateProperty.all(Colors.white),
+                                              // foregroundColor: MaterialStateProperty.all(Colors.white),
+                                              // backgroundColor: MaterialStateProperty.all(Colors.blue.shade100),
+                                            ),
                                             onPressed: () => _showAddressModal(context),
                                             child: const Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
@@ -311,12 +313,13 @@ class _AboutTabState extends State<AboutTab> {
                                         Padding(
                                           padding: const EdgeInsets.only(left: 8.0),
                                           child: OutlinedButton(
-                                            style: const ButtonStyle(
-                                                // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
-                                                // iconColor: MaterialStateProperty.all(Colors.white),
-                                                // foregroundColor: MaterialStateProperty.all(Colors.white),
-                                                // backgroundColor: MaterialStateProperty.all(Colors.blue),
-                                                ),
+                                            style: ButtonStyle(
+                                              foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                                              // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
+                                              // iconColor: MaterialStateProperty.all(Colors.white),
+                                              // foregroundColor: MaterialStateProperty.all(Colors.white),
+                                              // backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                            ),
                                             onPressed: () => _openBottomOwnerDetails(context),
                                             child: const Row(
                                               mainAxisAlignment: MainAxisAlignment.center,

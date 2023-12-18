@@ -80,7 +80,8 @@ class _DocumentsTabState extends State<DocumentsTab> {
           ),
         ),
         icon: Icon(Icons.add),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff54854C),
+        // backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),

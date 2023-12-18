@@ -25,17 +25,16 @@ import 'homepage.dart';
 //   }
 // }
 
-
-
 class AuthGate extends StatelessWidget {
   const AuthGate({Key? key}) : super(key: key);
   lad() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
   }
+
   @override
   Widget build(BuildContext context) {
-  lad();
+    lad();
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
