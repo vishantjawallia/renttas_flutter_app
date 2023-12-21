@@ -168,7 +168,13 @@ class _commerialdashboardState extends State<commerialdashboard> {
         ],
       ),
       body: isloaidng == true
-          ? const Center(child: SizedBox(height: 60, width: 60, child: CircularProgressIndicator()))
+          ? const Center(
+              child: SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: CircularProgressIndicator(
+                    color: Color(0xff54854C),
+                  )))
           : companylist.isEmpty
               ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
               : ListView.builder(

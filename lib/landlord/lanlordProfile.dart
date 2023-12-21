@@ -1,7 +1,8 @@
-// ignore_for_file: unused_local_variable, avoid_print, use_build_context_synchronously, camel_case_types, unused_element, prefer_interpolation_to_compose_strings, use_super_parameters
+// ignore_for_file: unused_local_variable, avoid_print, use_build_context_synchronously, camel_case_types, unused_element, prefer_interpolation_to_compose_strings, use_super_parameters, prefer_const_constructors
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:renttas_flutter_app/Wellcome/LoginPageNew.dart';
 
 import 'package:renttas_flutter_app/landlord/LanguageSwitchScreen.dart';
 import 'package:share_plus/share_plus.dart';
@@ -12,9 +13,6 @@ import '../Common/PrivacyPolicy.dart';
 import '../Common/TermCondition.dart';
 import '../LiveChat/AuthGate.dart';
 import '../MergeProperty/MergeProperty.dart';
-import '../Wellcome/LoginPage.dart';
-
-import 'LandloardDashBord.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:store_redirect/store_redirect.dart';
 
@@ -69,18 +67,13 @@ class _lanlordProfileState extends State<lanlordProfile> {
   }
 
   final _dialog = RatingDialog(
-    // your app's name?
     title: const Text(
-      '',
-      style: TextStyle(fontSize: 14),
+      'Renttas',
     ),
-    // encourage your user to leave a high rating?
-    message: const Text(''),
-    // your app's logo?
+    message: const Text('Rate our App ?'),
     image: Image.asset(
-      "assets/images/renttas.png",
-      height: 30,
-      width: 30,
+      "assets/images/splash_logo.png",
+      fit: BoxFit.fill,
     ),
     submitButtonText: 'Submit',
     onCancelled: () => print('cancelled'),
@@ -103,32 +96,14 @@ class _lanlordProfileState extends State<lanlordProfile> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: false, // Remove the back button
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.black,
-                Colors.green,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-            // Navigator.push(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
-          },
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.black,
-        ),
-        title: const Text('My Account ', style: TextStyle(color: Colors.black)),
+        backgroundColor: Color(0xff54854C),
+        leading: BackButton(),
+        title: const Text('My Account '),
         centerTitle: true,
       ),
       body: Container(
         height: double.infinity,
-        color: const Color(0xB7B0B0FF),
+        color: Colors.grey.shade200,
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0, right: 8),
           child: SingleChildScrollView(
@@ -141,9 +116,10 @@ class _lanlordProfileState extends State<lanlordProfile> {
                   width: double.infinity,
                   // color: Colors.grey,
                   child: const Text(
-                    'User Detail:',
+                    'User Detail',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -165,14 +141,14 @@ class _lanlordProfileState extends State<lanlordProfile> {
                               const SizedBox(
                                 // height: 30,
                                 // width: 30,
-                                child: Icon(Icons.verified_user),
+                                child: Icon(Icons.person),
                               ),
                               Container(
-                                padding: const EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 14),
                                 child: Text(
-                                  name,
+                                  name.capitalizeFirstWord(),
                                   style: const TextStyle(
-                                    fontSize: 19,
+                                    fontSize: 16,
                                     // fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -192,11 +168,11 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                 child: Icon(Icons.email),
                               ),
                               Container(
-                                padding: const EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 14),
                                 child: Text(
                                   email,
                                   style: const TextStyle(
-                                    fontSize: 19,
+                                    fontSize: 16,
                                     // fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -215,11 +191,11 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                 child: Icon(Icons.phone),
                               ),
                               Container(
-                                padding: const EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 14),
                                 child: Text(
                                   phone,
                                   style: const TextStyle(
-                                    fontSize: 19,
+                                    fontSize: 16,
                                     // fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -240,7 +216,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                   child: const Text(
                     'Help & Support',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -267,7 +244,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                   child: Icon(Icons.language),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Choose language ',
                                     style: TextStyle(fontSize: 16),
@@ -277,115 +254,12 @@ class _lanlordProfileState extends State<lanlordProfile> {
                             ),
                           ),
                         ),
-
-                        // Container(
-                        //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                        //   child: Divider(
-                        //     color: Colors.grey,
-                        //   ),
-                        // ),
-                        //
-                        // Container(
-                        //   width: double.infinity,
-                        //   margin: EdgeInsets.only(top: 12, left: 10),
-                        //   child: GestureDetector(
-                        //     onTap: () {
-                        //       // Navigator.of(context).push(MaterialPageRoute(
-                        //       //      builder: (context) =>
-                        //       //          PropertyPage(userId: userId)));
-                        //     },
-                        //     child: Row(
-                        //       children: [
-                        //         Container(
-                        //           height: 30,
-                        //           width: 30,
-                        //           child: Icon(Icons.manage_history_outlined),
-                        //         ),
-                        //         Container(
-                        //           padding: EdgeInsets.only(left: 10),
-                        //           child: Text(
-                        //             'Manage Properties ',
-                        //             style: TextStyle(fontSize: 16),
-                        //           ),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
                         Container(
                           margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
                           child: const Divider(
                             color: Colors.grey,
                           ),
                         ),
-                        // InkWell(
-                        //   onTap: (){
-                        //     /// chat whats app
-                        //     _launchWhatsapp("8139084095");
-                        //   },
-                        //   child: Container(
-                        //     width: double.infinity,
-                        //     margin: EdgeInsets.only(top: 5, left: 10),
-                        //     child: Row(
-                        //       children: [
-                        //         Container(
-                        //           height: 30,
-                        //           width: 30,
-                        //           child: Icon(Icons.whatshot),
-                        //         ),
-                        //         Container(
-                        //           padding: EdgeInsets.only(left: 15),
-                        //           child: Text(
-                        //             'Chat on Whatsapp ',
-                        //             style: TextStyle(
-                        //               fontSize: 16,
-                        //             ),
-                        //           ),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        // Container(
-                        //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                        //   child: Divider(
-                        //     color: Colors.grey,
-                        //   ),
-                        // ),
-                        // InkWell(
-                        //   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        //       builder: (context) =>
-                        //           accountsreport(userid: userId))),
-                        //   child: Container(
-                        //     width: double.infinity,
-                        //     margin: EdgeInsets.only(top: 5, left: 10),
-                        //     child: Row(
-                        //       children: [
-                        //         Container(
-                        //           height: 30,
-                        //           width: 30,
-                        //           child: Icon(Icons.report),
-                        //         ),
-                        //         Container(
-                        //           padding: EdgeInsets.only(left: 15),
-                        //           child: Text(
-                        //             'Accounts Report ',
-                        //             style: TextStyle(
-                        //               fontSize: 16,
-                        //             ),
-                        //           ),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        //
-                        // Container(
-                        //   margin: EdgeInsets.only(left: 8, right: 8, top: 5),
-                        //   child: Divider(
-                        //     color: Colors.grey,
-                        //   ),
-                        // ),
                         InkWell(
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty()));
@@ -404,7 +278,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                   child: Icon(Icons.merge),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 15),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Merge Properties ',
                                     style: TextStyle(
@@ -440,7 +314,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                   child: Icon(Icons.chat),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 15),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Live chat',
                                     style: TextStyle(
@@ -465,7 +339,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                   child: const Text(
                     'Others',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -509,7 +384,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                   child: Icon(Icons.reviews_outlined),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Rate this app ',
                                     style: TextStyle(fontSize: 16),
@@ -540,7 +415,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                   child: Icon(Icons.share),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Share App ',
                                     style: TextStyle(fontSize: 16),
@@ -567,7 +442,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                               children: [
                                 const SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 15),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Terms & Conditions ',
                                     style: TextStyle(
@@ -600,7 +475,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                   child: Icon(Icons.note_alt_outlined),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 15),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Privacy Policy ',
                                     style: TextStyle(
@@ -631,7 +506,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                   child: Icon(Icons.power_settings_new_outlined),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.only(left: 15),
+                                  padding: const EdgeInsets.only(left: 14),
                                   child: const Text(
                                     'Logout',
                                     style: TextStyle(
@@ -678,7 +553,10 @@ class _lanlordProfileState extends State<lanlordProfile> {
 showAlertDialog(BuildContext context) {
   // set up the buttons
   Widget cancelButton = TextButton(
-    child: const Text("Cancel"),
+    child: const Text(
+      "Cancel",
+      style: TextStyle(color: Color(0xff54854C)),
+    ),
     onPressed: () {
       Navigator.pop(context);
       // Navigator.pop(context);
@@ -689,21 +567,20 @@ showAlertDialog(BuildContext context) {
     },
   );
   Widget continueButton = TextButton(
-    child: const Text("Continue"),
+    child: const Text(
+      "Continue",
+      style: TextStyle(color: Color(0xff54854C)),
+    ),
     onPressed: () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool("login", false);
-
       await prefs.setString('userId', "");
       await prefs.setString('email', "");
       await prefs.setString('phone', "");
       await prefs.setString('name', "");
       await prefs.setString('mbno', "");
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => const LandlordLogin(),
-          ),
-          (route) => false);
+      // await prefs.setString("sw", "");
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const LandlordLoginNew()), (route) => false);
     },
   );
 
@@ -724,4 +601,14 @@ showAlertDialog(BuildContext context) {
       return alert;
     },
   );
+}
+
+extension CapitalizeFirstWordExtension on String {
+  String capitalizeFirstWord() {
+    if (this.isEmpty) {
+      return this;
+    }
+
+    return this[0].toUpperCase() + this.substring(1);
+  }
 }

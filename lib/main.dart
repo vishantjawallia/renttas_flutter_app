@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings, prefer_const_literals_to_create_immutables
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ Future<void> main() async {
   ]);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+    
   );
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -66,6 +68,9 @@ Future<void> main() async {
   );
 }
 
+
+// <key>REVERSED_CLIENT_ID</key>
+// <string>com.googleusercontent.app-1-115824667190-ios-10168919e60d7f9aa90697</string>
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -76,7 +81,11 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
+      builder: BotToastInit(),
+       navigatorObservers: [BotToastNavigatorObserver()],
       home: const SplashScreen(),
     );
   }
 }
+
+// // ignore: non_constant_identifier_names

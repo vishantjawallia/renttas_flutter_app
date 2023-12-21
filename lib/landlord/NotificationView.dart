@@ -26,19 +26,19 @@ class _notificationviewState extends State<notificationview> {
 
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                // channel.description,
-                color: Colors.blue,
-                playSound: true,
-                icon: '@mipmap/ic_launcher',
-              ),
-            ));
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              channel.id,
+              channel.name,
+              color: Color(0xff54854C),
+              playSound: true,
+              icon: '@mipmap/ic_launcher',
+            ),
+          ),
+        );
       }
     });
     FirebaseMessaging _messaging = FirebaseMessaging.instance;
@@ -55,6 +55,7 @@ class _notificationviewState extends State<notificationview> {
     });
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xff54854C),
         title: Text("Notifications"),
       ),
       body: Center(

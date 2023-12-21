@@ -20,6 +20,7 @@ import '../Tabs/ExpensesTab.dart';
 import '../Tabs/TenantsTab.dart';
 import '../model/Property.dart';
 import '../model/SubProperty.dart';
+import '../widgets/custom_ modal_progress_hud.dart';
 import 'AddSubproperties.dart';
 import 'LandlordAddProperty.dart';
 import 'lanlordProfile.dart';
@@ -68,7 +69,9 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       firstName = prefs.getString('name') ?? '';
+      log(firstName.toString());
       landlordId = prefs.getString('userId') ?? '';
+      log(landlordId.toString());
     });
     await loadPropertyList(landlordId);
   }
@@ -85,43 +88,24 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-                //padding: EdgeInsets.only(left: 30),
-                margin: EdgeInsets.all(5),
-                height: 200,
-                child: ListView.builder(
-                  itemCount: propertyLists.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    Property property = propertyLists[index]; // Assuming propertyLists is List<Property>
+        return Container(
+          height: 400,
+          child: Column(
+            children: [
+              Flexible(
+                fit: FlexFit.tight,
+                child: Container(
+                  margin: EdgeInsets.all(5),
+                  child: ListView.builder(
+                    itemCount: propertyLists.length,
+                    padding: EdgeInsets.only(top: 10),
+                    itemBuilder: (BuildContext context, int index) {
+                      Property property = propertyLists[index]; // Assuming propertyLists is List<Property>
 
-                    return Column(
-                      children: [
-                        ListTile(
-                          title: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      property.propertyName,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 100,
-                                  ),
-                                  const Icon(Icons.add_task),
-                                ],
-                              ),
-                              const Divider(color: Colors.grey),
-                            ],
-                          ),
-                          selected: selectedPropertyName == property.propertyName,
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(8),
                           onTap: () async {
                             setState(() {
                               selectedPropertyName = property.propertyName;
@@ -148,26 +132,63 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                             Navigator.of(context).pop();
                             navigateToFirstTab();
                           },
+                          child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(width: 1, color: Colors.grey),
+                                borderRadius: BorderRadius.circular(8),
+                                // color: Colors.grey.shade300,
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text(
+                                    property.propertyName,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 100,
+                                  ),
+                                  selectedPropertyName == property.propertyName ? const Icon(Icons.add_task) : SizedBox(),
+                                ],
+                              )),
                         ),
-                      ],
-                    );
-                  },
-                )),
-            Padding(
-              padding: const EdgeInsets.all(11.0),
-              child: ElevatedButton(
-                child: Text('Add Property'),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LandlordAddProperty()));
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                      );
+                    },
                   ),
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(11.0),
+                child: SizedBox(
+                  width: 250,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff54854C),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LandlordAddProperty()));
+                    },
+                    child: Text(
+                      'Add Property',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 0.0, height: 30),
+            ],
+          ),
         );
       },
     );
@@ -188,20 +209,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                color: Color(0xff54854C),
-                // gradient: LinearGradient(
-                //   colors: [
-                //     Color(0xff54854C),
-                //     Colors.grey.shade600,
-                //   ],
-                //   begin: Alignment.topCenter,
-                //   end: Alignment.bottomCenter,
-                // ),
-              ),
-            ),
-            toolbarHeight: !isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
+            backgroundColor: Color(0xff54854C),
+            toolbarHeight: isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
             automaticallyImplyLeading: false,
             actions: <Widget>[
               Container(
@@ -226,10 +235,9 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                       backgroundColor: Colors.white,
                                       radius: 22,
                                       child: Text(
-                                        firstName == null ? "A" : firstName.substring(0, 1).toUpperCase(),
+                                        firstName.isEmpty ? "A" : (firstName).substring(0, 1).toUpperCase(),
                                         style: TextStyle(
                                           color: Color(0xff54854C),
-                                          // color: Colors.blue,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
                                         ),
@@ -245,17 +253,22 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                           borderRadius: BorderRadius.circular(6),
                                           onTap: () => _openBottomSheet(context),
                                           child: Padding(
-                                            padding: const EdgeInsets.only(left: 6),
+                                            padding: const EdgeInsets.only(left: 6, top: 4, bottom: 4, right: 0),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
-                                                Text(
-                                                  selectedPropertyName,
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 18,
+                                                SizedBox(
+                                                  width: 100,
+                                                  height: 42.5,
+                                                  child: Text(
+                                                    selectedPropertyName,
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize: 18,
+                                                    ),
+                                                    overflow: TextOverflow.clip,
                                                   ),
                                                 ),
                                                 Icon(Icons.arrow_drop_down, size: 34)
@@ -310,10 +323,10 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 16),
+                          padding: const EdgeInsets.only(left: 10, top: 18),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: <Widget>[
                               Text(
                                 "title".tr().toString().toUpperCase(),
                                 style: TextStyle(
@@ -323,6 +336,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                 ),
                                 textAlign: TextAlign.center,
                               ),
+                              // TODO: ask for add property how this functionality work'
+
                               InkWell(
                                 borderRadius: BorderRadius.circular(6),
                                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddSubproperties(selectedId: selectedPropertyId))),
@@ -501,19 +516,9 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                         top: BorderSide(color: Color(0xff54854C), width: 0),
                         left: BorderSide(color: Color(0xff54854C), width: 0),
                         right: BorderSide(color: Color(0xff54854C), width: 0),
-                        // bottom: BorderSide(color: Colors.green, width: 4.0),
-                        // top: BorderSide(color: Colors.green, width: 0),
-                        // left: BorderSide(color: Colors.green, width: 0),
-                        // right: BorderSide(color: Colors.green, width: 0),
                       ),
                     ),
-                    // BoxDecoration(
-                    //     //color: Colors.green[300],
-                    //     borderRadius: BorderRadius.circular(4.0)),
-                    // labelColor: Colors.green,
-
                     labelColor: const Color(0xff54854C),
-
                     unselectedLabelColor: Colors.black,
                     controller: _tabController,
                     tabs: const [
@@ -528,17 +533,18 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
               ),
               // if (loadTabBar && selectedSubProperty.isNotEmpty)
               Expanded(
-                  child: TabBarView(
-                controller: _tabController,
-                children: [
-                  BillsTabs(data: isSubproperty),
-                  TenantsTab(),
-                  ExpensesTab(),
-                  DocumentsTab(),
-                  AboutTab(),
-                ],
-              )),
-              //  if (!loadTabBar) CircularProgressIndicator(),
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    BillsTabs(data: isSubproperty),
+                    TenantsTab(),
+                    ExpensesTab(),
+                    DocumentsTab(),
+                    AboutTab(),
+                  ],
+                ),
+              ),
+              //  if (!loadTabBar) CircularProgressIndicator(color: Color(0xff54854C),),
             ],
           ),
         ),

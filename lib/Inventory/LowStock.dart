@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -24,7 +23,6 @@ bool isloaidng = false;
 class _lowstockState extends State<lowstock> {
   @override
   void initState() {
-
     super.initState();
     getproduct();
     setState(() {
@@ -93,10 +91,7 @@ class _lowstockState extends State<lowstock> {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const inentorydashboard())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
                   child: const Icon(
                     Icons.arrow_back,
                     size: 30,
@@ -134,11 +129,11 @@ class _lowstockState extends State<lowstock> {
               child: SizedBox(
                   height: 60,
                   width: 60,
-                  child: CircularProgressIndicator()))
+                  child: CircularProgressIndicator(
+                    color: Color(0xff54854C),
+                  )))
           : lowlist.isEmpty
-              ? const Center(
-                  child:
-                      SizedBox(height: 60, width: 60, child: Text("No data")))
+              ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
               : ListView.builder(
                   itemCount: lowlist.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -155,20 +150,14 @@ class _lowstockState extends State<lowstock> {
                               children: [
                                 Text(
                                   lowlist[index].productname,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                      color: Colors.black),
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
                                   lowlist[index].stockcount,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                      color: Colors.grey),
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -181,10 +170,7 @@ class _lowstockState extends State<lowstock> {
                                     ),
                                     Text(
                                       lowlist[index].outcount,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
-                                          color: Colors.orange),
+                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.orange),
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -196,10 +182,7 @@ class _lowstockState extends State<lowstock> {
                                     ),
                                     Text(
                                       lowlist[index].incount,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
-                                          color: Colors.green),
+                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.green),
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -210,10 +193,7 @@ class _lowstockState extends State<lowstock> {
                                     // ),
                                     const Text(
                                       "= 1.00",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
-                                          color: Colors.grey),
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                     ),
                                     const SizedBox(
                                       width: 10,

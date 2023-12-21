@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:renttas_flutter_app/Wellcome/LoginPageNew.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -62,8 +63,7 @@ class _TendentProfileState extends State<TendentProfile> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Tenantdashbord()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Tenantdashbord()));
           },
           icon: Icon(Icons.arrow_back),
           color: Colors.black,
@@ -101,8 +101,7 @@ class _TendentProfileState extends State<TendentProfile> {
                             padding: EdgeInsets.only(left: 10),
                             child: Text(
                               name,
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                             ),
                           )
                         ],
@@ -122,8 +121,7 @@ class _TendentProfileState extends State<TendentProfile> {
                             padding: EdgeInsets.only(left: 10),
                             child: Text(
                               email,
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.bold),
+                              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                             ),
                           )
                         ],
@@ -274,8 +272,7 @@ class _TendentProfileState extends State<TendentProfile> {
                   child: Column(children: <Widget>[
                     InkWell(
                       onTap: () {
-                        Share.share(
-                            'hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas');
+                        Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas');
                       },
                       child: Container(
                         width: double.infinity,
@@ -309,17 +306,11 @@ class _TendentProfileState extends State<TendentProfile> {
                       margin: EdgeInsets.only(top: 5, left: 10),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TermCondition()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => TermCondition()));
                         },
                         child: Row(
                           children: [
-                            Container(
-                                height: 30,
-                                width: 30,
-                                child: Icon(Icons.note_alt_rounded)),
+                            Container(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
                             Container(
                               padding: EdgeInsets.only(left: 15),
                               child: Text(
@@ -344,10 +335,7 @@ class _TendentProfileState extends State<TendentProfile> {
                       margin: EdgeInsets.only(top: 5, left: 10),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PrivacyPolicy()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicy()));
                         },
                         child: Row(
                           children: [
@@ -380,10 +368,7 @@ class _TendentProfileState extends State<TendentProfile> {
                       margin: EdgeInsets.only(top: 5, left: 10),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AboutUs()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
                         },
                         child: Row(
                           children: [
@@ -533,7 +518,10 @@ class _TendentProfileState extends State<TendentProfile> {
   showAlertDialog(BuildContext context) {
     // set up the buttons
     Widget cancelButton = TextButton(
-      child: Text("Cancel"),
+      child: Text(
+        "Cancel",
+        style: TextStyle(color: Color(0xff54854C)),
+      ),
       onPressed: () {
         Navigator.pop(context);
         // Navigator.pop(context);
@@ -544,7 +532,10 @@ class _TendentProfileState extends State<TendentProfile> {
       },
     );
     Widget continueButton = TextButton(
-      child: Text("Continue"),
+      child: Text(
+        "Continue",
+        style: TextStyle(color: Color(0xff54854C)),
+      ),
       onPressed: () async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setBool("login", true);
@@ -554,9 +545,11 @@ class _TendentProfileState extends State<TendentProfile> {
         prefs.setString('phone', "");
         prefs.setString('name', "");
         prefs.setString('mbno', "");
+        prefs.clear();
+        // prefs.setString("sw", "0");
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => LandlordLogin(),
+            builder: (context) => LandlordLoginNew(),
           ),
         );
       },

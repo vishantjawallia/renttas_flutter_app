@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -52,28 +54,15 @@ If you have any questions or concerns about this Privacy Policy or our data prac
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false, // Remove the back button
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.green,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-          title: Text('Privacy Policy for Renttas'),
-        ),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.all(16.0),
-          child: Html(data: htmlText),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(),
+        backgroundColor: const Color(0xff54854C),
+        title: const Text('Privacy Policy'),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Html(data: htmlText),
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
+import 'package:renttas_flutter_app/widgets/global_widget.dart';
 // import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 // import 'package:renttas_flutter_app/Common/RentalCustomAlert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -307,7 +308,9 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           ),
                           onPressed: isLoading ? null : () => LandlordLoginNewAuth(),
                           child: isLoading
-                              ? const CircularProgressIndicator()
+                              ? const CircularProgressIndicator(
+                                  color: Color(0xff54854C),
+                                )
                               : const Text(
                                   'Login',
                                   style: TextStyle(
@@ -366,9 +369,9 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
   }
 
   Future<void> LandlordLoginNewAuth() async {
-    setState(() {
-      isLoading = true;
-    });
+    if (landlordEmail.text.isEmpty) return GlobalWidgets.toast('Invalid Email !');
+    if (landlordPassword.text.isEmpty) return GlobalWidgets.toast('Invalid Password !');
+    setState(() => isLoading = true);
     final url = Uri.parse(ApiUrl.Login);
     final Map<String, dynamic> requestData = {
       "email": landlordEmail.text.trim(),
@@ -416,12 +419,12 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
       // _storeEmailAndPassword(email,landlordPassword.text);
       await shareData(userId, name, email, phone, currency, roleId);
       if (roleId == "admin") {
-        prefs.setString("sw", "1");
-        prefs.setString("storeid", "1");
+        await prefs.setString("sw", "1");
+        await prefs.setString("storeid", "1");
 
         navigateToLanlord();
       } else if (roleId == "user") {
-        prefs.setString("sw", "0");
+        await prefs.setString("sw", "0");
         navigateToTandent();
       }
       // Navigator.push(context, MaterialPageRoute(builder: (context)=>Bill()));

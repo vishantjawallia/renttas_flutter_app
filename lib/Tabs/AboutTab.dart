@@ -87,7 +87,10 @@ class _AboutTabState extends State<AboutTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isloaidngfirst == true
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(
+              child: CircularProgressIndicator(
+              color: Color(0xff54854C),
+            ))
           : Padding(
               padding: const EdgeInsets.only(left: 8, right: 8),
               child: Column(
@@ -454,16 +457,20 @@ class _AboutTabState extends State<AboutTab> {
   void _showAddressModal(BuildContext context) {
     showStickyFlexibleBottomSheet(
       minHeight: 0,
-      initHeight: 0.5,
+      initHeight: 0.45,
       maxHeight: 1,
       headerHeight: 100,
+      bottomSheetColor: Colors.white,
       context: context,
       headerBuilder: (BuildContext context, double offset) {
         return Container(
           alignment: Alignment.center,
           color: Colors.white,
           height: 200,
-          child: const Text('Add Address'),
+          child: const Text(
+            'Add Address',
+            style: TextStyle(fontSize: 18),
+          ),
         );
       },
       anchors: [0, 0.5, 1],
@@ -477,28 +484,35 @@ class _AboutTabState extends State<AboutTab> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text('Owner Address'),
+                    const Text(
+                      'Owner Address',
+                    ),
                     TextFormField(
                       controller: addressControler,
                       decoration: const InputDecoration(labelText: 'Address'),
                     ),
+                    const SizedBox(width: 0.0, height: 8),
                     TextFormField(
                       controller: pinCode,
                       decoration: const InputDecoration(labelText: 'PinCode'),
                     ),
+                    const SizedBox(width: 0.0, height: 20),
                     ElevatedButton(
+                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff54854C))),
                       onPressed: () {
                         addaddress(addressControler.text, pinCode.text);
                         //  Navigator.pop(context);
                       },
                       child: const Text('Save'),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('Close'),
-                    ),
+                    const SizedBox(width: 0.0, height: 8),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     Navigator.pop(context);
+                    //   },
+                    //   child: const Text('Close'),
+                    // ),
+
                     //  SizedBox(height: isKeyboardVisible ? 300 : 0), // Spacer for keyboard
                   ],
                 ),
@@ -645,13 +659,14 @@ class _AboutTabState extends State<AboutTab> {
       context: context,
       headerHeight: 60,
       minHeight: 0,
-      initHeight: 0.8,
+      initHeight: 0.55,
       maxHeight: 1,
+      bottomSheetColor: Colors.white,
       headerBuilder: (BuildContext context, double offset) {
         return Container(
-          color: Colors.transparent,
+          color: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.centerRight,
           child: IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
@@ -662,137 +677,156 @@ class _AboutTabState extends State<AboutTab> {
       },
       bodyBuilder: (BuildContext context, double bottomSheetOffset) {
         return SliverChildListDelegate([
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                margin: const EdgeInsets.all(5),
-                child: Column(
-                  children: [
-                    const Text('Add'),
-                    TextField(
-                      controller: propertyOwner,
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.supervised_user_circle_outlined),
-                        labelText: "PropertyOwner",
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(5),
+                  child: Column(
+                    children: [
+                      const Text(
+                        'Add Address',
+                        style: TextStyle(fontSize: 18),
                       ),
-                    ),
-                    TextField(
-                      controller: documentName,
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.credit_card),
-                        labelText: "Document Name",
+                      TextField(
+                        controller: propertyOwner,
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.supervised_user_circle_outlined),
+                          labelText: "Property Owner",
+                        ),
                       ),
-                    ),
-                    StatefulBuilder(
-                      builder: (BuildContext context, StateSetter setState) {
-                        return _imageFile == null
-                            ? Container(
-                                width: 100,
-                                height: 50,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    _pickImage().then((_) {
-                                      setState(() {});
-                                    });
-                                  },
-                                  child: const Text("Choose Image"),
-                                ),
-                              )
-                            : Container(
-                                width: 100,
-                                height: 250,
-                                child: Image.file(_imageFile!),
+                      const SizedBox(width: 0.0, height: 10),
+                      TextField(
+                        controller: documentName,
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.credit_card),
+                          labelText: "Document Name",
+                        ),
+                      ),
+                      const SizedBox(width: 0.0, height: 20),
+                      StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
+                          return _imageFile == null
+                              ? Container(
+                                  alignment: Alignment.centerLeft,
+                                  // width: 100,
+                                  // height: 50,
+                                  child: ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.6)),
+                                    ),
+                                    onPressed: () {
+                                      _pickImage().then((_) {
+                                        setState(() {});
+                                      });
+                                    },
+                                    child: const Text("Choose Image"),
+                                  ),
+                                )
+                              : Container(
+                                  width: 100,
+                                  height: 250,
+                                  child: Image.file(_imageFile!),
+                                );
+                        },
+                      ),
+                      const SizedBox(width: 0.0, height: 20),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                          ),
+                          onPressed: () async {
+                            // saveDoc(
+                            //     _imageFile,
+                            //     propertyOwner.text,
+                            //     documentName.text,
+                            //     selectedPropertyId,
+                            //     selectedSubProptyId);
+                            // addPanCard(
+                            //    selectedCode,
+                            //    selectedCode,
+                            //    propertyOwner.text,
+                            //    documentName.text,
+                            //    _imageFile,
+                            //  );
+                            File? imageFile = _imageFile;
+                            if (imageFile == null) {
+                              snack("please select a image", context);
+                              return;
+                            }
+
+                            final allowedExtensions = ['.jpg', '.jpeg', '.png', '.pdf'];
+                            final fileExtension = path.extension(imageFile.path).toLowerCase();
+                            if (!allowedExtensions.contains(fileExtension)) {
+                              snack("Error Invalid file type. Only JPG, JPEG, PNG, and PDF files are allowed.", context);
+                              return;
+                            }
+
+                            try {
+                              // Create multipart request for sending the file
+                              var request = http.MultipartRequest(
+                                'POST',
+                                Uri.parse(ApiUrl.adddocumentinabout),
                               );
-                      },
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        // saveDoc(
-                        //     _imageFile,
-                        //     propertyOwner.text,
-                        //     documentName.text,
-                        //     selectedPropertyId,
-                        //     selectedSubProptyId);
-                        // addPanCard(
-                        //    selectedCode,
-                        //    selectedCode,
-                        //    propertyOwner.text,
-                        //    documentName.text,
-                        //    _imageFile,
-                        //  );
-                        File? imageFile = _imageFile;
-                        if (imageFile == null) {
-                          snack("please select a image", context);
-                          return;
-                        }
 
-                        final allowedExtensions = ['.jpg', '.jpeg', '.png', '.pdf'];
-                        final fileExtension = path.extension(imageFile.path).toLowerCase();
-                        if (!allowedExtensions.contains(fileExtension)) {
-                          snack("Error Invalid file type. Only JPG, JPEG, PNG, and PDF files are allowed.", context);
-                          return;
-                        }
+                              // Add file to the request
+                              request.files.add(
+                                await http.MultipartFile.fromPath(
+                                  'file',
+                                  imageFile.path,
+                                ),
+                              );
 
-                        try {
-                          // Create multipart request for sending the file
-                          var request = http.MultipartRequest(
-                            'POST',
-                            Uri.parse(ApiUrl.adddocumentinabout),
-                          );
+                              // Add other form fields
+                              request.fields['propertyownername'] = propertyOwner.text;
+                              request.fields['docName'] = documentName.text;
+                              request.fields['Propertyid'] = selectedPropertyId;
+                              request.fields['subPropertyid'] = selectedSubProptyId;
 
-                          // Add file to the request
-                          request.files.add(
-                            await http.MultipartFile.fromPath(
-                              'file',
-                              imageFile.path,
-                            ),
-                          );
+                              // Send the request
+                              var response = await request.send();
 
-                          // Add other form fields
-                          request.fields['propertyownername'] = propertyOwner.text;
-                          request.fields['docName'] = documentName.text;
-                          request.fields['Propertyid'] = selectedPropertyId;
-                          request.fields['subPropertyid'] = selectedSubProptyId;
+                              final stream = response.stream;
+                              final body = await stream.bytesToString();
+                              print(body);
+                              // final data = jsonDecode(body);
 
-                          // Send the request
-                          var response = await request.send();
+                              print("response to add document=${response.statusCode}");
 
-                          final stream = response.stream;
-                          final body = await stream.bytesToString();
-                          print(body);
-                          // final data = jsonDecode(body);
-
-                          print("response to add document=${response.statusCode}");
-
-                          // Check the response status
-                          if (response.statusCode == 200) {
-                            Navigator.of(context).pop();
-                            await getdoc();
-                            // snack(
-                            //   "Success Document Added Successfully",
-                            //   context,
-                            // );
-                          } else {
-                            snack(
-                              "Something went wrong",
-                              context,
-                            );
-                            //RentalCustomAlert.showErrorAlert(context);
-                          }
-                        } catch (e) {
-                          print('Error saving document: $e');
-                        }
-                      },
-                      child: const Text('Submit For Verification'),
-                    ),
-                    const SizedBox(
-                      height: 100,
-                    ),
-                  ],
+                              // Check the response status
+                              if (response.statusCode == 200) {
+                                Navigator.of(context).pop();
+                                await getdoc();
+                                // snack(
+                                //   "Success Document Added Successfully",
+                                //   context,
+                                // );
+                              } else {
+                                snack(
+                                  "Something went wrong",
+                                  context,
+                                );
+                                //RentalCustomAlert.showErrorAlert(context);
+                              }
+                            } catch (e) {
+                              print('Error saving document: $e');
+                            }
+                          },
+                          child: const Text('Submit For Verification'),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 100,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ]);
       },

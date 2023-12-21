@@ -67,7 +67,7 @@ class _landingpageState extends State<landingpage> {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const LandlordLogin()),
+                    MaterialPageRoute(builder: (context) => const LandlordLoginNew()),
                   ),
                   child: const Padding(
                     padding: EdgeInsets.all(8),
@@ -79,14 +79,16 @@ class _landingpageState extends State<landingpage> {
                           'Skip',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.purple,
+                            color: Color(0xff894747),
+                            // color: Color.fromARGB(255, 236, 81, 81),
                             fontSize: 17,
                           ),
                         ),
                         SizedBox(width: 4, height: 0.0),
                         Icon(
                           Icons.skip_next,
-                          color: Colors.purple,
+                          color: Color(0xff894747),
+                          // color: Color.fromARGB(255, 236, 81, 81),
                           size: 30,
                         ),
                       ],
@@ -116,7 +118,7 @@ class _landingpageState extends State<landingpage> {
                           'Next',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                            color: Color(0xff54854C),
                             fontSize: 17,
                           ),
                         ),
@@ -124,7 +126,7 @@ class _landingpageState extends State<landingpage> {
                         Icon(
                           // Icons.arrow_forward_rounded,
                           Icons.arrow_circle_right_outlined,
-                          color: Colors.blue,
+                          color: Color(0xff54854C),
                           size: 30,
                         ),
                       ],
@@ -159,7 +161,7 @@ class _landingpageState extends State<landingpage> {
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? Colors.blue : Colors.black,
+        color: currentIndex == index ? Color(0xff54854C) : Colors.black,
       ),
     );
   }

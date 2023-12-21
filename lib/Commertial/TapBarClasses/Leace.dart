@@ -9,8 +9,7 @@ import '../NewLeaseadd.dart';
 
 class leacepage extends StatefulWidget {
   String id, name, address;
-  leacepage(
-      {super.key, required this.id, required this.name, required this.address});
+  leacepage({super.key, required this.id, required this.name, required this.address});
 
   @override
   State<leacepage> createState() => _leacepageState();
@@ -107,18 +106,16 @@ class _leacepageState extends State<leacepage> {
                   child: Container(
                       height: 60,
                       width: 60,
-                      child: const CircularProgressIndicator()))
+                      child: const CircularProgressIndicator(
+                        color: Color(0xff54854C),
+                      )))
               : leasetlist.isEmpty
-                  ? Center(
-                      child: Container(
-                          height: 60, width: 60, child: Text("No data")))
+                  ? Center(child: Container(height: 60, width: 60, child: Text("No data")))
                   : ListView.builder(
                       itemCount: leasetlist.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
-                          decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              borderRadius: BorderRadius.circular(25)),
+                          decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(25)),
                           //    color: Colors.white,
                           height: 120,
                           alignment: Alignment.center,
@@ -131,18 +128,13 @@ class _leacepageState extends State<leacepage> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             leasetlist[index].spaceuse,
                                             //  "Partiton 1",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 15,
-                                                color: Colors.black),
+                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                           ),
                                           SizedBox(
                                             height: 10,
@@ -150,17 +142,13 @@ class _leacepageState extends State<leacepage> {
                                         ],
                                       ),
                                     ),
-                                    Flexible(
-                                        fit: FlexFit.tight, child: SizedBox()),
+                                    Flexible(fit: FlexFit.tight, child: SizedBox()),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         leasetlist[index].status,
                                         //  "Withheld",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13,
-                                            color: Colors.grey),
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                       ),
                                     ),
                                     //  Flexible(fit: FlexFit.tight, child: SizedBox()),
@@ -266,8 +254,7 @@ class Welcome {
         spaceuse: json["spaceuse"],
         availablespacemin: json["availablespacemin"],
         availablespacemax: json["availablespacemax"],
-        floortype: List<Floortype>.from(
-            json["floortype"].map((x) => Floortype.fromJson(x))),
+        floortype: List<Floortype>.from(json["floortype"].map((x) => Floortype.fromJson(x))),
         askingrentmin: json["askingrentmin"],
         askingrentmax: json["askingrentmax"],
         status: json["status"],

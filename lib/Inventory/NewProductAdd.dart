@@ -8,8 +8,15 @@ import '../Common/ApiUrl.dart';
 import 'ProductView.dart';
 
 class newproductadd extends StatefulWidget {
-  String type,id,productname,descr,sku;
-   newproductadd({super.key, required this.type,required this.id,required this.productname,required this.descr,required this.sku,});
+  String type, id, productname, descr, sku;
+  newproductadd({
+    super.key,
+    required this.type,
+    required this.id,
+    required this.productname,
+    required this.descr,
+    required this.sku,
+  });
 
   @override
   State<newproductadd> createState() => _newproductaddState();
@@ -22,8 +29,7 @@ TextEditingController productdescription = new TextEditingController();
 bool isloading = false;
 
 class _newproductaddState extends State<newproductadd> {
-  Future<void> _submit(
-      String productname, String productid, String description) async {
+  Future<void> _submit(String productname, String productid, String description) async {
     setState(() {
       isloading = true;
     });
@@ -36,16 +42,7 @@ class _newproductaddState extends State<newproductadd> {
       if (storeid == "") {
         snack("Please select a store in store view");
       } else {
-
-
-
-        Map data = {
-          'userid': userid,
-          'storeid': storeid,
-          'productname': productname,
-          "sku": productid,
-          "description": description
-        };
+        Map data = {'userid': userid, 'storeid': storeid, 'productname': productname, "sku": productid, "description": description};
         final headerss = {
           'Content-Type': 'application/json',
         };
@@ -63,8 +60,7 @@ class _newproductaddState extends State<newproductadd> {
           Map<String, dynamic> resposne = jsonDecode(response.body);
 
           if (resposne['respCode'].toString().contains("200")) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => productview()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => productview()));
 
             print("Login Successfully Completed !!!!!!!!!!!!!!!!");
           } else {
@@ -82,10 +78,7 @@ class _newproductaddState extends State<newproductadd> {
     }
   }
 
-
-
-  Future<void> update(
-      String productname, String productid, String description) async {
+  Future<void> update(String productname, String productid, String description) async {
     setState(() {
       isloading = true;
     });
@@ -98,17 +91,7 @@ class _newproductaddState extends State<newproductadd> {
       if (storeid == "") {
         snack("Please select a store in store view");
       } else {
-
-
-
-        Map data = {
-          "id":widget.id,
-          'userid': userid,
-          'storeid': storeid,
-          'productname': productname,
-          "sku": productid,
-          "description": description
-        };
+        Map data = {"id": widget.id, 'userid': userid, 'storeid': storeid, 'productname': productname, "sku": productid, "description": description};
         final headerss = {
           'Content-Type': 'application/json',
         };
@@ -126,8 +109,7 @@ class _newproductaddState extends State<newproductadd> {
           Map<String, dynamic> resposne = jsonDecode(response.body);
 
           if (resposne['respCode'].toString().contains("200")) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => productview()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => productview()));
 
             print("Login Successfully Completed !!!!!!!!!!!!!!!!");
           } else {
@@ -162,14 +144,12 @@ class _newproductaddState extends State<newproductadd> {
   bool valuefirst = false;
   bool valuesecond = false;
 
-
-
   @override
   Widget build(BuildContext context) {
-    if(widget.type=="1"){
-      productnamectr.text=widget.productname;
-      productuniqueid.text=widget.sku;
-      productdescription.text=widget.descr;
+    if (widget.type == "1") {
+      productnamectr.text = widget.productname;
+      productuniqueid.text = widget.sku;
+      productdescription.text = widget.descr;
     }
     var _formKey = GlobalKey<FormState>();
     return Scaffold(
@@ -191,10 +171,7 @@ class _newproductaddState extends State<newproductadd> {
                     width: 10,
                   ),
                   InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const productview())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const productview())),
                     child: Icon(
                       Icons.arrow_back,
                       size: 30,
@@ -206,7 +183,7 @@ class _newproductaddState extends State<newproductadd> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                       widget.type=="1"? Text("Edit Product"):Text("New Product")
+                        widget.type == "1" ? Text("Edit Product") : Text("New Product")
                         // Text(
                         //   "ab@gmail.com",
                         //   style: TextStyle(fontWeight: FontWeight.bold),
@@ -219,9 +196,7 @@ class _newproductaddState extends State<newproductadd> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                         padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(40)),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
                         //alignment: Alignment.center,
                         child: Icon(
                           Icons.qr_code_scanner_outlined,
@@ -241,16 +216,18 @@ class _newproductaddState extends State<newproductadd> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
                       child: isloading == true
-                          ? CircularProgressIndicator()
-                          :
-
-                      widget.type=="1"?Text(
-                              'Update',
-                              style: TextStyle(color: Colors.white),
-                            ):Text(
-                        'Save',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                          ? CircularProgressIndicator(
+                              color: Color(0xff54854C),
+                            )
+                          : widget.type == "1"
+                              ? Text(
+                                  'Update',
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              : Text(
+                                  'Save',
+                                  style: TextStyle(color: Colors.white),
+                                ),
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.blue),
                       ),
@@ -261,15 +238,11 @@ class _newproductaddState extends State<newproductadd> {
                         }
                         _formKey.currentState!.save();
 
-                        if(widget.id=="1"){
-                          update(productnamectr.text, productuniqueid.text,
-                              productdescription.text);
-                        }else{
-                          _submit(productnamectr.text, productuniqueid.text,
-                              productdescription.text);
+                        if (widget.id == "1") {
+                          update(productnamectr.text, productuniqueid.text, productdescription.text);
+                        } else {
+                          _submit(productnamectr.text, productuniqueid.text, productdescription.text);
                         }
-
-
                       },
                     ),
                   )
@@ -297,10 +270,7 @@ class _newproductaddState extends State<newproductadd> {
                       children: [
                         Text(
                           ' Product Name * ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -317,12 +287,8 @@ class _newproductaddState extends State<newproductadd> {
                                 child: Center(
                                   child: TextFormField(
                                     controller: productnamectr,
-                                    decoration: new InputDecoration.collapsed(
-                                        hintText: 'Enter Product name'),
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Product name'),
+                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Please enter product name!';
@@ -346,10 +312,7 @@ class _newproductaddState extends State<newproductadd> {
                       children: [
                         Text(
                           'Product id * \n(unique) ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -366,12 +329,8 @@ class _newproductaddState extends State<newproductadd> {
                                 child: Center(
                                   child: TextFormField(
                                     controller: productuniqueid,
-                                    decoration: new InputDecoration.collapsed(
-                                        hintText: 'Enter Product id'),
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Product id'),
+                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Please enter product id!';
@@ -395,10 +354,7 @@ class _newproductaddState extends State<newproductadd> {
                       children: [
                         Text(
                           'Description',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -415,12 +371,8 @@ class _newproductaddState extends State<newproductadd> {
                                 child: Center(
                                   child: TextFormField(
                                     controller: productdescription,
-                                    decoration: new InputDecoration.collapsed(
-                                        hintText: 'Enter Product description'),
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Product description'),
+                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Please enter description!';
@@ -438,20 +390,14 @@ class _newproductaddState extends State<newproductadd> {
                     height: 15,
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey[300]),
+                    decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(20), color: Colors.grey[300]),
                     height: 70,
                     // color: Colors.red,
                     child: Row(
                       children: [
                         Text(
                           ' Is Low Warning  ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(

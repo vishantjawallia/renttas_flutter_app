@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+
 class TermCondition extends StatefulWidget {
   const TermCondition({Key? key}) : super(key: key);
 
@@ -23,28 +24,14 @@ class _TermConditionState extends State<TermCondition> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false, // Remove the back button
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.green,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-          title: Text('TermCondition'),
-        ),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.all(16.0),
-          child: Html(data: htmlText),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff54854C),
+        title: const Text('Term & Condition'),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Html(data: htmlText),
       ),
     );
   }

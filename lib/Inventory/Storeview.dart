@@ -81,7 +81,6 @@ class _storeviewState extends State<storeview> {
 
   @override
   void initState() {
-
     super.initState();
     getstores();
     setState(() {
@@ -104,6 +103,7 @@ class _storeviewState extends State<storeview> {
       });
     } else {}
   }
+
   void snack(String msg) {
     final snackBar = SnackBar(
       elevation: 0,
@@ -123,9 +123,6 @@ class _storeviewState extends State<storeview> {
       SharedPreferences logindata = await SharedPreferences.getInstance();
       String? userid = logindata.getString("userId");
       log("userid in add compnay===" + userid.toString());
-
-
-
 
       Map data = {
         'userid': userid,
@@ -148,9 +145,6 @@ class _storeviewState extends State<storeview> {
 
         return res.map((e) => GetStore.fromJson(e)).toList();
       }
-
-
-
     } catch (e) {}
     return storelist;
   }
@@ -176,10 +170,7 @@ class _storeviewState extends State<storeview> {
                     width: 10,
                   ),
                   InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const inentorydashboard())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
                     child: const Icon(
                       Icons.arrow_back,
                       size: 30,
@@ -204,9 +195,7 @@ class _storeviewState extends State<storeview> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                         padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(40)),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
                         //alignment: Alignment.center,
                         child: const Icon(
                           Icons.mobile_screen_share_rounded,
@@ -233,18 +222,17 @@ class _storeviewState extends State<storeview> {
               child: SizedBox(
                   height: 60,
                   width: 60,
-                  child: CircularProgressIndicator()))
+                  child: CircularProgressIndicator(
+                    color: Color(0xff54854C),
+                  )))
           : storelist.isEmpty
-              ? const Center(
-                  child:
-                      SizedBox(height: 60, width: 60, child: Text("No data")))
+              ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
               : ListView.builder(
                   itemCount: storelist.length,
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
                       onTap: () async {
-                        SharedPreferences logindata =
-                            await SharedPreferences.getInstance();
+                        SharedPreferences logindata = await SharedPreferences.getInstance();
                         setState(() {
                           id = storelist[index].id.toString();
                           logindata.setString("storeid", id);
@@ -281,9 +269,7 @@ class _storeviewState extends State<storeview> {
                                 ),
                                 Text(
                                   storelist[index].storename,
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                 ),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 id == storelist[index].id.toString()
@@ -293,11 +279,9 @@ class _storeviewState extends State<storeview> {
                                       )
                                     : const SizedBox(),
                                 PopupMenuButton<String>(
-                                  onSelected: (value) =>
-                                      handleClick(value, storelist[index].id),
+                                  onSelected: (value) => handleClick(value, storelist[index].id),
                                   itemBuilder: (BuildContext context) {
-                                    return {'Export', 'Delete'}
-                                        .map((String choice) {
+                                    return {'Export', 'Delete'}.map((String choice) {
                                       return PopupMenuItem<String>(
                                         value: choice,
                                         child: Text(choice),
@@ -339,9 +323,7 @@ class _storeviewState extends State<storeview> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               const Flexible(fit: FlexFit.tight, child: SizedBox()),
-              InkWell(
-                  onTap: () => Navigator.pop(context),
-                  child: const Icon(Icons.close_rounded))
+              InkWell(onTap: () => Navigator.pop(context), child: const Icon(Icons.close_rounded))
             ],
           )
           //Text('TextField in Dialog'),
@@ -370,12 +352,8 @@ class _storeviewState extends State<storeview> {
                         child: Center(
                           child: TextField(
                             controller: storenamecontroller,
-                            decoration: const InputDecoration.collapsed(
-                                hintText: 'Enter Product name'),
-                            style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            decoration: const InputDecoration.collapsed(hintText: 'Enter Product name'),
+                            style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                         )),
                   ),
@@ -398,8 +376,7 @@ class _storeviewState extends State<storeview> {
                     setState(() {
                       isloaidng = true;
                     });
-                    SharedPreferences logindata =
-                        await SharedPreferences.getInstance();
+                    SharedPreferences logindata = await SharedPreferences.getInstance();
                     String? userid = logindata.getString("userId");
                     log("userid in add compnay===" + userid.toString());
 
@@ -429,8 +406,7 @@ class _storeviewState extends State<storeview> {
 
                         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
                       } else {
-                        print(
-                            "Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                       }
                     }
                   }),

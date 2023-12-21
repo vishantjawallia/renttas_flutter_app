@@ -9,6 +9,7 @@ import 'package:renttas_flutter_app/Wellcome/LoginPage.dart';
 
 import '../Common/ApiUrl.dart';
 import '../Const/Const.dart';
+import '../Wellcome/LoginPageNew.dart';
 
 class ResetNewpassScreen extends StatefulWidget {
   String emil;
@@ -231,7 +232,7 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
       });
       print("resp in forget paswd===" + response.body);
       if (data["msg"] == "success") {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandlordLogin()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandlordLoginNew()));
       } else {
         snack("Something went wrong", context);
         // String otp=data["otp"].toString();

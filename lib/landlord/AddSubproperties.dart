@@ -113,7 +113,9 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
                                       addSubProperty(widget.selectedId, subPropertyController.text);
                                     },
                               child: isLoading
-                                  ? const CircularProgressIndicator()
+                                  ? const CircularProgressIndicator(
+                                      color: Color(0xff54854C),
+                                    )
                                   : const Text(
                                       'ADD PROPERTY',
                                       style: TextStyle(

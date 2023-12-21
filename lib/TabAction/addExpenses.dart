@@ -201,7 +201,11 @@ class _AddExpensesState extends State<AddExpenses> {
                   height: 50,
                   child: ElevatedButton(
                       onPressed: isLoading ? null : () => saveExpenses(catagoryController.text, nameController.text, amountController.text, _expensesDateControlle.text, descController.text),
-                      child: isLoading ? CircularProgressIndicator() : Text('Save')))
+                      child: isLoading
+                          ? CircularProgressIndicator(
+                              color: Color(0xff54854C),
+                            )
+                          : Text('Save')))
             ],
           ),
         ));

@@ -22,14 +22,7 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
   String stcode = "";
   bool isLoading = false;
   bool isDocTheir = false;
-  String proprname = "",
-      address = "",
-      ownername = "",
-      ownerdocname = "",
-      image = "",
-      rent = "",
-      maintanance = "",
-      electricy = "";
+  String proprname = "", address = "", ownername = "", ownerdocname = "", image = "", rent = "", maintanance = "", electricy = "";
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -49,9 +42,8 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
     String? userid = logindata.getString("userId");
 
     Map data = {
-
       //"mobileNumber": "1234567890"
-    "mobileNumber": mobile
+      "mobileNumber": mobile
     };
     final headerss = {
       'Content-Type': 'application/json',
@@ -111,7 +103,10 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading == true
-          ? Center(child: CircularProgressIndicator())
+          ? Center(
+              child: CircularProgressIndicator(
+              color: Color(0xff54854C),
+            ))
           : stcode == "201"
               ? Center(child: Text("No data Availbale now"))
               : SingleChildScrollView(
@@ -120,11 +115,7 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
                     child: Column(
                       children: [
                         const SizedBox(height: 20),
-                        Container(
-                            child: const Text('Property Details :',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold))),
+                        Container(child: const Text('Property Details :', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
                         const SizedBox(
                           height: 20,
                         ),
@@ -141,9 +132,7 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
                           height: 10,
                         ),
                         Container(
-                          child: Text("Property Owner Details :",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold)),
+                          child: Text("Property Owner Details :", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                         ),
                         SizedBox(
                           height: 20,
@@ -161,9 +150,7 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
                           height: 10,
                         ),
                         Container(
-                          child: Text("Rent Details :",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold)),
+                          child: Text("Rent Details :", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                         ),
                         SizedBox(
                           height: 20,
@@ -187,19 +174,14 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
                           height: 10,
                         ),
                         Container(
-                          child: Text("Electricity",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold)),
+                          child: Text("Electricity", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                         ),
                         SizedBox(
                           height: 20,
                         ),
                         Divider(),
                         Row(
-                          children: [
-                            Text("Electricity Type :"),
-                            Text(electricy)
-                          ],
+                          children: [Text("Electricity Type :"), Text(electricy)],
                         ),
                         Divider(),
                       ],

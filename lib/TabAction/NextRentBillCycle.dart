@@ -757,13 +757,20 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           widget.gasBillCharge,
                           widget.selectedItems);
                     },
-                    child: isLoading == true ? CircularProgressIndicator() : Text('Save'),
+                    child: isLoading == true
+                        ? CircularProgressIndicator(
+                            color: Color(0xff54854C),
+                          )
+                        : Text('Save'),
                     style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                   ),
                 )
               ],
             ),
-          if (isLoading) CircularProgressIndicator(),
+          if (isLoading)
+            CircularProgressIndicator(
+              color: Color(0xff54854C),
+            ),
         ],
       ),
     );

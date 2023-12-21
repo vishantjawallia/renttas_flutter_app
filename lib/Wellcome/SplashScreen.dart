@@ -52,8 +52,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     await Future.delayed(const Duration(seconds: 3));
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    bool newuser = (prefs.getBool('login') ?? true);
-    String sw = (prefs.getString("sw") ?? "0");
+    bool newuser = prefs.getBool('login') ?? true;
+    String sw = prefs.getString("sw") ?? "0";
     // prefs.clear();
     log(sw.toString());
     log(newuser.toString());

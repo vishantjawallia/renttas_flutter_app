@@ -17,6 +17,7 @@ import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Wellcome/LoginPage.dart';
+import '../Wellcome/LoginPageNew.dart';
 import '../model/userModel.dart';
 import 'Tenantdashbord.dart';
 
@@ -51,8 +52,7 @@ class _TenantRegisterState extends State<TenantRegister> {
   FirebaseAuth _auth = FirebaseAuth.instance;
   late String verificationId;
   bool showLoading = false;
-  MobileVerificationState currentState =
-      MobileVerificationState.SHOW_MOBILE_FORM_STATE;
+  MobileVerificationState currentState = MobileVerificationState.SHOW_MOBILE_FORM_STATE;
   TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController districtController = TextEditingController();
@@ -72,10 +72,8 @@ class _TenantRegisterState extends State<TenantRegister> {
   void _toggleObscured() {
     setState(() {
       _obscured = !_obscured;
-      if (textFieldFocusNode.hasPrimaryFocus)
-        return; // If focus is on text field, dont unfocus
-      textFieldFocusNode.canRequestFocus =
-          false; // Prevents focus if tap on eye
+      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
+      textFieldFocusNode.canRequestFocus = false; // Prevents focus if tap on eye
     });
   }
 
@@ -85,13 +83,10 @@ class _TenantRegisterState extends State<TenantRegister> {
   void _toggleObscuredconfirm() {
     setState(() {
       _obscuredconfirm = !_obscuredconfirm;
-      if (textFieldFocusNodeconfirm.hasPrimaryFocus)
-        return; // If focus is on text field, dont unfocus
-      textFieldFocusNodeconfirm.canRequestFocus =
-          false; // Prevents focus if tap on eye
+      if (textFieldFocusNodeconfirm.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
+      textFieldFocusNodeconfirm.canRequestFocus = false; // Prevents focus if tap on eye
     });
   }
-
 
   getMobileFormWidget(context) {
     return Form(
@@ -201,30 +196,27 @@ class _TenantRegisterState extends State<TenantRegister> {
             //   ),
             // ),
             TextFormField(
-              controller: passwordController,
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: _obscured,
-              focusNode: textFieldFocusNode,
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior
-                    .never, //Hides label on focus or if filled
-                icon: Icon(Icons.lock, size: 25),
-                hintText: 'Enter your Password',
-                labelText: 'Password', // Needed for adding a fill color
-                isDense: true, // Reduces height a bit
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: GestureDetector(
-                    onTap: _toggleObscured,
-                    child: Icon(
-                      _obscured
-                          ? Icons.visibility_off_rounded
-                          : Icons.visibility_rounded,
-                      size: 24,
+                controller: passwordController,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: _obscured,
+                focusNode: textFieldFocusNode,
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
+                  icon: Icon(Icons.lock, size: 25),
+                  hintText: 'Enter your Password',
+                  labelText: 'Password', // Needed for adding a fill color
+                  isDense: true, // Reduces height a bit
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: GestureDetector(
+                      onTap: _toggleObscured,
+                      child: Icon(
+                        _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                        size: 24,
+                      ),
                     ),
                   ),
                 ),
-              ),
                 onChanged: (value) {
                   _password = value;
                 },
@@ -235,33 +227,29 @@ class _TenantRegisterState extends State<TenantRegister> {
                   // you can check password length and specifications
 
                   return null;
-                }
-            ),
+                }),
             TextFormField(
-              controller: confirmPassword,
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: _obscuredconfirm,
-              focusNode: textFieldFocusNodeconfirm,
-              decoration: InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior
-                    .never, //Hides label on focus or if filled
-                icon: Icon(Icons.lock, size: 25),
-                hintText: 'Enter your Confirm-Password',
-                labelText: 'Confirm-Password',
-                isDense: true, // Reduces height a bit
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: GestureDetector(
-                    onTap: _toggleObscuredconfirm,
-                    child: Icon(
-                      _obscuredconfirm
-                          ? Icons.visibility_off_rounded
-                          : Icons.visibility_rounded,
-                      size: 24,
+                controller: confirmPassword,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: _obscuredconfirm,
+                focusNode: textFieldFocusNodeconfirm,
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
+                  icon: Icon(Icons.lock, size: 25),
+                  hintText: 'Enter your Confirm-Password',
+                  labelText: 'Confirm-Password',
+                  isDense: true, // Reduces height a bit
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: GestureDetector(
+                      onTap: _toggleObscuredconfirm,
+                      child: Icon(
+                        _obscuredconfirm ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                        size: 24,
+                      ),
                     ),
                   ),
                 ),
-              ),
                 onChanged: (value) {
                   _confirmPassword = value;
                 },
@@ -287,8 +275,6 @@ class _TenantRegisterState extends State<TenantRegister> {
                   ),
                 ),
                 onPressed: () async {
-
-
                   if (_formKey.currentState!.validate()) {
                     // do the API call here
                     //
@@ -324,16 +310,7 @@ class _TenantRegisterState extends State<TenantRegister> {
                     //   );
                     // }
 
-                    loadRegister(
-                        landlordName.text,
-                        emailController.text,
-                        phoneNumber,
-                        addressController.text,
-                        passwordController.text,
-                        confirmPassword.text,
-                        currency);
-
-
+                    loadRegister(landlordName.text, emailController.text, phoneNumber, addressController.text, passwordController.text, confirmPassword.text, currency);
 
                     // loadRegister(
                     //     landlordName.text,
@@ -344,40 +321,29 @@ class _TenantRegisterState extends State<TenantRegister> {
                     //     confirmPassword.text,
                     //     currency);
                   }
-
-
-
-
-
-
-
                 },
                 child: isLoading
-                    ? const CircularProgressIndicator()
+                    ? const CircularProgressIndicator(
+                        color: Color(0xff54854C),
+                      )
                     : const Text(
-                  'Register',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                        'Register',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
               ),
             ),
             SizedBox(
               height: 30,
             ),
             GestureDetector(
-              onTap: () => {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => LandlordLogin()))
-              },
+              onTap: () => {Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LandlordLoginNew()))},
               child: RichText(
                 text: TextSpan(
                   text: "Already have a Account?Login",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
                 ),
               ),
             ),
@@ -386,25 +352,17 @@ class _TenantRegisterState extends State<TenantRegister> {
       ),
     );
   }
-  void signInWithPhoneAuthCredential(
-      PhoneAuthCredential phoneAuthCredential) async {
+
+  void signInWithPhoneAuthCredential(PhoneAuthCredential phoneAuthCredential) async {
     setState(() {
       showLoading = true;
     });
 
     try {
-      final authCredential =
-      await _auth.signInWithCredential(phoneAuthCredential);
+      final authCredential = await _auth.signInWithCredential(phoneAuthCredential);
 
       if (authCredential.user != null) {
-        loadRegister(
-          landlordName.text,
-          emailController.text,
-          phoneNumber,
-          addressController.text,
-          passwordController.text,
-          confirmPassword.text,
-          currency);
+        loadRegister(landlordName.text, emailController.text, phoneNumber, addressController.text, passwordController.text, confirmPassword.text, currency);
         log("success");
       }
     } on FirebaseAuthException catch (e) {
@@ -418,12 +376,11 @@ class _TenantRegisterState extends State<TenantRegister> {
     }
   }
 
-
   getOtpFormWidget(context) {
     return Column(
       children: [
         // Spacer(),
-       // getloginotpwidget(context),
+        // getloginotpwidget(context),
         // Spacer(),
         Text(
           'ENTER OTP.',
@@ -450,9 +407,7 @@ class _TenantRegisterState extends State<TenantRegister> {
         ElevatedButton(
             onPressed: () async {
               log("inside onpress" + otp.toString());
-              PhoneAuthCredential phoneAuthCredential =
-              PhoneAuthProvider.credential(
-                  verificationId: verificationId, smsCode: otp.toString());
+              PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otp.toString());
 
               signInWithPhoneAuthCredential(phoneAuthCredential);
 
@@ -461,25 +416,21 @@ class _TenantRegisterState extends State<TenantRegister> {
             },
             child: Text(
               "VERIFY",
-              style:
-              TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
             style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                 backgroundColor: MaterialStateProperty.all<Color>(
                   Colors.black38,
                 ),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero,
-                        side:
-                        BorderSide(color: Color.fromARGB(255, 0, 0, 0)))))),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.zero, side: BorderSide(color: Color.fromARGB(255, 0, 0, 0)))))),
         // Spacer(
         //   flex: 2,
         // ),
       ],
     );
   }
+
   getloginotpwidget(context) {
     return Container(
       child: Column(
@@ -490,8 +441,6 @@ class _TenantRegisterState extends State<TenantRegister> {
       //color: Color.fromARGB(255, 184, 9, 9),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -512,28 +461,27 @@ class _TenantRegisterState extends State<TenantRegister> {
           ),
         ),
       ),
-      body:
-
-
-      SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child:Container(
-          width: double.infinity,
-          color: Colors.white,
-          // decoration: BoxDecoration(
-          //     gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          //       Color.fromARGB(255, 192, 222, 227),
-          //       Color.fromARGB(255, 235, 230, 230),
-          //       Color.fromARGB(255, 242, 241, 239)
-          //     ])),
-          child: showLoading
-              ? Center(child: const CircularProgressIndicator())
-              : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
-              ? getMobileFormWidget(context)
-              :getOtpFormWidget(context) ,
-          padding: const EdgeInsets.all(16),
-        )
-      ),
+      body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Container(
+            width: double.infinity,
+            color: Colors.white,
+            // decoration: BoxDecoration(
+            //     gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+            //       Color.fromARGB(255, 192, 222, 227),
+            //       Color.fromARGB(255, 235, 230, 230),
+            //       Color.fromARGB(255, 242, 241, 239)
+            //     ])),
+            child: showLoading
+                ? Center(
+                    child: const CircularProgressIndicator(
+                    color: Color(0xff54854C),
+                  ))
+                : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
+                    ? getMobileFormWidget(context)
+                    : getOtpFormWidget(context),
+            padding: const EdgeInsets.all(16),
+          )),
     );
   }
 
@@ -543,36 +491,18 @@ class _TenantRegisterState extends State<TenantRegister> {
     });
   }
 
-  Future<void> loadRegister(
-      String name,
-      String emails,
-      String mobi,
-      String address,
-      String pass,
-      String confirmPass,
-      String currencyCode) async {
+  Future<void> loadRegister(String name, String emails, String mobi, String address, String pass, String confirmPass, String currencyCode) async {
     setState(() {
       isLoading = true;
     });
     final url = Uri.parse(ApiUrl.register);
     final headers = {'Content-Type': 'application/json'};
-    final datas = {
-      "name": name,
-      "mobileNo": mobi,
-      "currency": currencyCode,
-      "email": emails,
-      "address": address,
-      "password": pass,
-      "role": "user"
-    };
+    final datas = {"name": name, "mobileNo": mobi, "currency": currencyCode, "email": emails, "address": address, "password": pass, "role": "user"};
 
-    final response =
-        await http.post(url, headers: headers, body: jsonEncode(datas));
-
-
+    final response = await http.post(url, headers: headers, body: jsonEncode(datas));
 
     if (kDebugMode) {
-      print("respi n tenant=="+response.body);
+      print("respi n tenant==" + response.body);
     }
 
     // 232689546
@@ -592,7 +522,6 @@ class _TenantRegisterState extends State<TenantRegister> {
       if (data["loginstatus"] == "notok") {
         snack(data["msg"], context);
       } else {
-
         String userId = user.id;
 
         String name = user.name;
@@ -614,8 +543,7 @@ class _TenantRegisterState extends State<TenantRegister> {
         //     : otprecieved = data['emial_otp'].toString();
         // // successDilog(data['msg']);
         // _showImageAlertDialog(context, otprecieved);
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const Tenantdashbord()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Tenantdashbord()));
       }
       // RentalCustomAlert.showSuccessAlert(
       //     context, "Register Successfully", "Let's Login");
@@ -671,7 +599,7 @@ void _showImageAlertDialog(BuildContext context, String otp) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        //  title: Text('Image Alert Dialog'),
+        //  title: Text('Image Alert Dialog'), ̏
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -694,23 +622,21 @@ void _showImageAlertDialog(BuildContext context, String otp) {
               //     outlineBorderRadius: 15,
               style: TextStyle(fontSize: 17),
               onChanged: (pin) {
-              //  print("Changed: " + pin);
+                //  print("Changed: " + pin);
               },
               onCompleted: (pin) {
                 pinnumer = pin;
-               // print("Completed: " + pin);
+                // print("Completed: " + pin);
               }),
           SizedBox(
             height: 10,
           ),
           Center(
             child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.orange)),
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange)),
               onPressed: () {
                 if (pinnumer.toString() == otp) {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Tenantdashbord()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Tenantdashbord()));
                 } else {
                   snack("Enterd otp is incorrect", context);
                   Navigator.of(context).pop();
@@ -725,9 +651,8 @@ void _showImageAlertDialog(BuildContext context, String otp) {
     },
   );
 }
-Future<void> shareData(String userId, String name, String email, String phone,
-    String currency, String roleId) async {
 
+Future<void> shareData(String userId, String name, String email, String phone, String currency, String roleId) async {
   print("inshared");
   SharedPreferences preferences = await SharedPreferences.getInstance();
   await preferences.clear();
@@ -738,5 +663,4 @@ Future<void> shareData(String userId, String name, String email, String phone,
   await preferences.setString('phone', phone);
   await preferences.setString('currency', currency);
   await preferences.setString('roleId', roleId);
-
 }

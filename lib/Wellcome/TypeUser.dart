@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../landlord/LanlordRegister.dart';
+import '../landlord/LanlordRegisterNew.dart';
 import '../tandent/TenantRegister.dart';
 
 class TypeUser extends StatefulWidget {
@@ -47,7 +48,7 @@ class _TypeUserState extends State<TypeUser> {
             // ),
             // const SizedBox(width: 0.0, height: 40),
             InkWell(
-              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LanlordRegister())),
+              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LanlordRegisterNew())),
               child: Container(
                 padding: const EdgeInsets.all(18.0),
                 decoration: BoxDecoration(

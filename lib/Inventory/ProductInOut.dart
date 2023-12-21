@@ -40,12 +40,7 @@ class _productinoutState extends State<productinout> {
   TextEditingController _textControllerremark = new TextEditingController();
 
   _selectDate() async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: dateTime,
-        initialDatePickerMode: DatePickerMode.day,
-        firstDate: DateTime(1850),
-        lastDate: DateTime(2101));
+    final DateTime? picked = await showDatePicker(context: context, initialDate: dateTime, initialDatePickerMode: DatePickerMode.day, firstDate: DateTime(1850), lastDate: DateTime(2101));
     if (picked != null) {
       dateTime = picked;
       //assign the chosen date to the controller
@@ -53,8 +48,7 @@ class _productinoutState extends State<productinout> {
     }
   }
 
-  Future<void> _submit(String productid, String storeid2, String qty,
-      String remark, String date, String rate) async {
+  Future<void> _submit(String productid, String storeid2, String qty, String remark, String date, String rate) async {
     setState(() {
       isloading = true;
     });
@@ -67,15 +61,7 @@ class _productinoutState extends State<productinout> {
       if (storeid == "") {
         snack("Please select a store in store view", context);
       } else {
-        Map data = {
-          'userid': userid,
-          'storeid': storeid2,
-          'productid': productid,
-          "quantity": qty,
-          "rate": rate,
-          "remark": remark,
-          "date": date
-        };
+        Map data = {'userid': userid, 'storeid': storeid2, 'productid': productid, "quantity": qty, "rate": rate, "remark": remark, "date": date};
 
         final headerss = {
           'Content-Type': 'application/json',
@@ -94,8 +80,7 @@ class _productinoutState extends State<productinout> {
           Map<String, dynamic> resposne = jsonDecode(response.body);
 
           if (resposne['respCode'].toString().contains("200")) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => inentorydashboard()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => inentorydashboard()));
 
             print("Login Successfully Completed !!!!!!!!!!!!!!!!");
           } else {
@@ -234,10 +219,7 @@ class _productinoutState extends State<productinout> {
                     width: 10,
                   ),
                   InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const inentorydashboard())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
                     child: Icon(
                       Icons.arrow_back,
                       size: 30,
@@ -262,17 +244,11 @@ class _productinoutState extends State<productinout> {
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>  ProductScanner()));
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductScanner()));
                       },
                       child: Container(
                           padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(40)),
+                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
                           //alignment: Alignment.center,
                           child: Icon(
                             Icons.qr_code_scanner_outlined,
@@ -292,12 +268,14 @@ class _productinoutState extends State<productinout> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
-                      child:
-                      isloading==true?CircularProgressIndicator():
-                      Text(
-                        'Save',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      child: isloading == true
+                          ? CircularProgressIndicator(
+                              color: Color(0xff54854C),
+                            )
+                          : Text(
+                              'Save',
+                              style: TextStyle(color: Colors.white),
+                            ),
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.blue),
                       ),
@@ -311,13 +289,7 @@ class _productinoutState extends State<productinout> {
                         if (Storeid == "" && Productid == "") {
                           snack("Select Store and product", context);
                         } else {
-                          _submit(
-                              Productid,
-                              Storeid,
-                              _textControllerqty.text,
-                              _textControllerremark.text,
-                              _textControllerdate1.text,
-                              _textControllerrate.text);
+                          _submit(Productid, Storeid, _textControllerqty.text, _textControllerremark.text, _textControllerdate1.text, _textControllerrate.text);
                         }
                       },
                     ),
@@ -343,10 +315,7 @@ class _productinoutState extends State<productinout> {
                       children: [
                         Text(
                           ' Date ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 17, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -366,15 +335,10 @@ class _productinoutState extends State<productinout> {
                                     width: 90,
                                     child: TextFormField(
                                       readOnly: true, //this is important
-                                      onTap:
-                                          _selectDate, //the method for opening data picker
+                                      onTap: _selectDate, //the method for opening data picker
                                       controller: _textControllerdate1,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                      decoration: new InputDecoration.collapsed(
-                                          hintText: _textControllerdate1.text),
+                                      style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
+                                      decoration: new InputDecoration.collapsed(hintText: _textControllerdate1.text),
                                     ),
                                     //     TextFormField(
                                     //     //  "26/10/2023",
@@ -388,11 +352,8 @@ class _productinoutState extends State<productinout> {
                                     //           fontWeight: FontWeight.bold),
                                     //     ),
                                   ),
-                                  Flexible(
-                                      fit: FlexFit.tight, child: SizedBox()),
-                                  InkWell(
-                                      onTap: _selectDate,
-                                      child: Icon(Icons.calendar_month))
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  InkWell(onTap: _selectDate, child: Icon(Icons.calendar_month))
                                 ],
                               ),
                             ),
@@ -411,10 +372,7 @@ class _productinoutState extends State<productinout> {
                       children: [
                         Text(
                           ' Product * ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -428,47 +386,39 @@ class _productinoutState extends State<productinout> {
                             ),
                             child: isloading == true
                                 ? Center(
-                                    child: const CircularProgressIndicator())
+                                    child: const CircularProgressIndicator(
+                                    color: Color(0xff54854C),
+                                  ))
                                 : productlist.isEmpty
                                     ? Center(child: Text("No Product"))
                                     : Container(
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              18), // <= No more error here :)
+                                          borderRadius: BorderRadius.circular(18), // <= No more error here :)
                                           color: Colors.white,
                                         ),
                                         width: 200,
                                         height: 60,
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 10),
+                                          padding: const EdgeInsets.only(left: 10),
                                           child: Row(
                                             children: [
                                               // Icon(Icons.bloodtype),
                                               Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0),
-                                                child:
-                                                    DropdownButton<GetProduct>(
-                                                  hint: const Text(
-                                                      "Select Product"),
+                                                padding: const EdgeInsets.only(left: 8.0),
+                                                child: DropdownButton<GetProduct>(
+                                                  hint: const Text("Select Product"),
                                                   underline: SizedBox(),
                                                   value: dropdownValue,
-                                                  icon: const Icon(
-                                                      Icons.arrow_drop_down),
+                                                  icon: const Icon(Icons.arrow_drop_down),
                                                   iconSize: 24,
                                                   elevation: 16,
-                                                  borderRadius:
-                                                      BorderRadius.zero,
-                                                  style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 18),
+                                                  borderRadius: BorderRadius.zero,
+                                                  style: const TextStyle(color: Colors.black, fontSize: 18),
                                                   // underline: Container(
                                                   //  height: 2,
                                                   //  color: Colors.deepPurpleAccent,
                                                   // ),
-                                                  onChanged:
-                                                      (GetProduct? data) {
+                                                  onChanged: (GetProduct? data) {
                                                     setState(() {
                                                       dropdownValue = data!;
 
@@ -487,15 +437,10 @@ class _productinoutState extends State<productinout> {
                                                       // getPlaces();
                                                     });
                                                   },
-                                                  items: productlist.map<
-                                                          DropdownMenuItem<
-                                                              GetProduct>>(
-                                                      (GetProduct value) {
-                                                    return DropdownMenuItem<
-                                                        GetProduct>(
+                                                  items: productlist.map<DropdownMenuItem<GetProduct>>((GetProduct value) {
+                                                    return DropdownMenuItem<GetProduct>(
                                                       value: value,
-                                                      child: Text(
-                                                          value.productname),
+                                                      child: Text(value.productname),
                                                     );
                                                   }).toList(),
                                                 ),
@@ -538,10 +483,7 @@ class _productinoutState extends State<productinout> {
                       children: [
                         Text(
                           ' Store * ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -555,11 +497,12 @@ class _productinoutState extends State<productinout> {
                             ),
                             child: storelist.isEmpty
                                 ? Center(
-                                    child: const CircularProgressIndicator())
+                                    child: const CircularProgressIndicator(
+                                    color: Color(0xff54854C),
+                                  ))
                                 : Container(
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          18), // <= No more error here :)
+                                      borderRadius: BorderRadius.circular(18), // <= No more error here :)
                                       color: Colors.white,
                                     ),
                                     width: 200,
@@ -570,20 +513,16 @@ class _productinoutState extends State<productinout> {
                                         children: [
                                           //Icon(Icons.bloodtype),
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0),
+                                            padding: const EdgeInsets.only(left: 8.0),
                                             child: DropdownButton<GetStore>(
                                               hint: const Text("Select Store"),
                                               underline: SizedBox(),
                                               value: dropdownValue2,
-                                              icon: const Icon(
-                                                  Icons.arrow_drop_down),
+                                              icon: const Icon(Icons.arrow_drop_down),
                                               iconSize: 24,
                                               elevation: 16,
                                               borderRadius: BorderRadius.zero,
-                                              style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 18),
+                                              style: const TextStyle(color: Colors.black, fontSize: 18),
                                               // underline: Container(
                                               //  height: 2,
                                               //  color: Colors.deepPurpleAccent,
@@ -607,12 +546,8 @@ class _productinoutState extends State<productinout> {
                                                   // getPlaces();
                                                 });
                                               },
-                                              items: storelist.map<
-                                                      DropdownMenuItem<
-                                                          GetStore>>(
-                                                  (GetStore value) {
-                                                return DropdownMenuItem<
-                                                    GetStore>(
+                                              items: storelist.map<DropdownMenuItem<GetStore>>((GetStore value) {
+                                                return DropdownMenuItem<GetStore>(
                                                   value: value,
                                                   child: Text(value.storename),
                                                 );
@@ -656,10 +591,7 @@ class _productinoutState extends State<productinout> {
                       children: [
                         Text(
                           ' Quantity * ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -676,12 +608,8 @@ class _productinoutState extends State<productinout> {
                                 child: Center(
                                   child: TextFormField(
                                     controller: _textControllerqty,
-                                    decoration: new InputDecoration.collapsed(
-                                        hintText: 'Enter Quantity'),
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Quantity'),
+                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Please enter product qty!';
@@ -705,10 +633,7 @@ class _productinoutState extends State<productinout> {
                       children: [
                         Text(
                           ' Rate  ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -725,12 +650,8 @@ class _productinoutState extends State<productinout> {
                                 child: Center(
                                   child: TextFormField(
                                     controller: _textControllerrate,
-                                    decoration: new InputDecoration.collapsed(
-                                        hintText: 'Enter Price'),
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Price'),
+                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Please enter price!';
@@ -754,10 +675,7 @@ class _productinoutState extends State<productinout> {
                       children: [
                         Text(
                           ' Remark  ',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -774,12 +692,8 @@ class _productinoutState extends State<productinout> {
                                 child: Center(
                                   child: TextFormField(
                                     controller: _textControllerremark,
-                                    decoration: new InputDecoration.collapsed(
-                                        hintText: 'Enter Remark'),
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Remark'),
+                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Please enter remark!';

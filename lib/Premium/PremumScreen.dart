@@ -49,7 +49,7 @@ class _premiumescreenState extends State<premiumescreen> {
       String? userid = logindata.getString("userId");
 
       Map data = {
-        'userid': "1",
+        'userid': "$userid",
         "countrycode": counrtycode,
       };
       final headerss = {
@@ -94,17 +94,19 @@ class _premiumescreenState extends State<premiumescreen> {
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 60.0),
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Color(0xff54854C),
+                ),
               ),
             )
-          // Center(child: Container(height: 60, width: 60, child: const CircularProgressIndicator()))
+          // Center(child: Container(height: 60, width: 60, child: const CircularProgressIndicator(color: Color(0xff54854C),)))
           : premiumelist.isEmpty
               ? Center(
                   child: Container(
                     height: 60,
                     // width: 100,
                     child: Text(
-                      "No Found !",
+                      "Plan not Found !",
                       style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -158,14 +160,14 @@ class _premiumescreenState extends State<premiumescreen> {
                                           decoration: BoxDecoration(
                                             border: isSelected == premiumelist[index].Id
                                                 ? Border.all(
-                                                    color: Color.fromARGB(255, 76, 16, 181),
+                                                    color: Color(0xff54854C),
                                                     width: 2.0,
                                                   )
                                                 : Border.all(
                                                     color: Colors.grey,
                                                     width: 1.0,
                                                   ),
-                                            color: isSelected == premiumelist[index].Id ? Color.fromARGB(255, 76, 16, 181).withOpacity(0.085) : Colors.transparent,
+                                            color: isSelected == premiumelist[index].Id ? Color(0xff54854C).withOpacity(0.085) : Colors.transparent,
                                             borderRadius: BorderRadius.all(Radius.circular(12.0)),
                                           ),
                                           child: new Center(
@@ -291,7 +293,7 @@ class _premiumescreenState extends State<premiumescreen> {
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
-                                color: amou.isNotEmpty ? Color.fromARGB(255, 76, 16, 181) : Colors.grey,
+                                color: amou.isNotEmpty ? Color(0xff54854C) : Colors.grey,
                               ),
                               child: Center(
                                   child: Text(

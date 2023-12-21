@@ -55,175 +55,166 @@ class _TandentBillState extends State<TandentBill> {
         children: [
           // Other widgets
           isLoading
-              ? Center(child: CircularProgressIndicator())
-              :
-          dataList.length==0?Center(child: Text("No data")):
-          Visibility(
-                  visible: isBillTheir,
-                  child: Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: dataList.length,
-                      itemBuilder: (context, index) {
-                        final bill = dataList[index];
-                        return Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  SizedBox(width: 10),
-                                  Text(
-                                    bill.rentStartDate,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    name,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  SizedBox(width: 50),
-                                  Text(
-                                    bill.totalAmount.toString(),
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    BillViewPage(
-                                                      Data: bill,
-                                                      type: '0',
-                                                    )));
-                                      },
-                                      icon: Icon(Icons.arrow_forward_ios)),
-                                ],
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: Color(0xff54854C),
+                ))
+              : dataList.length == 0
+                  ? Center(child: Text("No data"))
+                  : Visibility(
+                      visible: isBillTheir,
+                      child: Expanded(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: dataList.length,
+                          itemBuilder: (context, index) {
+                            final bill = dataList[index];
+                            return Card(
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              Divider(
-                                color: Colors.grey,
-                                height: 30,
-                              ),
-                              Row(
+                              child: Column(
                                 children: [
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  Column(
+                                  SizedBox(height: 10),
+                                  Row(
                                     children: [
+                                      SizedBox(width: 10),
+                                      Text(
+                                        bill.rentStartDate,
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        name,
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      SizedBox(width: 50),
+                                      Text(
+                                        bill.totalAmount.toString(),
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
                                       IconButton(
-                                        onPressed: () {
-                                          showbottomsheet(context, bill.id);
-                                          /* _showBottomSheet(
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => BillViewPage(
+                                                          Data: bill,
+                                                          type: '0',
+                                                        )));
+                                          },
+                                          icon: Icon(Icons.arrow_forward_ios)),
+                                    ],
+                                  ),
+                                  Divider(
+                                    color: Colors.grey,
+                                    height: 30,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 30,
+                                      ),
+                                      Column(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              showbottomsheet(context, bill.id);
+                                              /* _showBottomSheet(
                                             context, bill['id']);*/
-                                        },
-                                        icon: Icon(Icons.add_box),
+                                            },
+                                            icon: Icon(Icons.add_box),
+                                          ),
+                                          Text('Receive'),
+                                        ],
                                       ),
-                                      Text('Receive'),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 50,
-                                  ),
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (builder) =>
-                                                  PdfPreviewPage(
-                                                      invoice: bill,
-                                                      subname: name),
-                                            ),
-                                          );
-                                          String message =
-                                              "Hii their your Bill form is ";
-                                          /* shareOnWhatsApp(message);*/
-                                        },
-                                        icon: Icon(Icons.share),
+                                      SizedBox(
+                                        width: 50,
                                       ),
-                                      Text('Share'),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () async {
-                                          if (Platform.isAndroid) {
-                                            var status =
-                                                await Permission.storage.status;
-                                            if (status !=
-                                                PermissionStatus.granted) {
-                                              status = await Permission.storage
-                                                  .request();
-                                            }
-                                            if (status.isGranted) {
-                                              //   const downloadsFolderPath = '/storage/emulated/0/Download/';
-                                              //   Directory dir = Directory(downloadsFolderPath);
-                                              // var file=  makePdf(bill,selectedSubPropertyName);
-                                              //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
-
+                                      Column(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
                                               Navigator.of(context).push(
                                                 MaterialPageRoute(
-                                                  builder: (builder) =>
-                                                      PdfPreviewPage(
-                                                          invoice: bill,
-                                                          subname: name),
+                                                  builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
                                                 ),
                                               );
-                                            }
-                                          }
-
-                                        },
-                                        icon: Icon(Icons.downloading_outlined),
+                                              String message = "Hii their your Bill form is ";
+                                              /* shareOnWhatsApp(message);*/
+                                            },
+                                            icon: Icon(Icons.share),
+                                          ),
+                                          Text('Share'),
+                                        ],
                                       ),
-                                      Text('Download'),
+                                      SizedBox(
+                                        width: 30,
+                                      ),
+                                      SizedBox(
+                                        width: 30,
+                                      ),
+                                      Column(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () async {
+                                              if (Platform.isAndroid) {
+                                                var status = await Permission.storage.status;
+                                                if (status != PermissionStatus.granted) {
+                                                  status = await Permission.storage.request();
+                                                }
+                                                if (status.isGranted) {
+                                                  //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                                                  //   Directory dir = Directory(downloadsFolderPath);
+                                                  // var file=  makePdf(bill,selectedSubPropertyName);
+                                                  //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
+
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
+                                                    ),
+                                                  );
+                                                }
+                                              }
+                                            },
+                                            icon: Icon(Icons.downloading_outlined),
+                                          ),
+                                          Text('Download'),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ],
                               ),
-                            ],
+                            );
+                          },
+                        ),
+                      ),
+                      replacement: Padding(
+                        padding: const EdgeInsets.only(top: 250, left: 130),
+                        child: Text(
+                          'No Bill found',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                  replacement: Padding(
-                    padding: const EdgeInsets.only(top: 250, left: 130),
-                    child: Text(
-                      'No Bill found',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                        ),
                       ),
                     ),
-                  ),
-                ),
         ],
       ),
     ));
@@ -266,7 +257,6 @@ class _TandentBillState extends State<TandentBill> {
       isLoading = false;
     });
     if (response.statusCode == 200) {
-
       final Map<String, dynamic> jsonData = jsonDecode(response.body);
       //  final jsonData = jsonDecode(body);
       final List<dynamic> data = jsonData['data'];
@@ -280,8 +270,7 @@ class _TandentBillState extends State<TandentBill> {
         isBillTheir = false;
       }
       setState(() {
-        isLoading =
-            false; // Set loading state to false after the data is loaded
+        isLoading = false; // Set loading state to false after the data is loaded
       });
     }
   }
@@ -292,12 +281,7 @@ class _TandentBillState extends State<TandentBill> {
   TextEditingController recievedcontroller = new TextEditingController();
   String transer = "cash";
   _selectDate() async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: dateTime,
-        initialDatePickerMode: DatePickerMode.day,
-        firstDate: DateTime(1850),
-        lastDate: DateTime(2101));
+    final DateTime? picked = await showDatePicker(context: context, initialDate: dateTime, initialDatePickerMode: DatePickerMode.day, firstDate: DateTime(1850), lastDate: DateTime(2101));
     if (picked != null) {
       dateTime = picked;
       //assign the chosen date to the controller
@@ -363,18 +347,12 @@ class _TandentBillState extends State<TandentBill> {
                                   width: 50,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.grey),
-                                    color: selectedone == 1
-                                        ? Colors.blue
-                                        : Colors.white,
+                                    color: selectedone == 1 ? Colors.blue : Colors.white,
                                   ),
                                   child: Center(
                                       child: Text(
                                     "Cash",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: selectedone == 1
-                                            ? Colors.white
-                                            : Colors.black),
+                                    style: TextStyle(fontSize: 15, color: selectedone == 1 ? Colors.white : Colors.black),
                                   ))),
                             ),
                             InkWell(
@@ -389,18 +367,12 @@ class _TandentBillState extends State<TandentBill> {
                                   width: 120,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.grey),
-                                    color: selectedone == 2
-                                        ? Colors.blue
-                                        : Colors.white,
+                                    color: selectedone == 2 ? Colors.blue : Colors.white,
                                   ),
                                   child: Center(
                                       child: Text(
                                     "Online transfer",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: selectedone == 2
-                                            ? Colors.white
-                                            : Colors.black),
+                                    style: TextStyle(fontSize: 15, color: selectedone == 2 ? Colors.white : Colors.black),
                                   ))),
                             ),
                             InkWell(
@@ -415,18 +387,12 @@ class _TandentBillState extends State<TandentBill> {
                                   width: 50,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.grey),
-                                    color: selectedone == 3
-                                        ? Colors.blue
-                                        : Colors.white,
+                                    color: selectedone == 3 ? Colors.blue : Colors.white,
                                   ),
                                   child: Center(
                                       child: Text(
                                     "Check",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: selectedone == 3
-                                            ? Colors.white
-                                            : Colors.black),
+                                    style: TextStyle(fontSize: 15, color: selectedone == 3 ? Colors.white : Colors.black),
                                   ))),
                             ),
                           ],
@@ -452,24 +418,19 @@ class _TandentBillState extends State<TandentBill> {
                           cursorColor: Color.fromARGB(255, 3, 61, 109),
                           //  controller: namecontroller,
                           readOnly: true, //this is important
-                          onTap:
-                              _selectDate, //the method for opening data picker
+                          onTap: _selectDate, //the method for opening data picker
                           controller: _textControllerdate1,
                           decoration: InputDecoration(
                               hintText: 'choose date',
                               prefixIcon: Padding(
-                                padding: EdgeInsets.only(
-                                    top: 15), // add padding to adjust icon
+                                padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                                 child: Icon(Icons.calendar_month),
                               ),
                               label: Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
                                   "Rent Paid date",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 3, 61, 109)),
+                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                                 ),
                               )),
                         ),
@@ -496,18 +457,14 @@ class _TandentBillState extends State<TandentBill> {
                           decoration: InputDecoration(
                               hintText: 'Rent recived',
                               prefixIcon: Padding(
-                                padding: EdgeInsets.only(
-                                    top: 15), // add padding to adjust icon
+                                padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                                 child: Icon(Icons.monetization_on),
                               ),
                               label: Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
                                   "Rent recived",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 3, 61, 109)),
+                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                                 ),
                               )),
                         ),
@@ -515,8 +472,7 @@ class _TandentBillState extends State<TandentBill> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 20, bottom: 20, left: 10, right: 10),
+                    padding: const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
                     child: Center(
                       child: Container(
                         height: 45,
@@ -528,13 +484,10 @@ class _TandentBillState extends State<TandentBill> {
 
                             Navigator.pop(context);
                           },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           child: Text(
                             "Save",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

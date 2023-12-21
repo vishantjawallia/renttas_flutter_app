@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, camel_case_types
+// ignore_for_file: use_build_context_synchronously, camel_case_types, unnecessary_const
 
 import 'package:easy_localization/easy_localization.dart';
 
@@ -37,75 +37,58 @@ class _languageswitchscreenState extends State<languageswitchscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("choose language".tr()),
+        backgroundColor: const Color(0xff54854C),
+        title: Text("Choose Language".tr()),
       ),
       body: ListView.builder(
-          itemCount: storelist.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        snack("Please wait...", context);
-                        storelang(storelist[index].nameshown, index.toString(), storelist[index].code, storelist[index].countrycode);
-                      },
-                      child: Container(
-                        height: 50,
-                        //color: Colors.grey,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
-                            borderRadius: const BorderRadius.all(Radius.circular(10))),
-
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Text(storelist[index].nameshown),
-                              const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                              defindex == index.toString() ? const Icon(Icons.check) : const SizedBox()
-                            ],
+        padding: const EdgeInsets.only(top: 40),
+        itemCount: storelist.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      snack("Please wait...", context);
+                      storelang(storelist[index].nameshown, index.toString(), storelist[index].code, storelist[index].countrycode);
+                    },
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                          color: defindex == index.toString() ? const Color(0xff54854C).withOpacity(0.2) : Colors.transparent,
+                          border: Border.all(
+                            color: defindex == index.toString() ? const Color(0xff54854C).withOpacity(0.9) : Colors.grey,
                           ),
+                          borderRadius: const BorderRadius.all(Radius.circular(12))),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              storelist[index].nameshown,
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                            const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                            defindex == index.toString()
+                                ? const Icon(
+                                    Icons.check_rounded,
+                                    color: const Color(0xff54854C),
+                                    size: 30,
+                                  )
+                                : const SizedBox()
+                          ],
                         ),
                       ),
                     ),
-                    //  Text("title".tr().toString()),
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     TextButton(
-//                         onPressed: () {
-//                           setState(() {
-//                             EasyLocalization.of(context)!
-//                                 .setLocale(const Locale('en', 'EN'));
-//                           });
-//
-// //LocalizationChecker.changeLanguge(context);
-//                         },
-//                         child: Text("English")),
-//                     TextButton(
-//                         onPressed: () {
-//                           setState(() {
-//                             setState(() {
-//                               EasyLocalization.of(context)!
-//                                   .setLocale(const Locale('ar', 'AR'));
-//                             });
-//
-//                             //   EasyLocalization.of(context).locale=Locale('ar','AR');
-//                           });
-//                         },
-//                         child: Text("Arabic"))
-//                   ],
-//                 )
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 

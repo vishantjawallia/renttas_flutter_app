@@ -622,7 +622,9 @@ class _newleaseaddState extends State<newleaseadd> {
                               'Save',
                               style: TextStyle(color: Colors.white),
                             )
-                          : const CircularProgressIndicator(),
+                          : const CircularProgressIndicator(
+                              color: Color(0xff54854C),
+                            ),
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.blue),
                       ),

@@ -17,7 +17,7 @@ class Tenantdashbord extends StatefulWidget {
   State<Tenantdashbord> createState() => _TenantdashbordState();
 }
 
-class _TenantdashbordState extends State<Tenantdashbord>  with SingleTickerProviderStateMixin {
+class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   static String selectedPropertyId = '';
   static String selectedSubProptyId = '';
@@ -88,7 +88,6 @@ class _TenantdashbordState extends State<Tenantdashbord>  with SingleTickerProvi
       onWillPop: () async {
         return await _showExitConfirmationDialog(context);
       },
-
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false, // Remove the back button
@@ -127,9 +126,9 @@ class _TenantdashbordState extends State<Tenantdashbord>  with SingleTickerProvi
                             backgroundColor: Colors.white,
                             radius: 20,
                             child: Text(
-                              name==null?"A":
-                              name.substring(0, 1).toUpperCase(),
-                            //  name.toUpperCase(),
+                              'A',
+                              // name == null ? "A" : name.substring(0, 1).toUpperCase(),
+                              //  name.toUpperCase(),
                               style: TextStyle(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold,
@@ -143,8 +142,7 @@ class _TenantdashbordState extends State<Tenantdashbord>  with SingleTickerProvi
                       ),
                       Text(
                         "Welcome ${name}",
-                        style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ],
                   ),

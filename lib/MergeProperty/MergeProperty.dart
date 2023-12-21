@@ -80,7 +80,10 @@ class _TenantsTabState extends State<MergeProperty> {
           children: [
             // Other widgets
             isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? Center(
+                    child: CircularProgressIndicator(
+                    color: Color(0xff54854C),
+                  ))
                 : Visibility(
                     visible: isTenantsTheir,
                     child: ListView.builder(

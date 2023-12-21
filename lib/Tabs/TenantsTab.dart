@@ -85,7 +85,9 @@ class _TenantsTabState extends State<TenantsTab> {
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 60.0),
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          color: Color(0xff54854C),
+                        ),
                       ),
                     ),
                   )

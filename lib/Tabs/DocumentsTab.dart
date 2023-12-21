@@ -1,7 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages, sort_child_properties_last, prefer_const_constructors, use_build_context_synchronously, sized_box_for_whitespace, avoid_print, prefer_interpolation_to_compose_strings, non_constant_identifier_names, unnecessary_brace_in_string_interps, use_super_parameters, unused_field
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:io';
@@ -61,6 +64,25 @@ class _DocumentsTabState extends State<DocumentsTab> {
     });
   }
 
+  // Future<void> _checkPermissionAndPickImage() async {
+  //   var status = await Permission.photos.status;
+  //   if (status.isGranted) {
+  //     // Permission already granted, pick an image
+  //     _pickImage();
+  //   } else {
+  //     // Permission hasn't been granted yet, request permission
+  //     if (status.isLimited) {
+  //       await Permission.photos.request();
+  //       if (await Permission.photos.status.isGranted) {
+  //         _pickImage();
+  //       }
+  //     } else {
+  //       // Permission denied, show an error message
+  //       _showPermissionError();
+  //     }
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -69,8 +91,25 @@ class _DocumentsTabState extends State<DocumentsTab> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          _pickImage();
+        onPressed: () async {
+          var status = await Permission.photos.status;
+          if (status.isGranted) {
+            // Permission already granted, pick an image
+            _pickImage();
+          } else {
+            // Permission hasn't been granted yet, request permission
+            if (status.isLimited) {
+              await Permission.photos.request();
+              if (await Permission.photos.status.isGranted) {
+                _pickImage();
+              }
+            } else {
+              // Permission denied, show an error message
+              _showPermissionError();
+            }
+          }
+          // await _checkPermissionAndPickImage();
+          // _pickImage();
         },
         label: Text(
           'Document',
@@ -93,7 +132,9 @@ class _DocumentsTabState extends State<DocumentsTab> {
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 60.0),
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(
+                        color: Color(0xff54854C),
+                      ),
                     ),
                   ),
                 )
@@ -465,4 +506,6 @@ class _DocumentsTabState extends State<DocumentsTab> {
       isLoading = false;
     });
   }
+
+  void _showPermissionError() {}
 }

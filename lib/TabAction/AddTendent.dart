@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, prefer_const_constructors
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -98,43 +100,27 @@ class _AddTendentState extends State<AddTendent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.black,
-                Colors.green,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
+        backgroundColor: Color(0xff54854C),
+        title: Text(
+          'Add Tenant',
         ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back),
-          color: Colors.black,
-        ),
-        title: Text('RENTTAS', style: TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 50,
-              margin: EdgeInsets.only(top: 30, left: 10, right: 10),
-              child: Text(
-                'Add Tenant',
-                style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
-              ),
-            ),
+            // Container(
+            //   height: 50,
+            //   margin: EdgeInsets.only(top: 30, left: 10, right: 10),
+            //   child: Text(
+            //     'Add Tenant',
+            //     style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
+            //   ),
+            // ),
             SizedBox(
               height: 10,
             ),
+
             Container(
               margin: EdgeInsets.only(top: 10, left: 8),
               child: TextFormField(
@@ -146,6 +132,7 @@ class _AddTendentState extends State<AddTendent> {
                 ),
               ),
             ),
+
             Container(
               padding: EdgeInsets.only(left: 10),
               margin: EdgeInsets.only(top: 20),
@@ -241,7 +228,11 @@ class _AddTendentState extends State<AddTendent> {
                   elevation: 8,
                 ),
                 onPressed: isLoading ? null : () => saveTenant(_tenantName.text, phoneNumber, _email.text, _advanceAmount.text, _startDateController.text, _endDateController.text),
-                child: isLoading ? CircularProgressIndicator() : Text("Save"),
+                child: isLoading
+                    ? CircularProgressIndicator(
+                        color: Color(0xff54854C),
+                      )
+                    : Text("Save"),
               ),
             ),
           ],

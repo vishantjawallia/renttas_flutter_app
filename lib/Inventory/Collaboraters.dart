@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 
 import 'Dashboard.dart';
@@ -27,57 +28,52 @@ class _collabratesviewState extends State<collabratesview> {
         // ),
         automaticallyImplyLeading: false,
         actions: <Widget>[
-          Container(
-            child: Expanded(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 10,
+          Expanded(
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 30,
                   ),
-                  InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const inentorydashboard())),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Collaburaters"),
+                      // Text(
+                      //   "ab@gmail.com",
+                      //   style: TextStyle(fontWeight: FontWeight.bold),
+                      // )
+                    ],
+                  ),
+                ),
+                const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                InkWell(
+                  onTap: () => showbottomsheet(context),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Collaburaters"),
-                        // Text(
-                        //   "ab@gmail.com",
-                        //   style: TextStyle(fontWeight: FontWeight.bold),
-                        // )
-                      ],
-                    ),
-                  ),
-                  Flexible(fit: FlexFit.tight, child: SizedBox()),
-                  InkWell(
-                    onTap: () => showbottomsheet(context),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.filter_alt,
-                        size: 24,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.recycling,
+                      Icons.filter_alt,
                       size: 24,
                     ),
                   ),
-                ],
-              ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.recycling,
+                    size: 24,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -95,51 +91,35 @@ class _collabratesviewState extends State<collabratesview> {
                     Container(
                       height: 50,
                       width: 50,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                  "https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"))),
+                      decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.fill, image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"))),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Ab@123 ',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             'Ab@gmail.com',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                     ),
-                    Flexible(fit: FlexFit.tight, child: SizedBox()),
-                    Column(
+                    const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                    const Column(
                       children: [
                         Text(
                           'Owner',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'Active',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.blue, fontSize: 13, fontWeight: FontWeight.bold),
                         ),
                       ],
                     )
@@ -156,19 +136,16 @@ class _collabratesviewState extends State<collabratesview> {
                             Checkbox(
                               checkColor: Colors.white,
                               activeColor: Colors.black,
-                              value: this.valuefirst,
+                              value: valuefirst,
                               onChanged: (bool? value) {
                                 setState(() {
-                                  this.valuefirst = value!;
+                                  valuefirst = value!;
                                 });
                               },
                             ),
-                            Text(
+                            const Text(
                               'Product',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -177,19 +154,16 @@ class _collabratesviewState extends State<collabratesview> {
                             Checkbox(
                               checkColor: Colors.white,
                               activeColor: Colors.black,
-                              value: this.valuesecond,
+                              value: valuesecond,
                               onChanged: (bool? value) {
                                 setState(() {
-                                  this.valuesecond = value!;
+                                  valuesecond = value!;
                                 });
                               },
                             ),
-                            Text(
+                            const Text(
                               'Store',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -198,19 +172,16 @@ class _collabratesviewState extends State<collabratesview> {
                             Checkbox(
                               checkColor: Colors.black,
                               activeColor: Colors.black,
-                              value: this.valuefirst,
+                              value: valuefirst,
                               onChanged: (bool? value) {
                                 setState(() {
-                                  this.valuefirst = value!;
+                                  valuefirst = value!;
                                 });
                               },
                             ),
-                            Text(
+                            const Text(
                               'Report',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -219,19 +190,16 @@ class _collabratesviewState extends State<collabratesview> {
                             Checkbox(
                               checkColor: Colors.black,
                               activeColor: Colors.black,
-                              value: this.valuefirst,
+                              value: valuefirst,
                               onChanged: (bool? value) {
                                 setState(() {
-                                  this.valuefirst = value!;
+                                  valuefirst = value!;
                                 });
                               },
                             ),
-                            Text(
+                            const Text(
                               'Qutation',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -248,19 +216,16 @@ class _collabratesviewState extends State<collabratesview> {
                                 Checkbox(
                                   checkColor: Colors.black,
                                   activeColor: Colors.black,
-                                  value: this.valuefirst,
+                                  value: valuefirst,
                                   onChanged: (bool? value) {
                                     setState(() {
-                                      this.valuefirst = value!;
+                                      valuefirst = value!;
                                     });
                                   },
                                 ),
-                                Text(
+                                const Text(
                                   'Transaction',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -269,19 +234,16 @@ class _collabratesviewState extends State<collabratesview> {
                                 Checkbox(
                                   checkColor: Colors.black,
                                   activeColor: Colors.black,
-                                  value: this.valuefirst,
+                                  value: valuefirst,
                                   onChanged: (bool? value) {
                                     setState(() {
-                                      this.valuefirst = value!;
+                                      valuefirst = value!;
                                     });
                                   },
                                 ),
-                                Text(
+                                const Text(
                                   'PRate',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -290,19 +252,12 @@ class _collabratesviewState extends State<collabratesview> {
                                 Checkbox(
                                   checkColor: Colors.black,
                                   activeColor: Colors.black,
-                                  value: this.valuefirst,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      this.valuefirst = value!;
-                                    });
-                                  },
+                                  value: valuefirst,
+                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
                                 ),
-                                Text(
+                                const Text(
                                   'Setting',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -321,19 +276,12 @@ class _collabratesviewState extends State<collabratesview> {
                                 Checkbox(
                                   checkColor: Colors.black,
                                   activeColor: Colors.black,
-                                  value: this.valuefirst,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      this.valuefirst = value!;
-                                    });
-                                  },
+                                  value: valuefirst,
+                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
                                 ),
-                                Text(
+                                const Text(
                                   'Collaburate',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -342,19 +290,12 @@ class _collabratesviewState extends State<collabratesview> {
                                 Checkbox(
                                   checkColor: Colors.black,
                                   activeColor: Colors.black,
-                                  value: this.valuefirst,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      this.valuefirst = value!;
-                                    });
-                                  },
+                                  value: valuefirst,
+                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
                                 ),
-                                Text(
+                                const Text(
                                   'SRate',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -363,19 +304,12 @@ class _collabratesviewState extends State<collabratesview> {
                                 Checkbox(
                                   checkColor: Colors.black,
                                   activeColor: Colors.black,
-                                  value: this.valuefirst,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      this.valuefirst = value!;
-                                    });
-                                  },
+                                  value: valuefirst,
+                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
                                 ),
-                                Text(
+                                const Text(
                                   'Both',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -392,11 +326,7 @@ class _collabratesviewState extends State<collabratesview> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
-        // isExtended: true,
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
+        child: Icon(Icons.add, color: Colors.white),
         backgroundColor: Colors.blue,
         onPressed: () {
           showbottomsheetinvitecollab(context);
@@ -410,267 +340,217 @@ class _collabratesviewState extends State<collabratesview> {
   int _groupValue1 = -1;
   showbottomsheet(context) {
     return showModalBottomSheet(
-        context: context,
-        builder: (builder) {
-          return StatefulBuilder(builder: (context, setstate) {
+      context: context,
+      builder: (builder) {
+        return StatefulBuilder(
+          builder: (context, setstate) {
             return SingleChildScrollView(
-                padding: EdgeInsetsDirectional.only(
-                  start: 20,
-                  end: 10,
-                  bottom: 30,
-                  top: 8,
-                ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsetsDirectional.only(start: 20, end: 10, bottom: 30, top: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 20),
+                  Row(
                     children: [
-                      SizedBox(
-                        height: 20,
+                      const Flexible(
+                        child: Text(
+                          "Filter",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
                       ),
-                      Row(
-                        //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              "Filter",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
-                            ),
+                      const SizedBox(width: 50),
+                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                      InkWell(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey,
                           ),
-                          SizedBox(
-                            width: 50,
+                          child: const Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Icon(Icons.close_rounded),
                           ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          InkWell(
-                            onTap: () => Navigator.pop(context),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.grey,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Icon(Icons.close_rounded),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      RadioListTile(
-                        value: 0,
-                        groupValue: _groupValue1,
-                        title: Text("All Collaburaters"),
-                        onChanged: (newValue) =>
-                            setstate(() => _groupValue1 = newValue as int),
-                        activeColor: Colors.blue,
-                        selected: false,
-                      ),
-                      RadioListTile(
-                        value: 1,
-                        groupValue: _groupValue1,
-                        title: Text("Active Collaburaters"),
-                        onChanged: (newValue) =>
-                            setstate(() => _groupValue1 = newValue as int),
-                        activeColor: Colors.blue,
-                        selected: false,
-                      ),
-                      RadioListTile(
-                        value: 2,
-                        groupValue: _groupValue1,
-                        title: Text("InActive Collaburaters"),
-                        onChanged: (newValue) =>
-                            setstate(() => _groupValue1 = newValue as int),
-                        activeColor: Colors.blue,
-                        selected: false,
-                      ),
-                    ])
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  RadioListTile(
+                    value: 0,
+                    groupValue: _groupValue1,
+                    title: const Text("All Collaburaters"),
+                    onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
+                    activeColor: Colors.blue,
+                    selected: false,
+                  ),
+                  RadioListTile(
+                    value: 1,
+                    groupValue: _groupValue1,
+                    title: const Text("Active Collaburaters"),
+                    onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
+                    activeColor: Colors.blue,
+                    selected: false,
+                  ),
+                  RadioListTile(
+                    value: 2,
+                    groupValue: _groupValue1,
+                    title: const Text("InActive Collaburaters"),
+                    onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
+                    activeColor: Colors.blue,
+                    selected: false,
+                  ),
+                ],
+              ),
             );
-          });
-        });
+          },
+        );
+      },
+    );
   }
 
   showbottomsheetinvitecollab(context) {
     return showModalBottomSheet(
-        context: context,
-        builder: (builder) {
-          return StatefulBuilder(builder: (context, setstate) {
+      context: context,
+      builder: (builder) {
+        return StatefulBuilder(
+          builder: (context, setstate) {
             return SingleChildScrollView(
-                padding: EdgeInsetsDirectional.only(
-                  start: 20,
-                  end: 10,
-                  bottom: 30,
-                  top: 8,
-                ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsetsDirectional.only(start: 20, end: 10, bottom: 30, top: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 20),
+                  Row(
                     children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              "Invite collaburaters",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 50,
-                          ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          InkWell(
-                            onTap: () => Navigator.pop(context),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.grey,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Icon(Icons.close_rounded),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Center(
+                      const Flexible(
                         child: Text(
-                          "Scan QR code to join current buisness",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13),
+                          "Invite collaburaters",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 13),
                         ),
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Center(
-                          child: Icon(
-                        Icons.qr_code_scanner_outlined,
-                        size: 200,
-                      )),
-                      Center(
-                        child: Text(
-                          "OR",
-                          style: TextStyle(color: Colors.grey, fontSize: 13),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Center(
-                        child: Text(
-                          "Share this code with your partner or \n business personso they can accessthis \n business",
-                          style: TextStyle(color: Colors.grey, fontSize: 13),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Center(
-                        child: Text(
-                          "8JUTGYESX",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Center(
+                      const SizedBox(width: 50),
+                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                      InkWell(
+                        onTap: () => Navigator.pop(context),
                         child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.blue,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey,
                           ),
-                          height: 50,
-                          width: 250,
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.book_sharp,
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
-                                TextButton(
-                                  child: Text(
-                                    'COPY CODE',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  style: const ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStatePropertyAll(Colors.blue),
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ],
-                            ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Icon(Icons.close_rounded),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 15,
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  const Center(
+                    child: Text(
+                      "Scan QR code to join current buisness",
+                      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 13),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Center(child: Icon(Icons.qr_code_scanner_outlined, size: 200)),
+                  const Center(
+                    child: Text(
+                      "OR",
+                      style: TextStyle(color: Colors.grey, fontSize: 13),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Center(
+                    child: Text(
+                      "Share this code with your partner or \n business personso they can accessthis \n business",
+                      style: TextStyle(color: Colors.grey, fontSize: 13),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Center(
+                    child: Text(
+                      "8JUTGYESX",
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
+                  const SizedBox(height: 15),
+                  Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.blue,
                       ),
-                      Center(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.orange,
-                          ),
-                          height: 50,
-                          width: 250,
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.attach_email_sharp,
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
-                                Center(
-                                  child: TextButton(
-                                    child: Text(
-                                      'SEND INVITATION',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    style: const ButtonStyle(
-                                      backgroundColor: MaterialStatePropertyAll(
-                                          Colors.orange),
-                                    ),
-                                    onPressed: () {},
-                                  ),
-                                ),
-                              ],
+                      height: 50,
+                      width: 250,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.book_sharp,
+                              size: 24,
+                              color: Colors.white,
                             ),
-                          ),
+                            TextButton(
+                              child: const Text(
+                                'COPY CODE',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              style: const ButtonStyle(
+                                backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                              ),
+                              onPressed: () {},
+                            ),
+                          ],
                         ),
                       ),
-                    ]));
-          });
-        });
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.orange,
+                      ),
+                      height: 50,
+                      width: 250,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.attach_email_sharp,
+                              size: 24,
+                              color: Colors.white,
+                            ),
+                            Center(
+                              child: TextButton(
+                                child: const Text(
+                                  'SEND INVITATION',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                style: const ButtonStyle(
+                                  backgroundColor: MaterialStatePropertyAll(Colors.orange),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }

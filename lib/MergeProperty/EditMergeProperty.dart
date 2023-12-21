@@ -230,7 +230,11 @@ class _AddTendentState extends State<EditMergeProperty> {
                   elevation: 8,
                 ),
                 onPressed: isLoading ? null : () => saveTenant(widget.data.id, _tenantName.text, phoneNumber, _email.text, _advanceAmount.text),
-                child: isLoading ? CircularProgressIndicator() : Text("Edit"),
+                child: isLoading
+                    ? CircularProgressIndicator(
+                        color: Color(0xff54854C),
+                      )
+                    : Text("Edit"),
               ),
             ),
           ],

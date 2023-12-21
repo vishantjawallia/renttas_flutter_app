@@ -208,7 +208,9 @@ class _addnewcompanyState extends State<addnewcompany> {
                     child: Center(
                       child: TextButton(
                         child: isloading == true
-                            ? CircularProgressIndicator()
+                            ? CircularProgressIndicator(
+                                color: Color(0xff54854C),
+                              )
                             : widget.type == "0"
                                 ? Text(
                                     'Save',

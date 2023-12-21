@@ -49,7 +49,10 @@ class _TandentDocumentState extends State<TandentDocument> {
       body: Column(
         children: [
           isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: Color(0xff54854C),
+                ))
               : dataList.length == 0
                   ? Center(child: Text("No data"))
                   : Visibility(
