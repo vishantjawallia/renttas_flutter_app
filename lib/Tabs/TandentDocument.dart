@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -49,17 +51,31 @@ class _TandentDocumentState extends State<TandentDocument> {
       body: Column(
         children: [
           isLoading
-              ? Center(
+              ? const Center(
                   child: CircularProgressIndicator(
-                  color: Color(0xff54854C),
-                ))
-              : dataList.length == 0
-                  ? Center(child: Text("No data"))
+                    color: Color(0xff54854C),
+                  ),
+                )
+              : dataList.isEmpty
+                  ? const Flexible(
+                      fit: FlexFit.tight,
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 50),
+                          child: Text(
+                            "Documemt not found !",
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   : Visibility(
                       visible: dataList.isNotEmpty,
                       child: Expanded(
                         child: GridView.builder(
-                          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 250.0, // Maximum width of each card
                             crossAxisSpacing: 10.0, // Horizontal space between cards
                             mainAxisSpacing: 10.0, // Vertical space between cards
@@ -74,9 +90,7 @@ class _TandentDocumentState extends State<TandentDocument> {
                               ),
                               child: Column(
                                 children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
+                                  const SizedBox(height: 10),
                                   GestureDetector(
                                     onTap: () {
                                       Navigator.push(
@@ -99,14 +113,14 @@ class _TandentDocumentState extends State<TandentDocument> {
                                       ),
                                     ),
                                   ),
-                                  Divider(),
+                                  const Divider(),
                                   Row(
                                     children: [
                                       Column(
                                         children: [
                                           Text(
                                             document.docName,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.grey,
@@ -114,7 +128,7 @@ class _TandentDocumentState extends State<TandentDocument> {
                                           ),
                                           Text(
                                             document.docType,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 12,
                                               color: Colors.grey,
                                             ),
@@ -122,12 +136,6 @@ class _TandentDocumentState extends State<TandentDocument> {
                                         ],
                                       ),
                                       SizedBox(width: screenWidth * 0.2),
-                                      /* IconButton(
-                              onPressed: () {
-                                // deleteDocument(document.id);
-                              },
-                              icon: Icon(Icons.delete),
-                            ),*/
                                     ],
                                   ),
                                 ],
@@ -136,14 +144,17 @@ class _TandentDocumentState extends State<TandentDocument> {
                           },
                         ),
                       ),
-                      replacement: Padding(
-                        padding: const EdgeInsets.only(top: 250, left: 90),
-                        child: Text(
-                          'No Document found',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                      replacement: const Flexible(
+                        fit: FlexFit.tight,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 50),
+                            child: Text(
+                              "Documemt not found !",
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                         ),
                       ),

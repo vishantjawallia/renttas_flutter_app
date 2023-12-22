@@ -60,7 +60,20 @@ class _TandentBillState extends State<TandentBill> {
                   color: Color(0xff54854C),
                 ))
               : dataList.length == 0
-                  ? Center(child: Text("No data"))
+                  ? Flexible(
+                      fit: FlexFit.tight,
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 50),
+                          child: Text(
+                            "Bill not found !",
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   : Visibility(
                       visible: isBillTheir,
                       child: Expanded(
@@ -203,14 +216,17 @@ class _TandentBillState extends State<TandentBill> {
                           },
                         ),
                       ),
-                      replacement: Padding(
-                        padding: const EdgeInsets.only(top: 250, left: 130),
-                        child: Text(
-                          'No Bill found',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                      replacement: Flexible(
+                        fit: FlexFit.tight,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 50),
+                            child: Text(
+                              "Bill not found !",
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                         ),
                       ),

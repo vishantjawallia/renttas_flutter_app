@@ -54,11 +54,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     bool newuser = prefs.getBool('login') ?? true;
     String sw = prefs.getString("sw") ?? "0";
-    // prefs.clear();
+    prefs.clear();
     log(sw.toString());
     log(newuser.toString());
 
-    newuser == false
+    newuser == true
         ? sw == "1"
             ? Navigator.pushReplacement(
                 context,

@@ -12,6 +12,7 @@ import '../Const/Const.dart';
 
 import 'package:http/http.dart' as http;
 
+import '../widgets/custom_text_field.dart';
 import 'RestenewPassScreen.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -39,103 +40,149 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
+      appBar: AppBar(
+        backgroundColor: const Color(0xff54854C),
+        leading: const BackButton(),
+        title: const Text('Forget Password'),
+      ),
+      body: Form(
+        key: _formKey,
+        child: Container(
+          width: size.width,
+          // height: size.height,
+          color: Colors.white,
           child: Container(
-            width: size.width,
-            height: size.height,
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 16.0, right: 16.0, top: 50.0, bottom: 25.0),
-              child: Form(
-                key: _key,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: const Icon(Icons.arrow_back),
-                    ),
-                    const SizedBox(height: 70),
-                    const Text(
-                      "Forgot Password",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Enter the mail address with your account and we will send an email with confirmation to reset your'
-                      ' password',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 40),
-                    // const Text(
-                    //   'Email address',
-                    //   style: TextStyle(
-                    //     fontSize: 15,
-                    //     color: Colors.black,
-                    //     fontWeight: FontWeight.bold,
-                    //   ),
-                    // ),
-                    const SizedBox(height: 10),
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      //obscureText: obscureText,
-                      controller: _emailController,
-                      autocorrect: false,
-                      textCapitalization: TextCapitalization.none,
-
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(30),
+            // padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 50.0, bottom: 25.0),
+            child: Form(
+              key: _key,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // GestureDetector(
+                  //   onTap: () => Navigator.pop(context),
+                  //   child: const Icon(Icons.arrow_back),
+                  // ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 80),
+                        Text(
+                          "Forgot Password",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Enter the mail address with your account and we will send an email with confirmation to reset your'
+                          ' password',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 40),
                       ],
-                      decoration: InputDecoration(
-                        hintText: "abc@example.com",
-                        labelText: "Email",
-                        hintStyle: const TextStyle(
-                            color: Color(0xFF666666), fontSize: 13),
-                        filled: true,
-                        fillColor: const Color(0x99E4E4E4),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Color(0xFFE4E4E4), width: 1)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Color(0xFFE4E4E4), width: 1)),
+                    ),
+                  ),
+                  // const Text(
+                  //   'Email address',
+                  //   style: TextStyle(
+                  //     fontSize: 15,
+                  //     color: Colors.black,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  const SizedBox(height: 10),
+                  CustomTextField(
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(30),
+                    ],
+                    hintText: 'Email',
+                  ),
+
+                  const SizedBox(height: 40),
+                  Center(
+                    child: SizedBox(
+                      width: 250,
+                      height: 60,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff54854C),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                        onPressed: () {
+                          if (_key.currentState!.validate()) {
+                            loadRegister(_emailController.text);
+                          }
+                        },
+                        // onPressed: isLoading ? null : () => LandlordLoginNewAuth(),
+                        child: isLoading
+                            ? const CircularProgressIndicator(
+                                color: Color(0xff54854C),
+                              )
+                            : const Text(
+                                'Sumbit',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                       ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your email!';
-                        }
-                        return null;
-                      },
                     ),
-                    const SizedBox(height: 16),
-                    const Expanded(child: SizedBox()),
-                    CustomButton(
-                      label: isLoading == false ? 'Send Code' : 'Please wait',
-                      color: Colors.black,
-                      onPressed: () async {
-                        if (_key.currentState!.validate()) {
-                          loadRegister(_emailController.text);
-                        }
-                      },
-                      size: size,
-                      textColor: Colors.white,
-                      borderSide: BorderSide.none,
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
+                  ),
+                  // TextFormField(
+                  //   keyboardType: TextInputType.emailAddress,
+                  //   //obscureText: obscureText,
+                  //   controller: _emailController,
+                  //   autocorrect: false,
+                  //   textCapitalization: TextCapitalization.none,
+
+                  //   inputFormatters: [
+                  //     LengthLimitingTextInputFormatter(30),
+                  //   ],
+                  //   decoration: InputDecoration(
+                  //     hintText: "abc@example.com",
+                  //     labelText: "Email",
+                  //     hintStyle: const TextStyle(color: Color(0xFF666666), fontSize: 13),
+                  //     filled: true,
+                  //     fillColor: const Color(0x99E4E4E4),
+                  //     enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: const BorderSide(color: Color(0xFFE4E4E4), width: 1)),
+                  //     focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: const BorderSide(color: Color(0xFFE4E4E4), width: 1)),
+                  //   ),
+                  //   validator: (value) {
+                  //     if (value!.isEmpty) {
+                  //       return 'Please enter your email!';
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
+                  // const SizedBox(height: 16),
+                  // const Expanded(child: SizedBox()),
+                  // CustomButton(
+                  //   label: isLoading == false ? 'Send Code' : 'Please wait',
+                  //   color: Colors.black,
+                  //   onPressed: () async {
+                  //     if (_key.currentState!.validate()) {
+                  //       loadRegister(_emailController.text);
+                  //     }
+                  //   },
+                  //   size: size,
+                  //   textColor: Colors.white,
+                  //   borderSide: BorderSide.none,
+                  // ),
+                  // const SizedBox(height: 20),
+                ],
               ),
             ),
           ),
@@ -156,12 +203,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       "email": email.trim(),
     };
 
-    final response =
-        await http.post(url, headers: headers, body: jsonEncode(datas));
+    final response = await http.post(url, headers: headers, body: jsonEncode(datas));
 
     Map<String, dynamic> data = jsonDecode(response.body);
 
-    print("response forget ==="+data.toString());
+    print("response forget ===" + data.toString());
     if (response.statusCode == 200) {
       setState(() {
         isLoading = false;
@@ -235,8 +281,7 @@ void _showImageAlertDialog(
           ),
           Center(
             child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.orange)),
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange)),
               onPressed: () async {
                 if (pinnumer.toString() == otp) {
                   Navigator.pushReplacement(

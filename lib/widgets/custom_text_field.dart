@@ -18,6 +18,7 @@ class CustomTextField extends StatefulWidget {
   final void Function()? onObscureTap;
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
   const CustomTextField({
     super.key,
     this.padding,
@@ -32,6 +33,7 @@ class CustomTextField extends StatefulWidget {
     this.validator,
     this.formKey,
     this.enabled,
+    this.keyboardType,
   });
 
   @override
@@ -53,7 +55,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
       child: TextFormField(
         controller: widget.controller,
-        keyboardType: TextInputType.visiblePassword,
+        keyboardType: widget.keyboardType ?? TextInputType.visiblePassword,
         obscureText: widget.obscureText != null ? (isObscureText ?? widget.obscureText!) : false,
         focusNode: widget.focusNode,
         validator: widget.validator,

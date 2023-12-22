@@ -132,7 +132,8 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                       ),
                       const SizedBox(width: 4, height: 0.0),
                       GestureDetector(
-                        onTap: () => {
+                        onTap: () {
+                          Navigator.of(context).pop();
                           // Navigator.of(context).pushReplacement(
                           //   MaterialPageRoute(builder: (context) => const LandlordLoginNew()),
                           // ),

@@ -89,29 +89,18 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
         return await _showExitConfirmationDialog(context);
       },
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false, // Remove the back button
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.green,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-          actions: <Widget>[
-            Container(
-              child: Expanded(
+        appBar: PreferredSize(
+          preferredSize: Size(double.infinity, 130),
+          child: AppBar(
+            automaticallyImplyLeading: false, // Remove the back button
+            backgroundColor: Color(0xff54854C),
+            actions: <Widget>[
+              
+              Expanded(
                 child: Column(children: [
                   Row(
                     children: [
-                      SizedBox(
-                        width: 10,
-                      ),
+                      SizedBox(width: 10),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
@@ -130,38 +119,53 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                               // name == null ? "A" : name.substring(0, 1).toUpperCase(),
                               //  name.toUpperCase(),
                               style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                                color: Color(0xff54854C),
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      SizedBox(width: 8),
                       Text(
                         "Welcome ${name}",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
                 ]),
               ),
+            ], // Empty actions
+            bottom: TabBar(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              labelStyle: TextStyle(fontSize: 16),
+              indicator: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.white, width: 4.0),
+                ),
+              ),
+              // labelColor: const Color(0xff54854C),
+              unselectedLabelColor: Colors.white,
+              controller: _tabController,
+              tabs: const [
+                Tab(text: 'Bill'),
+                Tab(text: 'Document'),
+                Tab(text: 'About'),
+              ],
             ),
-          ], // Empty actions
-          bottom: TabBar(
-            controller: _tabController,
-            tabs: const [
-              Tab(text: 'Bill'),
-              Tab(text: 'Document'),
-              Tab(text: 'About'),
-            ],
           ),
         ),
         body: TabBarView(
           controller: _tabController,
-          children: const [TandentBill(), TandentDocument(), TandentAboutUs()],
+          children: const [
+            TandentBill(),
+            TandentDocument(),
+            TandentAboutUs(),
+          ],
         ),
       ),
     );

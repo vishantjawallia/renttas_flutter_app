@@ -108,80 +108,154 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
               color: Color(0xff54854C),
             ))
           : stcode == "201"
-              ? Center(child: Text("No data Availbale now"))
+              ? Flexible(
+                  fit: FlexFit.tight,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 50),
+                      child: Text(
+                        "About not found !",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
               : SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Column(
                       children: [
                         const SizedBox(height: 20),
-                        Container(child: const Text('Property Details :', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
-                        const SizedBox(
-                          height: 20,
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: const Text(
+                            'Property Details :-',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
                         ),
+                        const SizedBox(height: 18),
                         const Divider(),
                         Row(
-                          children: [Text("Property Name :"), Text(proprname)],
-                        ),
-                        Divider(),
-                        Row(
-                          children: [Text("Address :"), Text(address)],
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          child: Text("Property Owner Details :", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(),
-                        Row(
-                          children: [Text("Owner Name :"), Text(ownername)],
-                        ),
-                        Divider(),
-                        Row(
-                          children: [Text("DOC NAME :"), Text(ownerdocname)],
-                        ),
-                        Divider(),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          child: Text("Rent Details :", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Divider(),
-                        Row(
-                          children: [Text("Rent :"), Text(rent)],
-                        ),
-                        Divider(),
-                        Row(
-                          children: [Text("Maintenance :"), Text(maintanance)],
+                          children: [
+                            Text(
+                              "Property Name :",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              proprname,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
                         ),
                         Divider(),
                         Row(
                           children: [
-                            Text("Rent Cycle"),
+                            Text(
+                              "Address :",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              address,
+                              style: TextStyle(fontSize: 16),
+                            )
                           ],
                         ),
                         Divider(),
-                        SizedBox(
-                          height: 10,
-                        ),
+                        SizedBox(height: 10),
                         Container(
-                          child: Text("Electricity", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                          alignment: Alignment.centerLeft,
+                          child: Text("Property Owner Details :-", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
                         ),
-                        SizedBox(
-                          height: 20,
+                        SizedBox(height: 18),
+                        Divider(),
+                        Row(
+                          children: [
+                            Text(
+                              "Owner Name :",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              ownername,
+                              style: TextStyle(fontSize: 16),
+                            )
+                          ],
                         ),
                         Divider(),
                         Row(
-                          children: [Text("Electricity Type :"), Text(electricy)],
+                          children: [
+                            Text(
+                              "DOC NAME :",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              ownerdocname,
+                              style: TextStyle(fontSize: 16),
+                            )
+                          ],
+                        ),
+                        Divider(),
+                        SizedBox(height: 10),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text("Rent Details :-", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                        ),
+                        SizedBox(height: 18),
+                        Divider(),
+                        Row(
+                          children: [
+                            Text(
+                              "Rent :",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              rent,
+                              style: TextStyle(fontSize: 16),
+                            )
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          children: [
+                            Text(
+                              "Maintenance :",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              maintanance,
+                              style: TextStyle(fontSize: 16),
+                            )
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          children: [
+                            Text(
+                              "Rent Cycle",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Divider(),
+                        SizedBox(height: 10),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text("Electricity:-", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                        ),
+                        SizedBox(height: 18),
+                        Divider(),
+                        Row(
+                          children: [
+                            Text(
+                              "Electricity Type :",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              electricy,
+                              style: TextStyle(fontSize: 16),
+                            )
+                          ],
                         ),
                         Divider(),
                       ],
