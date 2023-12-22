@@ -7,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Common/ApiUrl.dart';
@@ -32,215 +33,249 @@ class _TandentBillState extends State<TandentBill> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       userId = prefs.getString('userId') ?? '';
       name = prefs.getString('name') ?? '';
       mobile = prefs.getString('phone') ?? '';
-      loadBill(mobile);
     });
+    loadBill(mobile);
   }
 
   bool isLoading = false;
 
-  bool isBillTheir = false;
-  List<BIllModel> dataList = [];
+  bool isBillTheir = true;
+  List<BIllModel> dataList = [
+    BIllModel(
+        id: "id",
+        landlordId: "landlordId",
+        propertyId: "propertyId",
+        subpropertyId: "subpropertyId",
+        rentCycle: "rentCycle",
+        rentStartDate: "rentStartDate",
+        rentEndDate: "rentEndDate",
+        collectBy: "collectBy",
+        previousBalance: "previousBalance",
+        rentAmount: "rentAmount",
+        maintenanceAmount: "maintenanceAmount",
+        totalAmount: "totalAmount",
+        electricityType: "electricityType",
+        electricCharge: "electricCharge",
+        waterBillType: "waterBillType",
+        waterBillCharge: "waterBillCharge",
+        gasBillType: "gasBillType",
+        gasBillCharge: "gasBillCharge",
+        createdAt: "createdAt",
+        updatedAt: "updatedAt"),
+    BIllModel(
+        id: "id",
+        landlordId: "landlordId",
+        propertyId: "propertyId",
+        subpropertyId: "subpropertyId",
+        rentCycle: "rentCycle",
+        rentStartDate: "rentStartDate",
+        rentEndDate: "rentEndDate",
+        collectBy: "collectBy",
+        previousBalance: "previousBalance",
+        rentAmount: "rentAmount",
+        maintenanceAmount: "maintenanceAmount",
+        totalAmount: "totalAmount",
+        electricityType: "electricityType",
+        electricCharge: "electricCharge",
+        waterBillType: "waterBillType",
+        waterBillCharge: "waterBillCharge",
+        gasBillType: "gasBillType",
+        gasBillCharge: "gasBillCharge",
+        createdAt: "createdAt",
+        updatedAt: "updatedAt"),
+    BIllModel(
+      id: "id",
+      landlordId: "landlordId",
+      propertyId: "propertyId",
+      subpropertyId: "subpropertyId",
+      rentCycle: "rentCycle",
+      rentStartDate: "rentStartDate",
+      rentEndDate: "rentEndDate",
+      collectBy: "collectBy",
+      previousBalance: "previousBalance",
+      rentAmount: "rentAmount",
+      maintenanceAmount: "maintenanceAmount",
+      totalAmount: "totalAmount",
+      electricityType: "electricityType",
+      electricCharge: "electricCharge",
+      waterBillType: "waterBillType",
+      waterBillCharge: "waterBillCharge",
+      gasBillType: "gasBillType",
+      gasBillCharge: "gasBillCharge",
+      createdAt: "createdAt",
+      updatedAt: "updatedAt",
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.only(top: 20),
-      child: Column(
-        children: [
-          // Other widgets
-          isLoading
-              ? Center(
-                  child: CircularProgressIndicator(
-                  color: Color(0xff54854C),
-                ))
-              : dataList.length == 0
-                  ? Flexible(
-                      fit: FlexFit.tight,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 50),
-                          child: Text(
-                            "Bill not found !",
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
+    return isLoading
+        ? GlobalWidgets.loading()
+        : dataList.isEmpty
+            ? GlobalWidgets.notFound('Bill')
+            : Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Visibility(
+                  visible: isBillTheir,
+                  child: Expanded(
+                    child: ListView.builder(
+                      padding: EdgeInsets.only(top: 10),
+                      shrinkWrap: true,
+                      itemCount: dataList.length,
+                      itemBuilder: (context, index) {
+                        final bill = dataList[index];
+                        return Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                        ),
-                      ),
-                    )
-                  : Visibility(
-                      visible: isBillTheir,
-                      child: Expanded(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: dataList.length,
-                          itemBuilder: (context, index) {
-                            final bill = dataList[index];
-                            return Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 10),
+                              Row(
                                 children: [
-                                  SizedBox(height: 10),
-                                  Row(
+                                  SizedBox(width: 10),
+                                  Text(
+                                    bill.rentStartDate,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    name,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  SizedBox(width: 50),
+                                  Text(
+                                    bill.totalAmount.toString(),
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => BillViewPage(
+                                                      Data: bill,
+                                                      type: '0',
+                                                    )));
+                                      },
+                                      icon: Icon(Icons.arrow_forward_ios)),
+                                ],
+                              ),
+                              Divider(
+                                color: Colors.grey,
+                                height: 30,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Column(
                                     children: [
-                                      SizedBox(width: 10),
-                                      Text(
-                                        bill.rentStartDate,
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      SizedBox(width: 5),
-                                      Text(
-                                        name,
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      SizedBox(width: 50),
-                                      Text(
-                                        bill.totalAmount.toString(),
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
                                       IconButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) => BillViewPage(
-                                                          Data: bill,
-                                                          type: '0',
-                                                        )));
-                                          },
-                                          icon: Icon(Icons.arrow_forward_ios)),
+                                        onPressed: () {
+                                          showbottomsheet(context, bill.id);
+                                          /* _showBottomSheet(
+                                              context, bill['id']);*/
+                                        },
+                                        icon: Icon(Icons.add_box),
+                                      ),
+                                      Text('Receive'),
                                     ],
                                   ),
-                                  Divider(
-                                    color: Colors.grey,
-                                    height: 30,
+                                  SizedBox(
+                                    width: 50,
                                   ),
-                                  Row(
+                                  Column(
                                     children: [
-                                      SizedBox(
-                                        width: 30,
+                                      IconButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
+                                            ),
+                                          );
+                                          String message = "Hii their your Bill form is ";
+                                          /* shareOnWhatsApp(message);*/
+                                        },
+                                        icon: Icon(Icons.share),
                                       ),
-                                      Column(
-                                        children: [
-                                          IconButton(
-                                            onPressed: () {
-                                              showbottomsheet(context, bill.id);
-                                              /* _showBottomSheet(
-                                            context, bill['id']);*/
-                                            },
-                                            icon: Icon(Icons.add_box),
-                                          ),
-                                          Text('Receive'),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        width: 50,
-                                      ),
-                                      Column(
-                                        children: [
-                                          IconButton(
-                                            onPressed: () {
+                                      Text('Share'),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Column(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () async {
+                                          if (Platform.isAndroid) {
+                                            var status = await Permission.storage.status;
+                                            if (status != PermissionStatus.granted) {
+                                              status = await Permission.storage.request();
+                                            }
+                                            if (status.isGranted) {
+                                              //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                                              //   Directory dir = Directory(downloadsFolderPath);
+                                              // var file=  makePdf(bill,selectedSubPropertyName);
+                                              //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
+
                                               Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                   builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
                                                 ),
                                               );
-                                              String message = "Hii their your Bill form is ";
-                                              /* shareOnWhatsApp(message);*/
-                                            },
-                                            icon: Icon(Icons.share),
-                                          ),
-                                          Text('Share'),
-                                        ],
+                                            }
+                                          }
+                                        },
+                                        icon: Icon(Icons.downloading_outlined),
                                       ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Column(
-                                        children: [
-                                          IconButton(
-                                            onPressed: () async {
-                                              if (Platform.isAndroid) {
-                                                var status = await Permission.storage.status;
-                                                if (status != PermissionStatus.granted) {
-                                                  status = await Permission.storage.request();
-                                                }
-                                                if (status.isGranted) {
-                                                  //   const downloadsFolderPath = '/storage/emulated/0/Download/';
-                                                  //   Directory dir = Directory(downloadsFolderPath);
-                                                  // var file=  makePdf(bill,selectedSubPropertyName);
-                                                  //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
-
-                                                  Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                      builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
-                                                    ),
-                                                  );
-                                                }
-                                              }
-                                            },
-                                            icon: Icon(Icons.downloading_outlined),
-                                          ),
-                                          Text('Download'),
-                                        ],
-                                      ),
+                                      Text('Download'),
                                     ],
                                   ),
                                 ],
                               ),
-                            );
-                          },
-                        ),
-                      ),
-                      replacement: Flexible(
-                        fit: FlexFit.tight,
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 50),
-                            child: Text(
-                              "Bill not found !",
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
+                            ],
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     ),
-        ],
-      ),
-    ));
+                  ),
+                  replacement: GlobalWidgets.notFound('Bill'),
+                ),
+              );
   }
 
   Future<void> loadBill(String mobile) async {
     print("billl==" + mobile);
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
     // final url = Uri.parse(ApiUrl.getBillByMobile);
     final Map<String, dynamic> requestData = {
       //"mobileNumber": "1234567890",
@@ -258,36 +293,25 @@ class _TandentBillState extends State<TandentBill> {
       body: jsonEncode(requestData),
     );
 
-//     final request =
-//     await http.Request('POST', Uri.parse("${ApiUrl.getBillByMobile}${mobile}"));
-//     request.body =
-//         jsonEncode({
-//           "mobile":mobile
-//         });
-//     final response = await request.send();
-//
-//     final stream = response.stream;
-//     final body = await stream.bytesToString();
     print("resppp====" + response.body);
-    setState(() {
-      isLoading = false;
-    });
+    setState(() => isLoading = false);
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = jsonDecode(response.body);
       //  final jsonData = jsonDecode(body);
       final List<dynamic> data = jsonData['data'];
 
-      for (var billData in data) {
-        dataList.add(BIllModel.fromJson(billData));
+      if (data.isNotEmpty) {
+        dataList.addAll(BIllModel.fromJsonList(data));
       }
-      if (dataList.isNotEmpty) {
-        isBillTheir = true;
-      } else {
-        isBillTheir = false;
-      }
-      setState(() {
-        isLoading = false; // Set loading state to false after the data is loaded
-      });
+      // for (var billData in data) {
+      //   dataList.add(BIllModel.fromJson(billData));
+      // }
+      // if (dataList.isNotEmpty) {
+      //   isBillTheir = true;
+      // } else {
+      //   isBillTheir = false;
+      // }
+      setState(() => isLoading = false);
     }
   }
 

@@ -16,54 +16,47 @@ class _LandlordAddPropertyState extends State<LandlordAddProperty> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.black,
-                Colors.green,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ),
+        backgroundColor: const Color(0xff54854C),
         title: const Text('Add Property'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AddPropertyLanlord(
-                      type: "1",
-                      userid: "0" '',
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 370),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddPropertyLanlord(
+                        type: "1",
+                        userid: "0" '',
+                      ),
                     ),
-                  ),
-                );
-              },
-              child: PropertyCard(
-                title: 'Residential Property',
-                description: 'A beautiful home in a peaceful neighborhood.',
-                icon: Icons.home,
-                color: Colors.blue,
+                  );
+                },
+                child: PropertyCard(
+                  title: 'Residential Property',
+                  description: 'A beautiful home in a peaceful neighborhood.',
+                  icon: Icons.home,
+                  color: Colors.blue,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            GestureDetector(
-              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
-              child: PropertyCard(
-                title: 'Commercial Property',
-                description: 'A prime location for your business venture.',
-                icon: Icons.business,
-                color: Colors.orange,
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
+                child: PropertyCard(
+                  title: 'Commercial Property',
+                  description: 'A prime location for your business venture.',
+                  icon: Icons.business,
+                  color: Colors.orange,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

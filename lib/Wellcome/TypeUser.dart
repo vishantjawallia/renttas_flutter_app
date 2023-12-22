@@ -80,7 +80,7 @@ class _TypeUserState extends State<TypeUser> {
                           ),
                         ),
                         Text(
-                          "Create property and manage Property",
+                          "Create property and manage \nProperty",
                           style: GoogleFonts.kanit(
                             fontSize: 13,
                           ),

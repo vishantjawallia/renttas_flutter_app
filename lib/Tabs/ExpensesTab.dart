@@ -187,7 +187,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                               'Expense not found !',
                               style: TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w500,
                                 color: Colors.grey,
                               ),
                             ),

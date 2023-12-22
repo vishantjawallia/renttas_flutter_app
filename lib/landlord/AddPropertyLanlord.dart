@@ -29,6 +29,7 @@ class AddPropertyLanlord extends StatefulWidget {
 class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
   final TextEditingController landlordIdController = TextEditingController();
   final TextEditingController propertyNameController = TextEditingController();
+  final TextEditingController subpropertyNameController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
   String landlordId = '';
   bool isloading = false;
@@ -117,6 +118,11 @@ class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
                 controller: propertyNameController,
                 iconData: Icons.margin,
                 hintText: 'Property Name',
+              ),
+              CustomTextField(
+                controller: subpropertyNameController,
+                iconData: Icons.subject_rounded,
+                hintText: 'Sub Property Name',
               ),
               CustomTextField(
                 controller: locationController,

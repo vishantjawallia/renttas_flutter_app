@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
+import '../widgets/global_widget.dart';
 
 class TandentAboutUs extends StatefulWidget {
   const TandentAboutUs({Key? key}) : super(key: key);
@@ -22,7 +23,15 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
   String stcode = "";
   bool isLoading = false;
   bool isDocTheir = false;
-  String proprname = "", address = "", ownername = "", ownerdocname = "", image = "", rent = "", maintanance = "", electricy = "";
+  String proprname = "";
+
+  String address = "";
+  String ownername = "";
+  String ownerdocname = "";
+  String image = "";
+  String rent = "";
+  String maintanance = "";
+  String electricy = "";
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -30,33 +39,27 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
       userId = prefs.getString('userId') ?? '';
       name = prefs.getString('name') ?? '';
       mobile = prefs.getString('phone') ?? '';
-      loadDoc(mobile);
     });
+    // await Future.delayed(Duration(seconds: 2));
+    loadDoc(mobile);
   }
 
   Future<void> loadDoc(String mobile) async {
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
 
-    Map data = {
-      //"mobileNumber": "1234567890"
-      "mobileNumber": mobile
-    };
-    final headerss = {
-      'Content-Type': 'application/json',
-    };
+    Map data = {"mobileNumber": mobile};
+
+    final headerss = {'Content-Type': 'application/json'};
+
     print(data.toString());
     final response = await http.post(
       Uri.parse(ApiUrl.getDocComplteByMobile),
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isLoading = false;
-    });
+    setState(() => isLoading = false);
     print("get Doccompletemobile ===" + response.body);
 
     if (response.statusCode == 200) {
@@ -82,46 +85,31 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
-        setState(() {
-          stcode = 201.toString();
-        });
+        setState(() => stcode = 201.toString());
       }
     } else {
-      setState(() {
-        stcode = 201.toString();
-      });
+      setState(() => stcode = 201.toString());
     }
   }
 
   @override
   void initState() {
-    loadData();
     super.initState();
+    loadData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: isLoading == true
-          ? Center(
-              child: CircularProgressIndicator(
-              color: Color(0xff54854C),
-            ))
+    return Container(
+      child: isLoading == true
+          ? GlobalWidgets.loading()
           : stcode == "201"
-              ? Flexible(
-                  fit: FlexFit.tight,
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 50),
-                      child: Text(
-                        "About not found !",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                )
+              ? GlobalWidgets.notFound('About')
               : SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8.0),

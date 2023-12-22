@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:renttas_flutter_app/widgets/global_widget.dart';
 
 import '../main.dart';
 
@@ -54,16 +55,19 @@ class _notificationviewState extends State<notificationview> {
       String token = value!;
     });
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xff54854C),
-        title: Text("Notifications"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[],
+        appBar: AppBar(
+          backgroundColor: Color(0xff54854C),
+          title: Text("Notifications"),
         ),
-      ),
-    );
+        body: GlobalWidgets.notFound('Notification')
+        // Center(
+        //   child: Column(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: const <Widget>[
+
+        //     ],
+        //   ),
+        // ),
+        );
   }
 }

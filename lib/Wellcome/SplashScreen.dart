@@ -52,13 +52,13 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     await Future.delayed(const Duration(seconds: 3));
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    bool newuser = prefs.getBool('login') ?? true;
+    bool login = prefs.getBool('login') ?? false;
     String sw = prefs.getString("sw") ?? "0";
-    prefs.clear();
+    // prefs.clear();
     log(sw.toString());
-    log(newuser.toString());
+    log(login.toString());
 
-    newuser == true
+    login == true
         ? sw == "1"
             ? Navigator.pushReplacement(
                 context,
@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           );
 
     if (kDebugMode) {
-      print("newwwww----$newuser");
+      print("newwwww----$login");
     }
 
     // setState(() {

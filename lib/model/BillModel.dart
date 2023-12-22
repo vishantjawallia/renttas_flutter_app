@@ -1,3 +1,5 @@
+import 'package:renttas_flutter_app/Tabs/BillsTabs.dart';
+
 class BIllModel {
   final String id;
   final String landlordId;
@@ -58,14 +60,22 @@ class BIllModel {
       maintenanceAmount: json['maintenanceAmount'],
       totalAmount: json['totalAmount'],
       electricityType: json['electricityType'],
-      electricCharge: json['electricCharge']==null?"":json['electricCharge'],
+      electricCharge: json['electricCharge'] == null ? "" : json['electricCharge'],
       waterBillType: json['waterBillType'],
-      waterBillCharge: json['waterBillCharge']==null?"":json['waterBillCharge'],
+      waterBillCharge: json['waterBillCharge'] == null ? "" : json['waterBillCharge'],
       gasBillType: json['gasBillType'],
-      gasBillCharge: json['gasBillCharge']==null?"":json['gasBillCharge'],
+      gasBillCharge: json['gasBillCharge'] == null ? "" : json['gasBillCharge'],
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
     );
+  }
+
+  static List<BIllModel> fromJsonList(List<dynamic> data) {
+    List<BIllModel> value = [];
+    for (Map<String, dynamic> element in data) {
+      value.add(BIllModel.fromJson(element));
+    }
+    return value;
   }
 }
 

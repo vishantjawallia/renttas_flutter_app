@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, void_checks
 
 import 'dart:developer';
 
@@ -8,6 +8,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
+import 'package:renttas_flutter_app/widgets/custom_text_field.dart';
+import 'package:renttas_flutter_app/widgets/global_widget.dart';
 
 import 'LandloardDashBord.dart';
 
@@ -32,18 +34,20 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const LandloardDashBord()),
-          ),
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
+        backgroundColor: const Color(0xff54854C),
+        title: const Text('Add Room'),
+        // backgroundColor: Colors.white,
+        // elevation: 0,
+        // leading: IconButton(
+        //   onPressed: () => Navigator.push(
+        //     context,
+        //     MaterialPageRoute(builder: (context) => const LandloardDashBord()),
+        //   ),
+        //   icon: const Icon(
+        //     Icons.arrow_back,
+        //     color: Colors.black,
+        //   ),
+        // ),
       ),
       body: ListView(
         children: [
@@ -56,77 +60,116 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
                 children: [
                   const SizedBox(height: 80),
                   const Padding(
-                    padding: EdgeInsets.only(left: 18.0),
+                    padding: EdgeInsets.only(left: 20.0, right: 20),
                     child: Text(
-                      'Add Property',
+                      'Add Room',
                       style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 10),
                   SizedBox(
-                    width: screenWidth * 0.95,
-                    height: screenHeight * 0.26,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: screenWidth * 0.05),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 4),
-                            child: TextFormField(
-                              controller: subPropertyController,
-                              decoration: const InputDecoration(
-                                // icon: Icon(Icons.home),
-                                hintText: 'Enter your Address details',
-                                labelText: 'Property *',
-                              ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your property name!';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            height: screenHeight * 0.06,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color.fromARGB(255, 76, 16, 181),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(9.0),
-                                ),
-                              ),
-                              onPressed: isLoading
-                                  ? null
-                                  : () {
-                                      final isValid = _formKey.currentState!.validate();
-                                      if (!isValid) {
-                                        return;
-                                      }
-                                      _formKey.currentState!.save();
+                    // width: screenWidth * 0.95,
+                    // height: screenHeight * 0.26,
+                    child: Column(
+                      children: [
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(horizontal: 4),
+                        //   child: TextFormField(
+                        //     controller: subPropertyController,
+                        //     decoration: const InputDecoration(
+                        //       // icon: Icon(Icons.home),
+                        //       hintText: 'Enter your Address details',
+                        //       labelText: 'Property *',
+                        //     ),
+                        //     validator: (value) {
+                        //       if (value!.isEmpty) {
+                        //         return 'Please enter your property name!';
+                        //       }
+                        //       return null;
+                        //     },
+                        //   ),
+                        // ),
 
-                                      addSubProperty(widget.selectedId, subPropertyController.text);
-                                    },
-                              child: isLoading
-                                  ? const CircularProgressIndicator(
-                                      color: Color(0xff54854C),
-                                    )
-                                  : const Text(
-                                      'ADD PROPERTY',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+                        CustomTextField(
+                          hintText: 'Add Room *',
+                          iconData: Icons.meeting_room_outlined,
+                          controller: subPropertyController,
+                        ),
+                        const SizedBox(height: 30),
+                        SizedBox(
+                          width: 250,
+                          height: 60,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xff54854C),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
                             ),
+                            onPressed: isLoading
+                                ? null
+                                : () {
+                                    if (subPropertyController.text.isEmpty) return GlobalWidgets.toast('Please enter your room name !');
+                                    // final isValid = _formKey.currentState!.validate();
+                                    // if (!isValid) {
+                                    //   return;
+                                    // }
+                                    // _formKey.currentState!.save();
+
+                                    addSubProperty(widget.selectedId, subPropertyController.text);
+                                  },
+                            child: isLoading
+                                ? const CircularProgressIndicator(
+                                    color: Color(0xff54854C),
+                                  )
+                                : const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                           ),
-                        ],
-                      ),
+                        ),
+                        // SizedBox(
+                        //   width: double.infinity,
+                        //   height: screenHeight * 0.06,
+                        //   child: ElevatedButton(
+                        //     style: ElevatedButton.styleFrom(
+                        //       backgroundColor: const Color.fromARGB(255, 76, 16, 181),
+                        //       shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(9.0),
+                        //       ),
+                        //     ),
+                        //     onPressed: isLoading
+                        //         ? null
+                        //         : () {
+                        //             final isValid = _formKey.currentState!.validate();
+                        //             if (!isValid) {
+                        //               return;
+                        //             }
+                        //             _formKey.currentState!.save();
+
+                        //             addSubProperty(widget.selectedId, subPropertyController.text);
+                        //           },
+                        //     child: isLoading
+                        //         ? const CircularProgressIndicator(
+                        //             color: Color(0xff54854C),
+                        //           )
+                        //         : const Text(
+                        //             'ADD PROPERTY',
+                        //             style: TextStyle(
+                        //               fontSize: 18,
+                        //               fontWeight: FontWeight.bold,
+                        //             ),
+                        //           ),
+                        //   ),
+                        // ),
+                      ],
                     ),
                   ),
                 ],

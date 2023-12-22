@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class PropertyCard extends StatelessWidget {
   final String title;
   final String description;
@@ -15,7 +16,7 @@ class PropertyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      width: 320,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,

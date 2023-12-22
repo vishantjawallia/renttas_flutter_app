@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 class Documents {
   final String id;
   final String propertyId;
@@ -30,5 +32,13 @@ class Documents {
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
     );
+  }
+
+  static List<Documents> fromJsonList(List<dynamic> collection) {
+    List<Documents> value = [];
+    for (Map<String, dynamic> element in collection) {
+      value.add(Documents.fromJson(element));
+    }
+    return value;
   }
 }

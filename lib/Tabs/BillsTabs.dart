@@ -105,7 +105,7 @@ class _BillsTabsState extends State<BillsTabs> {
                               'Bill not found !',
                               style: TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w500,
                                 color: Colors.grey,
                               ),
                             ),
@@ -358,7 +358,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                 'Bill not found !',
                                 style: TextStyle(
                                   fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w500,
                                   color: Colors.grey,
                                 ),
                               ),

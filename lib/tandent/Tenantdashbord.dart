@@ -28,9 +28,9 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
 
   @override
   void initState() {
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
     loadData();
-    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -85,22 +85,22 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        return await _showExitConfirmationDialog(context);
-      },
+      onWillPop: () async => await _showExitConfirmationDialog(context),
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(double.infinity, 130),
           child: AppBar(
             automaticallyImplyLeading: false, // Remove the back button
             backgroundColor: Color(0xff54854C),
-            actions: <Widget>[
-              
-              Expanded(
-                child: Column(children: [
-                  Row(
+            title: Column(
+              children: <Widget>[
+                SizedBox(width: 0.0, height: 14),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(width: 10),
+                      // SizedBox(width: 10),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
@@ -115,8 +115,8 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                             backgroundColor: Colors.white,
                             radius: 20,
                             child: Text(
-                              'A',
-                              // name == null ? "A" : name.substring(0, 1).toUpperCase(),
+                              // 'A',
+                              name.isEmpty ? "A" : name.substring(0, 1).toUpperCase(),
                               //  name.toUpperCase(),
                               style: TextStyle(
                                 fontSize: 22,
@@ -127,21 +127,19 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
+                      SizedBox(width: 6),
                       Text(
                         "Welcome ${name}",
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
+                          fontSize: 18,
                         ),
                       ),
                     ],
                   ),
-                ]),
-              ),
-            ], // Empty actions
+                ),
+              ],
+            ),
             bottom: TabBar(
-              padding: EdgeInsets.symmetric(horizontal: 20),
               labelStyle: TextStyle(fontSize: 16),
               indicator: BoxDecoration(
                 border: Border(
@@ -160,6 +158,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
           ),
         ),
         body: TabBarView(
+
           controller: _tabController,
           children: const [
             TandentBill(),

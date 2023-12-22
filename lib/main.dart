@@ -47,7 +47,6 @@ Future<void> main() async {
   ]);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-    
   );
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -68,7 +67,6 @@ Future<void> main() async {
   );
 }
 
-
 // <key>REVERSED_CLIENT_ID</key>
 // <string>com.googleusercontent.app-1-115824667190-ios-10168919e60d7f9aa90697</string>
 class MyApp extends StatelessWidget {
@@ -82,7 +80,10 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       builder: BotToastInit(),
-       navigatorObservers: [BotToastNavigatorObserver()],
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      navigatorObservers: [BotToastNavigatorObserver()],
       home: const SplashScreen(),
     );
   }

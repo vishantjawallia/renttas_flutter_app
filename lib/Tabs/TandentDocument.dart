@@ -9,6 +9,7 @@ import 'package:renttas_flutter_app/model/Document.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../TabAction/LoadDocImage.dart';
+import '../widgets/global_widget.dart';
 
 class TandentDocument extends StatefulWidget {
   const TandentDocument({Key? key}) : super(key: key);
@@ -24,11 +25,24 @@ class _TandentDocumentState extends State<TandentDocument> {
   String host = '';
   bool isLoading = false;
   bool isDocTheir = false;
-  List<Documents> dataList = [];
+  List<Documents> dataList = [
+    Documents(id: "1", propertyId: "", subPropertyId: "", imageName: "", docType: "type2", docName: "Hello", createdAt: "", updatedAt: ""),
+    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+  ];
   @override
   void initState() {
     loadData();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   Future<void> loadData() async {
@@ -37,8 +51,8 @@ class _TandentDocumentState extends State<TandentDocument> {
       userId = prefs.getString('userId') ?? '';
       name = prefs.getString('name') ?? '';
       mobile = prefs.getString('phone') ?? '';
-      loadDoc(mobile);
     });
+    loadDoc(mobile);
   }
 
   @override
@@ -46,122 +60,92 @@ class _TandentDocumentState extends State<TandentDocument> {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: Column(
-        children: [
-          isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(
-                    color: Color(0xff54854C),
-                  ),
-                )
-              : dataList.isEmpty
-                  ? const Flexible(
-                      fit: FlexFit.tight,
-                      child: Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(bottom: 50),
-                          child: Text(
-                            "Documemt not found !",
-                            style: TextStyle(
-                              fontSize: 20,
+    return isLoading
+        ? GlobalWidgets.loading()
+        : dataList.isEmpty
+            ? GlobalWidgets.notFound('Documents')
+            : Visibility(
+                visible: dataList.isNotEmpty,
+                child: Flexible(
+                  child: GridView.builder(
+                    scrollDirection: Axis.vertical,
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.only(right: 20, left: 20, top: 20, bottom: 20),
+                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 250.0, crossAxisSpacing: 10.0, mainAxisSpacing: 10.0),
+                    itemCount: dataList.length,
+                    itemBuilder: (context, index) {
+                      final document = dataList[index];
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 10, right: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                              12,
                             ),
-                          ),
-                        ),
-                      ),
-                    )
-                  : Visibility(
-                      visible: dataList.isNotEmpty,
-                      child: Expanded(
-                        child: GridView.builder(
-                          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 250.0, // Maximum width of each card
-                            crossAxisSpacing: 10.0, // Horizontal space between cards
-                            mainAxisSpacing: 10.0, // Vertical space between cards
-                          ),
-                          itemCount: dataList.length,
-                          itemBuilder: (context, index) {
-                            final document = dataList[index];
-                            return Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                            boxShadow: [const BoxShadow(blurRadius: 0.9, spreadRadius: 0.4, color: Colors.grey)]),
+                        child: Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoadDocImage(imageUrl: ApiUrl.imageurl + document.imageName),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: screenWidth * 1,
+                                height: screenHeight * 0.12,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        'https://images.fastcompany.net/image/upload/w_1250,ar_16:9,c_fill,g_auto,f_auto,q_auto,fl_lossy/wp-cms/uploads/2023/12/p-1-90996792-the-best-thing-you-can-do-to-set-yourself-up-for-a-productive-new-year.webp'
+                                        // '${ApiUrl.imageurl}${document.imageName}',
+                                        ),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
+                            ),
+                            Container(
+                              alignment: Alignment.bottomLeft,
+                              margin: const EdgeInsets.only(top: 12),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const SizedBox(height: 10),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => LoadDocImage(imageUrl: ApiUrl.imageurl + document.imageName),
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      width: screenWidth * 1,
-                                      height: screenHeight * 0.12,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage(
-                                            '${ApiUrl.imageurl}${document.imageName}',
-                                          ),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
+                                  Text(
+                                    document.docName,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey.shade700,
                                     ),
                                   ),
-                                  const Divider(),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Text(
-                                            document.docName,
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                          Text(
-                                            document.docType,
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(width: screenWidth * 0.2),
-                                    ],
+                                  Text(
+                                    document.docType,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey.shade500,
+                                    ),
                                   ),
                                 ],
                               ),
-                            );
-                          },
-                        ),
-                      ),
-                      replacement: const Flexible(
-                        fit: FlexFit.tight,
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(bottom: 50),
-                            child: Text(
-                              "Documemt not found !",
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ),
-                    ),
-        ],
-      ),
-    );
+                      );
+                    },
+                  ),
+                ),
+                replacement: GlobalWidgets.notFound('Documents'),
+              );
   }
 
   Future<void> loadDoc(String mobile) async {
@@ -206,17 +190,19 @@ class _TandentDocumentState extends State<TandentDocument> {
       final List<dynamic> data = responseData['data'];
       // Documents.host = jsonData['data']['host'];
 
-      for (var billData in data) {
-        dataList.add(Documents.fromJson(billData));
+      if (data.isNotEmpty) {
+        dataList.addAll(Documents.fromJsonList(data));
       }
-      if (dataList.isNotEmpty) {
-        isDocTheir = true;
-      } else {
-        isDocTheir = false;
-      }
-      setState(() {
-        isLoading = false; // Set loading state to false after the data is loaded
-      });
+
+      // for (var billData in data) {
+      //   dataList.add(Documents.fromJson(billData));
+      // }
+      // if (dataList.isNotEmpty) {
+      //   isDocTheir = true;
+      // } else {
+      //   isDocTheir = false;
+      // }
+      setState(() => isLoading = false);
     }
   }
 }

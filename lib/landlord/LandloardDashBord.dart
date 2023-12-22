@@ -210,7 +210,9 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
             backgroundColor: Color(0xff54854C),
-            toolbarHeight: isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
+            // toolbarHeight: 200,
+            toolbarHeight: !isSubproperty ? 120 : 200,
+            // toolbarHeight: !isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
             automaticallyImplyLeading: false,
             actions: <Widget>[
               Container(
@@ -258,9 +260,10 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
-                                                SizedBox(
+                                                Container(
                                                   width: 100,
                                                   height: 42.5,
+                                                  alignment: Alignment.center,
                                                   child: Text(
                                                     selectedPropertyName,
                                                     style: TextStyle(
@@ -268,6 +271,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                       fontWeight: FontWeight.w600,
                                                       fontSize: 18,
                                                     ),
+                                                    // textAlign: TextAlign.center,
                                                     overflow: TextOverflow.clip,
                                                   ),
                                                 ),

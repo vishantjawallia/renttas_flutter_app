@@ -57,6 +57,11 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      // appBar: AppBar(
+      //   backgroundColor: Color(0xff54854C),
+      //   elevation: 0,
+      //   // title: ,
+      // ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
@@ -77,7 +82,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                 //   ),
                 // ),
                 child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
+                  physics: BouncingScrollPhysics(),
                   // padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -164,13 +169,13 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                                 child: Icon(
                                   _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
                                   size: 24,
+                                  color: Colors.grey,
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ),
-
                       SizedBox(width: 0.0, height: 10),
                       Container(
                         alignment: Alignment.centerRight,
@@ -253,6 +258,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           ),
                         ],
                       ),
+                      SizedBox(width: 0.0, height: 50),
                     ],
                   ),
                 ),
@@ -375,7 +381,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
     print("inshared");
     SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.clear();
-    preferences.setBool("login", false);
+    preferences.setBool("login", true);
     await preferences.setString('userId', userId);
     await preferences.setString('name', name);
     await preferences.setString('email', email);
