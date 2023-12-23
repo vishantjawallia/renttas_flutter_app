@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_unnecessary_containers, curly_braces_in_flow_control_structures
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -301,6 +302,8 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
 
     print("responsedooo===" + response.body);
     final Map<String, dynamic> jsonData = jsonDecode(response.body);
+    log("url===" + url.toString());
+    log("data===" + jsonData.toString());
 
     if (response.statusCode == 200) {
       UserModel user = UserModel.fromJson(jsonData);

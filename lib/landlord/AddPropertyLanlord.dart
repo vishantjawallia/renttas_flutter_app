@@ -94,85 +94,97 @@ class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
 
   @override
   Widget build(BuildContext context) {
-    return ModalProgressHUD(
-      load: isloading,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xff54854C),
-          leading: widget.type != "0" ? const BackButton() : const SizedBox(),
-          title: Text(
-            widget.type == "0" ? 'Add your first property' : 'Add Property',
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff54854C),
+        leading: widget.type != "0" ? const BackButton() : const SizedBox(),
+        title: Text(
+          widget.type == "0" ? 'Add your first property' : 'Add Property',
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 50),
-              CustomTextField(
-                controller: propertyNameController,
-                iconData: Icons.margin,
-                hintText: 'Property Name',
-              ),
-              CustomTextField(
-                controller: subpropertyNameController,
-                iconData: Icons.subject_rounded,
-                hintText: 'Sub Property Name',
-              ),
-              CustomTextField(
-                controller: locationController,
-                iconData: Icons.place,
-                hintText: 'Location',
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: SizedBox(
-                  width: 250,
-                  height: 60,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff54854C),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
+      ),
+      body: Container(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.all(0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
+                  child: Text(
+                    'Add new property :-',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
                     ),
-                    onPressed: () {
-                      addProperty();
-                    },
-                    child: const Text(
-                      'Sumbit',
-                      // widget.type == "0" ? 'Sumbit' : 'Add Property',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                  ),
+                ),
+                // const SizedBox(height: 50),
+                CustomTextField(
+                  controller: propertyNameController,
+                  iconData: Icons.margin,
+                  hintText: 'Property Name',
+                ),
+                CustomTextField(
+                  controller: subpropertyNameController,
+                  iconData: Icons.subject_rounded,
+                  hintText: 'Sub Property Name',
+                ),
+                CustomTextField(
+                  controller: locationController,
+                  iconData: Icons.place,
+                  hintText: 'Location',
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                  child: SizedBox(
+                    width: 250,
+                    height: 60,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff54854C),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      onPressed: () {
+                        addProperty();
+                      },
+                      child: const Text(
+                        'Sumbit',
+                        // widget.type == "0" ? 'Sumbit' : 'Add Property',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              // TextField(
-              //   controller: propertyNameController,
-              //   decoration: const InputDecoration(labelText: 'Property Name'),
-              // ),
-              // const SizedBox(height: 10),
-              // TextField(
-              //   controller: locationController,
-              //   decoration: const InputDecoration(labelText: 'Location'),
-              // ),
-              // const SizedBox(height: 20),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     addProperty();
-              //   },
-              //   child: isloading == false ? Text(widget.type == "0" ? 'Add your first property' : 'Add Property') : const CircularProgressIndicator(color: Color(0xff54854C),),
-              // ),
-            ],
+                // TextField(
+                //   controller: propertyNameController,
+                //   decoration: const InputDecoration(labelText: 'Property Name'),
+                // ),
+                // const SizedBox(height: 10),
+                // TextField(
+                //   controller: locationController,
+                //   decoration: const InputDecoration(labelText: 'Location'),
+                // ),
+                // const SizedBox(height: 20),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     addProperty();
+                //   },
+                //   child: isloading == false ? Text(widget.type == "0" ? 'Add your first property' : 'Add Property') : const CircularProgressIndicator(color: Color(0xff54854C),),
+                // ),
+              ],
+            ),
           ),
         ),
       ),

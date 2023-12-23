@@ -1,7 +1,8 @@
-// ignore_for_file: sort_child_properties_last
+// ignore_for_file: sort_child_properties_last, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_print
 
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -68,146 +69,226 @@ class _ExpensesTabState extends State<ExpensesTab> {
             ),
           ),
           icon: const Icon(Icons.add),
-          backgroundColor: Color(0xff54854C),
-          // backgroundColor: Colors.blue,
+          backgroundColor: const Color(0xff54854C),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.only(top: screenHeight * 0.05),
-          child: Column(
-            children: [
-              // Other widgets
-              isLoading
-                  ? const Flexible(
+        body: Column(
+          children: [
+            // Other widgets
+            isLoading
+                ? const Flexible(
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 60.0),
+                        child: CircularProgressIndicator(
+                          color: Color(0xff54854C),
+                        ),
+                      ),
+                    ),
+                  )
+                : Visibility(
+                    visible: isExpensesTheir,
+                    child: Expanded(
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: expenses.length,
+                        padding: const EdgeInsets.only(top: 20),
+                        itemBuilder: (context, index) {
+                          final expense = expenses[index];
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(8),
+                              elevation: 5,
+                              color: Colors.white,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(8),
+                                onTap: () {},
+                                child: Container(
+                                    padding: const EdgeInsets.only(left: 16, top: 12, bottom: 12, right: 4),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Flexible(
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Column(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        expense.name,
+                                                        style: const TextStyle(
+                                                          fontSize: 20,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(width: 0.0, height: 6),
+                                                      Text(
+                                                        expense.description.toString(),
+                                                        // Convert amount to string
+                                                        style: const TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight: FontWeight.w500,
+                                                          color: Colors.black54,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(width: 0.0, height: 8),
+                                                      Text(
+                                                        "\$ " + expense.amount,
+                                                        // Convert amount to string
+                                                        style: const TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight: FontWeight.bold,
+                                                          color: Colors.red,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () => showAlertDialogdelete(context, expense.id),
+                                              icon: const Icon(
+                                                Icons.delete,
+                                                color: Colors.redAccent,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 16.5),
+                                              child: Text(
+                                                expense.expensesDate.split('T')[0],
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.black54,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    )),
+                              ),
+                            ),
+                          );
+                          // return Card(
+                          //   elevation: 5,
+                          //   shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(10),
+                          //   ),
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.stretch,
+                          //     children: [
+                          //       // SizedBox(height: screenHeight * 0.02),
+                          //       Row(
+                          //         children: [
+                          //           SizedBox(width: screenWidth * 0.02),
+                          //           Text(
+                          //             expense.expensesDate.split('T')[0],
+                          //             style: const TextStyle(
+                          //               fontSize: 12,
+                          //               fontWeight: FontWeight.bold,
+                          //               color: Colors.grey,
+                          //             ),
+                          //           ),
+                          //           // SizedBox(width: screenWidth * 0.03),
+                          //           Column(
+                          //             children: [
+                          //               Text(
+                          //                 expense.name,
+                          //                 style: const TextStyle(
+                          //                   fontSize: 20,
+                          //                   fontWeight: FontWeight.bold,
+                          //                   color: Colors.grey,
+                          //                 ),
+                          //               ),
+                          //               // const SizedBox(width: 10),
+                          //               // Text(
+                          //               //   currency,
+                          //               //   style: const TextStyle(
+                          //               //     fontSize: 16,
+                          //               //     fontWeight: FontWeight.bold,
+                          //               //     color: Colors.blue,
+                          //               //   ),
+                          //               // ),
+                          //               Text(
+                          //                 " " + expense.amount,
+                          //                 // Convert amount to string
+                          //                 style: const TextStyle(
+                          //                   fontSize: 13,
+                          //                   fontWeight: FontWeight.bold,
+                          //                   color: Colors.red,
+                          //                 ),
+                          //               ),
+                          //             ],
+                          //           ),
+                          //           // const SizedBox(width: 50),
+                          //           IconButton(
+                          //             onPressed: () => showAlertDialogdelete(context, expense.id),
+                          //             icon: const Icon(
+                          //               Icons.delete,
+                          //               color: Colors.redAccent,
+                          //             ),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //       Text(
+                          //         expense.description.toString(),
+                          //         // Convert amount to string
+                          //         style: const TextStyle(
+                          //           fontSize: 16,
+                          //           fontWeight: FontWeight.bold,
+                          //           color: Colors.grey,
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // );
+                        },
+                      ),
+                    ),
+                    replacement: const Flexible(
                       child: Center(
                         child: Padding(
                           padding: EdgeInsets.only(bottom: 60.0),
-                          child: CircularProgressIndicator(
-                            color: Color(0xff54854C),
-                          ),
-                        ),
-                      ),
-                    )
-                  : Visibility(
-                      visible: isExpensesTheir,
-                      child: Expanded(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: expenses.length,
-                          // Use the 'expenses' list instead of 'dataList'
-                          itemBuilder: (context, index) {
-                            final expense = expenses[index]; // Use 'expense' from 'expenses' list
-
-                            return Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  SizedBox(height: screenHeight * 0.02),
-                                  Row(
-                                    children: [
-                                      SizedBox(width: screenWidth * 0.02),
-                                      Text(
-                                        expense.expensesDate.split('T')[0],
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      SizedBox(width: screenWidth * 0.03),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            expense.name,
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 10),
-                                          Text(
-                                            currency,
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.blue,
-                                            ),
-                                          ),
-                                          Text(
-                                            " " + expense.amount,
-                                            // Convert amount to string
-                                            style: const TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.red,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(width: 50),
-                                      IconButton(
-                                        onPressed: () => showAlertDialogdelete(context, expense.id),
-                                        icon: const Icon(
-                                          Icons.delete,
-                                          color: Colors.redAccent,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(top: screenHeight * 0.02, left: screenWidth * 0.2),
-                                    child: Text(
-                                      expense.description.toString(),
-                                      // Convert amount to string
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      replacement: const Flexible(
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(bottom: 60.0),
-                            child: Text(
-                              'Expense not found !',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
+                          child: Text(
+                            'Expense not found !',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
                             ),
                           ),
                         ),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(top: 230, left: 90),
-                      //   child: Text(
-                      //     'No Expenses found',
-                      //     style: TextStyle(
-                      //       fontSize: 18,
-                      //       fontWeight: FontWeight.bold,
-                      //       color: Colors.grey,
-                      //     ),
-                      //   ),
-                      // ),
                     ),
-            ],
-          ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 230, left: 90),
+                    //   child: Text(
+                    //     'No Expenses found',
+                    //     style: TextStyle(
+                    //       fontSize: 18,
+                    //       fontWeight: FontWeight.bold,
+                    //       color: Colors.grey,
+                    //     ),
+                    //   ),
+                    // ),
+                  ),
+          ],
         ));
   }
 
@@ -242,7 +323,9 @@ class _ExpensesTabState extends State<ExpensesTab> {
       } else {
         isExpensesTheir = false;
       }
-      print(responseData);
+      if (kDebugMode) {
+        print(responseData);
+      }
     } else {
       print('Request failed with status: ${response.statusCode}');
     }
@@ -285,7 +368,9 @@ class _ExpensesTabState extends State<ExpensesTab> {
                         'Content-Type': 'application/json', // Set the content type header
                       },
                     );
-                    print("expesss--" + response.body);
+                    if (kDebugMode) {
+                      print("expesss--" + response.body);
+                    }
                     setState(() {
                       isLoading = false; // Set loading state to false after the data is loaded
                     });
@@ -311,7 +396,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
       isLoading = true;
     });
 
-    final request = await http.Request('POST', Uri.parse("${ApiUrl.deleteExp}${expensesId}"));
+    final request = http.Request('POST', Uri.parse("${ApiUrl.deleteExp}$expensesId"));
 
     final response = await request.send();
     if (response.statusCode == 200) {

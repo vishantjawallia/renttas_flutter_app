@@ -104,259 +104,264 @@ class _lanlordProfileState extends State<lanlordProfile> {
       body: Container(
         height: double.infinity,
         color: Colors.grey.shade200,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 30.0, right: 8),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 10, left: 5),
-                  padding: const EdgeInsets.only(left: 15),
-                  height: 20,
-                  width: double.infinity,
-                  // color: Colors.grey,
-                  child: const Text(
-                    'User Detail',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 40),
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(
+                  bottom: 10,
+                  left: 5,
+                ),
+                padding: const EdgeInsets.only(left: 15),
+                height: 20,
+                width: double.infinity,
+                // color: Colors.grey.shade300,
+                child: const Text(
+                  'User Detail',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 5),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 5),
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 12, bottom: 20, right: 4, left: 4),
+                    child: Column(children: <Widget>[
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              // height: 30,
+                              // width: 30,
+                              child: Icon(Icons.person),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 14),
+                              child: Text(
+                                name.capitalizeFirstWord(),
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  // fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 0.0, height: 5),
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              // height: 30,
+                              // width: 30,
+                              child: Icon(Icons.email),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 14),
+                              child: Text(
+                                email,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  // fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(top: 10, left: 10),
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              // height: 30,
+                              // width: 30,
+                              child: Icon(Icons.phone),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 14),
+                              child: Text(
+                                phone,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  // fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10, left: 5),
+                padding: const EdgeInsets.only(left: 15),
+                height: 20,
+                width: double.infinity,
+                // color: Colors.grey.shade300,
+                child: const Text(
+                  'Help & Support',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
+                height: 178,
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(top: 12, left: 10),
+                        child: GestureDetector(
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const languageswitchscreen())),
+                          child: Row(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: Icon(Icons.language),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(left: 14),
+                                child: const Text(
+                                  'Choose language ',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                        child: Divider(
+                          color: Colors.grey.shade300,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty()));
+
+                          /// chat whats app
+                          // _launchWhatsapp("8139084095");
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.only(top: 5, left: 10),
+                          child: Row(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: Icon(Icons.merge),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(left: 14),
+                                child: const Text(
+                                  'Merge Properties ',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                        child: Divider(
+                          color: Colors.grey.shade300,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthGate()));
+
+                          /// chat whats app
+                          // _launchWhatsapp("8139084095");
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.only(top: 5, left: 10),
+                          child: Row(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: Icon(Icons.chat),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(left: 14),
+                                child: const Text(
+                                  'Live chat',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10, left: 5),
+                padding: const EdgeInsets.only(left: 15),
+                height: 20,
+                width: double.infinity,
+                // color: Colors.grey.shade300,
+                child: const Text(
+                  'Others',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    right: 5,
+                    left: 5,
+                  ),
                   width: double.infinity,
                   child: Card(
+                    // color: Colors.white70,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 12, bottom: 20, right: 4, left: 4),
-                      child: Column(children: <Widget>[
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                // height: 30,
-                                // width: 30,
-                                child: Icon(Icons.person),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 14),
-                                child: Text(
-                                  name.capitalizeFirstWord(),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    // fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 0.0, height: 5),
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                // height: 30,
-                                // width: 30,
-                                child: Icon(Icons.email),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 14),
-                                child: Text(
-                                  email,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    // fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.only(top: 10, left: 10),
-                          child: Row(
-                            children: [
-                              const SizedBox(
-                                // height: 30,
-                                // width: 30,
-                                child: Icon(Icons.phone),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(left: 14),
-                                child: Text(
-                                  phone,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    // fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ]),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10, left: 5),
-                  padding: const EdgeInsets.only(left: 15),
-                  height: 20,
-                  width: double.infinity,
-                  // color: Colors.grey,
-                  child: const Text(
-                    'Help & Support',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
-                  height: 178,
-                  width: double.infinity,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.only(top: 12, left: 10),
-                          child: GestureDetector(
-                            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const languageswitchscreen())),
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(Icons.language),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Choose language ',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: const Divider(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty()));
-
-                            /// chat whats app
-                            // _launchWhatsapp("8139084095");
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            margin: const EdgeInsets.only(top: 5, left: 10),
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(Icons.merge),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Merge Properties ',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: const Divider(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthGate()));
-
-                            /// chat whats app
-                            // _launchWhatsapp("8139084095");
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            margin: const EdgeInsets.only(top: 5, left: 10),
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(Icons.chat),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Live chat',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10, left: 5),
-                  padding: const EdgeInsets.only(left: 15),
-                  height: 20,
-                  width: double.infinity,
-                  // color: Colors.grey,
-                  child: const Text(
-                    'Others',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
-                    //    alignment: Alignment.center,
-                    height: 300,
-
-                    width: double.infinity,
-                    child: Card(
-                      // color: Colors.white70,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
+                      padding: EdgeInsets.symmetric(vertical: 12),
                       child: Column(children: <Widget>[
                         InkWell(
                           onTap: () async {
@@ -375,7 +380,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                           },
                           child: Container(
                             width: double.infinity,
-                            margin: const EdgeInsets.only(top: 12, left: 10),
+                            margin: const EdgeInsets.only(left: 10),
                             child: Row(
                               children: [
                                 const SizedBox(
@@ -396,8 +401,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: const Divider(
-                            color: Colors.grey,
+                          child: Divider(
+                            color: Colors.grey.shade300,
                           ),
                         ),
                         InkWell(
@@ -427,8 +432,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: const Divider(
-                            color: Colors.grey,
+                          child: Divider(
+                            color: Colors.grey.shade300,
                           ),
                         ),
                         Container(
@@ -456,8 +461,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: const Divider(
-                            color: Colors.grey,
+                          child: Divider(
+                            color: Colors.grey.shade300,
                           ),
                         ),
                         Container(
@@ -489,8 +494,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: const Divider(
-                            color: Colors.grey,
+                          child: Divider(
+                            color: Colors.grey.shade300,
                           ),
                         ),
                         GestureDetector(
@@ -522,8 +527,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

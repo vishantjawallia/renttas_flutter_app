@@ -19,11 +19,12 @@ class AboutTab extends StatefulWidget {
   State<AboutTab> createState() => _AboutTabState();
 }
 
-class _AboutTabState extends State<AboutTab> {
+class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin {
   TextEditingController addressControler = TextEditingController();
   TextEditingController pinCode = TextEditingController();
   TextEditingController propertyOwner = TextEditingController();
   TextEditingController documentName = TextEditingController();
+  late TabController _tabController1;
 
   String selectedPropertyId = '';
   String selectedSubProptyId = '';
@@ -68,9 +69,10 @@ class _AboutTabState extends State<AboutTab> {
   @override
   void initState() {
     //getdoc();
-    loadData();
+    _tabController1 = TabController(length: 2, vsync: this);
 
     super.initState();
+    loadData();
     KeyboardVisibilityController().onChange.listen((bool visible) {
       setState(() {
         isKeyboardVisible = visible;
@@ -80,6 +82,7 @@ class _AboutTabState extends State<AboutTab> {
 
   @override
   void dispose() {
+    _tabController1.dispose();
     super.dispose();
   }
 
@@ -103,23 +106,24 @@ class _AboutTabState extends State<AboutTab> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const TabBar(
+                    child: TabBar(
                       isScrollable: true,
-                      indicator: BoxDecoration(
+                      indicator: const BoxDecoration(
                         color: Color(0xff54854C),
                         // color: Colors.blue,
                       ),
                       labelColor: Colors.white,
+                      controller: _tabController1,
                       unselectedLabelColor: Colors.black,
-                      tabs: [
-                        Tab(
-                          text: 'Property Details',
-                        ),
+                      tabs: const [
+                        Tab(text: 'Property Details'),
+                        Tab(text: 'Rent Details'),
                       ],
                     ),
                   ),
                   Expanded(
                       child: TabBarView(
+                    controller: _tabController1,
                     children: [
                       Column(
                         // mainAxisAlignment: MainAxisAlignment.center,
@@ -416,29 +420,25 @@ class _AboutTabState extends State<AboutTab> {
                                 )
                         ],
                       ),
-
-                      // Column(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: [
-                      //     Center(
-                      //       child: Text(
-                      //         'No rent details are added to the property.',
-                      //         textAlign: TextAlign.center,
-                      //       ),
-                      //     ),
-                      //     SizedBox(
-                      //       height: 30,
-                      //     ),
-                      //     ElevatedButton(
-                      //       onPressed: () {},
-                      //       child: Text(' + Click to add rent'),
-                      //       style: ElevatedButton.styleFrom(
-                      //           backgroundColor: Colors.blue,
-                      //           shape: RoundedRectangleBorder(
-                      //               borderRadius: BorderRadius.circular(10))),
-                      //     ),
-                      //   ],
-                      // ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Center(
+                            child: Text(
+                              'No rent details are added to the property.',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: const Text(' + Click to add rent'),
+                            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                          ),
+                        ],
+                      ),
                     ],
                   )),
                 ],

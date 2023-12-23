@@ -88,7 +88,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           height: 400,
           child: Column(
             children: [
@@ -133,11 +133,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                             navigateToFirstTab();
                           },
                           child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(width: 1, color: Colors.grey),
-                                borderRadius: BorderRadius.circular(8),
-                                // color: Colors.grey.shade300,
-                              ),
+                              decoration: BoxDecoration(border: Border.all(width: 1, color: Colors.grey), borderRadius: BorderRadius.circular(8)),
                               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -211,7 +207,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
           appBar: AppBar(
             backgroundColor: Color(0xff54854C),
             // toolbarHeight: 200,
-            toolbarHeight: !isSubproperty ? 120 : 200,
+            toolbarHeight: !isSubproperty ? 126 : 200,
             // toolbarHeight: !isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
             automaticallyImplyLeading: false,
             actions: <Widget>[
@@ -369,7 +365,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                             ],
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: isSubproperty ? 20 : 0),
                         if (isSubproperty)
                           Align(
                             alignment: Alignment.topLeft,
@@ -437,8 +433,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                 selectedSubpropertyName = selectedSubProperty[index].subPropertyName;
                                                 selectedSubPropertyId = selectedSubProperty[index].id;
                                                 print("selectedSubpropertyID: $selectedPropertyId");
-                                                navigateToFirstTab();
                                               });
+                                              navigateToFirstTab();
                                               await saveSelectedSubProperty(selectedSubPropertyId, selectedSubpropertyName);
                                             },
                                             child: Container(
@@ -509,17 +505,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                       fontSize: 18,
                     ),
                     indicator: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(3),
-                        bottomRight: Radius.circular(3),
-                        topLeft: Radius.circular(0),
-                        topRight: Radius.circular(0),
-                      ),
                       border: Border(
                         bottom: BorderSide(color: Color(0xff54854C), width: 4.0),
-                        top: BorderSide(color: Color(0xff54854C), width: 0),
-                        left: BorderSide(color: Color(0xff54854C), width: 0),
-                        right: BorderSide(color: Color(0xff54854C), width: 0),
                       ),
                     ),
                     labelColor: const Color(0xff54854C),
@@ -570,16 +557,16 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
     String aaa = getCurrency();
     print("sssssssasasasa===" + aaa);
 
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
     propertyLists.clear();
 
-    final Map<String, dynamic> requestData = {"landlordId": landlordId, "fcmtocken": token, "countrycode": counrtycode, "currencysymbol": aaa};
-
-    final headers = {
-      'Content-Type': 'application/json',
+    final Map<String, dynamic> requestData = {
+      "landlordId": landlordId,
+      "fcmtocken": token,
+      "countrycode": counrtycode,
+      "currencysymbol": aaa,
     };
+
     final request = http.Request('POST', Uri.parse(ApiUrl.getPropertyUserID))
       ..headers.addAll({
         'Content-type': 'application/json',
@@ -592,8 +579,11 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
     final body = await stream.bytesToString();
 
     final data = jsonDecode(body);
+    log("requestData===" + requestData.toString());
     log("assssssssssssssssssss===" + data.toString());
+    log("url===" + request.url.toString());
     List<dynamic>? dataList = data['data'];
+
     if (dataList != null) {
       final List<dynamic> jsonData = dataList;
 
@@ -618,15 +608,11 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
           selectedSubpropertyName = firstSubProperty.subPropertyName;
           selectedSubPropertyId = firstSubProperty.id;
           selectedSubProperty = firstProperty.subProperties;
-          setState(() {
-            isSubproperty = true;
-          });
+          setState(() => isSubproperty = true);
           // Savesubpropsave()
           print("First Sub-Property: ${firstSubProperty.subPropertyName}");
         } else {
-          setState(() {
-            isSubproperty = false;
-          });
+          setState(() => isSubproperty = false);
           print("No sub-properties available for the first property.");
         }
       } else {

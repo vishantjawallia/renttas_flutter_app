@@ -49,134 +49,102 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
         //   ),
         // ),
       ),
-      body: ListView(
-        children: [
-          Form(
-            key: _formKey,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 80),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20.0, right: 20),
-                    child: Text(
-                      'Add Room',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    // width: screenWidth * 0.95,
-                    // height: screenHeight * 0.26,
-                    child: Column(
-                      children: [
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: 4),
-                        //   child: TextFormField(
-                        //     controller: subPropertyController,
-                        //     decoration: const InputDecoration(
-                        //       // icon: Icon(Icons.home),
-                        //       hintText: 'Enter your Address details',
-                        //       labelText: 'Property *',
-                        //     ),
-                        //     validator: (value) {
-                        //       if (value!.isEmpty) {
-                        //         return 'Please enter your property name!';
-                        //       }
-                        //       return null;
-                        //     },
-                        //   ),
-                        // ),
-
-                        CustomTextField(
-                          hintText: 'Add Room *',
-                          iconData: Icons.meeting_room_outlined,
-                          controller: subPropertyController,
-                        ),
-                        const SizedBox(height: 30),
-                        SizedBox(
-                          width: 250,
-                          height: 60,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xff54854C),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                            ),
-                            onPressed: isLoading
-                                ? null
-                                : () {
-                                    if (subPropertyController.text.isEmpty) return GlobalWidgets.toast('Please enter your room name !');
-                                    // final isValid = _formKey.currentState!.validate();
-                                    // if (!isValid) {
-                                    //   return;
-                                    // }
-                                    // _formKey.currentState!.save();
-
-                                    addSubProperty(widget.selectedId, subPropertyController.text);
-                                  },
-                            child: isLoading
-                                ? const CircularProgressIndicator(
-                                    color: Color(0xff54854C),
-                                  )
-                                : const Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                          ),
-                        ),
-                        // SizedBox(
-                        //   width: double.infinity,
-                        //   height: screenHeight * 0.06,
-                        //   child: ElevatedButton(
-                        //     style: ElevatedButton.styleFrom(
-                        //       backgroundColor: const Color.fromARGB(255, 76, 16, 181),
-                        //       shape: RoundedRectangleBorder(
-                        //         borderRadius: BorderRadius.circular(9.0),
-                        //       ),
-                        //     ),
-                        //     onPressed: isLoading
-                        //         ? null
-                        //         : () {
-                        //             final isValid = _formKey.currentState!.validate();
-                        //             if (!isValid) {
-                        //               return;
-                        //             }
-                        //             _formKey.currentState!.save();
-
-                        //             addSubProperty(widget.selectedId, subPropertyController.text);
-                        //           },
-                        //     child: isLoading
-                        //         ? const CircularProgressIndicator(
-                        //             color: Color(0xff54854C),
-                        //           )
-                        //         : const Text(
-                        //             'ADD PROPERTY',
-                        //             style: TextStyle(
-                        //               fontSize: 18,
-                        //               fontWeight: FontWeight.bold,
-                        //             ),
-                        //           ),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 40),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'Add Room:-',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
-          )
-        ],
+            const SizedBox(height: 14),
+            Column(
+              children: [
+                CustomTextField(
+                  hintText: 'Add Room *',
+                  iconData: Icons.meeting_room_outlined,
+                  controller: subPropertyController,
+                ),
+                const SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 60,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff54854C),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      onPressed: isLoading
+                          ? null
+                          : () {
+                              if (subPropertyController.text.isEmpty) return GlobalWidgets.toast('Please enter your room name !');
+                              addSubProperty(widget.selectedId, subPropertyController.text);
+                            },
+                      child: isLoading
+                          ? const CircularProgressIndicator(
+                              color: Color(0xff54854C),
+                            )
+                          : const Text(
+                              'Sumbit',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                    ),
+                  ),
+                ),
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: screenHeight * 0.06,
+                //   child: ElevatedButton(
+                //     style: ElevatedButton.styleFrom(
+                //       backgroundColor: const Color.fromARGB(255, 76, 16, 181),
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(9.0),
+                //       ),
+                //     ),
+                //     onPressed: isLoading
+                //         ? null
+                //         : () {
+                //             final isValid = _formKey.currentState!.validate();
+                //             if (!isValid) {
+                //               return;
+                //             }
+                //             _formKey.currentState!.save();
+
+                //             addSubProperty(widget.selectedId, subPropertyController.text);
+                //           },
+                //     child: isLoading
+                //         ? const CircularProgressIndicator(
+                //             color: Color(0xff54854C),
+                //           )
+                //         : const Text(
+                //             'ADD PROPERTY',
+                //             style: TextStyle(
+                //               fontSize: 18,
+                //               fontWeight: FontWeight.bold,
+                //             ),
+                //           ),
+                //   ),
+                // ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

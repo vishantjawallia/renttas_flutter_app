@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'NextRentBillCycle.dart';
@@ -55,15 +56,7 @@ class _BillTabActionState extends State<BillTabAction> {
   String previousBalanceType = '';
 
   final List<String> rentCycles = ["Monthly"];
-  final List<String> weeks = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
-  ];
+  final List<String> weeks = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   final List<String> balance = ['Monthly', 'Pending', 'NoBalance'];
   final List<String> dayNames = [
     '1',
@@ -113,129 +106,137 @@ class _BillTabActionState extends State<BillTabAction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.black,
-                Colors.green,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back),
-          color: Colors.black,
-        ),
-        title: Text('RENTTAS ', style: TextStyle(color: Colors.black)),
+        backgroundColor: const Color(0xff54854C),
+        leading: const BackButton(),
+        title: const Text('RENTTAS ', style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 20,
-            margin: EdgeInsets.only(top: 10),
-            child: Text(
-              'When Do You Collect Rent',
-              style: TextStyle(color: Colors.grey, fontSize: 18),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              children: [
-                if (showRentCycle) showDefultData(),
-                if (!showRentCycle) showDataWiget(),
-                Container(
-                  margin: EdgeInsets.only(top: 10, left: 5),
-                  padding: EdgeInsets.only(left: 15),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(width: 0.0, height: 10),
+              Center(
+                child: Container(
                   height: 20,
-                  width: double.infinity,
-                  // color: Colors.grey,
-                  child: Text(
-                    'Monthly Fixed Charges',
+                  margin: const EdgeInsets.only(top: 10),
+                  child: const Text(
+                    'When Do You Collect Rent',
                     style: TextStyle(
-                      fontSize: 16,
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+              ),
+              const SizedBox(width: 0.0, height: 24),
+
+              if (showRentCycle) showDefultData(),
+
+              if (!showRentCycle) showDataWiget(),
+
+              const SizedBox(width: 0.0, height: 10),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: const Text(
+                  'Monthly Fixed Charges',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
+                ),
+              ),
+              Material(
+                borderRadius: BorderRadius.circular(8),
+                elevation: 5,
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Column(
                     children: <Widget>[
                       if (showPreviousBalance)
-                        Container(
-                          width: double.infinity,
-                          margin: EdgeInsets.only(top: 10, left: 10),
-                          child: Row(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(right: 50, left: 10),
-                                child: Text(
-                                  'Previous Balance ',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Previous Balance',
+                              style: TextStyle(
+                                fontSize: 16,
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  _previousBalance((updatedBalance) {
-                                    setState(() {
-                                      previousBalance = updatedBalance;
-                                      showPreviousBalance = false;
-                                    });
+                            ),
+                            OutlinedButton(
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                                overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+                              ),
+                              onPressed: () {
+                                _previousBalance((updatedBalance) {
+                                  setState(() {
+                                    previousBalance = updatedBalance;
+                                    showPreviousBalance = false;
                                   });
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.only(left: 50),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.add,
-                                              color: Colors.blueAccent),
-                                          Text(
-                                            "Add",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.lightBlueAccent,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                });
+                              },
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.add),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    'ADD',
+                                    style: TextStyle(),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     _previousBalance((updatedBalance) {
+                            //       setState(() {
+                            //         previousBalance = updatedBalance;
+                            //         showPreviousBalance = false;
+                            //       });
+                            //     });
+                            //   },
+                            //   child: Container(
+                            //     padding: const EdgeInsets.only(left: 50),
+                            //     child: Align(
+                            //       alignment: Alignment.centerRight,
+                            //       child: Container(
+                            //         child: const Row(
+                            //           children: [
+                            //             Icon(Icons.add, color:  Color(0xff54854C)),
+                            //             Text(
+                            //               "Add",
+                            //               style: TextStyle(
+                            //                 fontSize: 16,
+                            //                 fontWeight: FontWeight.w500,
+                            //                 color: Colors.lightBlueAccent,
+                            //               ),
+                            //             ),
+                            //           ],
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
                         ),
                       if (!showPreviousBalance)
-                        Container(
-                          width: double.infinity,
-                          margin: EdgeInsets.only(top: 10, left: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 14),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                padding: EdgeInsets.only(right: 50, left: 10),
-                                child: Text(
-                                  'Previous Balance ',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                              const Text(
+                                'Previous Balance',
+                                style: TextStyle(fontSize: 16),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -246,20 +247,14 @@ class _BillTabActionState extends State<BillTabAction> {
                                     });
                                   });
                                 },
-                                child: Container(
-                                  padding: EdgeInsets.only(left: 50),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Container(
-                                      child: InkWell(
-                                        child: Text(
-                                          previousBalance.toString() + " >",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
+                                child: InkWell(
+                                  child: SizedBox(
+                                    width: 80,
+                                    child: Text(
+                                      "$previousBalance >",
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.black54,
                                       ),
                                     ),
                                   ),
@@ -271,26 +266,23 @@ class _BillTabActionState extends State<BillTabAction> {
                       if (showFixedCharges)
                         Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: double.infinity,
-                              margin: EdgeInsets.only(
-                                top: 10,
-                                left: 10,
-                              ),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 70, left: 10),
-                                    child: Text(
-                                      'Fixed Charges ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                  const Text(
+                                    'Fixed Charges',
+                                    style: TextStyle(
+                                      fontSize: 16,
                                     ),
                                   ),
-                                  GestureDetector(
-                                    onTap: () {
+                                  OutlinedButton(
+                                    style: ButtonStyle(
+                                      foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                                      overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+                                    ),
+                                    onPressed: () {
                                       _fixedCharges((rentAmount) {
                                         rentFee = rentAmount;
                                       }, (maintenance) {
@@ -298,45 +290,58 @@ class _BillTabActionState extends State<BillTabAction> {
                                       });
                                       showFixedCharges = false;
                                     },
-                                    child: Container(
-                                      padding: EdgeInsets.only(left: 70),
-                                      child: InkWell(
-                                          child: Text(
-                                        '+Add ',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.lightBlueAccent),
-                                      )),
+                                    child: const Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          'ADD',
+                                          style: TextStyle(),
+                                        ),
+                                      ],
                                     ),
                                   ),
+                                  // GestureDetector(
+                                  //   onTap: () {
+                                  //     _fixedCharges((rentAmount) {
+                                  //       rentFee = rentAmount;
+                                  //     }, (maintenance) {
+                                  //       maintenanceFee = maintenance;
+                                  //     });
+                                  //     showFixedCharges = false;
+                                  //   },
+                                  //   child: Container(
+                                  //     padding: const EdgeInsets.only(left: 70),
+                                  //     child: const InkWell(
+                                  //         child: Text(
+                                  //       '+Add ',
+                                  //       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+                                  //     )),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             )
                           ],
                         ),
                       if (!showFixedCharges)
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: double.infinity,
-                              margin: EdgeInsets.only(
-                                top: 10,
-                                left: 10,
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 14),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 70, left: 10),
-                                    child: Text(
-                                      'Rent Amount ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                  const Text(
+                                    'Rent Amount ',
+                                    style: TextStyle(
+                                      fontSize: 16,
                                     ),
                                   ),
                                   GestureDetector(
@@ -348,45 +353,35 @@ class _BillTabActionState extends State<BillTabAction> {
                                       });
                                       showFixedCharges = false;
                                     },
-                                    child: Container(
-                                      padding: EdgeInsets.only(left: 20),
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.currency_rupee,
-                                              color: Colors.grey),
-                                          InkWell(
-                                              child: Text(
-                                            rentFee.toString() + " >",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey,
+                                    child: Row(
+                                      children: [
+                                        // const Icon(Icons.currency_rupee, color: Colors.grey),
+                                        InkWell(
+                                          child: SizedBox(
+                                            width: 80,
+                                            child: Text(
+                                              "$rentFee >",
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.black54,
+                                              ),
                                             ),
-                                          )),
-                                        ],
-                                      ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            Container(
-                              width: double.infinity,
-                              margin: EdgeInsets.only(
-                                top: 10,
-                                left: 10,
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 14, bottom: 14),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 5, left: 10),
-                                    child: Text(
-                                      'Maintenance Amount ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
+                                  const Text(
+                                    'Maintenance Amount ',
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -397,333 +392,336 @@ class _BillTabActionState extends State<BillTabAction> {
                                       });
                                       showFixedCharges = false;
                                     },
-                                    child: Container(
-                                      padding: EdgeInsets.only(left: 10),
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.currency_rupee,
-                                              color: Colors.grey),
-                                          InkWell(
-                                              child: Text(
-                                            maintenanceFee.toString() + " >",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey,
+                                    child: Row(
+                                      children: [
+                                        InkWell(
+                                            child: SizedBox(
+                                          width: 80,
+                                          child: Text(
+                                            "$maintenanceFee >",
+                                            style: const TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black54,
                                             ),
-                                          )),
-                                        ],
-                                      ),
+                                          ),
+                                        )),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 10,
-                            )
                           ],
                         ),
                     ],
                   ),
-                ), //Monthly Fixed Charge
-                Container(
-                  margin: EdgeInsets.only(top: 10, left: 5),
-                  padding: EdgeInsets.only(left: 15),
-                  height: 20,
-                  width: double.infinity,
-                  // color: Colors.grey,
-                  child: Text(
-                    'Other Fixed Charges',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                ),
+              ), //Monthly Fixed Charge
+              const SizedBox(width: 0.0, height: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                child: const Text(
+                  'Other Fixed Charges',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 10, left: 5, right: 10),
-                  width: double.infinity,
-                  child: Card(
-                    // color: Colors.white70,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Column(children: <Widget>[
-                      Container(
-                        width: double.infinity,
-                        margin: EdgeInsets.only(
-                          top: 10,
-                          left: 10,
-                        ),
-                        child: Column(
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 0),
+                child: Material(
+                  borderRadius: BorderRadius.circular(8),
+                  elevation: 5,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    child: Column(
+                      children: <Widget>[
+                        Column(
                           children: [
                             if (showElectricBill)
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding:
-                                        EdgeInsets.only(right: 40, left: 10),
-                                    child: Text(
+                                    child: const Text(
                                       'Electricity Bill type ',
                                       style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                        fontSize: 16,
+                                      ),
                                     ),
                                   ),
-                                  GestureDetector(
-                                      onTap: () {
-                                        _electricityBillType(
-                                            (electricBillCallBack) {
-                                          setState(() {
-                                            electricityBillType =
-                                                electricBillCallBack;
-                                          });
-                                        });
-                                        print(electricityBillType);
-                                      },
-                                      child: Container(
-                                          padding: EdgeInsets.only(left: 60),
-                                          child: InkWell(
-                                              child: Text(
-                                            '+Add ',
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.lightBlueAccent),
-                                          ))))
+                                  OutlinedButton(
+                                    style: ButtonStyle(
+                                      foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                                      overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+                                    ),
+                                    onPressed: () => _electricityBillType((electricBillCallBack) {
+                                      setState(() => electricityBillType = electricBillCallBack);
+                                    }),
+                                    child: const Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          'ADD',
+                                          style: TextStyle(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  // GestureDetector(
+                                  //   onTap: () {
+                                  //     _electricityBillType((electricBillCallBack) {
+                                  //       setState(() {
+                                  //         electricityBillType = electricBillCallBack;
+                                  //       });
+                                  //     });
+                                  //     print(electricityBillType);
+                                  //   },
+                                  //   child: Container(
+                                  //     padding: const EdgeInsets.only(left: 60),
+                                  //     child: const InkWell(
+                                  //         child: Text(
+                                  //       '+Add ',
+                                  //       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+                                  //     )),
+                                  //   ),
+                                  // )
                                 ],
                               ),
                             if (!showElectricBill)
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding:
-                                        EdgeInsets.only(right: 40, left: 10),
-                                    child: Text(
-                                      'Electricity\n Bill type ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                    child: const Text(
+                                      'Electricity Bill type ',
+                                      style: TextStyle(fontSize: 16),
                                     ),
                                   ),
                                   GestureDetector(
-                                      onTap: () {
-                                        _electricityBillType(
-                                            (electricBillCallBack) {
-                                          setState(() {
-                                            electricityBillType =
-                                                electricBillCallBack;
-                                          });
+                                    onTap: () {
+                                      _electricityBillType((electricBillCallBack) {
+                                        setState(() {
+                                          electricityBillType = electricBillCallBack;
                                         });
-                                        print(electricityBillType);
-                                      },
-                                      child: Container(
-                                          padding: EdgeInsets.only(),
-                                          child: InkWell(
-                                              child: Text(
+                                      });
+                                      print(electricityBillType);
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.only(),
+                                      child: InkWell(
+                                        child: Container(
+                                          width: 100,
+                                          child: Text(
                                             electricityBillType,
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey),
-                                          ))))
+                                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            if (electricityBillType == "Submetered")
-                              showSubmeterEleData(),
-                            if (electricityBillType == "FixedCharges")
-                              showFixedEleCharge(),
-                            SizedBox(
-                              height: 10,
-                            ),
+                            if (electricityBillType == "Submetered") showSubmeterEleData(),
+                            if (electricityBillType == "FixedCharges") showFixedEleCharge(),
+                            const SizedBox(height: 10),
                             if (showWaterBill)
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 40, left: 10),
-                                    child: Text(
-                                      'Water Bill type ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                  const Text(
+                                    'Water Bill type ',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  OutlinedButton(
+                                    style: ButtonStyle(
+                                      foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                                      overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+                                    ),
+                                    onPressed: () => _waterBillType((waterBIllCallBack) {
+                                      waterBillType = waterBIllCallBack;
+                                    }),
+                                    child: const Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          'ADD',
+                                          style: TextStyle(),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  GestureDetector(
-                                      onTap: () {
-                                        _waterBillType((waterBIllCallBack) {
-                                          waterBillType = waterBIllCallBack;
-                                        });
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(left: 97),
-                                        child: InkWell(
-                                            child: Text(
-                                          '+Add ',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.lightBlueAccent),
-                                        )),
-                                      ))
+                                  // GestureDetector(
+                                  //     onTap: () {
+                                  //       _waterBillType((waterBIllCallBack) {
+                                  //         waterBillType = waterBIllCallBack;
+                                  //       });
+                                  //     },
+                                  //     child: Container(
+                                  //       padding: const EdgeInsets.only(left: 97),
+                                  //       child: const InkWell(
+                                  //           child: Text(
+                                  //         '+Add ',
+                                  //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+                                  //       )),
+                                  //     ))
                                 ],
                               ),
                             if (!showWaterBill)
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 40, left: 10),
-                                    child: Text(
-                                      'Water\nBill type ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
+                                  const Text(
+                                    'Water Bill type ',
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   GestureDetector(
-                                      onTap: () {
-                                        _waterBillType((waterBIllCallBack) {
-                                          waterBillType = waterBIllCallBack;
-                                        });
-                                      },
+                                    onTap: () {
+                                      _waterBillType((waterBIllCallBack) {
+                                        waterBillType = waterBIllCallBack;
+                                      });
+                                    },
+                                    child: InkWell(
                                       child: Container(
-                                        padding: EdgeInsets.only(left: 12),
-                                        child: InkWell(
-                                            child: Text(
+                                        width: 100,
+                                        child: Text(
                                           waterBillType,
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey),
-                                        )),
-                                      ))
+                                          style: const TextStyle(fontSize: 16, color: Colors.black54),
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
-                            if (waterBillType == "Submetered")
-                              showSubmeterWaterData(),
-                            if (waterBillType == "FixedCharges")
-                              showFixedWaterCharge(),
-                            SizedBox(
-                              height: 10,
-                            ),
+                            if (waterBillType == "Submetered") showSubmeterWaterData(),
+                            if (waterBillType == "FixedCharges") showFixedWaterCharge(),
+                            const SizedBox(height: 10),
                             if (showGasBill)
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 40, left: 10),
-                                    child: Text(
-                                      'Gas Bill type ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                  const Text(
+                                    'Gas Bill type ',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  OutlinedButton(
+                                    style: ButtonStyle(
+                                      foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                                      overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+                                    ),
+                                    onPressed: () => _gasBillType(
+                                      (gasBillCallBack) {
+                                        gasBillType = gasBillCallBack;
+                                      },
+                                    ),
+                                    child: const Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
+                                        Text(
+                                          'ADD',
+                                          style: TextStyle(),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  GestureDetector(
-                                      onTap: () {
-                                        _gasBillType((gasBillCallBack) {
-                                          gasBillType = gasBillCallBack;
-                                        });
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(left: 115),
-                                        child: InkWell(
-                                            child: Text(
-                                          '+Add ',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.lightBlueAccent),
-                                        )),
-                                      ))
                                 ],
                               ),
                             if (!showGasBill)
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 40, left: 10),
-                                    child: Text(
-                                      'Gas\nBill type ',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
+                                  const Text(
+                                    'Gas Bill type ',
+                                    style: TextStyle(
+                                      fontSize: 16,
                                     ),
                                   ),
                                   GestureDetector(
-                                      onTap: () {
-                                        _gasBillType((gasbillCallBack) {
+                                    onTap: () {
+                                      _gasBillType(
+                                        (gasbillCallBack) {
                                           gasBillType = gasbillCallBack;
-                                        });
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(left: 10),
-                                        child: InkWell(
-                                            child: Text(
+                                        },
+                                      );
+                                    },
+                                    child: InkWell(
+                                      child: SizedBox(
+                                        width: 100,
+                                        child: Text(
                                           gasBillType,
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey),
-                                        )),
-                                      ))
-                                ],
-                              ),
-                            if (gasBillType == "Submetered")
-                              showSubmeterGasData(),
-                            if (gasBillType == "FixedCharges")
-                              showFixedGasCharge(),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ]),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Custom Charges"),
-                ),
-                selectedItems.length > 0
-                    ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.pink[50],
-                              borderRadius: BorderRadius.circular(15)),
-
-                          //  margin: EdgeInsets.only(top: 10, left: 5),
-                          padding: EdgeInsets.only(left: 15),
-                          height: 80,
-                          width: double.infinity,
-                          // color: Colors.grey,
-                          child: ListView.builder(
-                              itemCount: selectedItems.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        selectedItems[index].name,
-                                        style: TextStyle(
-                                          fontSize: 13,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black54,
+                                          ),
                                         ),
                                       ),
-                                      Flexible(
-                                          fit: FlexFit.tight,
-                                          child: SizedBox()),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            if (gasBillType == "Submetered") showSubmeterGasData(),
+                            if (gasBillType == "FixedCharges") showFixedGasCharge(),
+                            const SizedBox(height: 10),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 0.0, height: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                child: Text(
+                  "Custom Charges",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              selectedItems.isNotEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 14),
+                      child: SingleChildScrollView(
+                        child: Flexible(
+                          fit: FlexFit.tight,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: selectedItems.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  margin: const EdgeInsets.symmetric(vertical: 6),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff54854C).withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
                                       Text(
-                                        selectedItems[index].value,
-                                        style: TextStyle(
-                                          fontSize: 13,
+                                        selectedItems[index].name.capitalizeFirstWord(),
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text(
+                                        selectedItems[index].value.capitalizeFirstWord(),
+                                        style: const TextStyle(
+                                          fontSize: 16,
                                         ),
                                       ),
                                     ],
@@ -731,114 +729,111 @@ class _BillTabActionState extends State<BillTabAction> {
                                 );
                               }),
                         ),
-                      )
-                    : SizedBox(),
-                //Cutom Charges
-                Container(
-                  margin: EdgeInsets.only(top: 10, left: 5),
-                  padding: EdgeInsets.only(left: 15),
-                  height: 20,
-                  width: double.infinity,
-                  // color: Colors.grey,
-                  child: Text(
-                    'Other Optional Charges',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                      ),
+                    )
+                  : const SizedBox(),
+              //Cutom Charges
+              Container(
+                // height: 20,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                width: double.infinity,
+                // color: Colors.grey,
+                child: const Text(
+                  'Other Optional Charges',
+                  style: TextStyle(
+                    fontSize: 16,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
+              ),
+
+              Container(
+                width: 200,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: OutlinedButton(
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                    overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+                  ),
+                  onPressed: () {
                     setState(() {
                       showbottomsheet(context);
                     });
                   },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10, left: 5),
-                    padding: EdgeInsets.only(left: 15),
-                    height: 20,
-                    width: double.infinity,
-                    // color: Colors.grey,
-                    child: Text(
-                      '+ Custom Charges',
-                      style: TextStyle(
-                          fontSize: 16, color: Colors.lightBlueAccent),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.add),
+                      SizedBox(width: 4),
+                      Text(
+                        'Custom Charges',
+                        style: TextStyle(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 60,
+                padding: const EdgeInsets.all(5),
+                margin: const EdgeInsets.only(bottom: 40, top: 20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    List<String> nullParameters = [];
+                    if (rentCycle.isEmpty) nullParameters.add("rentCycle");
+                    if (electricityBillType.isEmpty) nullParameters.add("electricityBillType");
+                    if (waterBillType.isEmpty) nullParameters.add("waterBillType");
+                    if (gasBillType.isEmpty) nullParameters.add("gasBillType");
+
+                    String message = "All parameters are not null.\n"
+                        "previousBalance: $previousBalance\n"
+                        "rentFee: $rentFee\n"
+                        "maintenanceFee: $maintenanceFee\n"
+                        "rentCycle: $rentCycle\n"
+                        "paymentDay: $paymentDay\n"
+                        "paymentRequired: $paymentRequired\n"
+                        "electricityBillType: $electricityBillType\n"
+                        "waterBillType: $waterBillType\n"
+                        "gasBillType: $gasBillType";
+                    print(message);
+                    if (nullParameters.isNotEmpty) {
+                      String message = "Please FillUp the  following parameters : ${nullParameters.join(", ")}";
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Null Parameters'),
+                            content: Text(message),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                      return;
+                    } else {
+                      actionCalculation(previousBalance, rentFee, maintenanceFee, rentCycle, paymentDay, paymentRequired, electricityBillType, FixedChargeele, waterBillType, FixedChargewater,
+                          gasBillType, FixedChargegas, selectedItems);
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff54854C), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(
+                      fontSize: 18,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Container(
-            width: double.infinity,
-            height: 50,
-            padding: EdgeInsets.all(5),
-            child: ElevatedButton(
-              onPressed: () {
-                List<String> nullParameters = [];
-                if (rentCycle.isEmpty) nullParameters.add("rentCycle");
-                if (electricityBillType.isEmpty)
-                  nullParameters.add("electricityBillType");
-                if (waterBillType.isEmpty) nullParameters.add("waterBillType");
-                if (gasBillType.isEmpty) nullParameters.add("gasBillType");
-
-                String message = "All parameters are not null.\n"
-                    "previousBalance: $previousBalance\n"
-                    "rentFee: $rentFee\n"
-                    "maintenanceFee: $maintenanceFee\n"
-                    "rentCycle: $rentCycle\n"
-                    "paymentDay: $paymentDay\n"
-                    "paymentRequired: $paymentRequired\n"
-                    "electricityBillType: $electricityBillType\n"
-                    "waterBillType: $waterBillType\n"
-                    "gasBillType: $gasBillType";
-                print(message);
-                if (nullParameters.isNotEmpty) {
-                  String message =
-                      "Please FillUp the  following parameters : ${nullParameters.join(", ")}";
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Null Parameters'),
-                        content: Text(message),
-                        actions: <Widget>[
-                          TextButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                  return;
-                } else {
-                  actionCalculation(
-                      previousBalance,
-                      rentFee,
-                      maintenanceFee,
-                      rentCycle,
-                      paymentDay,
-                      paymentRequired,
-                      electricityBillType,
-                      FixedChargeele,
-                      waterBillType,
-                      FixedChargewater,
-                      gasBillType,
-                      FixedChargegas,
-                      selectedItems);
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0))),
-              child: Text('Save'),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -872,25 +867,25 @@ class _BillTabActionState extends State<BillTabAction> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(18),
+                const Padding(
+                  padding: EdgeInsets.all(18),
                   child: Text(
                     "Rent Cycle important dates",
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 25, left: 10),
-                  child: Text(
+                  margin: const EdgeInsets.only(top: 25, left: 18),
+                  child: const Text(
                     'When do you collect rent',
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color: Colors.black54,
+                      // fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -913,18 +908,14 @@ class _BillTabActionState extends State<BillTabAction> {
                                 },
                                 child: Center(
                                   child: Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 20, left: 18),
+                                    margin: const EdgeInsets.only(top: 20, left: 18),
                                     padding: const EdgeInsets.all(8),
                                     height: 35,
                                     width: 65,
-                                    color: index == selectedCycleIndex
-                                        ? Colors.blueAccent
-                                        : Colors.black,
+                                    color: index == selectedCycleIndex ? const Color(0xff54854C) : Colors.black,
                                     child: Text(
                                       rentCycles[index],
-                                      style:
-                                          const TextStyle(color: Colors.white),
+                                      style: const TextStyle(color: Colors.white),
                                     ),
                                   ),
                                 ),
@@ -937,13 +928,12 @@ class _BillTabActionState extends State<BillTabAction> {
                   },
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 30, left: 10),
-                  child: Text(
+                  margin: const EdgeInsets.only(top: 30, left: 18),
+                  child: const Text(
                     'Payment Day for the Month Rent Cycle',
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w600,
+                      color: Colors.black54,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -966,17 +956,13 @@ class _BillTabActionState extends State<BillTabAction> {
                                 },
                                 child: Center(
                                   child: Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 20, left: 18),
+                                    margin: const EdgeInsets.only(top: 20, left: 18),
                                     padding: const EdgeInsets.all(8),
                                     height: 35,
-                                    color: index == selectedIndexDays
-                                        ? Colors.blueAccent
-                                        : Colors.black,
+                                    color: index == selectedIndexDays ? const Color(0xff54854C) : Colors.black,
                                     child: Text(
-                                      dayNames[index] + "Days",
-                                      style:
-                                          const TextStyle(color: Colors.white),
+                                      "${dayNames[index]}Days",
+                                      style: const TextStyle(color: Colors.white),
                                     ),
                                   ),
                                 ),
@@ -989,13 +975,12 @@ class _BillTabActionState extends State<BillTabAction> {
                   },
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 30, left: 10),
-                  child: Text(
+                  margin: const EdgeInsets.only(top: 30, left: 18),
+                  child: const Text(
                     'Rent Payment Required by',
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w600,
+                      color: Colors.black54,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -1009,25 +994,22 @@ class _BillTabActionState extends State<BillTabAction> {
                           (index) => GestureDetector(
                             onTap: () {
                               setState(() {
-                                selectedIndexRentPayment =
-                                    index; // Update selectedIndex with the tapped index
-                                paymentRequired =
-                                    int.parse(paymentDaysList[index]);
+                                selectedIndexRentPayment = index; // Update selectedIndex with the tapped index
+                                paymentRequired = int.parse(paymentDaysList[index]);
                                 print('Selected Text: $paymentRequired');
                               });
                             },
                             child: Center(
                               child: Container(
-                                margin:
-                                    const EdgeInsets.only(top: 20, left: 18),
+                                margin: const EdgeInsets.only(top: 20, left: 18),
                                 padding: const EdgeInsets.all(8),
                                 height: 35,
-                                color: index == selectedIndexRentPayment
-                                    ? Colors.blueAccent
-                                    : Colors.black,
+                                color: index == selectedIndexRentPayment ? const Color(0xff54854C) : Colors.black,
                                 child: Text(
-                                  "+" + paymentDaysList[index] + "Days",
-                                  style: const TextStyle(color: Colors.white),
+                                  "+${paymentDaysList[index]}Days",
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -1038,24 +1020,21 @@ class _BillTabActionState extends State<BillTabAction> {
                   },
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
-                  height: 50,
+                  margin: const EdgeInsets.only(top: 30, left: 10, right: 10),
+                  height: 60,
                   width: double.infinity,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey,
-                        padding: EdgeInsets.all(13),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0))),
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: const Color(0xff54854C), padding: const EdgeInsets.all(13), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
                     onPressed: () {
                       setState(() {
                         showRentCycle = false;
                       });
                       Navigator.of(context).pop();
                     },
-                    child: Text(
+                    child: const Text(
                       'Save',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -1097,28 +1076,25 @@ class _BillTabActionState extends State<BillTabAction> {
                         size: 30,
                       ),
                     ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const SizedBox(height: 50),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text(
                         "Add Previous Balance",
                         style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 25, left: 10),
-                      child: Text(
+                      margin: const EdgeInsets.only(top: 15, left: 18),
+                      child: const Text(
                         'Add rent dues or outstanding balance',
                         style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w600,
+                          color: Colors.black54,
+                          fontSize: 16,
                         ),
                       ),
                     ),
@@ -1139,14 +1115,11 @@ class _BillTabActionState extends State<BillTabAction> {
                             },
                             child: Center(
                               child: Container(
-                                margin:
-                                    const EdgeInsets.only(top: 20, left: 18),
+                                margin: const EdgeInsets.only(top: 20, left: 18),
                                 padding: const EdgeInsets.all(8),
                                 height: 35,
                                 width: 90,
-                                color: index == selectedIndexPreviousBalance
-                                    ? Colors.blueAccent
-                                    : Colors.black,
+                                color: index == selectedIndexPreviousBalance ? const Color(0xff54854C) : Colors.black,
                                 child: Text(
                                   balance[index],
                                   style: const TextStyle(color: Colors.white),
@@ -1161,7 +1134,7 @@ class _BillTabActionState extends State<BillTabAction> {
                       builder: (BuildContext context, StateSetter setState) {
                         if (previousBalanceType != 'NoBalance') {
                           return Container(
-                            margin: EdgeInsets.only(top: 10, left: 8),
+                            margin: const EdgeInsets.only(top: 10, left: 8),
                             child: TextFormField(
                               controller: advanceAmount,
                               decoration: const InputDecoration(
@@ -1173,15 +1146,15 @@ class _BillTabActionState extends State<BillTabAction> {
                             ),
                           );
                         } else {
-                          return SizedBox(height: 10);
+                          return const SizedBox(height: 10);
                         }
                       },
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     Container(
-                      height: 50,
+                      height: 60,
                       width: double.infinity,
-                      margin: EdgeInsets.all(10.0),
+                      margin: const EdgeInsets.all(10.0),
                       child: ElevatedButton(
                         onPressed: () {
                           if (previousBalanceType == 'NoBalance') {
@@ -1192,8 +1165,7 @@ class _BillTabActionState extends State<BillTabAction> {
                           } else {
                             if (advanceAmount.text.isNotEmpty) {
                               setState(() {
-                                previousBalance =
-                                    double.parse(advanceAmount.text);
+                                previousBalance = double.parse(advanceAmount.text);
                                 showPreviousBalance = false;
                               });
                             } else {
@@ -1205,10 +1177,10 @@ class _BillTabActionState extends State<BillTabAction> {
                           }
 
                           Navigator.of(context).pop();
-                          updatePreviousBalance(
-                              previousBalance); // Invoke the callback function
+                          updatePreviousBalance(previousBalance); // Invoke the callback function
                         },
                         style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xff54854C),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -1230,8 +1202,7 @@ class _BillTabActionState extends State<BillTabAction> {
     );
   }
 
-  Future<void> _fixedCharges(Function(double) rentAmountCallback,
-      Function(double) maintenanceCallback) async {
+  Future<void> _fixedCharges(Function(double) rentAmountCallback, Function(double) maintenanceCallback) async {
     showModalBottomSheet<dynamic>(
         isScrollControlled: true,
         context: context,
@@ -1258,20 +1229,20 @@ class _BillTabActionState extends State<BillTabAction> {
                         size: 30,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge for Blab",
                           style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
                           )),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 8),
+                      margin: const EdgeInsets.only(top: 10, left: 8),
                       child: TextFormField(
                         controller: rentController,
                         decoration: const InputDecoration(
@@ -1282,7 +1253,7 @@ class _BillTabActionState extends State<BillTabAction> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 8),
+                      margin: const EdgeInsets.only(top: 10, left: 8),
                       child: TextFormField(
                         controller: maintenanceController,
                         decoration: const InputDecoration(
@@ -1293,9 +1264,9 @@ class _BillTabActionState extends State<BillTabAction> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                       height: 80,
-                      padding: EdgeInsets.all(13),
+                      padding: const EdgeInsets.all(13),
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
@@ -1305,8 +1276,7 @@ class _BillTabActionState extends State<BillTabAction> {
                               rentAmountCallback(rentFee);
                             }
                             if (maintenanceController.text.isNotEmpty) {
-                              maintenanceFee =
-                                  double.parse(maintenanceController.text);
+                              maintenanceFee = double.parse(maintenanceController.text);
                               maintenanceCallback(maintenanceFee);
                             }
                             showFixedCharges = false;
@@ -1315,11 +1285,12 @@ class _BillTabActionState extends State<BillTabAction> {
                           Navigator.of(context).pop();
                         },
                         style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xff54854C),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
@@ -1332,254 +1303,255 @@ class _BillTabActionState extends State<BillTabAction> {
         });
   }
 
-  Future<void> _electricityBillType(
-      Function(String) electricBillCallBack) async {
+  Future<void> _electricityBillType(Function(String) electricBillCallBack) async {
     showModalBottomSheet<dynamic>(
-        isScrollControlled: true,
-        context: context,
-        builder: (BuildContext context) {
-          return ListView(shrinkWrap: true, children: <Widget>[
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return ListView(
+          shrinkWrap: true,
+          children: <Widget>[
             Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(
-                          Icons.close,
-                          size: 35,
-                          color: Colors.grey,
+              decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0))),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: const Icon(
+                        Icons.close,
+                        size: 35,
+                        color: Colors.grey,
+                      )),
+                  const Padding(
+                    padding: EdgeInsets.all(18),
+                    child: Text("How electricity is charged from tenants",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
                         )),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
-                      child: Text("How electricity is charged from tenants",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showElectricBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        electricityBillType = "GovernmentMetered";
-                        print(electricityBillType);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        showElectricBill = false;
+                      });
+                      Navigator.of(context).pop();
+                      electricityBillType = "GovernmentMetered";
+                      print(electricityBillType);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 10, left: 10),
+                      //    alignment: Alignment.center,
+                      height: 100,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Government/Company Metered',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'Tenants directly pay electricity\n bill to Government/Company ',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(left: 40, top: 20),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
+                      width: double.infinity,
+                      child: Card(
+                        // color: Colors.white70,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
+                        elevation: 10,
+                        child: Column(children: <Widget>[
+                          Container(
+                              width: double.infinity,
+                              margin: const EdgeInsets.only(top: 10, left: 10),
+                              child: const Text(
+                                'Government/Company Metered',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                          Row(
+                            children: [
+                              Container(
+                                  width: 220,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'Tenants directly pay electricity\n bill to Government/Company ',
+                                    style: TextStyle(color: Colors.grey),
+                                    textAlign: TextAlign.left,
+                                  )),
+                              Container(
+                                margin: const EdgeInsets.only(left: 40, top: 20),
+                                child: const Icon(
+                                  Icons.arrow_right_alt,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showElectricBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        electricityBillType = "Submetered";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 150,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        showElectricBill = false;
+                      });
+                      Navigator.of(context).pop();
+                      electricityBillType = "Submetered";
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 10, left: 10),
+                      //    alignment: Alignment.center,
+                      height: 150,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Sub-metered',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'Tenants pay you the electricity \n usage charges calculated based \n on the units consumed ',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(left: 40, top: 20),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
+                      width: double.infinity,
+                      child: Card(
+                        // color: Colors.white70,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
+                        elevation: 10,
+                        child: Column(children: <Widget>[
+                          Container(
+                              width: double.infinity,
+                              margin: const EdgeInsets.only(top: 10, left: 10),
+                              child: const Text(
+                                'Sub-metered',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                          Row(
+                            children: [
+                              Container(
+                                  width: 220,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'Tenants pay you the electricity \n usage charges calculated based \n on the units consumed ',
+                                    style: TextStyle(color: Colors.grey),
+                                    textAlign: TextAlign.left,
+                                  )),
+                              Container(
+                                margin: const EdgeInsets.only(left: 40, top: 20),
+                                child: const Icon(
+                                  Icons.arrow_right_alt,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showElectricBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        electricityBillType = "FixedCharges";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        showElectricBill = false;
+                      });
+                      Navigator.of(context).pop();
+                      electricityBillType = "FixedCharges";
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 10, left: 10),
+                      //    alignment: Alignment.center,
+                      height: 100,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Fixed Charges',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'You charge a fixed amount \n for electricity',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20, left: 40),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
+                      width: double.infinity,
+                      child: Card(
+                        // color: Colors.white70,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
+                        elevation: 10,
+                        child: Column(children: <Widget>[
+                          Container(
+                              width: double.infinity,
+                              margin: const EdgeInsets.only(top: 10, left: 10),
+                              child: const Text(
+                                'Fixed Charges',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                          Row(
+                            children: [
+                              Container(
+                                  width: 220,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'You charge a fixed amount \n for electricity',
+                                    style: TextStyle(color: Colors.grey),
+                                    textAlign: TextAlign.left,
+                                  )),
+                              Container(
+                                margin: const EdgeInsets.only(top: 20, left: 40),
+                                child: const Icon(
+                                  Icons.arrow_right_alt,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showElectricBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        electricityBillType = "NoCharges";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        showElectricBill = false;
+                      });
+                      Navigator.of(context).pop();
+                      electricityBillType = "No Charges";
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 10, left: 10),
+                      //    alignment: Alignment.center,
+                      height: 100,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'No Charges',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'You Do Not charge \n for electricity',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20, left: 40),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
+                      width: double.infinity,
+                      child: Card(
+                        // color: Colors.white70,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
+                        elevation: 10,
+                        child: Column(children: <Widget>[
+                          Container(
+                              width: double.infinity,
+                              margin: const EdgeInsets.only(top: 10, left: 10),
+                              child: const Text(
+                                'No Charges',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                          Row(
+                            children: [
+                              Container(
+                                  width: 220,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'You Do Not charge \n for electricity',
+                                    style: TextStyle(color: Colors.grey),
+                                    textAlign: TextAlign.left,
+                                  )),
+                              Container(
+                                margin: const EdgeInsets.only(top: 20, left: 40),
+                                child: const Icon(
+                                  Icons.arrow_right_alt,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
                       ),
                     ),
-                  ],
-                ))
-          ]);
-        });
+                  ),
+                  const SizedBox(width: 0.0, height: 40),
+                ],
+              ),
+            )
+          ],
+        );
+      },
+    );
   }
 
   Future<void> _waterBillType(Function(String) waterBIllCallBack) async {
@@ -1587,238 +1559,237 @@ class _BillTabActionState extends State<BillTabAction> {
         isScrollControlled: true,
         context: context,
         builder: (BuildContext context) {
-          return ListView(shrinkWrap: true, children: <Widget>[
-            Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(18),
-                      child: Text("How Water is charged from tenants",
+          return ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              Container(
+                  decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(18),
+                        child: Text(
+                          "How Water is charged from tenants",
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showWaterBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        waterBillType = 'GovernmentMetered';
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
-
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
                           ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Government/Company Metered',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'Tenants directly pay Water\n bill to Government/Company ',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(left: 40, top: 20),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showWaterBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        ;
-                        waterBillType = 'Submetered';
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 150,
-
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'submetered',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'Tenants pay you the Water \n usage charges calculated based \n on the units consumed ',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(left: 40, top: 20),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
+                      GestureDetector(
+                        onTap: () {
+                          setState(
+                            () => showWaterBill = false,
+                          );
+                          Navigator.of(context).pop();
+                          waterBillType = 'GovernmentMetered';
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          height: 100,
+                          width: double.infinity,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          ]),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'Government/Company Metered',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'Tenants directly pay Water\n bill to Government/Company ',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 40, top: 20),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showWaterBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        waterBillType = 'FixedCharges';
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showWaterBill = false;
+                          });
+                          Navigator.of(context).pop();
+                          ;
+                          waterBillType = 'Submetered';
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          //    alignment: Alignment.center,
+                          height: 150,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Fixed Charges',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'You charge a fixed amount \n for Water',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20, left: 40),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
+                          width: double.infinity,
+                          child: Card(
+                            // color: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          ]),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'submetered',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'Tenants pay you the Water \n usage charges calculated based \n on the units consumed ',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 40, top: 20),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showWaterBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        waterBillType = "NoCharges";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showWaterBill = false;
+                          });
+                          Navigator.of(context).pop();
+                          waterBillType = 'FixedCharges';
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          //    alignment: Alignment.center,
+                          height: 100,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'No Charges',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'You Do Not charge \n for electricity',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20, left: 40),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
+                          width: double.infinity,
+                          child: Card(
+                            // color: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          ]),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'Fixed Charges',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'You charge a fixed amount \n for Water',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20, left: 40),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ))
-          ]);
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showWaterBill = false;
+                          });
+                          Navigator.of(context).pop();
+                          waterBillType = "No Charges";
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          //    alignment: Alignment.center,
+                          height: 100,
+
+                          width: double.infinity,
+                          child: Card(
+                            // color: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'No Charges',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'You Do Not charge \n for electricity',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20, left: 40),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
+              const SizedBox(width: 0.0, height: 20),
+            ],
+          );
         });
   }
 
@@ -1827,427 +1798,389 @@ class _BillTabActionState extends State<BillTabAction> {
         isScrollControlled: true,
         context: context,
         builder: (BuildContext context) {
-          return ListView(shrinkWrap: true, children: <Widget>[
-            Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(18),
-                      child: Text("How Gas is charged from tenants",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showGasBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        gasBillType = "GovernmentMetered";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+          return ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              Container(
+                  decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(18),
+                        child: Text("How Gas is charged from tenants",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 22.0,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showGasBill = false;
+                          });
+                          Navigator.of(context).pop();
+                          gasBillType = "GovernmentMetered";
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          //    alignment: Alignment.center,
+                          height: 100,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Government/Company Metered',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'Tenants directly pay Gas\n bill to Government/Company ',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(left: 40, top: 20),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
+                          width: double.infinity,
+                          child: Card(
+                            // color: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          ]),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'Government/Company Metered',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'Tenants directly pay Gas\n bill to Government/Company ',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 40, top: 20),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showGasBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        gasBillType = "Submetered";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 150,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showGasBill = false;
+                          });
+                          Navigator.of(context).pop();
+                          gasBillType = "Submetered";
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          //    alignment: Alignment.center,
+                          height: 150,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Sub-metered',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'Tenants pay you the Gas \n usage charges calculated based \n on the units consumed ',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(left: 40, top: 20),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
+                          width: double.infinity,
+                          child: Card(
+                            // color: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          ]),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'Sub-metered',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'Tenants pay you the Gas \n usage charges calculated based \n on the units consumed ',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 40, top: 20),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showGasBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        gasBillType = "FixedCharges";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showGasBill = false;
+                          });
+                          Navigator.of(context).pop();
+                          gasBillType = "FixedCharges";
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          //    alignment: Alignment.center,
+                          height: 100,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'Fixed Charges',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'You charge a fixed amount \n for Gas',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20, left: 40),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
+                          width: double.infinity,
+                          child: Card(
+                            // color: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          ]),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'Fixed Charges',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'You charge a fixed amount \n for Gas',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20, left: 40),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          showGasBill = false;
-                        });
-                        Navigator.of(context).pop();
-                        gasBillType = "NoCharges";
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 10, left: 10),
-                        //    alignment: Alignment.center,
-                        height: 100,
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            showGasBill = false;
+                          });
+                          Navigator.of(context).pop();
+                          gasBillType = "No Charges";
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10, left: 10),
+                          //    alignment: Alignment.center,
+                          height: 100,
 
-                        width: double.infinity,
-                        child: Card(
-                          // color: Colors.white70,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 10,
-                          child: Column(children: <Widget>[
-                            Container(
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Text(
-                                  'No Charges',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )),
-                            Row(
-                              children: [
-                                Container(
-                                    width: 220,
-                                    margin: EdgeInsets.only(top: 10, left: 10),
-                                    child: Text(
-                                      'You Do Not charge \n for electricity',
-                                      style: TextStyle(color: Colors.grey),
-                                      textAlign: TextAlign.left,
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20, left: 40),
-                                  child: Icon(
-                                    Icons.arrow_right_alt,
-                                  ),
-                                ),
-                              ],
+                          width: double.infinity,
+                          child: Card(
+                            // color: Colors.white70,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          ]),
+                            elevation: 10,
+                            child: Column(children: <Widget>[
+                              Container(
+                                  width: double.infinity,
+                                  margin: const EdgeInsets.only(top: 10, left: 10),
+                                  child: const Text(
+                                    'No Charges',
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                              Row(
+                                children: [
+                                  Container(
+                                      width: 220,
+                                      margin: const EdgeInsets.only(top: 10, left: 10),
+                                      child: const Text(
+                                        'You Do Not charge \n for electricity',
+                                        style: TextStyle(color: Colors.grey),
+                                        textAlign: TextAlign.left,
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20, left: 40),
+                                    child: const Icon(
+                                      Icons.arrow_right_alt,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ))
-          ]);
+                    ],
+                  )),
+              const SizedBox(width: 0.0, height: 20),
+            ],
+          );
         });
   }
 
   Widget showDefultData() {
-    return Container(
-      height: 50,
-      margin: EdgeInsets.only(top: 10, left: 5, right: 10),
-      width: double.infinity,
-      child: Card(
-        // color: Colors.white70,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Column(children: <Widget>[
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.only(
-              top: 10,
-              left: 10,
-            ),
-            child: Row(
+    return Material(
+      borderRadius: BorderRadius.circular(8),
+      elevation: 5,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: EdgeInsets.only(right: 90, left: 10),
-                  child: Text(
-                    'Rent Cycle ',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                const Text(
+                  'Rent Cycle ',
+                  style: TextStyle(
+                    fontSize: 16,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
+                OutlinedButton(
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                    overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+                  ),
+                  onPressed: () {
                     rentCycle = rentCycles[selectedCycleIndex];
                     paymentDay = int.parse(dayNames[selectedIndexDays]);
-                    paymentRequired =
-                        int.parse(paymentDaysList[selectedIndexRentPayment]);
+                    paymentRequired = int.parse(paymentDaysList[selectedIndexRentPayment]);
                     _electricBill();
                   },
-                  child: Container(
-                    padding: EdgeInsets.only(left: 70),
-                    child: InkWell(
-                        child: Text(
-                      '+Add ',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.lightBlueAccent),
-                    )),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.add),
+                      SizedBox(width: 4),
+                      Text(
+                        'ADD',
+                        style: TextStyle(),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
 
   Widget showDataWiget() {
-    return Column(
-      children: [
-        Card(
-          margin: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Row(
+    return Material(
+      borderRadius: BorderRadius.circular(8),
+      elevation: 5,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 14),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, right: 50, left: 10),
-                    child: Text(
-                      'Rent Cycle ',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  const Text(
+                    'Rent Cycle',
+                    style: TextStyle(
+                      fontSize: 16,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      _electricBill();
-                    },
-                    child: Container(
-                      padding: EdgeInsets.only(left: 70),
-                      child: InkWell(
-                          child: Text(
-                        rentCycle + " >",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                      )),
+                  InkWell(
+                    onTap: () => _electricBill(),
+                    child: SizedBox(
+                      width: 80,
+                      child: Text(
+                        "$rentCycle >",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black54,
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 14),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 90, left: 10),
-                    child: Text(
-                      'Payment Day ',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  const Text(
+                    'Payment Day ',
+                    style: TextStyle(
+                      fontSize: 16,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      _electricBill();
-                    },
-                    child: Container(
-                      padding: EdgeInsets.only(left: 5),
-                      child: InkWell(
-                          child: Text(
-                        paymentDay.toString() + "Days >",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                      )),
+                  InkWell(
+                    onTap: () => _electricBill(),
+                    child: SizedBox(
+                      width: 80,
+                      child: Text(
+                        "$paymentDay Days >",
+                        style: const TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 14, bottom: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10, right: 30, left: 10),
-                    child: Text(
-                      'Payment Required\n by ',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
+                  const Text(
+                    'Payment Required by ',
+                    style: TextStyle(fontSize: 16),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      _electricBill();
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: InkWell(
-                          child: Text(
-                        "+" + paymentRequired.toString() + "Days >",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                      )),
+                  InkWell(
+                    onTap: () => _electricBill(),
+                    child: SizedBox(
+                      width: 80,
+                      child: Text(
+                        "+$paymentRequired Days >",
+                        style: const TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
                     ),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
-  void actionCalculation(
-      double previousBalance,
-      double rentFee,
-      double maintenanceFee,
-      String rentCycle,
-      int paymentDay,
-      int paymentRequired,
-      String electricityBillType,
-      double electricCharge,
-      String waterBillType,
-      double waterCharges,
-      String gasBillType,
-      double gasCharges,
-      List<ViewBloodHospitalModel> selectedItems) {
+  void actionCalculation(double previousBalance, double rentFee, double maintenanceFee, String rentCycle, int paymentDay, int paymentRequired, String electricityBillType, double electricCharge,
+      String waterBillType, double waterCharges, String gasBillType, double gasCharges, List<ViewBloodHospitalModel> selectedItems) {
     double finalPreviousBalance = previousBalance;
     if (previousBalanceType == 'Pending') {
       finalPreviousBalance = -previousBalance;
     }
-    double totalBalance = finalPreviousBalance +
-        rentFee +
-        maintenanceFee +
-        electricCharge +
-        waterCharges +
-        gasCharges;
+    double totalBalance = finalPreviousBalance + rentFee + maintenanceFee + electricCharge + waterCharges + gasCharges;
     DateTime now = DateTime.now();
     DateTime rentEndDatas = DateTime(now.year, now.month + 1, 0);
     DateTime rentStartDates = DateTime(now.year, now.month, paymentDay);
-    DateTime rentCollectBys =
-        rentStartDates.add(Duration(days: paymentRequired));
+    DateTime rentCollectBys = rentStartDates.add(Duration(days: paymentRequired));
     DateFormat dateFormat = DateFormat('dd-MMM-yyyy');
     String rentEndData = dateFormat.format(rentEndDatas).toString();
     String rentStartDate = dateFormat.format(rentStartDates).toString();
@@ -2280,280 +2213,452 @@ class _BillTabActionState extends State<BillTabAction> {
   }
 
   Widget showSubmeterEleData() {
-    return Row(
-      children: [
-        Container(
-          padding: EdgeInsets.only(right: 40, left: 10),
-          child: Text(
-            'SubMeter',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            '* Sub Meter',
+            style: TextStyle(
+              fontSize: 16,
+            ),
           ),
-        ),
-        GestureDetector(
-            onTap: () {
-              // _waterBillType((waterBIllCallBack) {
-              //   waterBillType = waterBIllCallBack;
+          OutlinedButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+              overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+            ),
+            onPressed: () {
+              // fixedChargeElectricBill((fixchargeEleCallback) {
+              //   FixedChargeele = fixchargeEleCallback;
               // });
             },
-            child: Container(
-              padding: EdgeInsets.only(left: 145),
-              child: InkWell(
-                  child: Text(
-                '+Add ',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.lightBlueAccent),
-              )),
-            ))
-      ],
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(Icons.add),
+                SizedBox(width: 4),
+                Text(
+                  'ADD',
+                  style: TextStyle(),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
+    // Row(
+    //   children: [
+    //     Container(
+    //       padding: const EdgeInsets.only(right: 40, left: 10),
+    //       child: const Text(
+    //         'SubMeter',
+    //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    //       ),
+    //     ),
+    //     GestureDetector(
+    //       onTap: () {
+    //         // _waterBillType((waterBIllCallBack) {
+    //         //   waterBillType = waterBIllCallBack;
+    //         // });
+    //       },
+    //       child: Container(
+    //         padding: const EdgeInsets.only(left: 145),
+    //         child: const InkWell(
+    //             child: Text(
+    //           '+Add ',
+    //           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+    //         )),
+    //       ),
+    //     )
+    //   ],
+    // );
   }
 
   Widget showFixedEleCharge() {
     if (showFiexedElctricCharge) {
-      return Row(
-        children: [
-          Container(
-            padding: EdgeInsets.only(right: 40, left: 10),
-            child: Text(
-              'FixedCharge',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              '* Fixed Charge',
+              style: TextStyle(
+                fontSize: 16,
+              ),
             ),
-          ),
-          GestureDetector(
-              onTap: () {
+            OutlinedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+              ),
+              onPressed: () {
                 fixedChargeElectricBill((fixchargeEleCallback) {
                   FixedChargeele = fixchargeEleCallback;
                 });
               },
-              child: Container(
-                padding: EdgeInsets.only(left: 120),
-                child: InkWell(
-                    child: Text(
-                  '+Add ',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.lightBlueAccent),
-                )),
-              ))
-        ],
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.add),
+                  SizedBox(width: 4),
+                  Text(
+                    'ADD',
+                    style: TextStyle(),
+                  ),
+                ],
+              ),
+            ),
+            // GestureDetector(
+            //   onTap: () {
+            //     fixedChargeElectricBill((fixchargeEleCallback) {
+            //       FixedChargeele = fixchargeEleCallback;
+            //     });
+            //   },
+            //   child: Container(
+            //     padding: const EdgeInsets.only(left: 120),
+            //     child: const InkWell(
+            //       child: Text(
+            //         '+Add ',
+            //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+            //       ),
+            //     ),
+            //   ),
+            // )
+          ],
+        ),
       );
     } else {
-      return Row(
-        children: [
-          Container(
-            padding: EdgeInsets.only(right: 40, left: 10),
-            child: Text(
-              'FixedCharge',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Fixed Charge',
+              style: TextStyle(fontSize: 16),
             ),
-          ),
-          GestureDetector(
+            GestureDetector(
               onTap: () {
                 fixedChargeElectricBill((fixchargeEleCallback) {
                   FixedChargeele = fixchargeEleCallback;
                 });
               },
-              child: Container(
-                padding: EdgeInsets.only(left: 20),
-                child: InkWell(
-                    child: Text(
-                  FixedChargeele.toString(),
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey),
-                )),
-              ))
-        ],
+              child: InkWell(
+                child: Container(
+                  width: 90,
+                  child: Text(
+                    FixedChargeele.toString(),
+                    style: const TextStyle(fontSize: 16, color: Colors.black54),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       );
     }
   }
 
   Widget showSubmeterGasData() {
-    return Row(
-      children: [
-        Container(
-          padding: EdgeInsets.only(right: 40, left: 10),
-          child: Text(
-            'SubMeter',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            '* Sub Meter',
+            style: TextStyle(fontSize: 16),
           ),
-        ),
-        GestureDetector(
-            onTap: () {
-              // _waterBillType((waterBIllCallBack) {
-              //   waterBillType = waterBIllCallBack;
-              // });
-            },
-            child: Container(
-              padding: EdgeInsets.only(left: 145),
-              child: InkWell(
-                  child: Text(
-                '+Add ',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.lightBlueAccent),
-              )),
-            ))
-      ],
+          OutlinedButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+              overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+            ),
+            onPressed: () {},
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(Icons.add),
+                SizedBox(width: 4),
+                Text(
+                  'ADD',
+                  style: TextStyle(),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
+    // return Row(
+    //   children: [
+    //     Container(
+    //       padding: const EdgeInsets.only(right: 40, left: 10),
+    //       child: const Text(
+    //         'SubMeter',
+    //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    //       ),
+    //     ),
+    //     GestureDetector(
+    //       onTap: () {
+    //         // _waterBillType((waterBIllCallBack) {
+    //         //   waterBillType = waterBIllCallBack;
+    //         // });
+    //       },
+    //       child: Container(
+    //         padding: const EdgeInsets.only(left: 145),
+    //         child: const InkWell(
+    //             child: Text(
+    //           '+Add ',
+    //           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+    //         )),
+    //       ),
+    //     )
+    //   ],
+    // );
   }
 
   Widget showFixedGasCharge() {
     if (showFiexedGasCharge) {
-      return Row(
-        children: [
-          Container(
-            padding: EdgeInsets.only(right: 40, left: 10),
-            child: Text(
-              'FixedCharge',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              '* Fixed Charge',
+              style: TextStyle(fontSize: 16),
             ),
-          ),
-          GestureDetector(
-              onTap: () {
+            OutlinedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+              ),
+              onPressed: () {
                 fixedChargeGasBill((fixedChargeGasBillCallback) {
                   FixedChargegas = fixedChargeGasBillCallback;
                 });
               },
-              child: Container(
-                padding: EdgeInsets.only(left: 120),
-                child: InkWell(
-                    child: Text(
-                  '+Add ',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.lightBlueAccent),
-                )),
-              ))
-        ],
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.add),
+                  SizedBox(width: 4),
+                  Text(
+                    'ADD',
+                    style: TextStyle(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       );
+      // return Row(
+      //   children: [
+      //     Container(
+      //       padding: const EdgeInsets.only(right: 40, left: 10),
+      //       child: const Text(
+      //         'FixedCharge',
+      //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      //       ),
+      //     ),
+      //     GestureDetector(
+      //       onTap: () {
+      //         fixedChargeGasBill((fixedChargeGasBillCallback) {
+      //           FixedChargegas = fixedChargeGasBillCallback;
+      //         });
+      //       },
+      //       child: Container(
+      //         padding: const EdgeInsets.only(left: 120),
+      //         child: const InkWell(
+      //           child: Text(
+      //             '+Add ',
+      //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+      //           ),
+      //         ),
+      //       ),
+      //     )
+      //   ],
+      // );
     } else {
-      return Row(
-        children: [
-          Container(
-            padding: EdgeInsets.only(right: 40, left: 10),
-            child: Text(
-              'FixedCharge',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Fixed Charge',
+              style: TextStyle(fontSize: 16),
             ),
-          ),
-          GestureDetector(
+            GestureDetector(
               onTap: () {
                 fixedChargeGasBill((fixedChargeGasBillCallback) {
                   FixedChargegas = fixedChargeGasBillCallback;
                 });
               },
-              child: Container(
-                padding: EdgeInsets.only(left: 20),
-                child: InkWell(
-                    child: Text(
-                  FixedChargegas.toString(),
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey),
-                )),
-              ))
-        ],
+              child: InkWell(
+                child: SizedBox(
+                  width: 90,
+                  child: Text(
+                    FixedChargegas.toString(),
+                    style: const TextStyle(fontSize: 16, color: Colors.black54),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       );
     }
   }
 
   Widget showSubmeterWaterData() {
-    return Row(
-      children: [
-        Container(
-          padding: EdgeInsets.only(right: 40, left: 10),
-          child: Text(
-            'SubMeter',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            '* Sub Meter',
+            style: TextStyle(fontSize: 16),
           ),
-        ),
-        GestureDetector(
-            onTap: () {
-              // _waterBillType((waterBIllCallBack) {
-              //   waterBillType = waterBIllCallBack;
-              // });
-            },
-            child: Container(
-              padding: EdgeInsets.only(left: 145),
-              child: InkWell(
-                  child: Text(
-                '+Add ',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.lightBlueAccent),
-              )),
-            ))
-      ],
+          OutlinedButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+              overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+            ),
+            onPressed: () {},
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(Icons.add),
+                SizedBox(width: 4),
+                Text(
+                  'ADD',
+                  style: TextStyle(),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
+    // return Row(
+    //   children: [
+    //     Container(
+    //       padding: const EdgeInsets.only(right: 40, left: 10),
+    //       child: const Text(
+    //         'SubMeter',
+    //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    //       ),
+    //     ),
+    //     GestureDetector(
+    //         onTap: () {
+    //           // _waterBillType((waterBIllCallBack) {
+    //           //   waterBillType = waterBIllCallBack;
+    //           // });
+    //         },
+    //         child: Container(
+    //           padding: const EdgeInsets.only(left: 145),
+    //           child: const InkWell(
+    //               child: Text(
+    //             '+Add ',
+    //             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+    //           )),
+    //         ))
+    //   ],
+    // );
   }
 
   Widget showFixedWaterCharge() {
     if (showFiexedWaterCharge) {
-      return Row(
-        children: [
-          Container(
-            padding: EdgeInsets.only(right: 40, left: 10),
-            child: Text(
-              'FixedCharge',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              '* Fixed Charge',
+              style: TextStyle(fontSize: 16),
             ),
-          ),
-          GestureDetector(
-              onTap: () {
+            OutlinedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
+              ),
+              onPressed: () {
                 fixedChargeWaterBill((fixedChargeWaterBillCallback) {
                   FixedChargeele = fixedChargeWaterBillCallback;
                 });
               },
-              child: Container(
-                padding: EdgeInsets.only(left: 120),
-                child: InkWell(
-                    child: Text(
-                  '+Add ',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.lightBlueAccent),
-                )),
-              ))
-        ],
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.add),
+                  SizedBox(width: 4),
+                  Text(
+                    'ADD',
+                    style: TextStyle(),
+                  ),
+                ],
+              ),
+            ),
+            // InkWell(
+            //   onTap: () {
+            //     fixedChargeWaterBill((fixedChargeWaterBillCallback) {
+            //       FixedChargeele = fixedChargeWaterBillCallback;
+            //     });
+            //   },
+            //   child: const SizedBox(
+            //     width: 90,
+            //     child: Text(
+            //       '+Add ',
+            //       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent),
+            //     ),
+            //   ),
+            // )
+          ],
+        ),
       );
     } else {
-      return Row(
-        children: [
-          Container(
-            padding: EdgeInsets.only(right: 40, left: 10),
-            child: Text(
-              'FixedCharge',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Fixed Charge',
+              style: TextStyle(fontSize: 16),
             ),
-          ),
-          GestureDetector(
+            GestureDetector(
               onTap: () {
                 fixedChargeWaterBill((fixedChargeWaterBillCallback) {
                   FixedChargewater = fixedChargeWaterBillCallback;
                 });
               },
-              child: Container(
-                padding: EdgeInsets.only(left: 20),
-                child: InkWell(
-                    child: Text(
-                  FixedChargewater.toString(),
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey),
-                )),
-              ))
-        ],
+              child: InkWell(
+                child: Container(
+                  width: 90,
+                  child: Text(
+                    FixedChargewater.toString(),
+                    style: const TextStyle(fontSize: 16, color: Colors.black54),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       );
     }
   }
@@ -2585,11 +2690,11 @@ class _BillTabActionState extends State<BillTabAction> {
                         size: 30,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge",
                           style: TextStyle(
                             color: Colors.grey,
@@ -2598,7 +2703,7 @@ class _BillTabActionState extends State<BillTabAction> {
                           )),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 8),
+                      margin: const EdgeInsets.only(top: 10, left: 8),
                       child: TextFormField(
                         controller: fiexedCharegasController,
                         decoration: const InputDecoration(
@@ -2609,16 +2714,15 @@ class _BillTabActionState extends State<BillTabAction> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                       height: 80,
-                      padding: EdgeInsets.all(13),
+                      padding: const EdgeInsets.all(13),
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
                             if (fiexedCharegasController.text.isNotEmpty) {
-                              FixedChargegas =
-                                  double.parse(fiexedCharegasController.text);
+                              FixedChargegas = double.parse(fiexedCharegasController.text);
                               fixedChargeGasBillCallback(FixedChargegas);
                             }
                             showFiexedGasCharge = false;
@@ -2631,7 +2735,7 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
@@ -2671,11 +2775,11 @@ class _BillTabActionState extends State<BillTabAction> {
                         size: 30,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge",
                           style: TextStyle(
                             color: Colors.grey,
@@ -2684,7 +2788,7 @@ class _BillTabActionState extends State<BillTabAction> {
                           )),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 8),
+                      margin: const EdgeInsets.only(top: 10, left: 8),
                       child: TextFormField(
                         controller: fiexedCharewaterController,
                         decoration: const InputDecoration(
@@ -2695,16 +2799,15 @@ class _BillTabActionState extends State<BillTabAction> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                       height: 80,
-                      padding: EdgeInsets.all(13),
+                      padding: const EdgeInsets.all(13),
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
                             if (fiexedCharewaterController.text.isNotEmpty) {
-                              FixedChargewater =
-                                  double.parse(fiexedCharewaterController.text);
+                              FixedChargewater = double.parse(fiexedCharewaterController.text);
                               fixedChargeWaterBillCallback(FixedChargewater);
                             }
                             showFiexedWaterCharge = false;
@@ -2717,7 +2820,7 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
@@ -2757,11 +2860,11 @@ class _BillTabActionState extends State<BillTabAction> {
                         size: 30,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge",
                           style: TextStyle(
                             color: Colors.grey,
@@ -2770,7 +2873,7 @@ class _BillTabActionState extends State<BillTabAction> {
                           )),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 8),
+                      margin: const EdgeInsets.only(top: 10, left: 8),
                       child: TextFormField(
                         controller: fiexedChareeleController,
                         decoration: const InputDecoration(
@@ -2781,16 +2884,15 @@ class _BillTabActionState extends State<BillTabAction> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                       height: 80,
-                      padding: EdgeInsets.all(13),
+                      padding: const EdgeInsets.all(13),
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
                             if (fiexedChareeleController.text.isNotEmpty) {
-                              FixedChargeele =
-                                  double.parse(fiexedChareeleController.text);
+                              FixedChargeele = double.parse(fiexedChareeleController.text);
                               fixchargeEleCallback(FixedChargeele);
                             }
                             showFiexedElctricCharge = false;
@@ -2803,7 +2905,7 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
@@ -2843,11 +2945,11 @@ class _BillTabActionState extends State<BillTabAction> {
                         size: 30,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge for Blab",
                           style: TextStyle(
                             color: Colors.grey,
@@ -2856,7 +2958,7 @@ class _BillTabActionState extends State<BillTabAction> {
                           )),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10, left: 8),
+                      margin: const EdgeInsets.only(top: 10, left: 8),
                       child: TextFormField(
                         controller: rentController,
                         decoration: const InputDecoration(
@@ -2867,9 +2969,9 @@ class _BillTabActionState extends State<BillTabAction> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
                       height: 80,
-                      padding: EdgeInsets.all(13),
+                      padding: const EdgeInsets.all(13),
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
@@ -2879,8 +2981,7 @@ class _BillTabActionState extends State<BillTabAction> {
                               FixedEleChargeChoseCallback(rentFee);
                             }
                             if (maintenanceController.text.isNotEmpty) {
-                              maintenanceFee =
-                                  double.parse(maintenanceController.text);
+                              maintenanceFee = double.parse(maintenanceController.text);
                               FixedEleChargeChoseCallback(maintenanceFee);
                             }
                             showFixedCharges = false;
@@ -2893,7 +2994,7 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
@@ -2915,7 +3016,7 @@ class _BillTabActionState extends State<BillTabAction> {
         builder: (builder) {
           return StatefulBuilder(builder: (context, setstate) {
             return SingleChildScrollView(
-              padding: EdgeInsetsDirectional.only(
+              padding: const EdgeInsetsDirectional.only(
                 start: 20,
                 end: 10,
                 bottom: 30,
@@ -2925,7 +3026,7 @@ class _BillTabActionState extends State<BillTabAction> {
                 // direction: Axis.vertical,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -2933,14 +3034,14 @@ class _BillTabActionState extends State<BillTabAction> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.close,
                               color: Colors.black,
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        Text("Text Content"),
+                        const Text("Text Content"),
                       ],
                     ),
                   ),
@@ -2951,7 +3052,7 @@ class _BillTabActionState extends State<BillTabAction> {
                         children: [
                           Flexible(
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                 top: 8,
                                 left: 8,
                                 right: 8,
@@ -2959,25 +3060,20 @@ class _BillTabActionState extends State<BillTabAction> {
                                 //     .viewInsets
                                 //     .bottom,
                               ),
-                              child: Container(
+                              child: SizedBox(
                                 // height: 50,
                                 width: MediaQuery.of(context).size.width / 2,
                                 //   color: Colors.amber,
                                 child: TextFormField(
-                                  cursorColor: Color.fromARGB(255, 3, 61, 109),
+                                  cursorColor: const Color.fromARGB(255, 3, 61, 109),
                                   controller: namecontroller,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       hintText: 'Ex: Water Bill',
                                       label: Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 10),
+                                        padding: EdgeInsets.only(bottom: 10),
                                         child: Text(
                                           "Change Name",
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 3, 61, 109)),
+                                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                                         ),
                                       )),
                                 ),
@@ -2986,7 +3082,7 @@ class _BillTabActionState extends State<BillTabAction> {
                           ),
                           Flexible(
                             child: Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                 top: 8,
                                 left: 8,
                                 right: 8,
@@ -2994,25 +3090,20 @@ class _BillTabActionState extends State<BillTabAction> {
                                 //     .viewInsets
                                 //     .bottom,
                               ),
-                              child: Container(
+                              child: SizedBox(
                                 // height: 50,
                                 width: MediaQuery.of(context).size.width / 2,
                                 //   color: Colors.amber,
                                 child: TextFormField(
-                                  cursorColor: Color.fromARGB(255, 3, 61, 109),
+                                  cursorColor: const Color.fromARGB(255, 3, 61, 109),
                                   controller: valuecontroller,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       hintText: 'Ex: Water Bill',
                                       label: Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 10),
+                                        padding: EdgeInsets.only(bottom: 10),
                                         child: Text(
                                           "Change Value",
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(
-                                                  255, 3, 61, 109)),
+                                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                                         ),
                                       )),
                                 ),
@@ -3065,20 +3156,16 @@ class _BillTabActionState extends State<BillTabAction> {
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 20, bottom: 20, left: 10, right: 10),
+                    padding: const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
                     child: Center(
-                      child: Container(
+                      child: SizedBox(
                         height: 45,
                         width: MediaQuery.of(context).size.width,
                         child: MaterialButton(
                           color: Colors.purple,
                           onPressed: () {
                             setstate(() {
-                              selectedItems.add(ViewBloodHospitalModel(
-                                  id: listlenth.toString(),
-                                  name: namecontroller.text,
-                                  value: valuecontroller.text));
+                              selectedItems.add(ViewBloodHospitalModel(id: listlenth.toString(), name: namecontroller.text, value: valuecontroller.text));
                             });
 
                             setstate(() {});
@@ -3086,13 +3173,10 @@ class _BillTabActionState extends State<BillTabAction> {
                             Navigator.pop(context);
                             setState(() {});
                           },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Text(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          child: const Text(
                             "Save",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -3127,8 +3211,7 @@ class ViewBloodHospitalModel {
   String name;
   String value;
 
-  factory ViewBloodHospitalModel.fromJson(Map<String, dynamic> json) =>
-      ViewBloodHospitalModel(
+  factory ViewBloodHospitalModel.fromJson(Map<String, dynamic> json) => ViewBloodHospitalModel(
         id: json["id"],
         name: json["name"],
         value: "value",
