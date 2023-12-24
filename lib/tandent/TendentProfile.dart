@@ -375,7 +375,7 @@ class _TendentProfileState extends State<TendentProfile> {
       ),
       onPressed: () async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool("login", true);
+        prefs.setBool("login", false);
 
         prefs.setString('userId', "");
         prefs.setString('email', "");

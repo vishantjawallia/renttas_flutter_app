@@ -5,33 +5,35 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import '../Commertial/CommertialDashboard.dart';
+import '../Commertial/CommertialDashboardNew.dart';
 import '../Inventory/Dashboard.dart';
-
-
-
+import '../Inventory/DashboardNew.dart';
 
 class PropertyCardsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.green,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-          title: const Text('Commercial Property List'),
+      appBar: AppBar(
+        leading: const BackButton(),
+        backgroundColor: const Color(0xff54854C),
+        // flexibleSpace: Container(
+        //   decoration: const BoxDecoration(
+        //     gradient: LinearGradient(
+        //       colors: [
+        //         Colors.black,
+        //         Colors.green,
+        //       ],
+        //       begin: Alignment.topCenter,
+        //       end: Alignment.bottomCenter,
+        //     ),
+        //   ),
+        // ),
+        title: const Text(
+          'Commercial Property List',
         ),
-        body: CommercialPropertyList(),
-      );
-
+      ),
+      body: CommercialPropertyList(),
+    );
   }
 }
 
@@ -80,15 +82,19 @@ class CommercialPropertyList extends StatelessWidget {
         final commercialProperty = commercialProperties[index];
         return GestureDetector(
           onTap: () {
-            log("clicked==="+commercialProperties[index].propertyName);
-            if(commercialProperties[index].propertyName=="Warehouse"){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const inentorydashboard()));
-
-            }else{
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const commerialdashboard()));
-
+            log("clicked===" + commercialProperties[index].propertyName);
+            if (commercialProperties[index].propertyName == "Warehouse") {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew()));
+              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const inentorydashboard()));
+            } else {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CommerialDashboardNew(
+                            name: commercialProperties[index].propertyName,
+                          )));
             }
-                    },
+          },
           child: Card(
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             elevation: 5,

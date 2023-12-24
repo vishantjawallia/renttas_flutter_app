@@ -33,10 +33,7 @@ class _viewqutationmainState extends State<viewqutationmain> {
                     width: 10,
                   ),
                   InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const inentorydashboard())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
                     child: Icon(
                       Icons.arrow_back,
                       size: 30,
@@ -83,30 +80,21 @@ class _viewqutationmainState extends State<viewqutationmain> {
                 children: [
                   Text(
                     "hhhh",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.black),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
                     "PID- 101",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        color: Colors.grey),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
                     "Email : abcd@gmail.com",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        color: Colors.grey),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                   ),
                 ],
               ),
@@ -120,30 +108,21 @@ class _viewqutationmainState extends State<viewqutationmain> {
                 children: [
                   Text(
                     "30/10/2023",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        color: Colors.grey),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
                     "0.01",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.black),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
                     "Q NO:!",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        color: Colors.grey),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                   ),
                 ],
               ),
@@ -158,10 +137,10 @@ class _viewqutationmainState extends State<viewqutationmain> {
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff54854C),
+        // backgroundColor: Colors.blue,
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const qutationview()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const qutationview()));
         },
       ),
     );

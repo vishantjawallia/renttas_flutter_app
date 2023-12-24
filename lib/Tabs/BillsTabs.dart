@@ -73,9 +73,10 @@ class _BillsTabsState extends State<BillsTabs> {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
+            color: Colors.white,
           ),
         ),
-        icon: Icon(Icons.add),
+        icon: Icon(Icons.add,       color: Colors.white,),
         backgroundColor: Color(0xff54854C),
         // backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

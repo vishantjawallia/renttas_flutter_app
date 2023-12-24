@@ -327,7 +327,8 @@ class _collabratesviewState extends State<collabratesview> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add, color: Colors.white),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff54854C),
+        // backgroundColor: Colors.blue,
         onPressed: () {
           showbottomsheetinvitecollab(context);
           // Navigator.push(context,

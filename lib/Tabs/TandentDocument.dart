@@ -26,13 +26,13 @@ class _TandentDocumentState extends State<TandentDocument> {
   bool isLoading = false;
   bool isDocTheir = false;
   List<Documents> dataList = [
-    Documents(id: "1", propertyId: "", subPropertyId: "", imageName: "", docType: "type2", docName: "Hello", createdAt: "", updatedAt: ""),
-    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
-    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
-    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
-    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
-    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
-    Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    // Documents(id: "1", propertyId: "", subPropertyId: "", imageName: "", docType: "type2", docName: "Hello", createdAt: "", updatedAt: ""),
+    // Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    // Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    // Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    // Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    // Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
+    // Documents(id: "2", propertyId: "", subPropertyId: "", imageName: "", docType: "type3", docName: "Vishant", createdAt: "", updatedAt: ""),
   ];
   @override
   void initState() {
@@ -78,11 +78,14 @@ class _TandentDocumentState extends State<TandentDocument> {
                       return Container(
                         margin: const EdgeInsets.only(bottom: 10, right: 10),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                              12,
-                            ),
-                            boxShadow: [const BoxShadow(blurRadius: 0.9, spreadRadius: 0.4, color: Colors.grey)]),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(
+                            12,
+                          ),
+                          boxShadow: const [
+                            BoxShadow(blurRadius: 0.9, spreadRadius: 0.4, color: Colors.grey),
+                          ],
+                        ),
                         child: Column(
                           children: [
                             GestureDetector(

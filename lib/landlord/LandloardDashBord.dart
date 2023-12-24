@@ -133,7 +133,14 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                             navigateToFirstTab();
                           },
                           child: Container(
-                              decoration: BoxDecoration(border: Border.all(width: 1, color: Colors.grey), borderRadius: BorderRadius.circular(8)),
+                              decoration: BoxDecoration(
+                                color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.2) : Colors.white,
+                                border: Border.all(
+                                  width: 1,
+                                  color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.3) : Colors.grey,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -147,7 +154,12 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                   SizedBox(
                                     width: 100,
                                   ),
-                                  selectedPropertyName == property.propertyName ? const Icon(Icons.add_task) : SizedBox(),
+                                  selectedPropertyName == property.propertyName
+                                      ? const Icon(
+                                          Icons.check_circle_outline_sharp,
+                                          color: Color(0xff54854C),
+                                        )
+                                      : SizedBox(),
                                 ],
                               )),
                         ),
@@ -207,7 +219,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
           appBar: AppBar(
             backgroundColor: Color(0xff54854C),
             // toolbarHeight: 200,
-            toolbarHeight: !isSubproperty ? 126 : 200,
+            toolbarHeight: !isSubproperty ? 130 : 200,
             // toolbarHeight: !isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
             automaticallyImplyLeading: false,
             actions: <Widget>[
@@ -243,7 +255,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                     ),
                                   ),
                                 ),
-                                Padding(
+                                Container(
+                                  // alignment: Alignment.centerLeft,
                                   padding: const EdgeInsets.only(left: 12),
                                   child: isLoading
                                       ? SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 3))
@@ -251,15 +264,16 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                           borderRadius: BorderRadius.circular(6),
                                           onTap: () => _openBottomSheet(context),
                                           child: Padding(
+                                            // padding: EdgeInsets.only(),
                                             padding: const EdgeInsets.only(left: 6, top: 4, bottom: 4, right: 0),
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              // mainAxisAlignment: MainAxisAlignment.center,
+                                              // crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
                                                 Container(
-                                                  width: 100,
+                                                  width: selectedPropertyName.length > 8 ? 90 : 72,
                                                   height: 42.5,
-                                                  alignment: Alignment.center,
+                                                  alignment: Alignment.centerLeft,
                                                   child: Text(
                                                     selectedPropertyName,
                                                     style: TextStyle(
@@ -267,7 +281,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                       fontWeight: FontWeight.w600,
                                                       fontSize: 18,
                                                     ),
-                                                    // textAlign: TextAlign.center,
+                                                    textAlign: TextAlign.start,
                                                     overflow: TextOverflow.clip,
                                                   ),
                                                 ),

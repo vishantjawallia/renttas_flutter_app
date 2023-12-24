@@ -52,70 +52,48 @@ class _TandentBillState extends State<TandentBill> {
 
   bool isBillTheir = true;
   List<BIllModel> dataList = [
-    BIllModel(
-        id: "id",
-        landlordId: "landlordId",
-        propertyId: "propertyId",
-        subpropertyId: "subpropertyId",
-        rentCycle: "rentCycle",
-        rentStartDate: "rentStartDate",
-        rentEndDate: "rentEndDate",
-        collectBy: "collectBy",
-        previousBalance: "previousBalance",
-        rentAmount: "rentAmount",
-        maintenanceAmount: "maintenanceAmount",
-        totalAmount: "totalAmount",
-        electricityType: "electricityType",
-        electricCharge: "electricCharge",
-        waterBillType: "waterBillType",
-        waterBillCharge: "waterBillCharge",
-        gasBillType: "gasBillType",
-        gasBillCharge: "gasBillCharge",
-        createdAt: "createdAt",
-        updatedAt: "updatedAt"),
-    BIllModel(
-        id: "id",
-        landlordId: "landlordId",
-        propertyId: "propertyId",
-        subpropertyId: "subpropertyId",
-        rentCycle: "rentCycle",
-        rentStartDate: "rentStartDate",
-        rentEndDate: "rentEndDate",
-        collectBy: "collectBy",
-        previousBalance: "previousBalance",
-        rentAmount: "rentAmount",
-        maintenanceAmount: "maintenanceAmount",
-        totalAmount: "totalAmount",
-        electricityType: "electricityType",
-        electricCharge: "electricCharge",
-        waterBillType: "waterBillType",
-        waterBillCharge: "waterBillCharge",
-        gasBillType: "gasBillType",
-        gasBillCharge: "gasBillCharge",
-        createdAt: "createdAt",
-        updatedAt: "updatedAt"),
-    BIllModel(
-      id: "id",
-      landlordId: "landlordId",
-      propertyId: "propertyId",
-      subpropertyId: "subpropertyId",
-      rentCycle: "rentCycle",
-      rentStartDate: "rentStartDate",
-      rentEndDate: "rentEndDate",
-      collectBy: "collectBy",
-      previousBalance: "previousBalance",
-      rentAmount: "rentAmount",
-      maintenanceAmount: "maintenanceAmount",
-      totalAmount: "totalAmount",
-      electricityType: "electricityType",
-      electricCharge: "electricCharge",
-      waterBillType: "waterBillType",
-      waterBillCharge: "waterBillCharge",
-      gasBillType: "gasBillType",
-      gasBillCharge: "gasBillCharge",
-      createdAt: "createdAt",
-      updatedAt: "updatedAt",
-    ),
+    // BIllModel(
+    //     id: "id",
+    //     landlordId: "landlordId",
+    //     propertyId: "propertyId",
+    //     subpropertyId: "subpropertyId",
+    //     rentCycle: "rentCycle",
+    //     rentStartDate: "rentStartDate",
+    //     rentEndDate: "rentEndDate",
+    //     collectBy: "collectBy",
+    //     previousBalance: "previousBalance",
+    //     rentAmount: "rentAmount",
+    //     maintenanceAmount: "maintenanceAmount",
+    //     totalAmount: "totalAmount",
+    //     electricityType: "electricityType",
+    //     electricCharge: "electricCharge",
+    //     waterBillType: "waterBillType",
+    //     waterBillCharge: "waterBillCharge",
+    //     gasBillType: "gasBillType",
+    //     gasBillCharge: "gasBillCharge",
+    //     createdAt: "createdAt",
+    //     updatedAt: "updatedAt"),
+    // BIllModel(
+    //     id: "id",
+    //     landlordId: "landlordId",
+    //     propertyId: "propertyId",
+    //     subpropertyId: "subpropertyId",
+    //     rentCycle: "rentCycle",
+    //     rentStartDate: "rentStartDate",
+    //     rentEndDate: "rentEndDate",
+    //     collectBy: "collectBy",
+    //     previousBalance: "previousBalance",
+    //     rentAmount: "rentAmount",
+    //     maintenanceAmount: "maintenanceAmount",
+    //     totalAmount: "totalAmount",
+    //     electricityType: "electricityType",
+    //     electricCharge: "electricCharge",
+    //     waterBillType: "waterBillType",
+    //     waterBillCharge: "waterBillCharge",
+    //     gasBillType: "gasBillType",
+    //     gasBillCharge: "gasBillCharge",
+    //     createdAt: "createdAt",
+    //     updatedAt: "updatedAt"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -134,137 +112,293 @@ class _TandentBillState extends State<TandentBill> {
                       itemCount: dataList.length,
                       itemBuilder: (context, index) {
                         final bill = dataList[index];
-                        return Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  SizedBox(width: 10),
-                                  Text(
-                                    bill.rentStartDate,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    name,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  SizedBox(width: 50),
-                                  Text(
-                                    bill.totalAmount.toString(),
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => BillViewPage(
-                                                      Data: bill,
-                                                      type: '0',
-                                                    )));
-                                      },
-                                      icon: Icon(Icons.arrow_forward_ios)),
-                                ],
-                              ),
-                              Divider(
-                                color: Colors.grey,
-                                height: 30,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  Column(
+                        return Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Card(
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          showbottomsheet(context, bill.id);
-                                          /* _showBottomSheet(
-                                              context, bill['id']);*/
-                                        },
-                                        icon: Icon(Icons.add_box),
-                                      ),
-                                      Text('Receive'),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 50,
-                                  ),
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            name,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black,
                                             ),
-                                          );
-                                          String message = "Hii their your Bill form is ";
-                                          /* shareOnWhatsApp(message);*/
-                                        },
-                                        icon: Icon(Icons.share),
+                                          ),
+                                          Text(
+                                            bill.rentStartDate,
+                                            style: TextStyle(
+                                              // fontSize: 13,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      Text('Share'),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  SizedBox(
-                                    width: 30,
-                                  ),
-                                  Column(
-                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(6.0),
+                                        decoration: BoxDecoration(color: Color(0xff54854C), borderRadius: BorderRadius.circular(6)),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "₹ " "${bill.totalAmount.toString()}",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            Text(
+                                              "(recieved)",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                       IconButton(
-                                        onPressed: () async {
-                                          if (Platform.isAndroid) {
-                                            var status = await Permission.storage.status;
-                                            if (status != PermissionStatus.granted) {
-                                              status = await Permission.storage.request();
-                                            }
-                                            if (status.isGranted) {
-                                              //   const downloadsFolderPath = '/storage/emulated/0/Download/';
-                                              //   Directory dir = Directory(downloadsFolderPath);
-                                              // var file=  makePdf(bill,selectedSubPropertyName);
-                                              //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
-
-                                              Navigator.of(context).push(
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
                                                 MaterialPageRoute(
-                                                  builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
-                                                ),
-                                              );
-                                            }
-                                          }
-                                        },
-                                        icon: Icon(Icons.downloading_outlined),
-                                      ),
-                                      Text('Download'),
+                                                    builder: (context) => BillViewPage(
+                                                          Data: bill,
+                                                          type: '0',
+                                                        )));
+                                          },
+                                          icon: Icon(Icons.arrow_forward)),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                Container(color: Colors.black12, height: 2, width: 500),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(6),
+                                      onTap: () {
+                                        showbottomsheet(context, bill.id);
+                                        //                   /* _showBottomSheet(
+                                        //                       context, bill['id']);*/
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(8),
+                                        child: Column(
+                                          children: const [
+                                            Icon(Icons.add_box),
+                                            SizedBox(width: 0.0, height: 4),
+                                            Text('Receive'),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(color: Colors.black12, height: 68, width: 2),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(6),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
+                                          ),
+                                        );
+                                        String message = "Hii their your Bill form is ";
+                                        /* shareOnWhatsApp(message);*/
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(8),
+                                        child: Column(
+                                          children: const [
+                                            Icon(Icons.share),
+                                            SizedBox(width: 0.0, height: 4),
+                                            Text('Share'),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(color: Colors.black12, height: 68, width: 2),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(6),
+                                      onTap: () async {
+                                        if (Platform.isAndroid) {
+                                          var status = await Permission.storage.status;
+                                          if (status != PermissionStatus.granted) {
+                                            status = await Permission.storage.request();
+                                          }
+                                          if (status.isGranted) {
+                                            //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                                            //   Directory dir = Directory(downloadsFolderPath);
+                                            // var file=  makePdf(bill,selectedSubPropertyName);
+                                            //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
+
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
+                                              ),
+                                            );
+                                          }
+                                        }
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(8),
+                                        child: Column(
+                                          children: const [
+                                            Icon(Icons.downloading_outlined),
+                                            SizedBox(width: 0.0, height: 4),
+                                            Text('Download'),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         );
+                        // return Card(
+                        //   elevation: 5,
+                        //   shape: RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.circular(10),
+                        //   ),
+                        //   child: Column(
+                        //     children: [
+                        //       SizedBox(height: 10),
+                        //       Row(
+                        //         children: [
+                        //           SizedBox(width: 10),
+                        //           Text(
+                        //             bill.rentStartDate,
+                        //             style: TextStyle(
+                        //               fontSize: 15,
+                        //               fontWeight: FontWeight.bold,
+                        //               color: Colors.grey,
+                        //             ),
+                        //           ),
+                        //           SizedBox(width: 5),
+                        //           Text(
+                        //             name,
+                        //             style: TextStyle(
+                        //               fontSize: 15,
+                        //               fontWeight: FontWeight.bold,
+                        //               color: Colors.black,
+                        //             ),
+                        //           ),
+                        //           SizedBox(width: 50),
+                        //           Text(
+                        //             bill.totalAmount.toString(),
+                        //             style: TextStyle(
+                        //               fontSize: 18,
+                        //               fontWeight: FontWeight.bold,
+                        //               color: Colors.grey,
+                        //             ),
+                        //           ),
+                        //           IconButton(
+                        //               onPressed: () {
+                        //                 Navigator.push(
+                        //                     context,
+                        //                     MaterialPageRoute(
+                        //                         builder: (context) => BillViewPage(
+                        //                               Data: bill,
+                        //                               type: '0',
+                        //                             )));
+                        //               },
+                        //               icon: Icon(Icons.arrow_forward_ios)),
+                        //         ],
+                        //       ),
+                        //       Divider(
+                        //         color: Colors.grey,
+                        //         height: 30,
+                        //       ),
+                        //       Row(
+                        //         children: [
+                        //           SizedBox(
+                        //             width: 30,
+                        //           ),
+                        //           Column(
+                        //             children: [
+                        //               IconButton(
+                        //                 onPressed: () {
+                        //                   showbottomsheet(context, bill.id);
+                        //                   /* _showBottomSheet(
+                        //                       context, bill['id']);*/
+                        //                 },
+                        //                 icon: Icon(Icons.add_box),
+                        //               ),
+                        //               Text('Receive'),
+                        //             ],
+                        //           ),
+                        //           SizedBox(
+                        //             width: 50,
+                        //           ),
+                        //           Column(
+                        //             children: [
+                        //               IconButton(
+                        //                 onPressed: () {
+                        //                   Navigator.of(context).push(
+                        //                     MaterialPageRoute(
+                        //                       builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
+                        //                     ),
+                        //                   );
+                        //                   String message = "Hii their your Bill form is ";
+                        //                   /* shareOnWhatsApp(message);*/
+                        //                 },
+                        //                 icon: Icon(Icons.share),
+                        //               ),
+                        //               Text('Share'),
+                        //             ],
+                        //           ),
+                        //           SizedBox(
+                        //             width: 30,
+                        //           ),
+                        //           SizedBox(
+                        //             width: 30,
+                        //           ),
+                        //           Column(
+                        //             children: [
+                        //               IconButton(
+                        //                 onPressed: () async {
+                        //                   if (Platform.isAndroid) {
+                        //                     var status = await Permission.storage.status;
+                        //                     if (status != PermissionStatus.granted) {
+                        //                       status = await Permission.storage.request();
+                        //                     }
+                        //                     if (status.isGranted) {
+                        //                       //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                        //                       //   Directory dir = Directory(downloadsFolderPath);
+                        //                       // var file=  makePdf(bill,selectedSubPropertyName);
+                        //                       //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
+
+                        //                       Navigator.of(context).push(
+                        //                         MaterialPageRoute(
+                        //                           builder: (builder) => PdfPreviewPage(invoice: bill, subname: name),
+                        //                         ),
+                        //                       );
+                        //                     }
+                        //                   }
+                        //                 },
+                        //                 icon: Icon(Icons.downloading_outlined),
+                        //               ),
+                        //               Text('Download'),
+                        //             ],
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ],
+                        //   ),
+                        // );
                       },
                     ),
                   ),

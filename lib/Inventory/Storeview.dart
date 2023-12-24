@@ -303,7 +303,8 @@ class _storeviewState extends State<storeview> {
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff54854C),
+        // backgroundColor: Colors.blue,
         onPressed: () {
           _displayTextInputDialog(context);
         },

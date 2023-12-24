@@ -28,7 +28,7 @@ class DetailPage extends StatelessWidget {
           );
           // rootBundle.
         },
-        child: Icon(Icons.picture_as_pdf),
+        child: Icon(Icons.picture_as_pdf,      color: Colors.white,),
       ),
       appBar: AppBar(
         title: Text(invoice.id),

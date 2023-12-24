@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, prefer_const_constructors
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, prefer_const_constructors, use_build_context_synchronously, unused_element
 
 import 'dart:convert';
 
@@ -14,7 +14,7 @@ import '../Common/ApiUrl.dart';
 import '../landlord/LandloardDashBord.dart';
 
 class AddTendent extends StatefulWidget {
-  const AddTendent({Key? key}) : super(key: key);
+  const AddTendent({super.key});
 
   @override
   State<AddTendent> createState() => _AddTendentState();
@@ -31,12 +31,12 @@ class _AddTendentState extends State<AddTendent> {
   //   'MASTER',
   //   'PAYPAL',
   // ];
-  TextEditingController _tenantName = TextEditingController();
-  TextEditingController _email = TextEditingController();
-  TextEditingController _advanceAmount = TextEditingController();
+  final TextEditingController _tenantName = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _advanceAmount = TextEditingController();
   String phoneNumber = '';
-  TextEditingController _startDateController = TextEditingController();
-  TextEditingController _endDateController = TextEditingController();
+  final TextEditingController _startDateController = TextEditingController();
+  final TextEditingController _endDateController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context, TextEditingController controller) async {
     final DateTime? picked = await showDatePicker(
@@ -81,7 +81,10 @@ class _AddTendentState extends State<AddTendent> {
     print(phone);
   }
 
-  Future<void> _selectDatee(BuildContext context, TextEditingController controller) async {
+  Future<void> _selectDatee(
+    BuildContext context,
+    TextEditingController controller,
+  ) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -107,141 +110,149 @@ class _AddTendentState extends State<AddTendent> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Container(
-            //   height: 50,
-            //   margin: EdgeInsets.only(top: 30, left: 10, right: 10),
-            //   child: Text(
-            //     'Add Tenant',
-            //     style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
-            //   ),
-            // ),
-            SizedBox(
-              height: 10,
-            ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Column(
+            children: [
+              // Container(
+              //   height: 50,
+              //   margin: EdgeInsets.only(top: 30, left: 10, right: 10),
+              //   child: Text(
+              //     'Add Tenant',
+              //     style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
+              //   ),
+              // ),
+              SizedBox(height: 10),
 
-            Container(
-              margin: EdgeInsets.only(top: 10, left: 8),
-              child: TextFormField(
-                controller: _tenantName,
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.person),
-                  //  hintText: 'Make Payment?',
-                  labelText: 'Tenant Name',
+              Container(
+                margin: EdgeInsets.only(top: 10, left: 8),
+                child: TextFormField(
+                  controller: _tenantName,
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.person),
+                    //  hintText: 'Make Payment?',
+                    labelText: 'Tenant Name',
+                  ),
                 ),
               ),
-            ),
 
-            Container(
-              padding: EdgeInsets.only(left: 10),
-              margin: EdgeInsets.only(top: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: IntlPhoneField(
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.phone_android),
-                        hintText: 'Enter your mobile number',
-                        labelText: 'Mobile Number *',
+              Container(
+                padding: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.only(top: 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: IntlPhoneField(
+                        decoration: const InputDecoration(
+                          icon: Icon(Icons.phone_android),
+                          hintText: 'Enter your mobile number',
+                          labelText: 'Mobile Number *',
+                        ),
+                        initialCountryCode: 'IN',
+                        onChanged: (phone) {
+                          _onPhoneNumberChanged(phone.completeNumber);
+                          print(phone.completeNumber);
+                          print(phone.countryCode);
+                          print(phone.countryISOCode);
+                        },
                       ),
-                      initialCountryCode: 'IN',
-                      onChanged: (phone) {
-                        _onPhoneNumberChanged(phone.completeNumber);
-                        print(phone.completeNumber);
-                        print(phone.countryCode);
-                        print(phone.countryISOCode);
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10, left: 8),
+                child: TextFormField(
+                  controller: _email,
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.email),
+                    //  hintText: 'Make Payment?',
+                    labelText: 'Email Id (Optional)',
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10, left: 8),
+                child: TextFormField(
+                  controller: _advanceAmount,
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.currency_rupee),
+                    //  hintText: 'Make Payment?',
+                    labelText: 'AdvanceAmount',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Start Date:',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    TextField(
+                      controller: _startDateController,
+                      decoration: InputDecoration(
+                        labelText: 'Start Date',
+                      ),
+                      readOnly: true,
+                      onTap: () {
+                        _selectDate(context, _startDateController);
                       },
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, left: 8),
-              child: TextFormField(
-                controller: _email,
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.email),
-                  //  hintText: 'Make Payment?',
-                  labelText: 'Email Id (Optional)',
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, left: 8),
-              child: TextFormField(
-                controller: _advanceAmount,
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.currency_rupee),
-                  //  hintText: 'Make Payment?',
-                  labelText: 'AdvanceAmount',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Start Date:',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  TextField(
-                    controller: _startDateController,
-                    decoration: InputDecoration(
-                      labelText: 'Start Date',
+                    SizedBox(height: 16),
+                    Text(
+                      'End Date:',
+                      style: TextStyle(fontSize: 16),
                     ),
-                    readOnly: true,
-                    onTap: () {
-                      _selectDate(context, _startDateController);
-                    },
-                  ),
-                  SizedBox(height: 16),
-                  Text(
-                    'End Date:',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  TextField(
-                    controller: _endDateController,
-                    decoration: InputDecoration(
-                      labelText: 'End Date',
+                    TextField(
+                      controller: _endDateController,
+                      decoration: InputDecoration(
+                        labelText: 'End Date',
+                      ),
+                      readOnly: true,
+                      onTap: () {
+                        _selectDate(context, _endDateController);
+                      },
                     ),
-                    readOnly: true,
-                    onTap: () {
-                      _selectDate(context, _endDateController);
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 50,
-              width: 350,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                  elevation: 8,
+                  ],
                 ),
-                onPressed: isLoading ? null : () => saveTenant(_tenantName.text, phoneNumber, _email.text, _advanceAmount.text, _startDateController.text, _endDateController.text),
-                child: isLoading
-                    ? CircularProgressIndicator(
-                        color: Color(0xff54854C),
-                      )
-                    : Text("Save"),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 50,
+                width: 350,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    elevation: 8,
+                  ),
+                  onPressed: isLoading ? null : () => saveTenant(_tenantName.text, phoneNumber, _email.text, _advanceAmount.text, _startDateController.text, _endDateController.text),
+                  child: isLoading
+                      ? CircularProgressIndicator(
+                          color: Color(0xff54854C),
+                        )
+                      : Text("Save"),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Future<void> saveTenant(String name, String phoneNumber, String email, String advanceAmount, String startdate, String enddate) async {
+  Future<void> saveTenant(
+    String name,
+    String phoneNumber,
+    String email,
+    String advanceAmount,
+    String startdate,
+    String enddate,
+  ) async {
     // Replace with your server URL
 
     final Map<String, dynamic> data = {

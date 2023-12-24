@@ -133,7 +133,8 @@ class _viewallbuisnessState extends State<viewallbuisness> {
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff54854C),
+        // backgroundColor: Colors.blue,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const joinbuisnesspage()));
         },

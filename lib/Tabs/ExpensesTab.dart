@@ -66,9 +66,10 @@ class _ExpensesTabState extends State<ExpensesTab> {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
+              color: Colors.white,
             ),
           ),
-          icon: const Icon(Icons.add),
+          icon: const Icon(Icons.add,      color: Colors.white,),
           backgroundColor: const Color(0xff54854C),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),

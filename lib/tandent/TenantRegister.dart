@@ -536,7 +536,7 @@ class _TenantRegisterState extends State<TenantRegister> {
         prefs.setString("email", emails);
         prefs.setString("mbno", mobi);
         prefs.setString("name", name);
-        prefs.setBool("login", false);
+        prefs.setBool("login", true);
         prefs.setString("sw", "0");
         // otprecieved = data['emial_otp'] == null
         //     ? ""
@@ -656,7 +656,7 @@ Future<void> shareData(String userId, String name, String email, String phone, S
   print("inshared");
   SharedPreferences preferences = await SharedPreferences.getInstance();
   await preferences.clear();
-  preferences.setBool("login", false);
+  preferences.setBool("login", true);
   await preferences.setString('userId', userId);
   await preferences.setString('name', name);
   await preferences.setString('email', email);

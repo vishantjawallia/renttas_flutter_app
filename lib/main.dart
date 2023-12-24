@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings, prefer_const_literals_to_create_immutables
+// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -81,6 +81,10 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       builder: BotToastInit(),
       theme: ThemeData(
+        colorScheme: const ColorScheme.light().copyWith(
+          primary: Color(0xff54854C),
+        ),
+        // primaryColorLight: const Color(0xff54854C),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       navigatorObservers: [BotToastNavigatorObserver()],

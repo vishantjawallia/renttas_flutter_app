@@ -5,6 +5,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Common/ApiUrl.dart';
 import '../Common/CommercialProperty.dart';
@@ -12,25 +13,29 @@ import 'AddNewCompany.dart';
 import 'Model/GetCompanyModel.dart';
 import 'ViewCompanyDetails.dart';
 
-class commerialdashboard extends StatefulWidget {
-  const commerialdashboard({super.key});
+class CommerialDashboardNew extends StatefulWidget {
+  final String? name;
+  const CommerialDashboardNew({
+    required this.name,
+    super.key,
+  });
 
   @override
-  State<commerialdashboard> createState() => _commerialdashboardState();
+  State<CommerialDashboardNew> createState() => _CommerialDashboardNewState();
 }
 
 List<GetCompany> companylist = [];
 bool isloaidng = false;
 
-class _commerialdashboardState extends State<commerialdashboard> {
+class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getcompanyfunct();
-    setState(() {
-      isloaidng = true;
-    });
+    // setState(() {
+    //   isloaidng = true;
+    // });
   }
 
   getcompanyfunct() async {
@@ -74,110 +79,23 @@ class _commerialdashboardState extends State<commerialdashboard> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
-        // backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Container(
-            child: Expanded(
-              child: Row(
-                children: [
-                  // const SizedBox(
-                  //   width: 10,
-                  // ),
-                  // InkWell(
-                  //   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
-                  //   child: const Icon(
-                  //     Icons.arrow_back,
-                  //     size: 30,
-                  //   ),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Column(
-                  //     mainAxisAlignment: MainAxisAlignment.center,
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       Text("Comertial"),
-                  //       // Text(
-                  //       //   "ab@gmail.com",
-                  //       //   style: TextStyle(fontWeight: FontWeight.bold),
-                  //       // )
-                  //     ],
-                  //   ),
-                  // ),
-                  // Flexible(fit: FlexFit.tight, child: SizedBox()),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Icon(
-                  //     Icons.search,
-                  //     size: 24,
-                  //   ),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Container(
-                  //       padding: EdgeInsets.all(10),
-                  //       decoration: BoxDecoration(
-                  //           color: Colors.white,
-                  //           borderRadius: BorderRadius.circular(40)),
-                  //       //alignment: Alignment.center,
-                  //       child: Icon(
-                  //         Icons.qr_code_scanner_outlined,
-                  //         size: 20,
-                  //       )
-                  //     // Text(
-                  //     //   'Premium',
-                  //     //   style: TextStyle(
-                  //     //     fontSize: 18,
-                  //     //     fontWeight: FontWeight.bold,
-                  //     //   ),
-                  //     //   textAlign: TextAlign.center,
-                  //     // ),
-                  //   ),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Container(
-                  //       padding: EdgeInsets.all(10),
-                  //       decoration: BoxDecoration(
-                  //           color: Colors.white,
-                  //           borderRadius: BorderRadius.circular(40)),
-                  //       //alignment: Alignment.center,
-                  //       child: Icon(
-                  //         Icons.mobile_screen_share_rounded,
-                  //         size: 20,
-                  //       )
-                  //     // Text(
-                  //     //   'Premium',
-                  //     //   style: TextStyle(
-                  //     //     fontSize: 18,
-                  //     //     fontWeight: FontWeight.bold,
-                  //     //   ),
-                  //     //   textAlign: TextAlign.center,
-                  //     // ),
-                  //   ),
-                  // ),
-                ],
-              ),
-            ),
-          ),
-        ],
+        title: Text(
+          widget.name ?? "Heloo",
+          style: const TextStyle(color: Colors.white),
+        ),
       ),
       body: isloaidng == true
           ? const Center(
               child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: CircularProgressIndicator(
-                    color: Color(0xff54854C),
-                  )))
+                height: 60,
+                width: 60,
+                child: CircularProgressIndicator(
+                  color: Color(0xff54854C),
+                ),
+              ),
+            )
           : companylist.isEmpty
-              ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
+              ? GlobalWidgets.notFound('${widget.name}')
               : ListView.builder(
                   itemCount: companylist.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -358,7 +276,7 @@ class _commerialdashboardState extends State<commerialdashboard> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const commerialdashboard()));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => const commerialdashboardnew()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print, prefer_interpolation_to_compose_strings, prefer_final_fields
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -9,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../landlord/LandloardDashBord.dart';
 
 class AddExpenses extends StatefulWidget {
-  const AddExpenses({Key? key}) : super(key: key);
+  const AddExpenses({super.key});
 
   @override
   State<AddExpenses> createState() => _AddExpensesState();
@@ -72,48 +74,34 @@ class _AddExpensesState extends State<AddExpenses> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-            automaticallyImplyLeading: false, // Remove the back button
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.black,
-                    Colors.green,
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
-            ),
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back),
-              color: Colors.black,
-            ),
-            title: Text('Renttas ', style: TextStyle(color: Colors.black)),
-            centerTitle: true,
-          ),
-          body: Column(
+      length: 2,
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          leading: const BackButton(),
+          backgroundColor: const Color(0xff54854C),
+          title: const Text('Expense', style: TextStyle(color: Colors.white)),
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: Column(
             children: [
               Container(
                 height: 50,
-                margin: EdgeInsets.only(top: 30, left: 10, right: 10),
-                child: Text(
-                  'Add a Expense',
-                  style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
+                margin: const EdgeInsets.only(top: 30, left: 10, right: 10),
+                child: const Text(
+                  'Add expense',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 10),
               Container(
-                margin: EdgeInsets.only(top: 10, left: 8),
+                margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: catagoryController,
                   decoration: const InputDecoration(
@@ -124,7 +112,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 10, left: 8),
+                margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: nameController,
                   decoration: const InputDecoration(
@@ -136,7 +124,7 @@ class _AddExpensesState extends State<AddExpenses> {
               ),
 
               Container(
-                margin: EdgeInsets.only(top: 10, left: 8),
+                margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: amountController,
                   decoration: const InputDecoration(
@@ -171,7 +159,7 @@ class _AddExpensesState extends State<AddExpenses> {
                     padding: const EdgeInsets.only(left: 40),
                     child: TextField(
                       controller: _expensesDateControlle,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Expense Date',
                       ),
                       readOnly: true,
@@ -183,7 +171,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: 10, left: 8),
+                margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: descController,
                   decoration: const InputDecoration(
@@ -193,33 +181,40 @@ class _AddExpensesState extends State<AddExpenses> {
                   ),
                 ),
               ),
+              const SizedBox(height: 40),
               SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                  width: 350,
-                  height: 50,
-                  child: ElevatedButton(
-                      onPressed: isLoading ? null : () => saveExpenses(catagoryController.text, nameController.text, amountController.text, _expensesDateControlle.text, descController.text),
-                      child: isLoading
-                          ? CircularProgressIndicator(
-                              color: Color(0xff54854C),
-                            )
-                          : Text('Save')))
+                width: 350,
+                height: 50,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                  ),
+                  onPressed: isLoading ? null : () => saveExpenses(catagoryController.text, nameController.text, amountController.text, _expensesDateControlle.text, descController.text),
+                  child: isLoading
+                      ? const CircularProgressIndicator(
+                          color: Color(0xff54854C),
+                        )
+                      : const Text(
+                          'Save',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                ),
+              )
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget buildTab(String text) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedTab = text;
-        });
-      },
+      onTap: () => setState(() => selectedTab = text),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
           color: selectedTab == text ? Colors.blue : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
@@ -256,7 +251,7 @@ class _AddExpensesState extends State<AddExpenses> {
   // }
 
   Widget renderRecurringContent() {
-    return Column(
+    return const Column(
       children: [
         // Widgets for the Recurring tab
         Text('Recurring Content'),
@@ -299,17 +294,17 @@ class _AddExpensesState extends State<AddExpenses> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Added'),
-              content: Text('ExpensesAdded Successfully'),
+              title: const Text('Added'),
+              content: const Text('ExpensesAdded Successfully'),
               actions: <Widget>[
                 TextButton(
-                  child: Text('OK'),
+                  child: const Text('OK'),
                   onPressed: () {
                     setState(() {
                       isLoading = false;
                     });
                     Navigator.of(context).pop();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandloardDashBord()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
                   },
                 ),
               ],
