@@ -2,9 +2,11 @@
 
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
+import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Const/Const.dart';
@@ -61,15 +63,18 @@ class _ExpensesTabState extends State<ExpensesTab> {
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddExpenses()));
           },
-          label: const Text(
-            'Expense',
+          label: Text(
+            'expense'.tr().capitalizeFirstWord(),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color: Colors.white,
             ),
           ),
-          icon: const Icon(Icons.add,      color: Colors.white,),
+          icon: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
           backgroundColor: const Color(0xff54854C),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -262,13 +267,13 @@ class _ExpensesTabState extends State<ExpensesTab> {
                         },
                       ),
                     ),
-                    replacement: const Flexible(
+                    replacement: Flexible(
                       child: Center(
                         child: Padding(
                           padding: EdgeInsets.only(bottom: 60.0),
                           child: Text(
-                            'Expense not found !',
-                            style: TextStyle(
+                            "${"expense".tr().capitalizeFirstWord()} not found !",
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               color: Colors.grey,

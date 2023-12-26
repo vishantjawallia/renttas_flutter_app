@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -105,7 +106,8 @@ class _AddTendentState extends State<AddTendent> {
       appBar: AppBar(
         backgroundColor: Color(0xff54854C),
         title: Text(
-          'Add Tenant',
+          "add_tenant".tr(),
+          // 'Add Tenant',
         ),
         centerTitle: true,
       ),
@@ -128,10 +130,10 @@ class _AddTendentState extends State<AddTendent> {
                 margin: EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: _tenantName,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Icon(Icons.person),
                     //  hintText: 'Make Payment?',
-                    labelText: 'Tenant Name',
+                    labelText: 'tenant_name'.tr(),
                   ),
                 ),
               ),
@@ -143,10 +145,10 @@ class _AddTendentState extends State<AddTendent> {
                   children: [
                     Expanded(
                       child: IntlPhoneField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           icon: Icon(Icons.phone_android),
-                          hintText: 'Enter your mobile number',
-                          labelText: 'Mobile Number *',
+                          hintText: 'enter_your_mobile'.tr(),
+                          labelText: '${"mobile_number".tr()} *',
                         ),
                         initialCountryCode: 'IN',
                         onChanged: (phone) {
@@ -164,10 +166,10 @@ class _AddTendentState extends State<AddTendent> {
                 margin: EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: _email,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Icon(Icons.email),
                     //  hintText: 'Make Payment?',
-                    labelText: 'Email Id (Optional)',
+                    labelText: 'email_id_optional'.tr(),
                   ),
                 ),
               ),
@@ -175,10 +177,10 @@ class _AddTendentState extends State<AddTendent> {
                 margin: EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: _advanceAmount,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Icon(Icons.currency_rupee),
                     //  hintText: 'Make Payment?',
-                    labelText: 'AdvanceAmount',
+                    labelText: 'advance_amount'.tr(),
                   ),
                 ),
               ),
@@ -188,13 +190,13 @@ class _AddTendentState extends State<AddTendent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Start Date:',
+                      '${"start_date".tr()}:',
                       style: TextStyle(fontSize: 16),
                     ),
                     TextField(
                       controller: _startDateController,
                       decoration: InputDecoration(
-                        labelText: 'Start Date',
+                        labelText: 'start_date'.tr(),
                       ),
                       readOnly: true,
                       onTap: () {
@@ -203,13 +205,13 @@ class _AddTendentState extends State<AddTendent> {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      'End Date:',
+                      '${"end_date".tr()}:',
                       style: TextStyle(fontSize: 16),
                     ),
                     TextField(
                       controller: _endDateController,
                       decoration: InputDecoration(
-                        labelText: 'End Date',
+                        labelText: 'end_date'.tr(),
                       ),
                       readOnly: true,
                       onTap: () {
@@ -235,7 +237,12 @@ class _AddTendentState extends State<AddTendent> {
                       ? CircularProgressIndicator(
                           color: Color(0xff54854C),
                         )
-                      : Text("Save"),
+                      : Text(
+                          "save".tr(),
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
                 ),
               ),
             ],

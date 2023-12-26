@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:convert';
@@ -35,7 +36,10 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        title: const Text('Add Room'),
+        title: Text(
+          "add_room".tr(),
+          // 'Add Room',
+        ),
         // backgroundColor: Colors.white,
         // elevation: 0,
         // leading: IconButton(
@@ -55,10 +59,11 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 40),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'Add Room:-',
+                "add_room".tr() + ":-",
+                // 'Add Room:-',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
@@ -69,7 +74,7 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
             Column(
               children: [
                 CustomTextField(
-                  hintText: 'Add Room *',
+                  hintText: '${"add_room".tr()} *',
                   iconData: Icons.meeting_room_outlined,
                   controller: subPropertyController,
                 ),
@@ -96,9 +101,10 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
                           ? const CircularProgressIndicator(
                               color: Color(0xff54854C),
                             )
-                          : const Text(
-                              'Sumbit',
-                              style: TextStyle(
+                          : Text(
+                              "sumbit".tr(),
+                              // 'Sumbit',
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +108,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                         color: Color(0xff54854C),
                       )
                     : Text(
-                        !(currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE) ? 'Verify' : 'Create an account',
+                        !(currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE) ? 'verify'.tr() : 'create_account'.tr(),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -123,9 +124,10 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Already Have a Account?",
-                        style: TextStyle(
+                      Text(
+                        "already_have".tr(),
+                        // "Already Have a Account?",
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 15,
                         ),
@@ -139,9 +141,9 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                           // ),
                         },
                         child: RichText(
-                          text: const TextSpan(
-                            text: "Login",
-                            style: TextStyle(
+                          text: TextSpan(
+                            text: "login".tr(),
+                            style: const TextStyle(
                               color: Color(0xff894747),
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,
@@ -163,9 +165,9 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
     return Column(
       children: [
         SizedBox(height: !(currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE) ? 20 : 30),
-        const Text(
-          'Sign In',
-          style: TextStyle(
+        Text(
+          'signin'.tr(),
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 40,
             fontWeight: FontWeight.bold,
@@ -180,7 +182,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                 enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
                 controller: fName,
                 iconData: Icons.person,
-                hintText: 'First name *',
+                hintText: 'fname'.tr() + " *",
                 margin: const EdgeInsets.fromLTRB(20, 6, 5, 6),
               ),
             ),
@@ -190,7 +192,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                 enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
                 controller: lName,
                 iconData: Icons.person,
-                hintText: 'Last name',
+                hintText: 'lname'.tr(),
                 margin: const EdgeInsets.fromLTRB(5, 6, 20, 6),
               ),
             ),
@@ -199,7 +201,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
         CustomTextField(
           enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
           controller: emailController,
-          hintText: 'Email *',
+          hintText: 'email'.tr() + " *",
           iconData: Icons.email,
         ),
         Container(
@@ -218,7 +220,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
               dropdownIconPosition: IconPosition.trailing,
               decoration: InputDecoration(
                 enabled: !(currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
-                hintText: 'Mobile number *',
+                hintText: 'mobile_number'.tr() + " *",
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 hintStyle: const TextStyle(color: Colors.black38),
                 filled: true,
@@ -242,16 +244,15 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
               }),
         ),
         CustomTextField(
-          enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
-          controller: passwordController,
-          obscureText: true,
-          hintText: 'Password *',
+          enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE), controller: passwordController, obscureText: true, hintText: ("password".tr() + " *"),
+          // 'Password *',
         ),
         CustomTextField(
           enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
           controller: confirmPassword,
           obscureText: true,
-          hintText: 'Confirm password *',
+          hintText: "confirm_password".tr() + " *",
+          //  'Confirm password *',
         ),
         const SizedBox(width: 0.0, height: 40)
       ],

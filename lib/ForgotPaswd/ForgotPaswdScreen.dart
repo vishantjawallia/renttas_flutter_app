@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -43,7 +44,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
-        title: const Text('Forget Password'),
+        title: Text(
+          "forget_password".tr(),
+          // 'Forget Password',
+        ),
       ),
       body: Form(
         key: _formKey,
@@ -62,31 +66,33 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   //   onTap: () => Navigator.pop(context),
                   //   child: const Icon(Icons.arrow_back),
                   // ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 80),
+                        const SizedBox(height: 80),
                         Text(
-                          "Forgot Password",
-                          style: TextStyle(
+                          "forget_password".tr(),
+                          // "Forgot Password",
+                          style: const TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
-                          'Enter the mail address with your account and we will send an email with confirmation to reset your'
-                          ' password',
-                          style: TextStyle(
+                          "forget_password_dsc".tr(),
+                          // 'Enter the mail address with your account and we will send an email with confirmation to reset your'
+                          // ' password',
+                          style: const TextStyle(
                             fontSize: 15,
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 40),
+                        const SizedBox(height: 40),
                       ],
                     ),
                   ),
@@ -105,7 +111,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(30),
                     ],
-                    hintText: 'Email',
+                    hintText: 'email'.tr(),
                   ),
 
                   const SizedBox(height: 40),
@@ -115,7 +121,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       height: 60,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff54854C),
+                          backgroundColor: const Color(0xff54854C),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
@@ -130,9 +136,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             ? const CircularProgressIndicator(
                                 color: Color(0xff54854C),
                               )
-                            : const Text(
-                                'Sumbit',
-                                style: TextStyle(
+                            : Text(
+                                "sumbit".tr(),
+                                // 'Sumbit',
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,

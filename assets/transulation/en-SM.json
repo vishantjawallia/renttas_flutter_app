@@ -1,110 +1,69 @@
 {
-  "choose language": "choose language",
+  "choose_language": "choose language",
   "title": "welcome",
-
   "manage_properties":"Manage Properties",
   "manage_properties_dsc":"Keep track of rent & tenants living in multiple properties",
-
   "manage_expenses":"Manage Expenses",
   "manage_expenses_dsc":"Keep track of all the expenses occurred \nproperty wise",
-
-
   "on_time_payment":"On Time Payment",
   "on_time_payment_dsc":"Send rent payment reminders to tenants automatically or manually",
-
-
-
   "skip":"Skip",
   "next":"Next",
-
   "sign_in":"Sign In",
   "email":"Email",
   "password":"Password",
-
   "forget_pass":"Forget Your Password ?",
   "login":"Login",
-
   "dont_have_account":"Don't Have An Account?",
   "sign_up":"Sign Up",
-
   "forget_password":"Forget Password",
   "forget_password_dsc":"Enter the mail address with your account and we will send an email with confirmation to reset your password",
-
   "sumbit":"Sumbit",
-
   "landlord":"Landlord",
   "landlord_dsc":"Create property and manage \nProperty",
-
   "suser_type":"Select user type",
-
   "tenant":"Tenant",
   "tenant_dsc":"Veiw Info Added by Your landlord",
-
   "signin":"Sign In",
-
   "fname":"First name",
   "lname":"Last name",
-
   "mobile_number":"Mobile number",
   "confirm_password":"Confirm Password",
-  
   "create_account":"Create an account",
   "already_have":"Already Have a Account?",
-
   "verify":"Verify",
-
-
-  
-
   "not_found":"not found",
   "premium":"Premium",
-
   "add_room":"Add Room",
-
   "all":"All",
-
-  
   "rent_bills":"Rent biils",
-  
-  "bills":"Bills",
-    "balance":"balance",
-    "recieved":"recieved",
-    "download":"Download",
-    "remind":"Remind",
-    "share":"Share",
-    "receive":"Receive",
-    "rent_bill":"Rent Bill",
-
-  "tenants":"Tenants",
-    "remove":"Remove",
-    "call":"Call",
-
+  "balance":"balance",
+  "recieved":"recieved",
+  "download":"Download",
+  "remind":"Remind",
+  "share":"Share",
+  "receive":"Receive",
+  "details":"Details",
+  "property_name":"Property name",
+  "owner_name":"Owner name",
+  "document_name":"Document name",
+  "document":"Document",
+  "property_address":"Property address",
+  "address":"Address",
+  "pincode":"Pincode",
+  "owner_details":"Owner details",
+  "no_rent_details":"No rent details are added to the property.",
+  "click_add_rent":" +  Click to add rent",
+  "property_details":"Property details",
+  "rent_detail":"Rent details",
+  "rent_bill":"Rent Bill",
   "expenses":"Expense",
-
   "documents":"Documents",
-
   "about":"About",
-    "property_details":"Property details",
-        "details":"Details",
-        "property_name":"Property name",
-        "owner_name":"Owner name",
-        "document_name":"Document name",
-        "document":"Document",
-        "property_address":"Property address",
-        "address":"Address",
-        "pincode":"Pincode",
-        "owner_details":"Owner details",
-    "rent_detail":"Rent details",
-        "no_rent_details":"No rent details are added to the property.",
-        "click_add_rent":" +  Click to add rent",
-
-
   "confirm_exit":"Confirm Exit",
   "are_you_sure":"Are you sure you want to exit?",
   "exist":"Exist",
   "add_property":"Add Property",
- 
-
   "my_account":"My Account",
   "user_detail":"User Detail",
   "help_support":"Help & Support",
@@ -119,11 +78,8 @@
   "confirmation":"Confirmation",
   "cancel":"Cancel",
   "continue":"Continue",
-
-
   "notifcations":"Notifcations",
   "notifcation":"Notifcations",
-
   "add_tenant":"Add Tenant",
   "tenant_name":"Tenant Name",
   "enter_your_mobile":"Enter your mobile number",
@@ -132,17 +88,17 @@
   "start_date":"Start Date",
   "end_date":"End Date",
   "save":"Save",
-
-
   "add_expense":"Add Expense",
   "category":"Category",
   "name":"Name",
   "plan":"Plan",
   "amount":"Amount",
   "expense_date":"Expense Date",
-  "description":"Description"
-
-
+  "description":"Description",
+  "bills":"Bills",
+  "remove":"Remove",
+  "call":"Call",
+  "tenants":"Tenants"
 
 
 

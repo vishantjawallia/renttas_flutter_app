@@ -40,10 +40,11 @@ class _BillsTabsState extends State<BillsTabs> {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
       selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
       selectedSubPropertyName = prefs.getString('selectedSubPropertyName') ?? '';
-      fetchBill(selectedPropertyId, selectedSubProptyId);
     });
-    print("selectedPropertyId->" + selectedPropertyId);
-    print("selectedSubProptyId->" + selectedSubProptyId);
+    log("selectedPropertyId===>$selectedPropertyId");
+    log("selectedSubProptyId===>$selectedSubProptyId");
+    log("selectedSubPropertyName===>$selectedSubPropertyName");
+    fetchBill(selectedPropertyId, selectedSubProptyId);
   }
 
   @override
@@ -76,7 +77,10 @@ class _BillsTabsState extends State<BillsTabs> {
             color: Colors.white,
           ),
         ),
-        icon: Icon(Icons.add,       color: Colors.white,),
+        icon: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
         backgroundColor: Color(0xff54854C),
         // backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -175,7 +179,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        "(balance)",
+                                                        "(${"balance".tr()})",
                                                         style: TextStyle(
                                                           // fontSize: 11,
                                                           fontWeight: FontWeight.bold,
@@ -199,7 +203,8 @@ class _BillsTabsState extends State<BillsTabs> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        "(recieved)",
+                                                        "(${"recieved".tr()})",
+                                                        // "(recieved)",
                                                         style: TextStyle(
                                                           fontWeight: FontWeight.bold,
                                                           color: Colors.white,
@@ -240,10 +245,10 @@ class _BillsTabsState extends State<BillsTabs> {
                                             child: Container(
                                               padding: EdgeInsets.all(8),
                                               child: Column(
-                                                children: const [
+                                                children: [
                                                   Icon(Icons.add_box),
                                                   SizedBox(width: 0.0, height: 4),
-                                                  Text('Receive'),
+                                                  Text('receive'.tr()),
                                                 ],
                                               ),
                                             ),
@@ -267,10 +272,10 @@ class _BillsTabsState extends State<BillsTabs> {
                                             child: Container(
                                               padding: EdgeInsets.all(8),
                                               child: Column(
-                                                children: const [
+                                                children: [
                                                   Icon(Icons.share),
                                                   SizedBox(width: 0.0, height: 4),
-                                                  Text('Share'),
+                                                  Text('share'.tr()),
                                                 ],
                                               ),
                                             ),
@@ -286,14 +291,14 @@ class _BillsTabsState extends State<BillsTabs> {
                                             child: Container(
                                               padding: EdgeInsets.all(8),
                                               child: Column(
-                                                children: const [
+                                                children: [
                                                   ImageIcon(
                                                     AssetImage(
                                                       "assets/images/wi.png",
                                                     ),
                                                     size: 28,
                                                   ),
-                                                  Text('Remind'),
+                                                  Text('remind'.tr()),
                                                 ],
                                               ),
                                             ),
@@ -342,10 +347,10 @@ class _BillsTabsState extends State<BillsTabs> {
                                             child: Container(
                                               padding: EdgeInsets.all(8),
                                               child: Column(
-                                                children: const [
+                                                children: [
                                                   Icon(Icons.downloading_outlined),
                                                   SizedBox(width: 0.0, height: 4),
-                                                  Text('Download'),
+                                                  Text('download'.tr()),
                                                 ],
                                               ),
                                             ),
@@ -393,7 +398,7 @@ class _BillsTabsState extends State<BillsTabs> {
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 60.0),
                               child: Text(
-                                'Bill not found !',
+                                '${"bills".tr()} not found !',
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -674,53 +679,38 @@ class _BillsTabsState extends State<BillsTabs> {
     }
   }
 
+  // @fetchBill
   void fetchBill(String propertyId, String subPropertyId) async {
-    log("propert id==" + propertyId + "  subproprid===" + subPropertyId);
-    setState(() {
-      isLoading = true;
-    });
-    final Map<String, dynamic> requestData = {"propertyId": propertyId, "subPropertyId": subPropertyId};
-
-    // final Map<String, dynamic> requestData = {
-    //   "propertyCode": "8989",
-    //   "subProperty": "test"
-    // };
-
-    print(propertyId);
-    print(subPropertyId);
+    setState(() => isLoading = true);
+    final Map<String, dynamic> requestData = {
+      "propertyId": propertyId,
+      "subPropertyId": subPropertyId,
+    };
 
     final response = await http.post(
-      Uri.parse(ApiUrl.getBill), // Replace with your API endpoint
+      Uri.parse(ApiUrl.getBill),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(requestData),
     );
 
-    print("hey in bill===" + response.body);
+    log("hey in bill===" + response.body);
+    log("requestData===>" + requestData.toString());
     if (response.statusCode == 200) {
-      //   final List<Map> responseData = jsonDecode(response.body);
       final Map<String, dynamic> jsonData = jsonDecode(response.body);
-      List res = jsonData["data"];
+      List<BIllModel> res = BIllModel.fromJsonList(jsonData['data']);
 
       if (res.isNotEmpty) {
-        for (var billDataModal in res) {
-          print(billDataModal);
-          BIllModel bill = BIllModel.fromJson(billDataModal);
-          billData.add(bill);
-        }
-        if (billData.isNotEmpty) {
-          isBillTheir = true;
-        }
+        billData.clear();
+        billData.addAll(res);
+        log("billData-===>$billData");
+        if (billData.isNotEmpty) isBillTheir = true;
       }
-      setState(() {
-        isLoading = false;
-      });
+      setState(() => isLoading = false);
     } else {
       print("Error");
     }
-    setState(() {
-      isLoading = false;
-    });
+    setState(() => isLoading = false);
   }
 }

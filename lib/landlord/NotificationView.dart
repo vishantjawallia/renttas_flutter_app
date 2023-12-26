@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_interpolation_to_compose_strings, camel_case_types, no_leading_underscores_for_local_identifiers, avoid_print
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
@@ -57,9 +58,9 @@ class _notificationviewState extends State<notificationview> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff54854C),
-          title: Text("Notifications"),
+          title: Text("notifcation".tr()),
         ),
-        body: GlobalWidgets.notFound('Notification')
+        body: GlobalWidgets.notFound('notifcation'.tr())
         // Center(
         //   child: Column(
         //     mainAxisAlignment: MainAxisAlignment.center,

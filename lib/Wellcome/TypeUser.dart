@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,9 +22,10 @@ class _TypeUserState extends State<TypeUser> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        title: const Text(
-          'Select user type',
-          style: TextStyle(
+        title: Text(
+          "suser_type".tr(),
+          // 'Select user type',
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w600,
           ),
@@ -73,14 +75,16 @@ class _TypeUserState extends State<TypeUser> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Landlord",
+                          "landlord".tr(),
+                          // "Landlord",
                           style: GoogleFonts.kanit(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
                           ),
                         ),
                         Text(
-                          "Create property and manage \nProperty",
+                          "landlord_dsc".tr(),
+                          // "Create property and manage \nProperty",
                           style: GoogleFonts.kanit(
                             fontSize: 13,
                           ),
@@ -119,14 +123,15 @@ class _TypeUserState extends State<TypeUser> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Tenant",
+                          "tenant".tr(),
                           style: GoogleFonts.kanit(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
                           ),
                         ),
                         Text(
-                          "Veiw Info Added by Your landlord",
+                          "tenant_dsc".tr(),
+                          // "Veiw Info Added by Your landlord",
                           style: GoogleFonts.kanit(
                             fontSize: 13,
                           ),

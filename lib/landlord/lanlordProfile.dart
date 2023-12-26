@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable, avoid_print, use_build_context_synchronously, camel_case_types, unused_element, prefer_interpolation_to_compose_strings, use_super_parameters, prefer_const_constructors
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Wellcome/LoginPageNew.dart';
@@ -98,7 +99,10 @@ class _lanlordProfileState extends State<lanlordProfile> {
         automaticallyImplyLeading: false, // Remove the back button
         backgroundColor: Color(0xff54854C),
         leading: BackButton(),
-        title: const Text('My Account '),
+        title: Text(
+          "my_account".tr(),
+          // 'My Account ',
+        ),
         centerTitle: true,
       ),
       body: Container(
@@ -118,8 +122,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                 height: 20,
                 width: double.infinity,
                 // color: Colors.grey.shade300,
-                child: const Text(
-                  'User Detail',
+                child: Text(
+                  "user_detail".tr(),
+                  // 'User Detail',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -216,8 +221,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                 height: 20,
                 width: double.infinity,
                 // color: Colors.grey.shade300,
-                child: const Text(
-                  'Help & Support',
+                child: Text(
+                  "help_support".tr(),
+                  // 'Help & Support',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -282,8 +288,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                               ),
                               Container(
                                 padding: const EdgeInsets.only(left: 14),
-                                child: const Text(
-                                  'Merge Properties ',
+                                child: Text(
+                                  "merge_properties".tr(),
+                                  // 'Merge Properties ',
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -318,8 +325,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                               ),
                               Container(
                                 padding: const EdgeInsets.only(left: 14),
-                                child: const Text(
-                                  'Live chat',
+                                child: Text(
+                                  "live_chat".tr(),
+                                  // 'Live chat',
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -339,8 +347,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                 height: 20,
                 width: double.infinity,
                 // color: Colors.grey.shade300,
-                child: const Text(
-                  'Others',
+                child: Text(
+                  'others'.tr(),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -390,8 +398,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Rate this app ',
+                                  child: Text(
+                                    "rate_this_app".tr(),
+                                    // 'Rate this app ',
                                     style: TextStyle(fontSize: 16),
                                   ),
                                 )
@@ -421,8 +430,10 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Share App ',
+                                  child: Text(
+                                    "share_app".tr(),
+                                    // 'Share App ',
+
                                     style: TextStyle(fontSize: 16),
                                   ),
                                 )
@@ -448,8 +459,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                 const SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
                                 Container(
                                   padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Terms & Conditions ',
+                                  child: Text(
+                                    "terms_condition".tr(),
+                                    // 'Terms & Conditions ',
                                     style: TextStyle(
                                       fontSize: 16,
                                     ),
@@ -481,8 +493,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Privacy Policy ',
+                                  child: Text(
+                                    "privacy_policy".tr(),
+                                    // 'Privacy Policy ',
                                     style: TextStyle(
                                       fontSize: 16,
                                     ),
@@ -512,8 +525,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
                                 ),
                                 Container(
                                   padding: const EdgeInsets.only(left: 14),
-                                  child: const Text(
-                                    'Logout',
+                                  child: Text(
+                                    "logout".tr(),
+                                    // 'Logout',
                                     style: TextStyle(
                                       fontSize: 16,
                                     ),
@@ -558,8 +572,9 @@ class _lanlordProfileState extends State<lanlordProfile> {
 showAlertDialog(BuildContext context) {
   // set up the buttons
   Widget cancelButton = TextButton(
-    child: const Text(
-      "Cancel",
+    child: Text(
+      "cancel".tr(),
+      // "Cancel",
       style: TextStyle(color: Color(0xff54854C)),
     ),
     onPressed: () {
@@ -572,8 +587,9 @@ showAlertDialog(BuildContext context) {
     },
   );
   Widget continueButton = TextButton(
-    child: const Text(
-      "Continue",
+    child: Text(
+      // "Continue",
+      "continue".tr(),
       style: TextStyle(color: Color(0xff54854C)),
     ),
     onPressed: () async {
@@ -591,8 +607,14 @@ showAlertDialog(BuildContext context) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: const Text("Confirmation"),
-    content: const Text("Are you sure want to logout ?"),
+    title: Text(
+      "confirmation".tr(),
+      // "Confirmation",
+    ),
+    content: Text(
+      "are_you_sure_logout".tr(),
+      // "Are you sure want to logout ?",
+    ),
     actions: [
       cancelButton,
       continueButton,

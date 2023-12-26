@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -71,7 +72,10 @@ class _TenantsTabState extends State<TenantsTab> {
               color: Colors.white,
             ),
           ),
-          icon: Icon(Icons.add,      color: Colors.white,),
+          icon: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
           backgroundColor: Color(0xff54854C),
           // backgroundColor: Colors.blue,
           shape: RoundedRectangleBorder(
@@ -157,11 +161,12 @@ class _TenantsTabState extends State<TenantsTab> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: const [
+                                              children: [
                                                 Icon(Icons.delete),
                                                 SizedBox(width: 6, height: 0.0),
                                                 Text(
-                                                  'REMOVE',
+                                                  "remove".tr().toUpperCase(),
+                                                  // 'REMOVE',
                                                   style: TextStyle(fontSize: 16),
                                                 ),
                                               ],
@@ -179,11 +184,12 @@ class _TenantsTabState extends State<TenantsTab> {
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: const [
+                                              children: [
                                                 Icon(Icons.phone),
                                                 SizedBox(width: 6, height: 0.0),
                                                 Text(
-                                                  'CALL',
+                                                  "call".tr().toUpperCase(),
+                                                  // 'CALL',
                                                   style: TextStyle(fontSize: 16),
                                                 ),
                                               ],
@@ -226,7 +232,7 @@ class _TenantsTabState extends State<TenantsTab> {
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 60.0),
                           child: Text(
-                            'Tenants not found !',
+                            '${"tenants".tr()} not found !',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,

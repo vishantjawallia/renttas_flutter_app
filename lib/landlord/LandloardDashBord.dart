@@ -184,7 +184,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                       Navigator.push(context, MaterialPageRoute(builder: (context) => LandlordAddProperty()));
                     },
                     child: Text(
-                      'Add Property',
+                      "add_property".tr(),
+                      // 'Add Property',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -319,7 +320,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                           padding: EdgeInsets.all(6),
                                           alignment: Alignment.center,
                                           child: Text(
-                                            ' Premium',
+                                            ' ' + "premium".tr(),
                                             style: TextStyle(
                                               color: Colors.orange,
                                               fontSize: 18,
@@ -358,13 +359,14 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                 child: Padding(
                                   padding: const EdgeInsets.all(5),
                                   child: Row(
-                                    children: const [
+                                    children: [
                                       Icon(Icons.add_box, size: 26, color: Colors.white),
                                       SizedBox(width: 6, height: 0.0),
                                       Padding(
                                         padding: EdgeInsets.only(right: 8.0),
                                         child: Text(
-                                          'ADD ROOM',
+                                          "add_room".tr().toUpperCase(),
+                                          // 'ADD ROOM',
                                           style: TextStyle(
                                             fontSize: 14,
                                             color: Colors.white,
@@ -408,7 +410,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                           // p
                                           // color: Colors.greenAccent,
                                           child: Text(
-                                            "All",
+                                            "all".tr(),
+                                            // "All",
                                             style: TextStyle(color: alldt == true ? Colors.black : Colors.white, fontWeight: FontWeight.bold),
                                           ),
                                         ),
@@ -526,12 +529,12 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                     labelColor: const Color(0xff54854C),
                     unselectedLabelColor: Colors.black,
                     controller: _tabController,
-                    tabs: const [
-                      Tab(text: 'Bills'),
-                      Tab(text: 'Tenants'),
-                      Tab(text: 'Expenses'),
-                      Tab(text: 'Documents'),
-                      Tab(text: 'About'),
+                    tabs: [
+                      Tab(text: 'bills'.tr()),
+                      Tab(text: 'tenants'.tr()),
+                      Tab(text: 'expenses'.tr()),
+                      Tab(text: 'documents'.tr()),
+                      Tab(text: 'about'.tr()),
                     ],
                   ),
                 ),
@@ -564,12 +567,12 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
 
   Future<void> loadPropertyList(String landlordId) async {
     String? token = await FirebaseMessaging.instance.getToken();
-    print("FCM tocken====" + token!);
-    log("sdddddddddddddddddddd==" + landlordId.toString());
-    print("sssssss===" + WidgetsBinding.instance.window.locale.countryCode.toString());
+    log("FCM tocken====$token");
+    log("landlordId==>$landlordId");
     String counrtycode = WidgetsBinding.instance.window.locale.countryCode.toString();
-    String aaa = getCurrency();
-    print("sssssssasasasa===" + aaa);
+    log("countryCode===>$counrtycode");
+    String getCurr = getCurrency();
+    print("getCurr===>$getCurr");
 
     setState(() => isLoading = true);
     propertyLists.clear();
@@ -578,30 +581,33 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
       "landlordId": landlordId,
       "fcmtocken": token,
       "countrycode": counrtycode,
-      "currencysymbol": aaa,
+      "currencysymbol": getCurr,
     };
 
-    final request = http.Request('POST', Uri.parse(ApiUrl.getPropertyUserID))
-      ..headers.addAll({
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-      });
+    final request = http.Request(
+      'POST',
+      Uri.parse(ApiUrl.getPropertyUserID),
+    )..headers.addAll(
+        {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+        },
+      );
     request.body = jsonEncode(requestData);
     final response = await request.send();
-
     final stream = response.stream;
     final body = await stream.bytesToString();
-
     final data = jsonDecode(body);
-    log("requestData===" + requestData.toString());
-    log("assssssssssssssssssss===" + data.toString());
+
+    log("requestData===>$requestData");
+    log("data===>" + data.toString());
     log("url===" + request.url.toString());
     List<dynamic>? dataList = data['data'];
 
     if (dataList != null) {
-      final List<dynamic> jsonData = dataList;
+      // final List<dynamic> jsonData = dataList;
 
-      propertyLists = jsonData.map((propertyJson) {
+      propertyLists = dataList.map((propertyJson) {
         final List<dynamic> subPropertyData = propertyJson['subproperty'];
         final List<SubProperty> subProperties = subPropertyData.map((subPropertyJson) => SubProperty.fromJson(subPropertyJson)).toList();
 
@@ -689,18 +695,26 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Exit'),
-          content: Text('Are you sure you want to exit?'),
+          title: Text("confirm_exit".tr()
+              // 'Confirm Exit',
+              ),
+          content: Text("are_you_sure".tr()
+              // 'Are you sure you want to exit?',
+              ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: Text(
+                'cancel'.tr(),
+              ),
               onPressed: () {
                 shouldExit = false;
                 Navigator.of(context).pop(); // Close the dialog
               },
             ),
             TextButton(
-              child: Text('Exit'),
+              child: Text("exist".tr()
+                  // 'Exit',
+                  ),
               onPressed: () {
                 shouldExit = true;
                 exit(0);

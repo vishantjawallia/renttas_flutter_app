@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -119,7 +120,10 @@ class _DocumentsTabState extends State<DocumentsTab> {
             color: Colors.white,
           ),
         ),
-        icon: Icon(Icons.add,      color: Colors.white,),
+        icon: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
         backgroundColor: Color(0xff54854C),
         // backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
@@ -226,7 +230,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 60.0),
                         child: Text(
-                          'Document not found !',
+                          '${"document".tr()} not found !',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,

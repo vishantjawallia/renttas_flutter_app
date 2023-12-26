@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable, use_super_parameters, camel_case_types
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../Wellcome/Landingmodel.dart';
@@ -46,8 +47,8 @@ class _landingpageState extends State<landingpage> {
               itemBuilder: (context, index) {
                 return Slider(
                   image: slides[index].getImage()!,
-                  text: slides[index].getText()!,
-                  description: slides[index].getDescription()!,
+                  text: slides[index].text?.tr(),
+                  description: slides[index].description?.tr(),
                 );
               },
             ),
@@ -69,23 +70,23 @@ class _landingpageState extends State<landingpage> {
                     context,
                     MaterialPageRoute(builder: (context) => const LandlordLoginNew()),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'Skip',
-                          style: TextStyle(
+                          "skip".tr(),
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color(0xff894747),
                             // color: Color.fromARGB(255, 236, 81, 81),
                             fontSize: 17,
                           ),
                         ),
-                        SizedBox(width: 4, height: 0.0),
-                        Icon(
+                        const SizedBox(width: 4, height: 0.0),
+                        const Icon(
                           Icons.skip_next,
                           color: Color(0xff894747),
                           // color: Color.fromARGB(255, 236, 81, 81),
@@ -108,22 +109,22 @@ class _landingpageState extends State<landingpage> {
                 InkWell(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   onTap: () => rightArrowHandler(context),
-                  child: const Padding(
-                    padding: EdgeInsets.all(10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'Next',
-                          style: TextStyle(
+                          'next'.tr(),
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color(0xff54854C),
                             fontSize: 17,
                           ),
                         ),
-                        SizedBox(width: 4, height: 0.0),
-                        Icon(
+                        const SizedBox(width: 4, height: 0.0),
+                        const Icon(
                           // Icons.arrow_forward_rounded,
                           Icons.arrow_circle_right_outlined,
                           color: Color(0xff54854C),
@@ -161,7 +162,7 @@ class _landingpageState extends State<landingpage> {
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? Color(0xff54854C) : Colors.black,
+        color: currentIndex == index ? const Color(0xff54854C) : Colors.black,
       ),
     );
   }

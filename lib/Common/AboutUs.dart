@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+
 class AboutUs extends StatefulWidget {
   const AboutUs({Key? key}) : super(key: key);
 
@@ -35,28 +36,27 @@ class _AboutUsState extends State<AboutUs> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false, // Remove the back button
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.green,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-          title: Text('About Us'),
-        ),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.all(16.0),
-          child: Html(data: htmlText),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(),
+        backgroundColor: Color(0xff54854C),
+        // flexibleSpace: Container(
+        //   decoration: const BoxDecoration(
+        //     gradient: LinearGradient(
+        //       colors: [
+        //         Colors.black,
+        //         Colors.green,
+        //       ],
+        //       begin: Alignment.topCenter,
+        //       end: Alignment.bottomCenter,
+        //     ),
+        //   ),
+        // ),
+        title: Text('About Us'),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Html(data: htmlText),
       ),
     );
   }

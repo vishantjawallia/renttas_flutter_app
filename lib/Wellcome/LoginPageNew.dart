@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -98,8 +99,9 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                         image: AssetImage('assets/images/user_profile.png'),
                       ),
                       const SizedBox(height: 20),
-                      const Text(
-                        'Sign In',
+                      Text(
+                        "sign_in".tr(),
+                        // 'Sign In',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 40,
@@ -118,14 +120,14 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           controller: landlordEmail,
                           keyboardType: TextInputType.emailAddress,
                           style: const TextStyle(color: Colors.black87),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.only(top: 14),
                             prefixIcon: Icon(
                               Icons.email,
                               color: Color(0xff54854C),
                             ),
-                            hintText: 'Email',
+                            hintText: 'email'.tr(),
                             hintStyle: TextStyle(color: Colors.black38),
                           ),
                         ),
@@ -149,7 +151,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           style: const TextStyle(color: Colors.black87),
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
-                            hintText: "Password",
+                            hintText: 'password'.tr(),
                             hintStyle: TextStyle(color: Colors.black38),
                             filled: true, // Needed for adding a fill color
                             fillColor: Colors.transparent,
@@ -186,7 +188,8 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ResetPasswordScreen())),
                           child: Container(
                             child: Text(
-                              "Forget Your Password ?",
+                              "forget_pass".tr(),
+                              // "Forget Your Password ?",
                               style: TextStyle(
                                 fontWeight: FontWeight.normal,
                                 decoration: TextDecoration.underline,
@@ -213,8 +216,9 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                               ? const CircularProgressIndicator(
                                   color: Color(0xff54854C),
                                 )
-                              : const Text(
-                                  'Login',
+                              : Text(
+                                  "login".tr(),
+                                  // 'Login',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
@@ -231,8 +235,9 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           // const SizedBox(
                           //   width: 40,
                           // ),
-                          const Text(
-                            "Don't Have An Account?",
+                          Text(
+                            "dont_have_account".tr(),
+                            // "Don't Have An Account?",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -246,8 +251,9 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                               ),
                             },
                             child: RichText(
-                              text: const TextSpan(
-                                text: "Sign Up",
+                              text: TextSpan(
+                                text: "sign_up".tr(),
+                                // "Sign Up",
                                 style: TextStyle(
                                   color: Color(0xff894747),
                                   fontWeight: FontWeight.bold,

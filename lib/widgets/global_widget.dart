@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 
@@ -44,7 +45,7 @@ class GlobalWidgets {
           Padding(
             padding: const EdgeInsets.only(bottom: 50),
             child: Text(
-              "$value not found !",
+              "$value ${"not_found".tr()}!",
               style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 18,

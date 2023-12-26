@@ -258,7 +258,7 @@ class _TendentProfileState extends State<TendentProfile> {
                       margin: EdgeInsets.only(top: 5, left: 10),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicy()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
                         },
                         child: Row(
                           children: [
@@ -291,7 +291,7 @@ class _TendentProfileState extends State<TendentProfile> {
                       margin: EdgeInsets.only(top: 5, left: 10),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => AboutUs()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicy()));
                         },
                         child: Row(
                           children: [

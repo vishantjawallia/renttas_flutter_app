@@ -2,10 +2,12 @@
 
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
+import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../landlord/LandloardDashBord.dart';
@@ -80,7 +82,11 @@ class _AddExpensesState extends State<AddExpenses> {
         appBar: AppBar(
           leading: const BackButton(),
           backgroundColor: const Color(0xff54854C),
-          title: const Text('Expense', style: TextStyle(color: Colors.white)),
+          title: Text(
+            "expense".tr().capitalizeFirstWord(),
+            // 'Expense',
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
         ),
         body: Padding(
@@ -90,8 +96,9 @@ class _AddExpensesState extends State<AddExpenses> {
               Container(
                 height: 50,
                 margin: const EdgeInsets.only(top: 30, left: 10, right: 10),
-                child: const Text(
-                  'Add expense',
+                child: Text(
+                  "add_expense".tr(),
+                  // 'Add expense',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -104,10 +111,10 @@ class _AddExpensesState extends State<AddExpenses> {
                 margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: catagoryController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Icon(Icons.category),
                     //  hintText: 'Make Payment?',
-                    labelText: 'Category',
+                    labelText: 'category'.tr(),
                   ),
                 ),
               ),
@@ -115,10 +122,10 @@ class _AddExpensesState extends State<AddExpenses> {
                 margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: nameController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Icon(Icons.person),
                     //  hintText: 'Make Payment?',
-                    labelText: 'Name',
+                    labelText: 'name'.tr(),
                   ),
                 ),
               ),
@@ -127,10 +134,10 @@ class _AddExpensesState extends State<AddExpenses> {
                 margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: amountController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Icon(Icons.monetization_on),
                     //  hintText: 'Make Payment?',
-                    labelText: 'Amount',
+                    labelText: 'amount'.tr(),
                   ),
                 ),
               ),
@@ -159,8 +166,8 @@ class _AddExpensesState extends State<AddExpenses> {
                     padding: const EdgeInsets.only(left: 40),
                     child: TextField(
                       controller: _expensesDateControlle,
-                      decoration: const InputDecoration(
-                        labelText: 'Expense Date',
+                      decoration: InputDecoration(
+                        labelText: 'expense_date'.tr(),
                       ),
                       readOnly: true,
                       onTap: () {
@@ -174,10 +181,10 @@ class _AddExpensesState extends State<AddExpenses> {
                 margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: descController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     icon: Icon(Icons.description),
                     //  hintText: 'Make Payment?',
-                    labelText: 'Description',
+                    labelText: 'description'.tr(),
                   ),
                 ),
               ),
@@ -194,8 +201,8 @@ class _AddExpensesState extends State<AddExpenses> {
                       ? const CircularProgressIndicator(
                           color: Color(0xff54854C),
                         )
-                      : const Text(
-                          'Save',
+                      : Text(
+                          'save'.tr(),
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,

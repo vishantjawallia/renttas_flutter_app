@@ -38,24 +38,42 @@ List<SliderModel> getSlides() {
 
 // 1
   sliderModel.setImage("assets/images/propertyland.png");
-  sliderModel.setText("Manage Properties");
-  sliderModel.setDescription("Keep track of rent & tenants living in multiple properties");
+  sliderModel.setText(
+    "manage_properties",
+    // "Manage Properties",
+  );
+  sliderModel.setDescription(
+    "manage_properties_dsc",
+    // "Keep track of rent & tenants living in multiple properties",
+  );
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
 
 // 2
   sliderModel.setImage("assets/images/step2.png");
-  sliderModel.setText("Manage Expenses");
-  sliderModel.setDescription("Keep track of all the expenses occurred \nproperty wise");
+  sliderModel.setText(
+    // "Manage Expenses",
+    "manage_expenses",
+  );
+  sliderModel.setDescription(
+    "manage_expenses_dsc",
+    // "Keep track of all the expenses occurred \nproperty wise",
+  );
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
 
 // 3
   sliderModel.setImage("assets/images/step3.png");
-  sliderModel.setText("On Time Payment");
-  sliderModel.setDescription("Send rent payment reminders to tenants automatically or manulally");
+  sliderModel.setText(
+    // "On Time Payment",
+    "on_time_payment",
+  );
+  sliderModel.setDescription(
+    "on_time_payment_dsc",
+    // "Send rent payment reminders to tenants automatically or manulally",
+  );
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();

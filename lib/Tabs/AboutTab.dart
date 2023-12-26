@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:bottom_sheet/bottom_sheet.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:image_picker/image_picker.dart';
@@ -115,9 +116,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                       ),
                       controller: _tabController1,
                       unselectedLabelColor: Colors.black,
-                      tabs: const [
-                        Tab(text: 'Property Details'),
-                        Tab(text: 'Rent Details'),
+                      tabs: [
+                        Tab(text: 'property_details'.tr()),
+                        Tab(text: 'rent_detail'.tr()),
                       ],
                     ),
                   ),
@@ -141,8 +142,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                             Container(
                               alignment: Alignment.topLeft,
                               margin: const EdgeInsets.only(top: 20, left: 10),
-                              child: const Text(
-                                'Details:',
+                              child: Text(
+                                "${"details".tr()}:",
+                                // 'Details:',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16,
@@ -161,7 +163,10 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                   alignment: Alignment.topLeft,
                                   margin: const EdgeInsets.only(left: 8, top: 8),
                                   padding: const EdgeInsets.only(right: 25),
-                                  child: const Text('Property Name'),
+                                  child: Text(
+                                    "property_name".tr(),
+                                    // 'Property Name',
+                                  ),
                                 ),
                                 Container(
                                   alignment: Alignment.topLeft,
@@ -181,7 +186,10 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                   alignment: Alignment.topLeft,
                                   margin: const EdgeInsets.only(left: 8, top: 8),
                                   padding: const EdgeInsets.only(right: 25),
-                                  child: const Text('Owner Name'),
+                                  child: Text(
+                                    "owner_name".tr(),
+                                    // 'Owner Name',
+                                  ),
                                 ),
                                 Container(
                                   alignment: Alignment.topLeft,
@@ -204,7 +212,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                     alignment: Alignment.topLeft,
                                     margin: const EdgeInsets.only(left: 8, top: 8),
                                     padding: const EdgeInsets.only(right: 25),
-                                    child: const Text('Address'),
+                                    child: Text(
+                                      'address'.tr(),
+                                    ),
                                   ),
                                   Container(
                                     alignment: Alignment.topLeft,
@@ -241,13 +251,17 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                     alignment: Alignment.topLeft,
                                     margin: const EdgeInsets.only(left: 8, top: 8),
                                     padding: const EdgeInsets.only(right: 25),
-                                    child: const Text('OwnerName'),
+                                    child: const Text(
+                                      'OwnerName',
+                                    ),
                                   ),
                                   Container(
                                     alignment: Alignment.topLeft,
                                     margin: const EdgeInsets.only(left: 25, top: 8),
                                     padding: const EdgeInsets.only(left: 45),
-                                    child: const Text("property_owner"),
+                                    child: const Text(
+                                      "property_owner",
+                                    ),
                                   ),
                                 ],
                               ),
@@ -296,14 +310,14 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                                 // backgroundColor: MaterialStateProperty.all(Colors.blue.shade100),
                                               ),
                                               onPressed: () => _showAddressModal(context),
-                                              child: const Row(
+                                              child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   Icon(Icons.add),
                                                   SizedBox(width: 6, height: 0.0),
                                                   Text(
-                                                    'Address',
+                                                    'address'.tr(),
                                                     style: TextStyle(fontSize: 16),
                                                   ),
                                                 ],
@@ -332,14 +346,14 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                                 // backgroundColor: MaterialStateProperty.all(Colors.blue),
                                               ),
                                               onPressed: () => _openBottomOwnerDetails(context),
-                                              child: const Row(
+                                              child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   Icon(Icons.add),
                                                   SizedBox(width: 6, height: 0.0),
                                                   Text(
-                                                    'Owner Details',
+                                                    'owner_details'.tr(),
                                                     style: TextStyle(fontSize: 16),
                                                   ),
                                                 ],
@@ -374,8 +388,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              const Text(
-                                                "Document:-",
+                                              Text(
+                                                "${"document".tr()}:-",
+                                                // "Document:-",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 16,
@@ -389,8 +404,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                                   height: 150,
                                                 ),
                                               ),
-                                              const Text(
-                                                "Property address:-",
+                                              Text(
+                                                "${"property_address".tr()}:-",
+                                                // "Property address:-",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 16,
@@ -398,26 +414,27 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                               ),
                                               const SizedBox(height: 8),
                                               Text(
-                                                "Address : ${address.capitalizeFirstWord()}",
+                                                "${"address".tr()} : ${address.capitalizeFirstWord()}",
                                               ),
                                               const SizedBox(height: 5),
                                               Text(
-                                                "Pincode : ${pincode.capitalizeFirstWord()}",
+                                                "${"pincode".tr()} : ${pincode.capitalizeFirstWord()}",
                                               ),
                                               const SizedBox(height: 15),
-                                              const Text(
-                                                "Owner details:-",
+                                              Text(
+                                                "${"owner_details".tr()}:-",
+                                                // "Owner details:-",
                                                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                                               ),
                                               const SizedBox(height: 8),
                                               Text(
-                                                "Owner name : ${ownername.capitalizeFirstWord()}",
+                                                "${"owner_name".tr()}: ${ownername.capitalizeFirstWord()}",
                                               ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
                                               Text(
-                                                "Document Name : ${Docname.capitalizeFirstWord()}",
+                                                "${"document_name".tr()} : ${Docname.capitalizeFirstWord()}",
                                               ),
                                               const SizedBox(height: 5),
                                             ],
@@ -431,9 +448,10 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Center(
+                            Center(
                               child: Text(
-                                'No rent details are added to the property.',
+                                "no_rent_details".tr(),
+                                // 'No rent details are added to the property.',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 16,
@@ -444,11 +462,10 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                             ),
                             const SizedBox(height: 30),
                             ElevatedButton(
-                              onPressed: () {
-
-                                
-                              },
-                              child: const Text(' +  Click to add rent'),
+                              onPressed: () {},
+                              child: Text("click_add_rent".tr()
+                                  // ' +  Click to add rent',
+                                  ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xff54854C),
                                 shape: RoundedRectangleBorder(
