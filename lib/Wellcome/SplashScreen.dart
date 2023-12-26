@@ -22,8 +22,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   void initState() {
-    super.initState();
     checkIfAlreadyLogin();
+    super.initState();
   }
 
   @override
@@ -51,10 +51,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void checkIfAlreadyLogin() async {
     await Future.delayed(const Duration(seconds: 3));
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
 
     bool login = prefs.getBool('login') ?? false;
     String sw = prefs.getString("sw") ?? "0";
-    // prefs.clear();
     log(sw.toString());
     log(login.toString());
 

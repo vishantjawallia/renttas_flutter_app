@@ -82,7 +82,7 @@ class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
 
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
     } else {
-      RentalCustomAlert.showErrorAlert(context);
+      // RentalCustomAlert.showErrorAlert(context);
     }
   }
 

@@ -13,9 +13,12 @@ import 'package:url_launcher/url_launcher.dart';
 import '../Common/PrivacyPolicy.dart';
 import '../Common/TermCondition.dart';
 import '../LiveChat/AuthGate.dart';
-import '../MergeProperty/MergeProperty.dart';
+// import '../MergeProperty/MergeProperty.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:store_redirect/store_redirect.dart';
+
+import '../MergeProperty/MergeProperty.dart';
+import '../chat_module/chat_screen.dart';
 
 class lanlordProfile extends StatefulWidget {
   const lanlordProfile({Key? key}) : super(key: key);
@@ -308,7 +311,8 @@ class _lanlordProfileState extends State<lanlordProfile> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthGate()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatScreen()));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthGate()));
 
                           /// chat whats app
                           // _launchWhatsapp("8139084095");

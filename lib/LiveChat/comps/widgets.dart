@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfire_ui/auth.dart';
+// import 'package:flutterfire_ui/auth.dart';
 import 'package:renttas_flutter_app/LiveChat/comps/styles.dart';
 
 import 'animated-dialog.dart';
@@ -92,7 +92,10 @@ class ChatWidgets {
               padding: const EdgeInsets.all(10),
               child: Text(
                 '$message\n\n$time',
-                style: TextStyle(color: check ? Colors.white : Colors.black),
+                style: TextStyle(
+                  color: check ? Colors.white : Colors.black,
+                  fontSize: 16,
+                ),
               ),
               decoration: Styles.messagesCardStyle(check),
             ),
@@ -155,7 +158,7 @@ class ChatWidgets {
                   leading: Icon(Icons.person),
                   title: Text('Profile'),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
                   },
                 ),
                 ListTile(
@@ -171,14 +174,14 @@ class ChatWidgets {
     );
   }
 
-  static searchBar(
-    bool open,
-  ) {
-    return AnimatedDialog(
-      height: open ? 800 : 0,
-      width: open ? 400 : 0,
-    );
-  }
+  // static searchBar(
+  //   bool open,
+  // ) {
+  //   return AnimatedDialog(
+  //     height: open ? 800 : 0,
+  //     width: open ? 400 : 0,
+  //   );
+  // }
 
   static searchField({Function(String)? onChange}) {
     return Container(

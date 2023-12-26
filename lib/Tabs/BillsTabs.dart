@@ -20,7 +20,12 @@ import '../landlord/LandloardDashBord.dart';
 
 class BillsTabs extends StatefulWidget {
   final bool data;
-  const BillsTabs({Key? key, required this.data}) : super(key: key);
+  // final bool reload;
+  const BillsTabs({
+    super.key,
+    required this.data,
+    // required this.reload,
+  });
 
   @override
   State<BillsTabs> createState() => _BillsTabsState();
@@ -35,15 +40,10 @@ class _BillsTabsState extends State<BillsTabs> {
   List<BIllModel> billData = [];
 
   Future<void> loadData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
-      selectedSubPropertyName = prefs.getString('selectedSubPropertyName') ?? '';
-    });
-    log("selectedPropertyId===>$selectedPropertyId");
-    log("selectedSubProptyId===>$selectedSubProptyId");
-    log("selectedSubPropertyName===>$selectedSubPropertyName");
+    // setState(() {});
+    // log("selectedPropertyId===>$selectedPropertyId");
+    // log("selectedSubProptyId===>$selectedSubProptyId");
+    // log("selectedSubPropertyName===>$selectedSubPropertyName");
     fetchBill(selectedPropertyId, selectedSubProptyId);
   }
 
@@ -60,6 +60,11 @@ class _BillsTabsState extends State<BillsTabs> {
 
   @override
   Widget build(BuildContext context) {
+    // if (widget.reload == true) {
+    //   log("Hello");
+    //   fetchBill(selectedPropertyId, selectedSubProptyId);
+    //   // loadData();
+    // }
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -239,8 +244,6 @@ class _BillsTabsState extends State<BillsTabs> {
                                             borderRadius: BorderRadius.circular(6),
                                             onTap: () {
                                               showbottomsheet(context, bill.id);
-                                              //   _showBottomSheet(
-                                              // context, bill['id']);
                                             },
                                             child: Container(
                                               padding: EdgeInsets.all(8),
@@ -256,19 +259,11 @@ class _BillsTabsState extends State<BillsTabs> {
                                           Container(color: Colors.black12, height: 68, width: 2),
                                           InkWell(
                                             borderRadius: BorderRadius.circular(6),
-                                            onTap: () {
-                                              // String message =
-                                              //     "Hii their your Bill form is ";
-                                              // shareOnWhatsApp(message);
-
-                                              Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                  builder: (builder) => PdfPreviewPage(invoice: bill, subname: selectedSubPropertyName),
-                                                ),
-                                              );
-
-                                              //Share.share('Check');
-                                            },
+                                            onTap: () => Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (builder) => PdfPreviewPage(invoice: bill, subname: selectedSubPropertyName),
+                                              ),
+                                            ),
                                             child: Container(
                                               padding: EdgeInsets.all(8),
                                               child: Column(
@@ -303,24 +298,6 @@ class _BillsTabsState extends State<BillsTabs> {
                                               ),
                                             ),
                                           ),
-                                          // Column(
-                                          //   children: [
-                                          //     IconButton(
-                                          //       onPressed: () {
-                                          //         shareOnWhatsApp("Hello");
-                                          //         /* _showBottomSheet(
-                                          //     context, bill['id']);*/
-                                          //       },
-                                          //       icon: Image.asset(
-                                          //         "assets/images/wi.png",
-                                          //         height: 43,
-                                          //         width: 43,
-                                          //       ),
-                                          //     ),
-                                          //     Text('Remind'),
-                                          //     SizedBox(width: 0.0, height: 12),
-                                          //   ],
-                                          // ),
                                           Container(color: Colors.black12, height: 68, width: 2),
                                           InkWell(
                                             borderRadius: BorderRadius.circular(6),
@@ -355,35 +332,6 @@ class _BillsTabsState extends State<BillsTabs> {
                                               ),
                                             ),
                                           ),
-                                          // Column(
-                                          //   children: [
-                                          //     IconButton(
-                                          //       onPressed: () async {
-                                          //         if (Platform.isAndroid) {
-                                          //           var status = await Permission.storage.status;
-                                          //           if (status != PermissionStatus.granted) {
-                                          //             status = await Permission.storage.request();
-                                          //           }
-                                          //           if (status.isGranted) {
-                                          //             //   const downloadsFolderPath = '/storage/emulated/0/Download/';
-                                          //             //   Directory dir = Directory(downloadsFolderPath);
-                                          //             // var file=  makePdf(bill,selectedSubPropertyName);
-                                          //             //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
-
-                                          //             Navigator.of(context).push(
-                                          //               MaterialPageRoute(
-                                          //                 builder: (builder) => PdfPreviewPage(invoice: bill, subname: selectedSubPropertyName),
-                                          //               ),
-                                          //             );
-                                          //           }
-                                          //         }
-                                          //       },
-                                          //       icon: Icon(Icons.downloading_outlined),
-                                          //     ),
-                                          //     Text('Download'),
-                                          //     SizedBox(width: 0.0, height: 12),
-                                          //   ],
-                                          // ),
                                         ],
                                       ),
                                     ],
@@ -681,6 +629,11 @@ class _BillsTabsState extends State<BillsTabs> {
 
   // @fetchBill
   void fetchBill(String propertyId, String subPropertyId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
+    selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+    selectedSubPropertyName = prefs.getString('selectedSubPropertyName') ?? '';
+    billData.clear();
     setState(() => isLoading = true);
     final Map<String, dynamic> requestData = {
       "propertyId": propertyId,
@@ -707,7 +660,7 @@ class _BillsTabsState extends State<BillsTabs> {
         log("billData-===>$billData");
         if (billData.isNotEmpty) isBillTheir = true;
       }
-      setState(() => isLoading = false);
+      // setState(() => isLoading = false);
     } else {
       print("Error");
     }

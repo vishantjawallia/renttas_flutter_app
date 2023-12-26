@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_interpolation_to_compose_strings, deprecated_member_use, unused_local_variable, unnecessary_overrides, unnecessary_null_comparison, avoid_unnecessary_containers, use_build_context_synchronously, sort_child_properties_last, use_super_parameters
+// ignore_for_file: prefer_const_constructors, avoid_print, prefer_interpolation_to_compose_strings, deprecated_member_use, unused_local_variable, unnecessary_overrides, unnecessary_null_comparison, avoid_unnecessary_containers, use_build_context_synchronously, sort_child_properties_last, use_super_parameters, unused_field, unused_element
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
@@ -9,6 +10,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/landlord/NotificationView.dart';
+import 'package:renttas_flutter_app/model/property_model.dart';
+import 'package:renttas_flutter_app/model/subproperty_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Common/ApiUrl.dart';
@@ -46,42 +49,38 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
   String selectedSubPropertyId = '';
 
   int selectedSubProperties = 0;
-  List<Property> propertyLists = [];
-  List<SubProperty> selectedSubProperty = [];
+  List<PropertyModel> propertyLists = [];
+  List<SubPropertyModel> selectedSubProperty = [];
   String selectedPropertyId = '';
   bool loadTabBar = false;
+
+  final _isbottomLoad = StreamController<bool>();
+  Stream<bool> get _isbottomLoadStream => _isbottomLoad.stream;
+
+  final GlobalKey _tabKey = GlobalKey();
 
   // String selectedSubProperty = '';
   @override
   void dispose() {
+    _isbottomLoad.close();
     super.dispose();
   }
 
   @override
   void initState() {
-    loadData();
     _tabController = TabController(length: 5, vsync: this);
 
+    loadData();
     super.initState();
   }
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      firstName = prefs.getString('name') ?? '';
-      log(firstName.toString());
-      landlordId = prefs.getString('userId') ?? '';
-      log(landlordId.toString());
-    });
+    firstName = prefs.getString('name') ?? '';
+    landlordId = prefs.getString('userId') ?? '';
+    propertyLists.clear();
+    setState(() => isLoading = true);
     await loadPropertyList(landlordId);
-  }
-
-  void navigateToFirstTab() {
-    if (_tabController.index != 0) {
-      _tabController.animateTo(0);
-    } else {
-      _tabController.animateTo(1);
-    }
   }
 
   void _openBottomSheet(BuildContext context) {
@@ -100,68 +99,79 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                     itemCount: propertyLists.length,
                     padding: EdgeInsets.only(top: 10),
                     itemBuilder: (BuildContext context, int index) {
-                      Property property = propertyLists[index]; // Assuming propertyLists is List<Property>
+                      PropertyModel property = propertyLists[index];
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8),
                           onTap: () async {
-                            setState(() {
-                              selectedPropertyName = property.propertyName;
-                              selectedPropertyId = property.id;
+                            selectedPropertyName = property.propertyName!;
+                            selectedPropertyId = property.id!;
+                            selectedSubProperty = property.subproperty!;
+                            log("selectedPropertyName===>$selectedPropertyName");
+                            log("selectedPropertyId===>$selectedPropertyId");
+                            log("selectedSubProperty===>$selectedSubProperty");
 
-                              selectedSubProperty = property.subProperties;
-
-                              if (property.subProperties.isNotEmpty) {
-                                SubProperty firstSubProperty = property.subProperties[0];
-                                selectedSubpropertyName = firstSubProperty.subPropertyName;
-                                selectedSubPropertyId = firstSubProperty.id;
-                                print("First Sub-Property: ${firstSubProperty.subPropertyName}");
-                                print("First Sub-Property: ${firstSubProperty.id}");
-                                //     assignFirst(selectedSubPropertyId,);
-                                isSubproperty = true;
-                              } else {
-                                removeItemFromSharedPreferences("selectedSubProptyId");
-                                removeItemFromSharedPreferences("selectedSubPropertyName");
-                                isSubproperty = false;
-                              }
-                            });
-
+                            if (property.subproperty!.isNotEmpty) {
+                              SubPropertyModel firstSubProperty = property.subproperty!.first;
+                              selectedSubpropertyName = firstSubProperty.subPropertyName!;
+                              selectedSubPropertyId = firstSubProperty.id!;
+                              log("selectedSubpropertyName===>$selectedSubpropertyName");
+                              log("selectedSubpropertyName===>$selectedSubpropertyName");
+                              SharedPreferences prefs = await SharedPreferences.getInstance();
+                              await prefs.setString("selectedSubPropertyId", selectedSubPropertyId);
+                              await prefs.setString("selectedSubpropertyName", selectedSubpropertyName);
+                              // assignFirst(selectedSubPropertyId);
+                              isSubproperty = true;
+                            } else {
+                              removeItemFromSharedPreferences("selectedSubProptyId");
+                              removeItemFromSharedPreferences("selectedSubPropertyName");
+                              isSubproperty = false;
+                            }
+                            // });
                             await saveSelectedPropertyId(selectedPropertyId, selectedPropertyName);
+                            // await clearAll();
+                            // _isbottomLoad.add(false);
                             Navigator.of(context).pop();
-                            navigateToFirstTab();
+                            setState(() {});
+                            if (_tabController.index == 0) {
+                              _tabController.animateTo(1);
+                            } else {
+                              _tabController.animateTo(0);
+                            }
                           },
                           child: Container(
-                              decoration: BoxDecoration(
-                                color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.2) : Colors.white,
-                                border: Border.all(
-                                  width: 1,
-                                  color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.3) : Colors.grey,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
+                            decoration: BoxDecoration(
+                              color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.2) : Colors.white,
+                              border: Border.all(
+                                width: 1,
+                                color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.3) : Colors.grey,
                               ),
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text(
-                                    property.propertyName,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                    ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  property.propertyName ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 16,
                                   ),
-                                  SizedBox(
-                                    width: 100,
-                                  ),
-                                  selectedPropertyName == property.propertyName
-                                      ? const Icon(
-                                          Icons.check_circle_outline_sharp,
-                                          color: Color(0xff54854C),
-                                        )
-                                      : SizedBox(),
-                                ],
-                              )),
+                                ),
+                                SizedBox(
+                                  width: 100,
+                                ),
+                                selectedPropertyName == property.propertyName
+                                    ? const Icon(
+                                        Icons.check_circle_outline_sharp,
+                                        color: Color(0xff54854C),
+                                      )
+                                    : SizedBox(),
+                              ],
+                            ),
+                          ),
                         ),
                       );
                     },
@@ -180,9 +190,10 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LandlordAddProperty()));
-                    },
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LandlordAddProperty()),
+                    ),
                     child: Text(
                       "add_property".tr(),
                       // 'Add Property',
@@ -195,7 +206,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                   ),
                 ),
               ),
-              SizedBox(width: 0.0, height: 30),
+              SizedBox(height: 30),
             ],
           ),
         );
@@ -219,9 +230,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
             backgroundColor: Color(0xff54854C),
-            // toolbarHeight: 200,
             toolbarHeight: !isSubproperty ? 130 : 200,
-            // toolbarHeight: !isSubproperty ? screenHeight * 0.28 : screenHeight * 0.20,
             automaticallyImplyLeading: false,
             actions: <Widget>[
               Container(
@@ -257,7 +266,6 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                   ),
                                 ),
                                 Container(
-                                  // alignment: Alignment.centerLeft,
                                   padding: const EdgeInsets.only(left: 12),
                                   child: isLoading
                                       ? SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 3))
@@ -265,11 +273,8 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                           borderRadius: BorderRadius.circular(6),
                                           onTap: () => _openBottomSheet(context),
                                           child: Padding(
-                                            // padding: EdgeInsets.only(),
                                             padding: const EdgeInsets.only(left: 6, top: 4, bottom: 4, right: 0),
                                             child: Row(
-                                              // mainAxisAlignment: MainAxisAlignment.center,
-                                              // crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
                                                 Container(
                                                   width: selectedPropertyName.length > 8 ? 90 : 72,
@@ -315,14 +320,14 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                     padding: EdgeInsets.all(6),
                                     child: Row(
                                       children: [
-                                        Icon(Icons.star, color: Colors.orange),
+                                        Icon(Icons.star, color: Color.fromARGB(255, 229, 175, 26)),
                                         Container(
                                           padding: EdgeInsets.all(6),
                                           alignment: Alignment.center,
                                           child: Text(
                                             ' ' + "premium".tr(),
                                             style: TextStyle(
-                                              color: Colors.orange,
+                                              color: Color.fromARGB(255, 229, 175, 26),
                                               fontSize: 18,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -385,116 +390,125 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                         if (isSubproperty)
                           Align(
                             alignment: Alignment.topLeft,
-                            child: StatefulBuilder(
-                              builder: (BuildContext context, StateSetter setState) {
-                                return SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          // when click on all it will get all datas under the property
-                                          setState(() {
-                                            alldt = true;
-                                          });
-                                        },
-                                        child: Container(
-                                          decoration: alldt == false
-                                              ? BoxDecoration(border: Border.all(width: 1, color: Colors.white), borderRadius: BorderRadius.circular(4))
-                                              : BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(4)),
-                                          margin: const EdgeInsets.only(left: 10),
-                                          padding: const EdgeInsets.all(10),
-                                          height: 38,
-                                          // p
-                                          // color: Colors.greenAccent,
-                                          child: Text(
-                                            "all".tr(),
-                                            // "All",
-                                            style: TextStyle(color: alldt == true ? Colors.black : Colors.white, fontWeight: FontWeight.bold),
+                            child:
+                                // StatefulBuilder(
+                                // builder: (BuildContext context, StateSetter setState) {
+                                // return
+                                SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    InkWell(
+                                      onTap: () => setState(() => alldt = true),
+                                      child: Container(
+                                        decoration: alldt == false
+                                            ? BoxDecoration(
+                                                border: Border.all(width: 1.5, color: Colors.white),
+                                                borderRadius: BorderRadius.circular(6),
+                                              )
+                                            : BoxDecoration(
+                                                color: Color.fromARGB(255, 229, 175, 26),
+                                                borderRadius: BorderRadius.circular(6),
+                                              ),
+                                        padding: const EdgeInsets.all(10),
+                                        height: 38,
+                                        child: Text(
+                                          "all".tr().toUpperCase(),
+                                          // "All",
+                                          style: TextStyle(
+                                            color: alldt == true ? Colors.black : Colors.white,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Align(
-                                        heightFactor: 1.55,
+                                    ),
+                                    SizedBox(width: 20),
+                                    Align(
+                                      heightFactor: 1.55,
+                                      alignment: Alignment.center,
+                                      child: Container(
                                         alignment: Alignment.center,
-                                        child: Container(
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                            color: Colors.grey.shade300,
-                                            borderRadius: BorderRadius.circular(4),
-                                          ),
-                                          height: 22,
-                                          width: 2,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey.shade300,
+                                          borderRadius: BorderRadius.circular(4),
                                         ),
+                                        height: 22,
+                                        width: 2,
                                       ),
-                                      SizedBox(width: 2),
-                                      Row(
-                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: List.generate(
-                                          selectedSubProperty.length,
-                                          (index) => GestureDetector(
-                                            onTap: () async {
-                                              setState(() {
-                                                alldt = false;
+                                    ),
+                                    SizedBox(width: 2),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: List.generate(
+                                        selectedSubProperty.length,
+                                        (index) => GestureDetector(
+                                          onTap: () async {
+                                            alldt = false;
+                                            selectedSubProperties = index;
+                                            selectedSubpropertyName = selectedSubProperty[index].subPropertyName!;
+                                            selectedSubPropertyId = selectedSubProperty[index].id!;
 
-                                                var firstElementIndex = selectedSubProperty[0];
+                                            log("selectedSubPropertyFirst====>${selectedSubProperty.first}");
+                                            log("selectedSubProperty====>$selectedSubProperties");
+                                            log("selectedSubPropertyId====>$selectedSubPropertyId");
+                                            log("selectedSubPropertyName====>$selectedSubpropertyName");
+                                            log("alldt====>$alldt");
 
-                                                print("Index of first element: $firstElementIndex");
-                                                selectedSubProperties = index;
-                                                selectedSubpropertyName = selectedSubProperty[index].subPropertyName;
-                                                selectedSubPropertyId = selectedSubProperty[index].id;
-                                                print("selectedSubpropertyID: $selectedPropertyId");
-                                              });
-                                              navigateToFirstTab();
-                                              await saveSelectedSubProperty(selectedSubPropertyId, selectedSubpropertyName);
-                                            },
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              margin: const EdgeInsets.only(left: 14),
-                                              padding: const EdgeInsets.all(8),
-                                              height: 38,
-                                              decoration: alldt == false
-                                                  ? index == selectedSubProperties
-                                                      ? BoxDecoration(
-                                                          color: Color.fromARGB(255, 229, 175, 26),
-                                                          borderRadius: BorderRadius.circular(4),
-                                                          border: Border.all(width: 1.5, color: Color.fromARGB(255, 229, 175, 26)),
-                                                        )
-                                                      : BoxDecoration(
-                                                          border: Border.all(color: Color.fromARGB(255, 229, 175, 26), width: 1.5),
-                                                          borderRadius: BorderRadius.circular(4),
-                                                        )
-                                                  : BoxDecoration(
-                                                      border: Border.all(color: Colors.black, width: 1.5),
-                                                      borderRadius: BorderRadius.circular(4),
-                                                    ),
-                                              // color:
-                                              //     index == selectedSubProperties
-                                              //         ? Colors.blueAccent
-                                              //         : Colors.white,
-                                              child: Text(
-                                                selectedSubProperty[index].subPropertyName,
-                                                style: TextStyle(
-                                                  color: index == selectedSubProperties ? Colors.black : Colors.white,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w700,
-                                                ),
+                                            await saveSelectedSubProperty(selectedSubPropertyId, selectedSubpropertyName);
+                                            setState(() {});
+                                            if (_tabController.index == 0) {
+                                              _tabController.animateTo(1);
+                                            } else {
+                                              _tabController.animateTo(0);
+                                            }
+                                            // navigateToFirstTab();
+                                          },
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            margin: const EdgeInsets.only(left: 14),
+                                            padding: const EdgeInsets.all(8),
+                                            height: 38,
+                                            decoration: alldt == false
+                                                ? index == selectedSubProperties
+                                                    ? BoxDecoration(
+                                                        color: Color.fromARGB(255, 229, 175, 26),
+                                                        borderRadius: BorderRadius.circular(6),
+                                                        border: Border.all(width: 1.5, color: Color.fromARGB(255, 229, 175, 26)),
+                                                      )
+                                                    : BoxDecoration(
+                                                        color: Colors.grey.shade100.withOpacity(0.2),
+                                                        border: Border.all(color: Colors.white, width: 1.5),
+                                                        borderRadius: BorderRadius.circular(6),
+                                                      )
+                                                : BoxDecoration(
+                                                    // color: Colors.grey.shade100.withOpacity(0.2),
+                                                    border: Border.all(color: Colors.white, width: 1.5),
+                                                    borderRadius: BorderRadius.circular(6),
+                                                  ),
+                                            child: Text(
+                                              selectedSubProperty[index].subPropertyName!,
+                                              // selectedSubProperty[index].subPropertyName,
+                                              style: TextStyle(
+                                                color: alldt == false ? (index == selectedSubProperties ? Colors.black : Colors.white) : Colors.white,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
                                               ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                );
-                              },
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
+                            // },
+                            // ),
                           ),
                       ],
                     ),
@@ -542,9 +556,12 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
               // if (loadTabBar && selectedSubProperty.isNotEmpty)
               Expanded(
                 child: TabBarView(
+                  key: _tabKey,
                   controller: _tabController,
                   children: [
-                    BillsTabs(data: isSubproperty),
+                    BillsTabs(
+                      data: isSubproperty,
+                    ),
                     TenantsTab(),
                     ExpensesTab(),
                     DocumentsTab(),
@@ -566,17 +583,15 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
   }
 
   Future<void> loadPropertyList(String landlordId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = await FirebaseMessaging.instance.getToken();
-    log("FCM tocken====$token");
-    log("landlordId==>$landlordId");
     String counrtycode = WidgetsBinding.instance.window.locale.countryCode.toString();
-    log("countryCode===>$counrtycode");
     String getCurr = getCurrency();
+
+    log("landlordId==>$landlordId");
+    log("FCM tocken====$token");
+    log("countryCode===>$counrtycode");
     print("getCurr===>$getCurr");
-
-    setState(() => isLoading = true);
-    propertyLists.clear();
-
     final Map<String, dynamic> requestData = {
       "landlordId": landlordId,
       "fcmtocken": token,
@@ -600,53 +615,43 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
     final data = jsonDecode(body);
 
     log("requestData===>$requestData");
-    log("data===>" + data.toString());
+    log("data===>" + jsonEncode(data).toString());
     log("url===" + request.url.toString());
     List<dynamic>? dataList = data['data'];
 
     if (dataList != null) {
-      // final List<dynamic> jsonData = dataList;
+      propertyLists = PropertyModel.fromJsonList(dataList);
+      // propertyLists = dataList.map((propertyJson) {
+      //   final List<dynamic> subPropertyData = propertyJson['subproperty'];
+      //   final List<SubProperty> subProperties = subPropertyData.map((subPropertyJson) => SubProperty.fromJson(subPropertyJson)).toList();
 
-      propertyLists = dataList.map((propertyJson) {
-        final List<dynamic> subPropertyData = propertyJson['subproperty'];
-        final List<SubProperty> subProperties = subPropertyData.map((subPropertyJson) => SubProperty.fromJson(subPropertyJson)).toList();
-
-        return Property(
-          id: propertyJson['id'],
-          propertyName: propertyJson['propertyName'],
-          subProperties: subProperties,
-        );
-      }).toList();
+      //   return Property(
+      //     id: propertyJson['id'],
+      //     propertyName: propertyJson['propertyName'],
+      //     subProperties: subProperties,
+      //   );
+      // }).toList();
 
       if (propertyLists.isNotEmpty) {
-        Property firstProperty = propertyLists[0];
-        selectedPropertyName = firstProperty.propertyName;
-        selectedPropertyId = firstProperty.id;
+        PropertyModel firstProperty = propertyLists.first;
+        selectedPropertyName = firstProperty.propertyName!;
+        selectedPropertyId = firstProperty.id!;
         print("First Property: ${firstProperty.propertyName}");
-        if (firstProperty.subProperties.isNotEmpty) {
-          SubProperty firstSubProperty = firstProperty.subProperties[0];
-          selectedSubpropertyName = firstSubProperty.subPropertyName;
-          selectedSubPropertyId = firstSubProperty.id;
-          selectedSubProperty = firstProperty.subProperties;
+        if (firstProperty.subproperty!.isNotEmpty) {
+          SubPropertyModel firstSubProperty = firstProperty.subproperty!.first;
+          selectedSubpropertyName = firstSubProperty.subPropertyName!;
+          selectedSubPropertyId = firstSubProperty.id!;
+          selectedSubProperty = firstProperty.subproperty!;
           setState(() => isSubproperty = true);
-          // Savesubpropsave()
-          print("First Sub-Property: ${firstSubProperty.subPropertyName}");
-        } else {
-          setState(() => isSubproperty = false);
-          print("No sub-properties available for the first property.");
         }
-      } else {
-        print("No properties available.");
       }
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+
       await prefs.setString('selectedPropertyId', selectedPropertyId);
       await prefs.setString('selectedPropertyName', selectedPropertyName);
       await prefs.setString('selectedSubProptyId', selectedSubPropertyId);
       await prefs.setString('selectedSubPropertyName', selectedSubpropertyName);
+      setState(() => isLoading = false);
     }
-    setState(() {
-      isLoading = false; // Set loading state to false after the data is loaded
-    });
   }
 
   Future<void> saveSelectedPropertyId(String selectedPropertyId, String selectedPropertyName) async {
@@ -674,7 +679,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
   }
 
   assignFirst(String subPropertyId) {
-    print('First Property: $subPropertyId');
+    // print('First Property: $subPropertyId');
     updateSharedPreferences("selectedSubProptyId", subPropertyId);
   }
 
@@ -728,4 +733,24 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
 
     return shouldExit;
   }
+
+  Future<void> clearAll() async {
+    // propertyLists.clear();
+    selectedSubProperty.clear();
+    isLoading = false;
+    isSubproperty = false;
+    alldt = false;
+    selectedSubpropertyName = '';
+    selectedPropertyName = '';
+    selectedSubPropertyId = '';
+    selectedSubProperties = 0;
+    selectedPropertyId = '';
+    // loadTabBar = false;
+    // await loadPropertyList(landlordId);
+    // return;
+  }
+
+  // Future<void> _refreshData() async {
+  //   loadData();
+  // }
 }

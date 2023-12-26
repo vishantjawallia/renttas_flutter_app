@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Const/Const.dart';
+import '../TabAction/AddTendent.dart';
 import '../model/TendentModel.dart';
 import 'EditMergeProperty.dart';
 import 'ViewMergeDetails.dart';
@@ -57,33 +58,43 @@ class _TenantsTabState extends State<MergeProperty> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // floatingActionButton: FloatingActionButton.extended(
-        //   onPressed: () {
-        //     Navigator.of(context).push(
-        //       MaterialPageRoute(
-        //         builder: (context) => AddTendent(),
-        //       ),
-        //     );
-        //   },
-        //   label: Text('Add Tenant'),
-        //   icon: Icon(Icons.add),
-        //   backgroundColor: Colors.blue,
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.circular(20.0),
-        //   ),
-        // ),
+        floatingActionButton: isLoading
+            ? SizedBox()
+            : FloatingActionButton.extended(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AddTendent(),
+                    ),
+                  );
+                },
+                label: Text(
+                  'Tenant',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                icon: Icon(Icons.add, color: Colors.white),
+                backgroundColor: Color(0xff54854C),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
         appBar: AppBar(
+          backgroundColor: const Color(0xff54854C),
           title: Text("Merge property"),
-          backgroundColor: Colors.black26,
         ),
         body: Column(
           children: [
-            // Other widgets
             isLoading
-                ? Center(
-                    child: CircularProgressIndicator(
-                    color: Color(0xff54854C),
-                  ))
+                ? Flexible(
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: Color(0xff54854C),
+                      ),
+                    ),
+                  )
                 : Visibility(
                     visible: isTenantsTheir,
                     child: ListView.builder(
@@ -170,14 +181,13 @@ class _TenantsTabState extends State<MergeProperty> {
                         );
                       },
                     ),
-                    replacement: Padding(
-                      padding: const EdgeInsets.only(top: 250, left: 30),
+                    replacement: Flexible(
                       child: Center(
                         child: Text(
-                          'No tenants found',
+                          'Tenants not found !',
                           style: TextStyle(
                             fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                             color: Colors.grey,
                           ),
                         ),

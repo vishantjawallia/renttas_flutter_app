@@ -12,7 +12,7 @@ import 'package:renttas_flutter_app/widgets/global_widget.dart';
 // import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 // import 'package:renttas_flutter_app/Common/RentalCustomAlert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../Common/RentalCustomAlert.dart';
 import '../ForgotPaswd/ForgotPaswdScreen.dart';
 import '../landlord/LandloardDashBord.dart';
@@ -31,7 +31,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
   TextEditingController landlordEmail = TextEditingController();
   TextEditingController landlordPassword = TextEditingController();
   bool isLoading = false;
-  final storage = FlutterSecureStorage();
+  // final storage = FlutterSecureStorage();
   final textFieldFocusNode = FocusNode();
   bool _obscured = true;
 
