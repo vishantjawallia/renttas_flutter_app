@@ -96,87 +96,43 @@ class _ProductViewNewState extends State<ProductViewNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-
-        // backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
         title: Row(
           children: [
-            // const SizedBox(width: 10),
-            // InkWell(
-            //   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
-            //   child: const Icon(
-            //     Icons.arrow_back,
-            //     size: 30,
-            //   ),
-            // ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("All Products"),
-                  // Text(
-                  //   "ab@gmail.com",
-                  //   style: TextStyle(fontWeight: FontWeight.bold),
-                  // )
-                ],
+            const Text("All Products"),
+            const Flexible(fit: FlexFit.tight, child: SizedBox()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
+                //alignment: Alignment.center,
+                child: const Icon(
+                  Icons.qr_code_scanner_outlined,
+                  size: 20,
+                  color: Color(0xff54854C),
+                ),
               ),
             ),
-            const Flexible(fit: FlexFit.tight, child: SizedBox()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
+                  child: const Icon(
+                    Icons.mobile_screen_share_rounded,
+                    size: 20,
+                    color: Color(0xff54854C),
+                  )),
+            ),
+            const SizedBox(width: 10),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(
                 Icons.search,
                 size: 24,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                  //alignment: Alignment.center,
-                  child: const Icon(
-                    Icons.qr_code_scanner_outlined,
-                    size: 20,
-                  )
-                  // Text(
-                  //   'Premium',
-                  //   style: TextStyle(
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  //   textAlign: TextAlign.center,
-                  // ),
-                  ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                  //alignment: Alignment.center,
-                  child: const Icon(
-                    Icons.mobile_screen_share_rounded,
-                    size: 20,
-                  )
-                  // Text(
-                  //   'Premium',
-                  //   style: TextStyle(
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  //   textAlign: TextAlign.center,
-                  // ),
-                  ),
             ),
           ],
         ),
@@ -213,18 +169,20 @@ class _ProductViewNewState extends State<ProductViewNew> {
                             child: Row(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         productlist[index].productname,
-                                        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18, color: Colors.black),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                          color: Colors.black,
+                                        ),
                                       ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
+                                      const SizedBox(height: 8),
                                       Text(
                                         productlist[index].sku,
                                         style: const TextStyle(
@@ -232,30 +190,24 @@ class _ProductViewNewState extends State<ProductViewNew> {
                                           color: Colors.black54,
                                         ),
                                       ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
+                                      const SizedBox(height: 10),
                                       Row(
                                         children: [
                                           const Icon(
                                             Icons.arrow_circle_up,
                                             color: Colors.orange,
                                           ),
-                                          const SizedBox(width: 2, height: 0.0),
+                                          const SizedBox(width: 2),
                                           Text(
                                             productlist[index].description,
                                             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.orange),
                                           ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-
+                                          const SizedBox(width: 10),
                                           const Icon(
                                             Icons.arrow_circle_down,
                                             color: Colors.red,
                                           ),
-                                          const SizedBox(width: 2, height: 0.0),
-
+                                          const SizedBox(width: 2),
                                           const Text(
                                             "0.00",
                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.red),
@@ -263,10 +215,7 @@ class _ProductViewNewState extends State<ProductViewNew> {
                                           const SizedBox(
                                             width: 10,
                                           ),
-                                          // Icon(
-                                          //   Icons.equalizer,
-                                          //   color: Colors.grey,
-                                          // ),
+                                          const Icon(Icons.equalizer, color: Colors.grey),
                                           const Text(
                                             "= 1.00",
                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
@@ -281,32 +230,23 @@ class _ProductViewNewState extends State<ProductViewNew> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(40),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            blurRadius: 0.2,
-                                            spreadRadius: 0.4,
-                                            color: Colors.grey,
-                                          )
-                                        ],
-                                      ),
-                                      //alignment: Alignment.center,
-                                      child: const Icon(
-                                        Icons.arrow_forward_ios,
-                                        size: 20,
-                                      )
-                                      // Text(
-                                      //   'Premium',
-                                      //   style: TextStyle(
-                                      //     fontSize: 18,
-                                      //     fontWeight: FontWeight.bold,
-                                      //   ),
-                                      //   textAlign: TextAlign.center,
-                                      // ),
-                                      ),
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(40),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          blurRadius: 0.2,
+                                          spreadRadius: 0.4,
+                                          color: Colors.grey,
+                                        )
+                                      ],
+                                    ),
+                                    child: const Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 20,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -317,34 +257,23 @@ class _ProductViewNewState extends State<ProductViewNew> {
                   }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        // isExtended: true,
         child: const Icon(
           Icons.add,
           color: Colors.white,
         ),
         backgroundColor: const Color(0xff54854C),
-        onPressed: () {
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) => newproductadd(
-          //               type: "0",
-          //               id: "",
-          //               productname: "",
-          //               descr: "",
-          //               sku: "",
-          //             )));
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => NewProductAddNew(
-                        type: "0",
-                        id: "",
-                        productname: "",
-                        descr: "",
-                        sku: "",
-                      )));
-        },
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NewProductAddNew(
+              type: "0",
+              id: "",
+              productname: "",
+              descr: "",
+              sku: "",
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -397,7 +326,7 @@ class _ProductViewNewState extends State<ProductViewNew> {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => newproductadd(type: "1", id: id, productname: name, descr: descrip, sku: sku))),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NewProductAddNew(type: "1", id: id, productname: name, descr: descrip, sku: sku))),
                   child: Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,

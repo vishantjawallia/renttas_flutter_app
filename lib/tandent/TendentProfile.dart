@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Common/AboutUs.dart';
 import '../Common/PrivacyPolicy.dart';
 import '../Common/TermCondition.dart';
+import '../chat_module/chat_screen.dart';
 
 class TendentProfile extends StatefulWidget {
   const TendentProfile({Key? key}) : super(key: key);
@@ -183,7 +184,7 @@ class _TendentProfileState extends State<TendentProfile> {
             ),
             Container(
               margin: EdgeInsets.only(right: 5, left: 5, top: 5),
-              height: 300,
+              height: 350,
               width: double.infinity,
               child: Card(
                 shape: RoundedRectangleBorder(
@@ -193,11 +194,46 @@ class _TendentProfileState extends State<TendentProfile> {
                   children: <Widget>[
                     InkWell(
                       onTap: () {
-                        Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas');
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ChatScreen(),
+                        ));
                       },
                       child: Container(
                         width: double.infinity,
                         margin: EdgeInsets.only(top: 12, left: 10),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 30,
+                              width: 30,
+                              child: Icon(Icons.chat),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                'Live Chat',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 8, right: 8, top: 5),
+                      child: Divider(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas');
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.only(top: 8, left: 10),
                         child: Row(
                           children: [
                             Container(

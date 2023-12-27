@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
+import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
@@ -152,70 +154,41 @@ class _storeviewState extends State<storeview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
+        backgroundColor: const Color(0xff54854C),
+
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Container(
-            child: Expanded(
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 10,
+        leading: BackButton(),
+        title:
+            // <Widget>[
+            Row(
+          children: [
+            Text("Stores"),
+            const Flexible(fit: FlexFit.tight, child: SizedBox()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
+                  //alignment: Alignment.center,
+                  child: const Icon(
+                    Icons.mobile_screen_share_rounded,
+                    size: 20,
+                    color: const Color(0xff54854C),
+                  )
+                  // Text(
+                  //   'Premium',
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  //   textAlign: TextAlign.center,
+                  // ),
                   ),
-                  InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Stores"),
-                        // Text(
-                        //   "ab@gmail.com",
-                        //   style: TextStyle(fontWeight: FontWeight.bold),
-                        // )
-                      ],
-                    ),
-                  ),
-                  const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                        //alignment: Alignment.center,
-                        child: const Icon(
-                          Icons.mobile_screen_share_rounded,
-                          size: 20,
-                        )
-                        // Text(
-                        //   'Premium',
-                        //   style: TextStyle(
-                        //     fontSize: 18,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        //   textAlign: TextAlign.center,
-                        // ),
-                        ),
-                  ),
-                ],
-              ),
             ),
-          ),
-        ],
+          ],
+        ),
+        // ],
       ),
       body: isloaidng == true
           ? const Center(
@@ -226,7 +199,7 @@ class _storeviewState extends State<storeview> {
                     color: Color(0xff54854C),
                   )))
           : storelist.isEmpty
-              ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
+              ? GlobalWidgets.notFound('Store')
               : ListView.builder(
                   itemCount: storelist.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -296,7 +269,7 @@ class _storeviewState extends State<storeview> {
                       ),
                     );
                   }),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         // isExtended: true,
         child: const Icon(
@@ -369,9 +342,14 @@ class _storeviewState extends State<storeview> {
           actions: <Widget>[
             Center(
               child: TextButton(
-                  child: const Text('Save'),
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                    backgroundColor: MaterialStatePropertyAll(
+                      const Color(0xff54854C),
+                    ),
                   ),
                   onPressed: () async {
                     setState(() {

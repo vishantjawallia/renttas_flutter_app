@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
 import 'package:renttas_flutter_app/Inventory/JoinBuisness.dart';
 import 'Dashboard.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class _viewallbuisnessState extends State<viewallbuisness> {
                     width: 10,
                   ),
                   InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew())),
                     child: Icon(
                       Icons.arrow_back,
                       size: 30,

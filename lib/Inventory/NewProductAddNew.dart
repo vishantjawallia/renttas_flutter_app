@@ -110,7 +110,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
           Map<String, dynamic> resposne = jsonDecode(response.body);
 
           if (resposne['respCode'].toString().contains("200")) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => productview()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductViewNew()));
 
             print("Login Successfully Completed !!!!!!!!!!!!!!!!");
           } else {
@@ -183,6 +183,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                   child: Icon(
                     Icons.qr_code_scanner_outlined,
                     size: 20,
+                    color: Color(0xff54854C),
                   )
                   // Text(
                   //   'Premium',
@@ -204,14 +205,14 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                     : widget.type == "1"
                         ? Text(
                             'Update',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Color(0xff54854C), fontWeight: FontWeight.bold),
                           )
                         : Text(
                             'Save',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Color(0xff54854C), fontWeight: FontWeight.bold),
                           ),
                 style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                  backgroundColor: MaterialStatePropertyAll(Colors.white),
                 ),
                 onPressed: () {
                   final isValid = _formKey.currentState!.validate();

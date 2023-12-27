@@ -22,43 +22,23 @@ class _mybusinesspageState extends State<chnagepassword> {
   void _toggleObscured() {
     setState(() {
       _obscured = !_obscured;
-      if (textFieldFocusNode.hasPrimaryFocus)
-        return; // If focus is on text field, dont unfocus
-      textFieldFocusNode.canRequestFocus =
-          false; // Prevents focus if tap on eye
+      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
+      textFieldFocusNode.canRequestFocus = false; // Prevents focus if tap on eye
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      // backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
+        leading: const BackButton(),
+        backgroundColor: const Color(0xff54854C),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Expanded(
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const settingsview())),
-                  child: const Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        title: const Text('Change Password'),
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(vertical: 20),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -68,19 +48,14 @@ class _mybusinesspageState extends State<chnagepassword> {
             children: [
               Center(
                 child: InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const mybusinesspage())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const mybusinesspage())),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                           height: 100,
                           width: 100,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(60)),
+                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(60)),
                           child: const Icon(
                             Icons.change_circle,
                             size: 50,
@@ -89,10 +64,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                         padding: EdgeInsets.all(3.0),
                         child: Text(
                           "Change Password",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                              fontSize: 16),
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 16),
                         ),
                       ),
                       // Padding(
@@ -134,8 +106,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                     focusNode: textFieldFocusNode,
                     style: const TextStyle(color: Colors.black87),
                     decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior
-                          .never, //Hides label on focus or if filled
+                      floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
                       hintText: "Enter Password",
                       hintStyle: const TextStyle(color: Colors.black38),
                       filled: true, // Needed for adding a fill color
@@ -143,8 +114,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                       isDense: true, // Reduces height a bit
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none, // No border
-                        borderRadius:
-                            BorderRadius.circular(12), // Apply corner radius
+                        borderRadius: BorderRadius.circular(12), // Apply corner radius
                       ),
                       // prefixIcon: Icon(
                       //   Icons.lock_rounded,
@@ -156,9 +126,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                         child: GestureDetector(
                           onTap: _toggleObscured,
                           child: Icon(
-                            _obscured
-                                ? Icons.visibility_off_rounded
-                                : Icons.visibility_rounded,
+                            _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
                             size: 24,
                           ),
                         ),
@@ -189,8 +157,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                     focusNode: textFieldFocusNode,
                     style: const TextStyle(color: Colors.black87),
                     decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior
-                          .never, //Hides label on focus or if filled
+                      floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
                       hintText: "Enter confirm Password",
                       hintStyle: const TextStyle(color: Colors.black38),
                       filled: true, // Needed for adding a fill color
@@ -198,8 +165,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                       isDense: true, // Reduces height a bit
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none, // No border
-                        borderRadius:
-                            BorderRadius.circular(12), // Apply corner radius
+                        borderRadius: BorderRadius.circular(12), // Apply corner radius
                       ),
                       // prefixIcon: Icon(
                       //   Icons.lock_rounded,
@@ -211,9 +177,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                         child: GestureDetector(
                           onTap: _toggleObscured,
                           child: Icon(
-                            _obscured
-                                ? Icons.visibility_off_rounded
-                                : Icons.visibility_rounded,
+                            _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
                             size: 24,
                           ),
                         ),
@@ -226,7 +190,7 @@ class _mybusinesspageState extends State<chnagepassword> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.blue,
+                  color: Color(0xff54854C),
                 ),
                 height: 50,
                 width: 400,
@@ -237,7 +201,7 @@ class _mybusinesspageState extends State<chnagepassword> {
                       style: TextStyle(color: Colors.white),
                     ),
                     style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                      backgroundColor: MaterialStatePropertyAll(Color(0xff54854C)),
                     ),
                     onPressed: () {},
                   ),

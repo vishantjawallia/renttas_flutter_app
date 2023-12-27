@@ -3,6 +3,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
+import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
@@ -74,66 +76,37 @@ class _lowstockState extends State<lowstock> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
+        backgroundColor: const Color(0xff54854C),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Expanded(
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
-                  child: const Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Low Stocks"),
-                      // Text(
-                      //   "ab@gmail.com",
-                      //   style: TextStyle(fontWeight: FontWeight.bold),
-                      // )
-                    ],
-                  ),
-                ),
-                const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.search,
-                    size: 25,
-                  ),
-                ),
-              ],
+        leading: BackButton(),
+        title: const Row(
+          children: [
+            Text("Low Stocks"),
+            Flexible(fit: FlexFit.tight, child: SizedBox()),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.search,
+                size: 25,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
+        // ],
       ),
       body: isloaidng == true
           ? const Center(
               child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: CircularProgressIndicator(
-                    color: Color(0xff54854C),
-                  )))
+                height: 60,
+                width: 60,
+                child: CircularProgressIndicator(
+                  color: Color(0xff54854C),
+                ),
+              ),
+            )
           : lowlist.isEmpty
-              ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
+              ? GlobalWidgets.notFound('Low stock')
               : ListView.builder(
                   itemCount: lowlist.length,
                   itemBuilder: (BuildContext context, int index) {

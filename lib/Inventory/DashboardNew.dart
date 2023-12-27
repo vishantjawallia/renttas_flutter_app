@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Inventory/LowStock.dart';
+import 'package:renttas_flutter_app/Inventory/ProductInOutNew.dart';
 import 'package:renttas_flutter_app/Inventory/Transactions.dart';
 import 'package:renttas_flutter_app/Inventory/Storeview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -49,81 +50,65 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
         appBar: AppBar(
           backgroundColor: Color(0xff54854C),
           // backgroundColor: Colors.grey[300],
-          title: Container(
-            child: Expanded(
-              child: Row(
+          title: Row(
+            children: [
+              // SizedBox(width: 10),
+              // InkWell(
+              //   onTap: () => _scaffoldKey.currentState?.openDrawer(),
+              //   child: Container(
+              //       padding: EdgeInsets.all(10),
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(40),
+              //       ),
+              //       child: Icon(
+              //         Icons.menu_open,
+              //         size: 20,
+              //       )
+              //       // Text(
+              //       //   'Premium',
+              //       //   style: TextStyle(
+              //       //     fontSize: 18,
+              //       //     fontWeight: FontWeight.bold,
+              //       //   ),
+              //       //   textAlign: TextAlign.center,
+              //       // ),
+              //       ),
+              // ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 10,
+                  Text(
+                    name,
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
-                  InkWell(
-                    onTap: () {
-                      _scaffoldKey.currentState?.openDrawer();
-                    },
-                    child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                        //alignment: Alignment.center,
-                        child: Icon(
-                          Icons.menu_open,
-                          size: 20,
-                        )
-                        // Text(
-                        //   'Premium',
-                        //   style: TextStyle(
-                        //     fontSize: 18,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        //   textAlign: TextAlign.center,
-                        // ),
-                        ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(name),
-                        // Text(
-                        //     "",
-                        //   style: TextStyle(fontWeight: FontWeight.bold),
-                        // )
-                      ],
-                    ),
-                  ),
-                  Flexible(fit: FlexFit.tight, child: SizedBox()),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const mybusinesspage())),
-                      child: Container(
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                          //alignment: Alignment.center,
-                          child: Icon(
-                            Icons.person_2_rounded,
-                            size: 20,
-                          )
-                          // Text(
-                          //   'Premium',
-                          //   style: TextStyle(
-                          //     fontSize: 18,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          //   textAlign: TextAlign.center,
-                          // ),
-                          ),
-                    ),
-                  )
                 ],
               ),
-            ),
+              Flexible(fit: FlexFit.tight, child: SizedBox()),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const mybusinesspage())),
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Icon(
+                        Icons.business,
+                        size: 20,
+                        color: Color(0xff54854C),
+                      )),
+                ),
+              )
+            ],
           ),
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 20, right: 8, bottom: 8, left: 8),
             child: Container(
               color: Colors.white10,
               child: Column(
@@ -131,67 +116,72 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                   Stack(children: [
                     Container(
                       height: 350,
-                      decoration: BoxDecoration(color: Colors.blue[300], borderRadius: BorderRadius.circular(40)),
+                      decoration: BoxDecoration(
+                        color: Color(0xff54854C),
+                        borderRadius: BorderRadius.circular(40),
+                      ),
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 30, right: 20, left: 20),
                         child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                           Flexible(
-                            child: InkWell(
-                              onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => productinout(
-                                          type: "1",
-                                        )),
-                              ),
-                              child: Container(
-                                height: 50,
-                                width: MediaQuery.of(context).size.width / 2,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white,
+                            child: Material(
+                              borderRadius: BorderRadius.circular(8),
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(8),
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => productinoutnew(type: "1", name: "Product In"),
+                                  ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.add_circle_outline),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Product In",
-                                      style: TextStyle(fontSize: 15),
-                                    )
-                                  ],
+                                child: Container(
+                                  height: 50,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.add_circle_outline),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Product In",
+                                        style: TextStyle(fontSize: 15),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
+                          SizedBox(width: 20),
                           Flexible(
-                            child: InkWell(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => productinout(type: "0"))),
-                              child: Container(
-                                height: 50,
-                                width: MediaQuery.of(context).size.width / 2,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white,
+                            child: Material(
+                              borderRadius: BorderRadius.circular(8),
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(8),
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => productinoutnew(type: "0", name: "Product Out")),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.add_circle_outline),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Product Out",
-                                      style: TextStyle(fontSize: 15),
-                                    )
-                                  ],
+                                child: Container(
+                                  height: 50,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.remove_circle_outline),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Product Out",
+                                        style: TextStyle(fontSize: 15),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -217,9 +207,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 )),
-                            SizedBox(
-                              height: 10,
-                            ),
+                            SizedBox(height: 10),
                             Row(
                               children: [
                                 Icon(
@@ -324,11 +312,15 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                         elevation: 5,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductViewNew())),
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProductViewNew(),
+                            ),
+                          ),
                           child: SizedBox(
                             height: 150,
                             width: 150,
-                            // decoration: BoxDecoration(color: Colors.white70, borderRadius: BorderRadius.circular(8)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
@@ -465,7 +457,12 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                             elevation: 5,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(8),
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const viewqutationmain())),
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const viewqutationmain(),
+                                ),
+                              ),
                               child: SizedBox(
                                 height: 70,
                                 width: 150,
@@ -479,9 +476,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                         color: Colors.indigoAccent,
                                         size: 38,
                                       ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
+                                      SizedBox(width: 10),
                                       Text(
                                         "Qutation",
                                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black),

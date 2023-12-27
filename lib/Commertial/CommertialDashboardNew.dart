@@ -5,10 +5,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:renttas_flutter_app/Commertial/AddNewCompanyNew.dart';
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Common/ApiUrl.dart';
-import '../Common/CommercialProperty.dart';
 import 'AddNewCompany.dart';
 import 'Model/GetCompanyModel.dart';
 import 'ViewCompanyDetails.dart';
@@ -30,12 +30,8 @@ bool isloaidng = false;
 class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getcompanyfunct();
-    // setState(() {
-    //   isloaidng = true;
-    // });
   }
 
   getcompanyfunct() async {
@@ -186,47 +182,35 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
                       ),
                     );
                   }),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: FloatingActionButton(
-        // isExtended: true,
         child: const Icon(
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Color(0xff54854C),
-        // backgroundColor: Colors.blue,
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => addnewcompany(
-                        type: "0",
-                        comapnyid: "0",
-                      )));
-        },
+        backgroundColor: const Color(0xff54854C),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => addnewcompanynew(
+              name: widget.name!,
+              type: "0",
+              comapnyid: "0",
+            ),
+          ),
+        ),
       ),
     );
   }
 
   showAlertDialog(BuildContext context, String companyid) {
-    // set up the buttons
     Widget cancelButton = TextButton(
       child: const Text("Cancel"),
-      onPressed: () {
-        Navigator.pop(context);
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => const productview()));
-      },
+      onPressed: () => Navigator.pop(context),
     );
     Widget continueButton = TextButton(
       child: const Text("Continue"),
-      onPressed: () {
-        deletecompany(companyid);
-
-        /// Navigator.pop(context);
-      },
+      onPressed: () => deletecompany(companyid),
     );
 
     // set up the AlertDialog
@@ -249,9 +233,7 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
   }
 
   Future<void> deletecompany(String companyid) async {
-    setState(() {
-      isloading = true;
-    });
+    setState(() => isloaidng = true);
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
     log("userid in add compnay===" + userid.toString());
@@ -268,9 +250,7 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isloading = false;
-    });
+    setState(() => isloaidng = false);
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);

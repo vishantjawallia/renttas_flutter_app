@@ -21,6 +21,7 @@ class DrawerItems extends StatelessWidget {
         backgroundColor: const Color.fromARGB(253, 225, 233, 241),
       ),
       body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 20),
           physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(12),
@@ -28,9 +29,7 @@ class DrawerItems extends StatelessWidget {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Row(
@@ -38,21 +37,15 @@ class DrawerItems extends StatelessWidget {
                         Container(
                           height: 50,
                           width: 50,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                      "https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"))),
+                          decoration:
+                              const BoxDecoration(image: DecorationImage(fit: BoxFit.fill, image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"))),
                         ),
                         const SizedBox(
                           width: 10,
                         ),
                         const Text(
                           "Inventory\nManagement",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
                         ),
                       ],
                     ),
@@ -63,15 +56,12 @@ class DrawerItems extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                   child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: Column(
                         children: [
                           CustomItem(
-
                             itemname: "Settings",
                             icon: Icons.settings,
                           ),
@@ -98,9 +88,7 @@ class DrawerItems extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                   child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: Column(
@@ -148,34 +136,21 @@ class CustomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        log("clffffficked"+itemname);
+        log("clffffficked" + itemname);
 
-        if(itemname=="Settings"){
+        if (itemname == "Settings") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const settingsview()));
+        } else if (itemname == "Reports") {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                  const settingsview()));
-
-        }else if(itemname=="Reports"){
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                   accountsreport(userid: '',)));
-        }else if(itemname=="My Bussiness"){
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                  const viewallbuisness()));
-        }
-        else if(itemname=="Collaborations"){
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      const collabratesview()));
+                  builder: (context) => accountsreport(
+                        userid: '',
+                      )));
+        } else if (itemname == "My Bussiness") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const viewallbuisness()));
+        } else if (itemname == "Collaborations") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const collabratesview()));
         }
       },
       child: Row(
@@ -192,10 +167,7 @@ class CustomItem extends StatelessWidget {
               Text(
                 // "Settings",
                 itemname,
-                style: const TextStyle(
-                    color: Color.fromARGB(251, 112, 138, 164),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15),
+                style: const TextStyle(color: Color.fromARGB(251, 112, 138, 164), fontWeight: FontWeight.bold, fontSize: 15),
               ),
             ],
           ),

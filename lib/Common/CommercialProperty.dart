@@ -4,9 +4,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../Commertial/CommertialDashboard.dart';
+// import '../Commertial/CommertialDashboard.dart';
 import '../Commertial/CommertialDashboardNew.dart';
-import '../Inventory/Dashboard.dart';
+// import '../Inventory/Dashboard.dart';
 import '../Inventory/DashboardNew.dart';
 
 class PropertyCardsApp extends StatelessWidget {
@@ -16,18 +16,6 @@ class PropertyCardsApp extends StatelessWidget {
       appBar: AppBar(
         leading: const BackButton(),
         backgroundColor: const Color(0xff54854C),
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //     gradient: LinearGradient(
-        //       colors: [
-        //         Colors.black,
-        //         Colors.green,
-        //       ],
-        //       begin: Alignment.topCenter,
-        //       end: Alignment.bottomCenter,
-        //     ),
-        //   ),
-        // ),
         title: const Text(
           'Commercial Property List',
         ),
@@ -77,6 +65,7 @@ class CommercialPropertyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: const EdgeInsets.only(top: 20),
       itemCount: commercialProperties.length,
       itemBuilder: (context, index) {
         final commercialProperty = commercialProperties[index];
@@ -84,25 +73,36 @@ class CommercialPropertyList extends StatelessWidget {
           onTap: () {
             log("clicked===" + commercialProperties[index].propertyName);
             if (commercialProperties[index].propertyName == "Warehouse") {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew()));
               // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const inentorydashboard()));
             } else {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CommerialDashboardNew(
-                            name: commercialProperties[index].propertyName,
-                          )));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CommerialDashboardNew(
+                    name: commercialProperties[index].propertyName,
+                  ),
+                ),
+              );
             }
           },
-          child: Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            elevation: 5,
-            child: ListTile(
-              leading: Icon(commercialProperty.icon),
-              title: Text(commercialProperty.propertyName),
-              subtitle: Text(commercialProperty.location),
-              trailing: const Icon(Icons.arrow_forward_ios),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            child: Material(
+              borderRadius: BorderRadius.circular(10),
+              elevation: 5,
+              child: ListTile(
+                minLeadingWidth: 8,
+                leading: Icon(commercialProperty.icon),
+                title: Text(
+                  commercialProperty.propertyName,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                subtitle: Text(
+                  commercialProperty.location,
+                ),
+                trailing: const Icon(Icons.arrow_forward_ios),
+              ),
             ),
           ),
         );

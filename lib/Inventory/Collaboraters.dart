@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
 
 import 'Dashboard.dart';
 
@@ -35,7 +36,7 @@ class _collabratesviewState extends State<collabratesview> {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const inentorydashboard())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew())),
                   child: const Icon(
                     Icons.arrow_back,
                     size: 30,

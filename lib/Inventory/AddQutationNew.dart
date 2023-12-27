@@ -10,14 +10,14 @@ import 'package:renttas_flutter_app/Inventory/AddItem.dart';
 
 import 'ViewQutation.dart';
 
-class qutationview extends StatefulWidget {
-  const qutationview({super.key});
+class qutationviewnew extends StatefulWidget {
+  const qutationviewnew({super.key});
 
   @override
-  State<qutationview> createState() => _qutationviewState();
+  State<qutationviewnew> createState() => _qutationviewState();
 }
 
-class _qutationviewState extends State<qutationview> {
+class _qutationviewState extends State<qutationviewnew> {
   String choosedoption = "";
   bool valuefirst = false;
   bool valuesecond = false;
@@ -39,53 +39,73 @@ class _qutationviewState extends State<qutationview> {
     _textControllerdate1.text = "30/10/2023";
     // selectedcurrency="Select Currency";
     return Scaffold(
-
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        backgroundColor: const Color(0xff54854C),
+        backgroundColor: Colors.grey[300],
         // flexibleSpace: Container(
         //   decoration: const BoxDecoration(
         //  color: grey[300],
         //   ),
         // ),
-        leading: const BackButton(),
         automaticallyImplyLeading: false,
-        title:
-            // <Widget>[
-            Row(
-          children: [
-            const Text("Add Quotation"),
-            const Flexible(fit: FlexFit.tight, child: SizedBox()),
-            InkWell(
-              onTap: () => {},
-              //
-              // Navigator.push(
-              // context,
-              // MaterialPageRoute(
-              //     builder: (context) => const filtertransaction())),
-              child: Container(
-                width: 80,
-                height: 40,
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(30)),
-                child: const Center(
-                  child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Save",
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff54854C)),
-                      )),
+        actions: <Widget>[
+          Expanded(
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 10,
                 ),
-              ),
+                InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const viewqutationmain())),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 30,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Add Quotation"),
+                      // Text(
+                      //   "ab@gmail.com",
+                      //   style: TextStyle(fontWeight: FontWeight.bold),
+                      // )
+                    ],
+                  ),
+                ),
+                const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                InkWell(
+                  onTap: () => {},
+                  //
+                  // Navigator.push(
+                  // context,
+                  // MaterialPageRoute(
+                  //     builder: (context) => const filtertransaction())),
+                  child: Container(
+                    width: 80,
+                    height: 40,
+                    decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
+                    child: const Center(
+                      child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Save",
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                          )),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 10, height: 0.0),
-          ],
-        ),
-        // ],
+          ),
+        ],
       ),
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

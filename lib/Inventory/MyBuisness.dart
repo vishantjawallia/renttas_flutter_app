@@ -16,42 +16,35 @@ class _mybusinesspageState extends State<mybusinesspage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Container(
-            child: Expanded(
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
+        backgroundColor: const Color(0xff54854C),
 
-                    // Navigator.push(
-                    // context,
-                    // MaterialPageRoute(
-                    //     builder: (context) => const settingsview())),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+        automaticallyImplyLeading: false,
+        leading: BackButton(),
+        title: Text('Business Detail'),
+        // title: Row(
+        //   children: [
+        //     const SizedBox(
+        //       width: 10,
+        //     ),
+        //     InkWell(
+        //       onTap: () => Navigator.pop(context),
+
+        //       // Navigator.push(
+        //       // context,
+        //       // MaterialPageRoute(
+        //       //     builder: (context) => const settingsview())),
+        //       child: const Icon(
+        //         Icons.arrow_back,
+        //         size: 30,
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // ],
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(vertical: 12),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(
@@ -61,35 +54,32 @@ class _mybusinesspageState extends State<mybusinesspage> {
               //  mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const mybusinesspage())),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(60)),
-                            child: const Icon(
-                              Icons.image,
-                              size: 50,
-                            )),
-                        const Padding(
-                          padding: EdgeInsets.all(3.0),
-                          child: Text(
-                            "Businesss Logo",
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
-                          ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(60)),
+                          child: const Icon(
+                            Icons.image,
+                            size: 50,
+                          )),
+                      const Padding(
+                        padding: EdgeInsets.all(3.0),
+                        child: Text(
+                          "Businesss Logo",
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Text(
-                            "Email: ab@gmail.com  ",
-                            style: TextStyle(color: Colors.blue, fontSize: 13),
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: Text(
+                          "Email: ab@gmail.com  ",
+                          style: TextStyle(color: Colors.blue, fontSize: 13),
+                        ),
+                      )
+                    ],
                   ),
                 ),
                 const SizedBox(
@@ -202,7 +192,7 @@ class _mybusinesspageState extends State<mybusinesspage> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.blue,
+                    color: const Color(0xff54854C),
                   ),
                   height: 50,
                   width: 400,
@@ -213,7 +203,9 @@ class _mybusinesspageState extends State<mybusinesspage> {
                         style: TextStyle(color: Colors.white),
                       ),
                       style: const ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                        backgroundColor: MaterialStatePropertyAll(
+                          const Color(0xff54854C),
+                        ),
                       ),
                       onPressed: () {},
                     ),
