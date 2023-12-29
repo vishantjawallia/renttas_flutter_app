@@ -1,10 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, camel_case_types
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:renttas_flutter_app/Inventory/AddQutation.dart';
 import 'package:renttas_flutter_app/Inventory/NewItem.dart';
+
+import 'Filtertransaction.dart';
 
 class additem extends StatefulWidget {
   const additem({super.key});
@@ -17,120 +16,94 @@ class _additemState extends State<additem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
+        backgroundColor: const Color(0xff54854C),
+        leading: BackButton(),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Container(
-            child: Expanded(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const qutationview())),
-                    child: Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Add Item"),
-                        // Text(
-                        //   "ab@gmail.com",
-                        //   style: TextStyle(fontWeight: FontWeight.bold),
-                        // )
-                      ],
-                    ),
-                  ),
-                  Flexible(fit: FlexFit.tight, child: SizedBox()),
-                  InkWell(
-                    onTap: () => {},
-                    //
-                    // Navigator.push(
-                    // context,
-                    // MaterialPageRoute(
-                    //     builder: (context) => const filtertransaction())),
-                    child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.search,
-                          size: 25,
-                        )),
-                  )
-                ],
-              ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Add Item"),
             ),
-          ),
-        ],
+            InkWell(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const filtertransaction(),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.search,
+                  size: 25,
+                ),
+              ),
+            )
+          ],
+        ),
+        // ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Container(
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const newitem())),
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: Column(
+            children: [
+              SizedBox(height: 40),
+              Material(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white,
+                elevation: 5,
+                child: InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const newitem())),
                   child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     height: 70,
-
                     width: 500,
-                    color: Colors.white,
                     child: Row(
                       children: [
                         Text(
                           "product1",
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Text(
                           "0.00",
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 2,
-                ),
-                Container(
+              ),
+              SizedBox(height: 30),
+              Material(
+                borderRadius: BorderRadius.circular(8),
+                elevation: 5,
+                color: Colors.white,
+                child: Container(
                   height: 70,
                   width: 500,
-                  color: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       Text(
                         "product2",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                       Flexible(fit: FlexFit.tight, child: SizedBox()),
                       Text(
                         "1.00",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                     ],
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+              SizedBox(height: 20),
+            ],
           ),
         ),
       ),

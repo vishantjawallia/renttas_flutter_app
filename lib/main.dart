@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings, prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings, prefer_const_literals_to_create_immutables
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -26,17 +26,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('A bg message just showed up :  ${message.messageId}');
   print("abb===" + message.data.toString());
   flutterLocalNotificationsPlugin.show(
-    message.data.hashCode,
-    message.data['title'],
-    message.data['body'],
-    NotificationDetails(
-      android: AndroidNotificationDetails(
-        channel.id,
-        channel.name,
-        // channel.description,
-      ),
-    ),
-  );
+      message.data.hashCode,
+      message.data['title'],
+      message.data['body'],
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          // channel.description,
+        ),
+      ));
 }
 
 Future<void> main() async {
@@ -51,14 +50,8 @@ Future<void> main() async {
   );
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(
-        channel,
-      );
-  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
+  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true);
   // FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   // String? token = await FirebaseMessaging.instance.getToken();
@@ -68,17 +61,14 @@ Future<void> main() async {
       path: 'assets/transulation',
       saveLocale: true,
       fallbackLocale: const Locale('en', 'EN'),
-      // fallbackLocale: const Locale('en', 'SM'),
-      supportedLocales: [
-        const Locale('en', 'EN'),
-        const Locale('en', 'SM'),
-        const Locale('ar', 'AR'),
-      ],
+      supportedLocales: [const Locale('en', 'EN'), const Locale('ar', 'AR')],
       child: const MyApp(),
     ),
   );
 }
 
+// <key>REVERSED_CLIENT_ID</key>
+// <string>com.googleusercontent.app-1-115824667190-ios-10168919e60d7f9aa90697</string>
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -91,10 +81,6 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       builder: BotToastInit(),
       theme: ThemeData(
-        colorScheme: const ColorScheme.light().copyWith(
-          primary: Color(0xff54854C),
-        ),
-        // primaryColorLight: const Color(0xff54854C),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       navigatorObservers: [BotToastNavigatorObserver()],
