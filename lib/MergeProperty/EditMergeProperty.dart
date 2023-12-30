@@ -23,7 +23,7 @@ class EditMergeProperty extends StatefulWidget {
 class _AddTendentState extends State<EditMergeProperty> {
   String? selectedOption;
   static String selectedPropertyId = '';
-  static String selectedSubProptyId = '';
+  static String selectedSubPropertyId = '';
   bool isLoading = false;
 
   // List<String> options = [
@@ -55,10 +55,10 @@ class _AddTendentState extends State<EditMergeProperty> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
     });
     print("selectedPropertyId->" + selectedPropertyId);
-    print("selectedSubProptyId->" + selectedSubProptyId);
+    print("selectedSubPropertyId->" + selectedSubPropertyId);
   }
 
   @override
@@ -249,7 +249,7 @@ class _AddTendentState extends State<EditMergeProperty> {
     final Map<String, dynamic> data = {
       "tenantid": tenantid,
       // "propertyId": selectedPropertyId,
-      // "subPropertyId": selectedSubProptyId,
+      // "subPropertyId": selectedSubPropertyId,
       "tenantName": name,
       "phone": phoneNumber,
       "email": email,

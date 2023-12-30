@@ -54,67 +54,65 @@ class _MyAppState extends State<ProductScanner> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          leading: const BackButton(),
-          backgroundColor: const Color(0xff54854C),
-          title: const Text('Barcode scan'),
-        ),
-        body: Builder(
-          builder: (BuildContext context) {
-            return Container(
-              alignment: Alignment.center,
-              child: Flex(
-                direction: Axis.vertical,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(const Size(double.infinity, 45)),
-                      backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
-                      textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-                    ),
-                    onPressed: () => scanBarcodeNormal(),
-                    child: const Text(
-                      'Start barcode scan',
-                    ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButton(),
+        backgroundColor: const Color(0xff54854C),
+        title: const Text('Barcode scan'),
+      ),
+      body: Builder(
+        builder: (BuildContext context) {
+          return Container(
+            alignment: Alignment.center,
+            child: Flex(
+              direction: Axis.vertical,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(const Size(double.infinity, 45)),
+                    backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                    textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                   ),
-                  const SizedBox(width: 0.0, height: 16),
-                  ElevatedButton(
-                    onPressed: () => scanQR(),
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(const Size(double.infinity, 45)),
-                      backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
-                      textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-                    ),
-                    child: const Text(
-                      'Start QR scan',
-                    ),
+                  onPressed: () => scanBarcodeNormal(),
+                  child: const Text(
+                    'Start barcode scan',
                   ),
-                  const SizedBox(width: 0.0, height: 16),
-                  ElevatedButton(
-                    onPressed: () => startBarcodeScanStream(),
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(const Size(double.infinity, 45)),
-                      backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
-                      textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-                    ),
-                    child: const Text(
-                      'Start barcode scan stream',
-                    ),
+                ),
+                const SizedBox(width: 0.0, height: 16),
+                ElevatedButton(
+                  onPressed: () => scanQR(),
+                  style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(const Size(double.infinity, 45)),
+                    backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                    textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                   ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Scan result : $_scanBarcode\n',
-                    style: const TextStyle(fontSize: 20),
-                  )
-                ],
-              ),
-            );
-          },
-        ),
+                  child: const Text(
+                    'Start QR scan',
+                  ),
+                ),
+                const SizedBox(width: 0.0, height: 16),
+                ElevatedButton(
+                  onPressed: () => startBarcodeScanStream(),
+                  style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(const Size(double.infinity, 45)),
+                    backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                    textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                  ),
+                  child: const Text(
+                    'Start barcode scan stream',
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Scan result : $_scanBarcode\n',
+                  style: const TextStyle(fontSize: 20),
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }

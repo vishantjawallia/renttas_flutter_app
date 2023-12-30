@@ -30,7 +30,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
   late TabController _tabController1;
 
   String selectedPropertyId = '';
-  String selectedSubProptyId = '';
+  String selectedSubPropertyId = '';
   String userId = '';
   String currency = '';
   String selectedSubpropertyName = '';
@@ -58,7 +58,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
       selectedPropertyName = prefs.getString('selectedPropertyName') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
       selectedSubpropertyName = prefs.getString('selectedSubPropertyName') ?? '';
       userId = prefs.getString('userId') ?? '';
@@ -567,7 +567,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
     // SharedPreferences logindata = await SharedPreferences.getInstance();
     // String? userid = logindata.getString("userId");
 
-    Map data = {'address': address, 'pincode': pincode, 'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubProptyId};
+    Map data = {'address': address, 'pincode': pincode, 'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubPropertyId};
     final headerss = {
       'Content-Type': 'application/json',
     };
@@ -607,7 +607,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
     // SharedPreferences logindata = await SharedPreferences.getInstance();
     // String? userid = logindata.getString("userId");
 
-    Map data = {'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubProptyId};
+    Map data = {'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubPropertyId};
     final headerss = {
       'Content-Type': 'application/json',
     };
@@ -651,7 +651,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
     // SharedPreferences logindata = await SharedPreferences.getInstance();
     // String? userid = logindata.getString("userId");
 
-    Map data = {'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubProptyId};
+    Map data = {'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubPropertyId};
     final headerss = {
       'Content-Type': 'application/json',
     };
@@ -781,7 +781,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                             //     propertyOwner.text,
                             //     documentName.text,
                             //     selectedPropertyId,
-                            //     selectedSubProptyId);
+                            //     selectedSubPropertyId);
                             // addPanCard(
                             //    selectedCode,
                             //    selectedCode,
@@ -821,7 +821,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                               request.fields['propertyownername'] = propertyOwner.text;
                               request.fields['docName'] = documentName.text;
                               request.fields['Propertyid'] = selectedPropertyId;
-                              request.fields['subPropertyid'] = selectedSubProptyId;
+                              request.fields['subPropertyid'] = selectedSubPropertyId;
 
                               // Send the request
                               var response = await request.send();
@@ -874,7 +874,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
     String propertyownername,
     String docName,
     String selectedPropertyId,
-    String selectedSubProptyId,
+    String selectedSubPropertyId,
   ) async {
     if (imageFile == null) {
       snack("please select a image", context);
@@ -907,7 +907,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
       request.fields['propertyownername'] = propertyownername.toString();
       request.fields['docName'] = docName;
       request.fields['Propertyid'] = selectedPropertyId;
-      request.fields['subPropertyid'] = selectedSubProptyId;
+      request.fields['subPropertyid'] = selectedSubPropertyId;
 
       // Send the request
       var response = await request.send();

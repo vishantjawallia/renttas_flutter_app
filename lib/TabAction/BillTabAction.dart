@@ -93,7 +93,7 @@ class _BillTabActionState extends State<BillTabAction> {
   final List<String> paymentDaysList = ['3', '5', '7', '10'];
 
   String selectedPropertyId = '';
-  String selectedSubProptyId = '';
+  String selectedSubPropertyId = '';
   String userId = '';
 
   @override
@@ -842,7 +842,7 @@ class _BillTabActionState extends State<BillTabAction> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
       userId = prefs.getString('userId') ?? '';
     });
   }
@@ -2192,7 +2192,7 @@ class _BillTabActionState extends State<BillTabAction> {
         builder: (BuildContext context) => NextRentBillCycle(
             landlordId: userId,
             propertyId: selectedPropertyId,
-            subpropertyId: selectedSubProptyId,
+            subpropertyId: selectedSubPropertyId,
             rentCycle: rentCycle,
             rentStartData: rentStartDate,
             collectdBy: rentCollectBy,

@@ -32,14 +32,14 @@ class _TenantsTabState extends State<MergeProperty> {
   String selectedCode = '';
   List<TendentModel> tandent = [];
   String selectedPropertyId = '';
-  String selectedSubProptyId = '';
+  String selectedSubPropertyId = '';
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
-      loadTenants(selectedPropertyId, selectedSubProptyId);
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
+      loadTenants(selectedPropertyId, selectedSubPropertyId);
     });
   }
 
@@ -236,7 +236,7 @@ class _TenantsTabState extends State<MergeProperty> {
                       isLoading = false; // Set loading state to false after the data is loaded
                     });
                     if (response.statusCode == 200) {
-                      loadTenants(selectedPropertyId, selectedSubProptyId);
+                      loadTenants(selectedPropertyId, selectedSubPropertyId);
                       Navigator.pop(context);
                     } else {
                       snack("Something went wrong", context);

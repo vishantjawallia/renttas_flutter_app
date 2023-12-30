@@ -20,7 +20,7 @@ class TendentProfile extends StatefulWidget {
 
 class _TendentProfileState extends State<TendentProfile> {
   String selectedPropertyId = '';
-  String selectedSubProptyId = '';
+  String selectedSubPropertyId = '';
   String userId = '';
   String currency = '';
   String name = '';
@@ -411,14 +411,14 @@ class _TendentProfileState extends State<TendentProfile> {
       ),
       onPressed: () async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool("login", false);
+        // prefs.setBool("login", false);
 
-        prefs.setString('userId', "");
-        prefs.setString('email', "");
-        prefs.setString('phone', "");
-        prefs.setString('name', "");
-        prefs.setString('mbno', "");
-        prefs.clear();
+        // prefs.setString('userId', "");
+        // prefs.setString('email', "");
+        // prefs.setString('phone', "");
+        // prefs.setString('name', "");
+        // prefs.setString('mbno', "");
+        await prefs.clear();
         // prefs.setString("sw", "0");
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(

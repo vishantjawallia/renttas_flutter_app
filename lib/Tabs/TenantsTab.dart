@@ -112,7 +112,7 @@ class _TenantsTabState extends State<TenantsTab> {
                               elevation: 5,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                                 child: Column(
                                   children: [
                                     SizedBox(height: 10),
@@ -121,21 +121,33 @@ class _TenantsTabState extends State<TenantsTab> {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         // SizedBox(width: 10),
-                                        Text(
-                                          tenant.tenantName,
-                                          style: TextStyle(
-                                            fontSize: 26,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey.shade900,
+                                        Container(
+                                          width: 140,
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            tenant.tenantName,
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            maxLines: 2,
                                           ),
                                         ),
                                         SizedBox(width: 50),
-                                        Text(
-                                          tenant.phone,
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey.shade600,
+                                        Container(
+                                          alignment: Alignment.centerRight,
+                                          width: 140,
+                                          child: Text(
+                                            tenant.phone,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black54,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            maxLines: 2,
                                           ),
                                         ),
                                       ],
@@ -152,7 +164,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                         children: [
                                           TextButton(
                                             style: ButtonStyle(
-                                              maximumSize: MaterialStateProperty.all(Size(150, 40)),
+                                              maximumSize: MaterialStateProperty.all(Size(120, 40)),
                                               iconColor: MaterialStateProperty.all(Colors.white),
                                               foregroundColor: MaterialStateProperty.all(Colors.white),
                                               backgroundColor: MaterialStateProperty.all(Colors.redAccent),
@@ -175,7 +187,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                           // SizedBox(width: 14),
                                           TextButton(
                                             style: ButtonStyle(
-                                              maximumSize: MaterialStateProperty.all(Size(150, 40)),
+                                              maximumSize: MaterialStateProperty.all(Size(120, 40)),
                                               iconColor: MaterialStateProperty.all(Colors.white),
                                               foregroundColor: MaterialStateProperty.all(Colors.white),
                                               backgroundColor: MaterialStateProperty.all(Colors.green),

@@ -22,7 +22,7 @@ class ExpensesTab extends StatefulWidget {
 
 class _ExpensesTabState extends State<ExpensesTab> {
   String selectedPropertyId = '';
-  String selectedSubProptyId = '';
+  String selectedSubPropertyId = '';
   String userId = '';
   String currency = '';
 
@@ -35,10 +35,10 @@ class _ExpensesTabState extends State<ExpensesTab> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
       userId = prefs.getString('userId') ?? '';
       currency = prefs.getString('currency') ?? '';
-      loadExpenses(selectedPropertyId, selectedSubProptyId, userId);
+      loadExpenses(selectedPropertyId, selectedSubPropertyId, userId);
     });
   }
 
@@ -114,7 +114,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                 borderRadius: BorderRadius.circular(8),
                                 onTap: () {},
                                 child: Container(
-                                    padding: const EdgeInsets.only(left: 16, top: 12, bottom: 12, right: 4),
+                                    padding: const EdgeInsets.only(left: 16, top: 14, bottom: 14, right: 4),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -131,17 +131,17 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                                       Text(
                                                         expense.name,
                                                         style: const TextStyle(
-                                                          fontSize: 20,
+                                                          fontSize: 18,
                                                           fontWeight: FontWeight.w600,
                                                           color: Colors.black,
                                                         ),
                                                       ),
-                                                      const SizedBox(width: 0.0, height: 6),
+                                                      const SizedBox(width: 0.0, height: 3),
                                                       Text(
                                                         expense.description.toString(),
                                                         // Convert amount to string
                                                         style: const TextStyle(
-                                                          fontSize: 16,
+                                                          fontSize: 14,
                                                           fontWeight: FontWeight.w500,
                                                           color: Colors.black54,
                                                         ),
@@ -298,18 +298,18 @@ class _ExpensesTabState extends State<ExpensesTab> {
         ));
   }
 
-  Future<void> loadExpenses(String selectedPropertyId, String selectedSubProptyId, String userId) async {
+  Future<void> loadExpenses(String selectedPropertyId, String selectedSubPropertyId, String userId) async {
     setState(() {
       isLoading = true;
     });
 
     // final Map<String, dynamic> requestBody = {
     //   "propertyId": selectedPropertyId,
-    //   "subPropertyId": selectedSubProptyId,
+    //   "subPropertyId": selectedSubPropertyId,
     //   "landlordId": userId,
     // };
 
-    final Map<String, dynamic> requestBody = {"landlordId": userId, "propertyId": selectedPropertyId, "subPropertyId": selectedSubProptyId};
+    final Map<String, dynamic> requestBody = {"landlordId": userId, "propertyId": selectedPropertyId, "subPropertyId": selectedSubPropertyId};
 
     final response = await http.post(
       Uri.parse(ApiUrl.getExpenses),
@@ -381,7 +381,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                       isLoading = false; // Set loading state to false after the data is loaded
                     });
                     if (response.statusCode == 200) {
-                      loadExpenses(selectedPropertyId, selectedSubProptyId, userId);
+                      loadExpenses(selectedPropertyId, selectedSubPropertyId, userId);
                       Navigator.pop(context);
                     } else {
                       snack("Something went wrong", context);
@@ -406,7 +406,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
 
     final response = await request.send();
     if (response.statusCode == 200) {
-      await loadExpenses(selectedPropertyId, selectedSubProptyId, userId);
+      await loadExpenses(selectedPropertyId, selectedSubPropertyId, userId);
     }
   }
 }

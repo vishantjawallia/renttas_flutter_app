@@ -20,7 +20,7 @@ class Tenantdashbord extends StatefulWidget {
 class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   static String selectedPropertyId = '';
-  static String selectedSubProptyId = '';
+  static String selectedSubPropertyId = '';
   static String userId = '';
   static String name = '';
 
@@ -43,7 +43,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
       userId = prefs.getString('userId') ?? '';
       name = prefs.getString('name') ?? '';
     });
@@ -158,7 +158,6 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
           ),
         ),
         body: TabBarView(
-
           controller: _tabController,
           children: const [
             TandentBill(),

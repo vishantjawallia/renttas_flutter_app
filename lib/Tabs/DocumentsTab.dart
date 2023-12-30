@@ -28,7 +28,7 @@ class DocumentsTab extends StatefulWidget {
 
 class _DocumentsTabState extends State<DocumentsTab> {
   static String selectedPropertyId = '';
-  static String selectedSubProptyId = '';
+  static String selectedSubPropertyId = '';
   static String userId = '';
   final List<String> docTypes = ['ID Proof', 'Address Proof', 'Rent Agreement', 'Other'];
   TextEditingController docName = TextEditingController();
@@ -59,9 +59,9 @@ class _DocumentsTabState extends State<DocumentsTab> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
       userId = prefs.getString('userId') ?? '';
-      loadDocument(selectedPropertyId, selectedSubProptyId);
+      loadDocument(selectedPropertyId, selectedSubPropertyId);
     });
   }
 
@@ -326,7 +326,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
                           ),
                           ElevatedButton(
                               onPressed: () {
-                                saveDoc(_imageFile, docType, docName.text, selectedPropertyId, selectedSubProptyId);
+                                saveDoc(_imageFile, docType, docName.text, selectedPropertyId, selectedSubPropertyId);
                               },
                               child: Text('Add')),
                           SizedBox(
@@ -379,7 +379,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
                       isLoading = false; // Set loading state to false after the data is loaded
                     });
                     if (response.statusCode == 200) {
-                      loadDocument(selectedPropertyId, selectedSubProptyId);
+                      loadDocument(selectedPropertyId, selectedSubPropertyId);
                       Navigator.pop(context);
                     } else {
                       snack("Something went wrong", context);
@@ -400,7 +400,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
     String docType,
     String docName,
     String selectedPropertyId,
-    String selectedSubProptyId,
+    String selectedSubPropertyId,
   ) async {
     if (imageFile == null) {
       RentalCustomAlert.showErrorsAlert(context, "Error", "Please Select A Image");
@@ -433,7 +433,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
       request.fields['docname'] = docName.toString();
       request.fields['doctype'] = docType;
       request.fields['Propertyid'] = selectedPropertyId;
-      request.fields['subPropertyid'] = selectedSubProptyId;
+      request.fields['subPropertyid'] = selectedSubPropertyId;
 
       // Send the request
       var response = await request.send();
@@ -447,7 +447,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
 
       // Check the response status
       if (response.statusCode == 200) {
-        await loadDocument(selectedPropertyId, selectedSubProptyId);
+        await loadDocument(selectedPropertyId, selectedSubPropertyId);
         Navigator.of(context).pop();
         RentalCustomAlert.showSuccessAlert(context, "Success", "Document Added Successfully");
       } else {
@@ -506,7 +506,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
     final body = await stream.bytesToString();
     print(body);
     await Future.delayed(Duration(seconds: 12));
-    await loadDocument(selectedPropertyId, selectedSubProptyId);
+    await loadDocument(selectedPropertyId, selectedSubPropertyId);
     setState(() {
       isLoading = false;
     });

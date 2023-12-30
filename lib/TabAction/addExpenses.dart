@@ -32,18 +32,18 @@ class _AddExpensesState extends State<AddExpenses> {
   List<dynamic> dataList = [];
   String selectedTab = 'One-time';
   static String selectedPropertyId = '';
-  static String selectedSubProptyId = '';
+  static String selectedSubPropertyId = '';
   static String userId = '';
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
       userId = prefs.getString('userId') ?? '';
     });
     print("selectedPropertyId->" + selectedPropertyId);
-    print("selectedSubProptyId->" + selectedSubProptyId);
+    print("selectedSubPropertyId->" + selectedSubPropertyId);
     print("userId->" + userId);
   }
 
@@ -275,7 +275,7 @@ class _AddExpensesState extends State<AddExpenses> {
     final Map<String, dynamic> requestData = {
       "landlordId": userId,
       "propertyId": selectedPropertyId,
-      "subPropertyId": selectedSubProptyId,
+      "subPropertyId": selectedSubPropertyId,
       "category": category,
       "name": name,
       "amount": amount,

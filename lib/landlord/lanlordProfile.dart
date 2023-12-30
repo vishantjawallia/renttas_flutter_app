@@ -29,7 +29,7 @@ class lanlordProfile extends StatefulWidget {
 
 class _lanlordProfileState extends State<lanlordProfile> {
   String selectedPropertyId = '';
-  String selectedSubProptyId = '';
+  String selectedSubPropertyId = '';
   String userId = '';
   String currency = '';
   String name = '';
@@ -41,7 +41,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
       userId = prefs.getString('userId') ?? '';
       email = prefs.getString('email') ?? '';
       phone = prefs.getString('phone') ?? '';
@@ -598,12 +598,13 @@ showAlertDialog(BuildContext context) {
     ),
     onPressed: () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool("login", false);
-      await prefs.setString('userId', "");
-      await prefs.setString('email', "");
-      await prefs.setString('phone', "");
-      await prefs.setString('name', "");
-      await prefs.setString('mbno', "");
+      await prefs.clear();
+      // await prefs.setBool("login", false);
+      // await prefs.setString('userId', "");
+      // await prefs.setString('email', "");
+      // await prefs.setString('phone', "");
+      // await prefs.setString('name', "");
+      // await prefs.setString('mbno', "");
       // await prefs.setString("sw", "");
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const LandlordLoginNew()), (route) => false);
     },
