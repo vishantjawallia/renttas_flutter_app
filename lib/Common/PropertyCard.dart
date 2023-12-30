@@ -17,7 +17,7 @@ class PropertyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 320,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -26,7 +26,7 @@ class PropertyCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 3,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -36,23 +36,23 @@ class PropertyCard extends StatelessWidget {
           Icon(
             icon,
             color: color,
-            size: 50,
+            size: 40,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             title,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
               color: color,
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             description,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
-              color: Colors.grey,
+              color: Colors.black54,
             ),
           ),
         ],

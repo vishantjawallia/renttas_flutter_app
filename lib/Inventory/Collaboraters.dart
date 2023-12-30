@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
-
-import 'Dashboard.dart';
 
 class collabratesview extends StatefulWidget {
   const collabratesview({super.key});
@@ -19,72 +16,49 @@ class _collabratesviewState extends State<collabratesview> {
   Widget build(BuildContext context) {
     //BestTutorSite _site = BestTutorSite.javatpoint;
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey[400],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
+        leading: BackButton(),
+        backgroundColor: Color(0xff54854C),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          Expanded(
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew())),
-                  child: const Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Collaburaters"),
-                      // Text(
-                      //   "ab@gmail.com",
-                      //   style: TextStyle(fontWeight: FontWeight.bold),
-                      // )
-                    ],
-                  ),
-                ),
-                const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                InkWell(
-                  onTap: () => showbottomsheet(context),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.filter_alt,
-                      size: 24,
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.recycling,
-                    size: 24,
-                  ),
-                ),
-              ],
+        title: Row(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Collaburaters"),
+                ],
+              ),
             ),
-          ),
-        ],
+            const Flexible(fit: FlexFit.tight, child: SizedBox()),
+            InkWell(
+              onTap: () => showbottomsheet(context),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.filter_alt,
+                  size: 24,
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.recycling,
+                size: 24,
+              ),
+            ),
+          ],
+        ),
+        // ],
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.white,
-          height: 300,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
             child: Column(
               children: [
                 Row(
@@ -92,7 +66,12 @@ class _collabratesviewState extends State<collabratesview> {
                     Container(
                       height: 50,
                       width: 50,
-                      decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.fill, image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"))),
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"),
+                        ),
+                      ),
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
@@ -102,11 +81,12 @@ class _collabratesviewState extends State<collabratesview> {
                         children: [
                           Text(
                             'Ab@123 ',
-                            style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
                           ),
+                          SizedBox(height: 2),
                           Text(
                             'Ab@gmail.com',
-                            style: TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -116,16 +96,17 @@ class _collabratesviewState extends State<collabratesview> {
                       children: [
                         Text(
                           'Owner',
-                          style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'Active',
-                          style: TextStyle(color: Colors.blue, fontSize: 13, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Color(0xff54854C), fontSize: 15, fontWeight: FontWeight.w600),
                         ),
                       ],
                     )
                   ],
                 ),
+                SizedBox(height: 10),
                 Row(
                   children: [
                     Column(
@@ -138,15 +119,11 @@ class _collabratesviewState extends State<collabratesview> {
                               checkColor: Colors.white,
                               activeColor: Colors.black,
                               value: valuefirst,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  valuefirst = value!;
-                                });
-                              },
+                              onChanged: (bool? value) => setState(() => valuefirst = value!),
                             ),
                             const Text(
                               'Product',
-                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -164,7 +141,7 @@ class _collabratesviewState extends State<collabratesview> {
                             ),
                             const Text(
                               'Store',
-                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -174,15 +151,11 @@ class _collabratesviewState extends State<collabratesview> {
                               checkColor: Colors.black,
                               activeColor: Colors.black,
                               value: valuefirst,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  valuefirst = value!;
-                                });
-                              },
+                              onChanged: (bool? value) => setState(() => valuefirst = value!),
                             ),
                             const Text(
                               'Report',
-                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -192,15 +165,11 @@ class _collabratesviewState extends State<collabratesview> {
                               checkColor: Colors.black,
                               activeColor: Colors.black,
                               value: valuefirst,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  valuefirst = value!;
-                                });
-                              },
+                              onChanged: (bool? value) => setState(() => valuefirst = value!),
                             ),
                             const Text(
                               'Qutation',
-                              style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -218,15 +187,11 @@ class _collabratesviewState extends State<collabratesview> {
                                   checkColor: Colors.black,
                                   activeColor: Colors.black,
                                   value: valuefirst,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      valuefirst = value!;
-                                    });
-                                  },
+                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
                                 ),
                                 const Text(
                                   'Transaction',
-                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -244,7 +209,7 @@ class _collabratesviewState extends State<collabratesview> {
                                 ),
                                 const Text(
                                   'PRate',
-                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -258,7 +223,7 @@ class _collabratesviewState extends State<collabratesview> {
                                 ),
                                 const Text(
                                   'Setting',
-                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -282,7 +247,7 @@ class _collabratesviewState extends State<collabratesview> {
                                 ),
                                 const Text(
                                   'Collaburate',
-                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -296,7 +261,7 @@ class _collabratesviewState extends State<collabratesview> {
                                 ),
                                 const Text(
                                   'SRate',
-                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -310,7 +275,7 @@ class _collabratesviewState extends State<collabratesview> {
                                 ),
                                 const Text(
                                   'Both',
-                                  style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -329,11 +294,8 @@ class _collabratesviewState extends State<collabratesview> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add, color: Colors.white),
         backgroundColor: Color(0xff54854C),
-        // backgroundColor: Colors.blue,
         onPressed: () {
           showbottomsheetinvitecollab(context);
-          // Navigator.push(context,
-          //     MaterialPageRoute(builder: (context) => const qutationview()));
         },
       ),
     );
@@ -351,8 +313,9 @@ class _collabratesviewState extends State<collabratesview> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
+                  // const SizedBox(height: 20),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Flexible(
                         child: Text(
@@ -360,14 +323,12 @@ class _collabratesviewState extends State<collabratesview> {
                           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ),
-                      const SizedBox(width: 50),
-                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
                       InkWell(
                         onTap: () => Navigator.pop(context),
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.grey,
+                            color: Colors.grey.shade200,
                           ),
                           child: const Padding(
                             padding: EdgeInsets.all(8),
@@ -383,7 +344,7 @@ class _collabratesviewState extends State<collabratesview> {
                     groupValue: _groupValue1,
                     title: const Text("All Collaburaters"),
                     onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
-                    activeColor: Colors.blue,
+                    activeColor: Color(0xff54854C),
                     selected: false,
                   ),
                   RadioListTile(
@@ -391,7 +352,7 @@ class _collabratesviewState extends State<collabratesview> {
                     groupValue: _groupValue1,
                     title: const Text("Active Collaburaters"),
                     onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
-                    activeColor: Colors.blue,
+                    activeColor: Color(0xff54854C),
                     selected: false,
                   ),
                   RadioListTile(
@@ -399,7 +360,7 @@ class _collabratesviewState extends State<collabratesview> {
                     groupValue: _groupValue1,
                     title: const Text("InActive Collaburaters"),
                     onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
-                    activeColor: Colors.blue,
+                    activeColor: Color(0xff54854C),
                     selected: false,
                   ),
                 ],
@@ -419,135 +380,138 @@ class _collabratesviewState extends State<collabratesview> {
           builder: (context, setstate) {
             return SingleChildScrollView(
               padding: const EdgeInsetsDirectional.only(start: 20, end: 10, bottom: 30, top: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      const Flexible(
-                        child: Text(
-                          "Invite collaburaters",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 13),
-                        ),
-                      ),
-                      const SizedBox(width: 50),
-                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                      InkWell(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey,
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Icon(Icons.close_rounded),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        const Flexible(
+                          child: Text(
+                            "Invite collaburaters",
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Center(
-                    child: Text(
-                      "Scan QR code to join current buisness",
-                      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 13),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Center(child: Icon(Icons.qr_code_scanner_outlined, size: 200)),
-                  const Center(
-                    child: Text(
-                      "OR",
-                      style: TextStyle(color: Colors.grey, fontSize: 13),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Center(
-                    child: Text(
-                      "Share this code with your partner or \n business personso they can accessthis \n business",
-                      style: TextStyle(color: Colors.grey, fontSize: 13),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Center(
-                    child: Text(
-                      "8JUTGYESX",
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const SizedBox(height: 20),
-                  const SizedBox(height: 15),
-                  Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blue,
-                      ),
-                      height: 50,
-                      width: 250,
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.book_sharp,
-                              size: 24,
-                              color: Colors.white,
+                        const SizedBox(width: 50),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        InkWell(
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.grey.shade200,
                             ),
-                            TextButton(
-                              child: const Text(
-                                'COPY CODE',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              style: const ButtonStyle(
-                                backgroundColor: MaterialStatePropertyAll(Colors.blue),
-                              ),
-                              onPressed: () {},
+                            child: const Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Icon(Icons.close_rounded),
                             ),
-                          ],
+                          ),
                         ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    const Center(
+                      child: Text(
+                        "Scan QR code to join current buisness",
+                        style: TextStyle(color: Colors.black54, fontSize: 16),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.orange,
+                    const SizedBox(height: 8),
+                    const Center(child: Icon(Icons.qr_code_scanner_outlined, size: 200)),
+                    const Center(
+                      child: Text(
+                        "OR",
+                        style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      height: 50,
-                      width: 250,
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.attach_email_sharp,
-                              size: 24,
-                              color: Colors.white,
-                            ),
-                            Center(
-                              child: TextButton(
+                    ),
+                    const SizedBox(height: 8),
+                    const Center(
+                      child: Text(
+                        "Share this code with your partner or \nbusiness personso they can accessthis \nbusiness",
+                        style: TextStyle(color: Colors.black54, fontSize: 16),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Center(
+                      child: Text(
+                        "8JUTGYESX",
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
+                    const SizedBox(height: 15),
+                    Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color(0xff54854C),
+                        ),
+                        height: 50,
+                        width: 250,
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.book_sharp,
+                                size: 24,
+                                color: Colors.white,
+                              ),
+                              TextButton(
                                 child: const Text(
-                                  'SEND INVITATION',
-                                  style: TextStyle(color: Colors.white),
+                                  'COPY CODE',
+                                  style: TextStyle(color: Colors.white, fontSize: 16),
                                 ),
                                 style: const ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(Colors.orange),
+                                  backgroundColor: MaterialStatePropertyAll(Color(0xff54854C)),
                                 ),
                                 onPressed: () {},
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 15),
+                    Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.grey.shade200,
+                        ),
+                        height: 50,
+                        width: 250,
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.attach_email_sharp,
+                                size: 24,
+                                color: Colors.black,
+                              ),
+                              Center(
+                                child: TextButton(
+                                  child: const Text(
+                                    'SEND INVITATION',
+                                    style: TextStyle(color: Colors.black, fontSize: 16),
+                                  ),
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStatePropertyAll(Colors.grey.shade200),
+                                  ),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },

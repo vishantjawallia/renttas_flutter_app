@@ -14,14 +14,15 @@ class DrawerItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(253, 225, 233, 241),
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         elevation: 0,
         toolbarHeight: 1,
-        backgroundColor: const Color.fromARGB(253, 225, 233, 241),
+        backgroundColor: Colors.grey.shade300,
+        // backgroundColor: Colors.grey.shade300,
       ),
       body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(12),
@@ -37,8 +38,12 @@ class DrawerItems extends StatelessWidget {
                         Container(
                           height: 50,
                           width: 50,
-                          decoration:
-                              const BoxDecoration(image: DecorationImage(fit: BoxFit.fill, image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"))),
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"),
+                            ),
+                          ),
                         ),
                         const SizedBox(
                           width: 10,
@@ -56,7 +61,10 @@ class DrawerItems extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                  ),
                   child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: Column(
@@ -136,46 +144,59 @@ class CustomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        log("clffffficked" + itemname);
-
         if (itemname == "Settings") {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const settingsview()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const settingsview(),
+            ),
+          );
         } else if (itemname == "Reports") {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => accountsreport(
-                        userid: '',
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => accountsreport(
+                userid: '',
+              ),
+            ),
+          );
         } else if (itemname == "My Bussiness") {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const viewallbuisness()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const viewallbuisness(),
+            ),
+          );
         } else if (itemname == "Collaborations") {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const collabratesview()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const collabratesview(),
+            ),
+          );
         }
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Icon(
-                icon,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                // "Settings",
-                itemname,
-                style: const TextStyle(color: Color.fromARGB(251, 112, 138, 164), fontWeight: FontWeight.bold, fontSize: 15),
-              ),
-            ],
-          ),
-          const Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: Colors.grey,
-          )
-        ],
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(icon),
+                const SizedBox(width: 12),
+                Text(
+                  itemname,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
+            const Icon(Icons.arrow_forward_ios_rounded, color: Colors.black54)
+          ],
+        ),
       ),
     );
   }

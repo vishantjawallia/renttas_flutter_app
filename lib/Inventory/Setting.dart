@@ -27,11 +27,11 @@ class _settingsviewState extends State<settingsview> {
         leading: const BackButton(),
         automaticallyImplyLeading: false,
         // actions: <Widget>[
-        title: Text("Settings"),
+        title: const Text("Settings"),
         // ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
         child: Column(
           //  mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -42,10 +42,15 @@ class _settingsviewState extends State<settingsview> {
                 borderRadius: BorderRadius.circular(20),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(20),
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const mybusinesspage())),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const mybusinesspage(),
+                    ),
+                  ),
                   child: Container(
                     height: 160,
-                    width: 250,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -55,7 +60,7 @@ class _settingsviewState extends State<settingsview> {
                         Container(
                             height: 50,
                             width: 50,
-                            decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(40)),
+                            decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)),
                             child: const Icon(
                               Icons.holiday_village,
                               size: 30,
@@ -86,7 +91,7 @@ class _settingsviewState extends State<settingsview> {
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const chnagepassword())),
                   child: Container(
                     height: 160,
-                    width: 250,
+                    width: double.infinity,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +99,7 @@ class _settingsviewState extends State<settingsview> {
                         Container(
                             height: 50,
                             width: 50,
-                            decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(40)),
+                            decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)),
                             child: const Icon(
                               Icons.password_sharp,
                               size: 30,
@@ -125,7 +130,7 @@ class _settingsviewState extends State<settingsview> {
                   onTap: () => showAlertDialog(context),
                   child: Container(
                     height: 160,
-                    width: 250,
+                    width: double.infinity,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +138,7 @@ class _settingsviewState extends State<settingsview> {
                         Container(
                             height: 50,
                             width: 50,
-                            decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(40)),
+                            decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)),
                             child: const Icon(
                               Icons.delete,
                               size: 30,

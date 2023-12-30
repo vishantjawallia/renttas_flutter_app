@@ -20,40 +20,41 @@ class _LandlordAddPropertyState extends State<LandlordAddProperty> {
         title: const Text('Add Property'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AddPropertyLanlord(
-                      type: "1",
-                      userid: "0" '',
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Column(
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddPropertyLanlord(
+                        type: "1",
+                        userid: "0" '',
+                      ),
                     ),
-                  ),
-                );
-              },
-              child: PropertyCard(
-                title: 'Residential Property',
-                description: 'A beautiful home in a peaceful neighborhood.',
-                icon: Icons.home,
-                color: Colors.blue,
+                  );
+                },
+                child: PropertyCard(
+                  title: 'Residential Property',
+                  description: 'A beautiful home in a peaceful neighborhood.',
+                  icon: Icons.home,
+                  color: Colors.blue,
+                ),
               ),
-            ),
-            const SizedBox(height: 24),
-            GestureDetector(
-              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
-              child: PropertyCard(
-                title: 'Commercial Property',
-                description: 'A prime location for your business venture.',
-                icon: Icons.business,
-                color: Colors.orange,
+              const SizedBox(height: 24),
+              GestureDetector(
+                onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
+                child: PropertyCard(
+                  title: 'Commercial Property',
+                  description: 'A prime location for your business venture.',
+                  icon: Icons.business,
+                  color: Colors.orange,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

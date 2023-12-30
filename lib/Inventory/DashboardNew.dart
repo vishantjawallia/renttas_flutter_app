@@ -46,34 +46,10 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
     return Scaffold(
         key: _scaffoldKey,
         drawer: new DrawerItems(),
-        // backgroundColor: Colors.grey[300],
         appBar: AppBar(
           backgroundColor: Color(0xff54854C),
-          // backgroundColor: Colors.grey[300],
           title: Row(
             children: [
-              // SizedBox(width: 10),
-              // InkWell(
-              //   onTap: () => _scaffoldKey.currentState?.openDrawer(),
-              //   child: Container(
-              //       padding: EdgeInsets.all(10),
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(40),
-              //       ),
-              //       child: Icon(
-              //         Icons.menu_open,
-              //         size: 20,
-              //       )
-              //       // Text(
-              //       //   'Premium',
-              //       //   style: TextStyle(
-              //       //     fontSize: 18,
-              //       //     fontWeight: FontWeight.bold,
-              //       //   ),
-              //       //   textAlign: TextAlign.center,
-              //       // ),
-              //       ),
-              // ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,202 +84,218 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 20, right: 8, bottom: 8, left: 8),
+            padding: const EdgeInsets.only(top: 0, right: 8, bottom: 8, left: 8),
             child: Container(
               color: Colors.white10,
               child: Column(
                 children: [
-                  Stack(children: [
-                    Container(
-                      height: 350,
-                      decoration: BoxDecoration(
+                  Stack(
+                    children: [
+                      Material(
+                        elevation: 5,
                         color: Color(0xff54854C),
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 30, right: 20, left: 20),
-                        child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                          Flexible(
-                            child: Material(
-                              borderRadius: BorderRadius.circular(8),
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(8),
-                                onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => productinoutnew(type: "1", name: "Product In"),
-                                  ),
-                                ),
-                                child: Container(
-                                  height: 50,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40),
+                        ),
+                        child: SizedBox(
+                          height: 370,
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 30, right: 20, left: 20),
+                            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                              Flexible(
+                                child: Material(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: InkWell(
                                     borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.add_circle_outline),
-                                      SizedBox(width: 5),
-                                      Text(
-                                        "Product In",
-                                        style: TextStyle(fontSize: 15),
-                                      )
-                                    ],
+                                    onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => productinoutnew(type: "1", name: "Product In"),
+                                      ),
+                                    ),
+                                    child: Container(
+                                      height: 50,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.add_circle_outline),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            "Product In",
+                                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                              SizedBox(width: 20),
+                              Flexible(
+                                child: Material(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(8),
+                                    onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => productinoutnew(type: "0", name: "Product Out")),
+                                    ),
+                                    child: Container(
+                                      height: 50,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.remove_circle_outline),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            "Product Out",
+                                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ]),
                           ),
-                          SizedBox(width: 20),
-                          Flexible(
-                            child: Material(
-                              borderRadius: BorderRadius.circular(8),
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(8),
-                                onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => productinoutnew(type: "0", name: "Product Out")),
-                                ),
-                                child: Container(
-                                  height: 50,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.remove_circle_outline),
-                                      SizedBox(width: 5),
-                                      Text(
-                                        "Product Out",
-                                        style: TextStyle(fontSize: 15),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ]),
-                      ),
-                    ),
-                    Container(
-                      // color: Colors.white,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: Colors.white,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Overview",
-                                style: TextStyle(
-                                  color: Colors.indigoAccent,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                            SizedBox(height: 10),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.download,
-                                  color: Colors.greenAccent,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text("Total In"),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                Text(
-                                  '1.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.upload,
-                                  color: Colors.orangeAccent[200],
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text("Total Out"),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                Text(
-                                  '0.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Row(
-                              children: [
-                                Icon(Icons.propane_sharp, color: Colors.deepPurple[200]),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text("Products"),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                Text(
-                                  '1.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Row(
-                              children: [
-                                Icon(Icons.low_priority, color: Colors.pink[200]),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text("Low Stocks"),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                Text(
-                                  '0.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Row(
-                              children: [
-                                Icon(Icons.handshake, color: Colors.purpleAccent),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text("In Hand"),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                Text(
-                                  '1.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ],
                         ),
                       ),
-                    ),
-                  ]),
-                  SizedBox(
-                    height: 20,
+                      Material(
+                        elevation: 2.5,
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 18),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Overview",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.download,
+                                    color: Colors.greenAccent,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "Total In",
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                  ),
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  Text(
+                                    '1.00',
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 9,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.upload,
+                                    color: Colors.orangeAccent[200],
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "Total Out",
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                  ),
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  Text(
+                                    '0.00',
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 9,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.propane_sharp, color: Colors.deepPurple[200]),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "Products",
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                  ),
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  Text(
+                                    '1.00',
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 9,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.low_priority, color: Colors.pink[200]),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "Low Stocks",
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                  ),
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  Text(
+                                    '0.00',
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 9),
+                              Row(
+                                children: [
+                                  Icon(Icons.handshake, color: Colors.purpleAccent),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    "In Hand",
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                  ),
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  Text(
+                                    '1.00',
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                  SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -336,7 +328,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   ),
                                   Text(
                                     "Products",
-                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                   )
                                 ],
                               ),
@@ -368,7 +360,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   ),
                                   Text(
                                     "Low Stocks",
-                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                   )
                                 ],
                               ),
@@ -408,7 +400,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   ),
                                   Text(
                                     "Transactions",
-                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                   )
                                 ],
                               ),
@@ -443,7 +435,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                       ),
                                       Text(
                                         "Stores",
-                                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black),
+                                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                       )
                                     ],
                                   ),
@@ -479,7 +471,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                       SizedBox(width: 10),
                                       Text(
                                         "Qutation",
-                                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black),
+                                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                       )
                                     ],
                                   ),
