@@ -5,14 +5,14 @@ import 'package:intl/intl.dart';
 
 import 'Transactions.dart';
 
-class filtertransaction extends StatefulWidget {
-  const filtertransaction({super.key});
+class FilterTransaction extends StatefulWidget {
+  const FilterTransaction({super.key});
 
   @override
-  State<filtertransaction> createState() => _filtertransactionState();
+  State<FilterTransaction> createState() => _FilterTransactionState();
 }
 
-class _filtertransactionState extends State<filtertransaction> {
+class _FilterTransactionState extends State<FilterTransaction> {
   String choosedoption = "";
   DateTime dateTime = DateTime.now();
   TextEditingController _textControllerdate1 = new TextEditingController();
@@ -28,7 +28,6 @@ class _filtertransactionState extends State<filtertransaction> {
     );
     if (picked != null) {
       dateTime = picked;
-      //assign the chosen date to the controller
       _textControllerdate1.text = DateFormat.yMd().format(dateTime);
     }
   }
@@ -43,7 +42,6 @@ class _filtertransactionState extends State<filtertransaction> {
     );
     if (picked != null) {
       dateTime = picked;
-      //assign the chosen date to the controller
       _textControllerdate2.text = DateFormat.yMd().format(dateTime);
     }
   }
@@ -53,7 +51,6 @@ class _filtertransactionState extends State<filtertransaction> {
     _textControllerdate1.text = "From";
     _textControllerdate2.text = "To";
     return Scaffold(
-      // backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
@@ -64,10 +61,8 @@ class _filtertransactionState extends State<filtertransaction> {
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             InkWell(
               onTap: () {},
-              // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const filtertransaction())),
               child: Material(
                 borderRadius: BorderRadius.circular(8),
-                // color: Colors.white,
                 elevation: 5,
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
@@ -84,7 +79,6 @@ class _filtertransactionState extends State<filtertransaction> {
             ),
           ],
         ),
-        // ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -96,7 +90,6 @@ class _filtertransactionState extends State<filtertransaction> {
               ),
               SizedBox(
                 height: 80,
-                //color: Colors.red,
                 child: Row(
                   children: [
                     const Text(
@@ -114,17 +107,18 @@ class _filtertransactionState extends State<filtertransaction> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Center(
-                              child: TextField(
-                                decoration: InputDecoration.collapsed(hintText: 'Enter Product name'),
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          padding: EdgeInsets.all(8.0),
+                          child: Center(
+                            child: TextField(
+                              decoration: InputDecoration.collapsed(hintText: 'Enter Product name'),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
                               ),
-                            )),
+                            ),
+                          ),
+                        ),
                       ),
                     )
                   ],
@@ -133,7 +127,6 @@ class _filtertransactionState extends State<filtertransaction> {
               const SizedBox(height: 15),
               SizedBox(
                 height: 80,
-                //color: Colors.red,
                 child: Row(
                   children: [
                     const Text(
@@ -151,24 +144,22 @@ class _filtertransactionState extends State<filtertransaction> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Center(
-                              child: TextField(
-                                decoration: InputDecoration.collapsed(hintText: 'Enter Store name'),
-                                style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                              ),
-                            )),
+                          padding: EdgeInsets.all(8.0),
+                          child: Center(
+                            child: TextField(
+                              decoration: InputDecoration.collapsed(hintText: 'Enter Store name'),
+                              style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ),
                     )
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               SizedBox(
                 height: 80,
-                //color: Colors.red,
                 child: Row(
                   children: [
                     const Text(
@@ -184,7 +175,6 @@ class _filtertransactionState extends State<filtertransaction> {
                             width: 80,
                             height: 80,
                             decoration: BoxDecoration(
-                              // border: Border.all(color: Colors.grey),
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.grey,
                             ),
@@ -201,9 +191,7 @@ class _filtertransactionState extends State<filtertransaction> {
                                   ),
                                 )),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10),
                           Container(
                             width: 80,
                             height: 80,
@@ -244,22 +232,25 @@ class _filtertransactionState extends State<filtertransaction> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: DropdownButtonFormField<String>(
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                ),
-                                hint: const Text('Select Period'),
-                                items: <String>['This month', 'Last month', 'Custom date', '2023'].map((String value) {
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: DropdownButtonFormField<String>(
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                              ),
+                              hint: const Text('Select Period'),
+                              items: <String>['This month', 'Last month', 'Custom date', '2023'].map(
+                                (String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
                                     child: Text(value),
                                   );
-                                }).toList(),
-                                onChanged: (v) => setState(() => choosedoption = v.toString()),
-                              ),
-                            )),
+                                },
+                              ).toList(),
+                              onChanged: (v) => setState(() => choosedoption = v.toString()),
+                            ),
+                          ),
+                        ),
                       ),
                     )
                   ],
@@ -323,9 +314,7 @@ class _filtertransactionState extends State<filtertransaction> {
                         ],
                       ),
                     )
-                  : const SizedBox(
-                      height: 20,
-                    ),
+                  : const SizedBox(height: 20),
               TextButton(
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -335,9 +324,7 @@ class _filtertransactionState extends State<filtertransaction> {
                       size: 18,
                       color: Colors.white,
                     ),
-                    SizedBox(
-                      width: 8,
-                    ),
+                    SizedBox(width: 8),
                     Text(
                       'Apply Filter',
                       style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
@@ -351,7 +338,7 @@ class _filtertransactionState extends State<filtertransaction> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const viewtransactions()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewTransactions()));
                 },
               ),
             ],

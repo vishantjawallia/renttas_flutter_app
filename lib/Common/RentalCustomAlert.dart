@@ -2,10 +2,9 @@
 
 import 'package:art_sweetalert/art_sweetalert.dart';
 import 'package:flutter/material.dart';
-// import 'package:art_sweetalert/art_sweetalert.dart';
 
 class RentalCustomAlert {
-  static Future<void> showSuccessAlert(BuildContext context,String title,String textMessage) async {
+  static Future<void> showSuccessAlert(BuildContext context, String title, String textMessage) async {
     await ArtSweetAlert.show(
       context: context,
       artDialogArgs: ArtDialogArgs(
@@ -16,8 +15,7 @@ class RentalCustomAlert {
     );
   }
 
-  static Future<void> showMessageWithTitleAndText(
-      BuildContext context,String title,String textMessage) async {
+  static Future<void> showMessageWithTitleAndText(BuildContext context, String title, String textMessage) async {
     await ArtSweetAlert.show(
       context: context,
       artDialogArgs: ArtDialogArgs(
@@ -39,7 +37,7 @@ class RentalCustomAlert {
     );
   }
 
-  static Future<void> showErrorsAlert(BuildContext context,String title,String textMessage) async {
+  static Future<void> showErrorsAlert(BuildContext context, String title, String textMessage) async {
     await ArtSweetAlert.show(
       context: context,
       artDialogArgs: ArtDialogArgs(
@@ -50,7 +48,7 @@ class RentalCustomAlert {
     );
   }
 
-  static Future<void> showThreeButtonDialog(BuildContext context,String title,String textMessage) async {
+  static Future<void> showThreeButtonDialog(BuildContext context, String title, String textMessage) async {
     ArtDialogResponse response = await ArtSweetAlert.show(
       barrierDismissible: false,
       context: context,
@@ -89,7 +87,7 @@ class RentalCustomAlert {
     }
   }
 
-  static Future<void> showConfirmDialog(BuildContext context,String title,String textMessage) async {
+  static Future<void> showConfirmDialog(BuildContext context, String title, String textMessage) async {
     ArtDialogResponse response = await ArtSweetAlert.show(
       barrierDismissible: false,
       context: context,

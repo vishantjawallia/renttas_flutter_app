@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_super_parameters
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -26,9 +26,8 @@ class DetailPage extends StatelessWidget {
               ),
             ),
           );
-          // rootBundle.
         },
-        child: Icon(Icons.picture_as_pdf,      color: Colors.white,),
+        child: const Icon(Icons.picture_as_pdf, color: Colors.white),
       ),
       appBar: AppBar(
         title: Text(invoice.id),
@@ -80,7 +79,7 @@ class DetailPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text("Total"),
+                        const Text("Total"),
                         Text(
                             //  invoice.totalCost().toStringAsFixed(2),
                             invoice.totalAmount),

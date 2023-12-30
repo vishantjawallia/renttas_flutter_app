@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, prefer_is_empty
+
 import 'package:flutter/material.dart';
 
 class Otpscreen extends StatefulWidget {
@@ -94,12 +96,9 @@ class _OtpState extends State<Otpscreen> {
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.purple),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
@@ -184,12 +183,8 @@ class _OtpState extends State<Otpscreen> {
           maxLength: 1,
           decoration: InputDecoration(
             counter: Offstage(),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(width: 2, color: Colors.black12),
-                borderRadius: BorderRadius.circular(12)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(width: 2, color: Colors.purple),
-                borderRadius: BorderRadius.circular(12)),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 2, color: Colors.black12), borderRadius: BorderRadius.circular(12)),
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 2, color: Colors.purple), borderRadius: BorderRadius.circular(12)),
           ),
         ),
       ),

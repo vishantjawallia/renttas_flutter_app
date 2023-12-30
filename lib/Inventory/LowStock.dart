@@ -3,26 +3,24 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
 import '../Const/Const.dart';
-import 'Dashboard.dart';
 import 'Model/GetLowStockModel.dart';
 
-class lowstock extends StatefulWidget {
-  const lowstock({super.key});
+class LowStock extends StatefulWidget {
+  const LowStock({super.key});
 
   @override
-  State<lowstock> createState() => _lowstockState();
+  State<LowStock> createState() => _LowStockState();
 }
 
 List<GetLowStock> lowlist = [];
 bool isloaidng = false;
 
-class _lowstockState extends State<lowstock> {
+class _LowStockState extends State<LowStock> {
   @override
   void initState() {
     super.initState();

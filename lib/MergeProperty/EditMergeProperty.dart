@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters, prefer_final_fields, unused_element, prefer_const_constructors, avoid_print, use_build_context_synchronously, prefer_interpolation_to_compose_strings
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -14,7 +16,10 @@ import '../landlord/LandloardDashBord.dart';
 
 class EditMergeProperty extends StatefulWidget {
   final TendentModel data;
-  const EditMergeProperty({Key? key, required this.data}) : super(key: key);
+  const EditMergeProperty({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
 
   @override
   State<EditMergeProperty> createState() => _AddTendentState();
@@ -26,11 +31,6 @@ class _AddTendentState extends State<EditMergeProperty> {
   static String selectedSubPropertyId = '';
   bool isLoading = false;
 
-  // List<String> options = [
-  //   'VISA',
-  //   'MASTER',
-  //   'PAYPAL',
-  // ];
   TextEditingController _tenantName = TextEditingController();
   TextEditingController _email = TextEditingController();
   TextEditingController _advanceAmount = TextEditingController();
@@ -176,7 +176,6 @@ class _AddTendentState extends State<EditMergeProperty> {
                 controller: _advanceAmount,
                 decoration: const InputDecoration(
                   icon: Icon(Icons.currency_rupee),
-                  //  hintText: 'Make Payment?',
                   labelText: 'AdvanceAmount',
                 ),
               ),
@@ -185,37 +184,7 @@ class _AddTendentState extends State<EditMergeProperty> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Text(
-                  //   'Start Date:',
-                  //   style: TextStyle(fontSize: 16),
-                  // ),
-                  // TextField(
-                  //   controller: _startDateController,
-                  //   decoration: InputDecoration(
-                  //     labelText: 'Start Date',
-                  //   ),
-                  //   readOnly: true,
-                  //   onTap: () {
-                  //     _selectDate(context, _startDateController);
-                  //   },
-                  // ),
-                  // SizedBox(height: 16),
-                  // Text(
-                  //   'End Date:',
-                  //   style: TextStyle(fontSize: 16),
-                  // ),
-                  // TextField(
-                  //   controller: _endDateController,
-                  //   decoration: InputDecoration(
-                  //     labelText: 'End Date',
-                  //   ),
-                  //   readOnly: true,
-                  //   onTap: () {
-                  //     _selectDate(context, _endDateController);
-                  //   },
-                  // ),
-                ],
+                children: [],
               ),
             ),
             SizedBox(
@@ -246,15 +215,7 @@ class _AddTendentState extends State<EditMergeProperty> {
   Future<void> saveTenant(String tenantid, String name, String phoneNumber, String email, String advanceAmount) async {
     // Replace with your server URL
 
-    final Map<String, dynamic> data = {
-      "tenantid": tenantid,
-      // "propertyId": selectedPropertyId,
-      // "subPropertyId": selectedSubPropertyId,
-      "tenantName": name,
-      "phone": phoneNumber,
-      "email": email,
-      "advanceAmount": advanceAmount
-    };
+    final Map<String, dynamic> data = {"tenantid": tenantid, "tenantName": name, "phone": phoneNumber, "email": email, "advanceAmount": advanceAmount};
 
     final headers = {'Content-Type': 'application/json'};
 
@@ -263,10 +224,18 @@ class _AddTendentState extends State<EditMergeProperty> {
 
       if (response.statusCode == 200) {
         RentalCustomAlert.showSuccessAlert(context, "Updated", "Tendent Updated Successfully");
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const LandloardDashBord(),
+          ),
+        );
       } else {
         RentalCustomAlert.showErrorAlert(context);
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const LandloardDashBord(),
+          ),
+        );
       }
     } catch (error) {
       print('Error sending data: $error');

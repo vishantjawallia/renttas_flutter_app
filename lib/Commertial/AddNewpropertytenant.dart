@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-class addnewpropertytenant extends StatefulWidget {
-  const addnewpropertytenant({super.key});
+class AddNewPropertyTenant extends StatefulWidget {
+  const AddNewPropertyTenant({super.key});
 
   @override
-  State<addnewpropertytenant> createState() => _addnewpropertytenantState();
+  State<AddNewPropertyTenant> createState() => _AddNewPropertyTenantState();
 }
 
-class _addnewpropertytenantState extends State<addnewpropertytenant> {
+class _AddNewPropertyTenantState extends State<AddNewPropertyTenant> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

@@ -4,9 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-// import '../Commertial/CommertialDashboard.dart';
 import '../Commertial/CommertialDashboardNew.dart';
-// import '../Inventory/Dashboard.dart';
 import '../Inventory/DashboardNew.dart';
 
 class PropertyCardsApp extends StatelessWidget {
@@ -59,7 +57,6 @@ class CommercialPropertyList extends StatelessWidget {
       location: 'Inventory Management',
       icon: Icons.storage,
     ),
-    // Add more commercial properties here
   ];
 
   @override
@@ -74,7 +71,6 @@ class CommercialPropertyList extends StatelessWidget {
             log("clicked===" + commercialProperties[index].propertyName);
             if (commercialProperties[index].propertyName == "Warehouse") {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew()));
-              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const inentorydashboard()));
             } else {
               Navigator.push(
                 context,
@@ -136,7 +132,6 @@ class CommercialPropertyDetail extends StatelessWidget {
               'Location: ${commercialProperty.location}',
               style: const TextStyle(fontSize: 18),
             ),
-            // Add more property details here
           ],
         ),
       ),

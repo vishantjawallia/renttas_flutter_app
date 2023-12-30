@@ -10,14 +10,14 @@ import 'dart:io';
 import '../Common/ApiUrl.dart';
 import '../landlord/LandloardDashBord.dart';
 
-class premiumescreen extends StatefulWidget {
-  const premiumescreen({super.key});
+class PremiumeScreen extends StatefulWidget {
+  const PremiumeScreen({super.key});
 
   @override
-  State<premiumescreen> createState() => _premiumescreenState();
+  State<PremiumeScreen> createState() => _PremiumeScreenState();
 }
 
-class _premiumescreenState extends State<premiumescreen> {
+class _PremiumeScreenState extends State<PremiumeScreen> {
   List<GetPrrmiume> premiumelist = [];
   bool isloaidng = false;
   String amou = "", validity = "";

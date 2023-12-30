@@ -5,11 +5,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:renttas_flutter_app/Commertial/AddNewCompanyNew.dart';
+
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Common/ApiUrl.dart';
 import 'AddNewCompany.dart';
+import 'AddNewCompanyNew.dart';
 import 'Model/GetCompanyModel.dart';
 import 'ViewCompanyDetails.dart';
 
@@ -192,7 +193,7 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => addnewcompanynew(
+            builder: (context) => AddNewCompanyNew(
               name: widget.name!,
               type: "0",
               comapnyid: "0",

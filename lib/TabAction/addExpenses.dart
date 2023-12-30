@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
-import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
+import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../landlord/LandloardDashBord.dart';

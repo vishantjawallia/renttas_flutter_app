@@ -10,14 +10,14 @@ import 'package:renttas_flutter_app/Inventory/AddItem.dart';
 
 import 'ViewQutation.dart';
 
-class qutationviewnew extends StatefulWidget {
-  const qutationviewnew({super.key});
+class QutationViewNew extends StatefulWidget {
+  const QutationViewNew({super.key});
 
   @override
-  State<qutationviewnew> createState() => _qutationviewState();
+  State<QutationViewNew> createState() => _QutationViewNewState();
 }
 
-class _qutationviewState extends State<qutationviewnew> {
+class _QutationViewNewState extends State<QutationViewNew> {
   String choosedoption = "";
   bool valuefirst = false;
   bool valuesecond = false;
@@ -29,7 +29,6 @@ class _qutationviewState extends State<qutationviewnew> {
     final DateTime? picked = await showDatePicker(context: context, initialDate: dateTime, initialDatePickerMode: DatePickerMode.day, firstDate: DateTime(1850), lastDate: DateTime(2101));
     if (picked != null) {
       dateTime = picked;
-      //assign the chosen date to the controller
       _textControllerdate1.text = DateFormat.yMd().format(dateTime);
     }
   }
@@ -37,16 +36,11 @@ class _qutationviewState extends State<qutationviewnew> {
   @override
   Widget build(BuildContext context) {
     _textControllerdate1.text = "30/10/2023";
-    // selectedcurrency="Select Currency";
+
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           Expanded(
@@ -56,7 +50,12 @@ class _qutationviewState extends State<qutationviewnew> {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const viewqutationmain())),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ViewQutationMain(),
+                    ),
+                  ),
                   child: const Icon(
                     Icons.arrow_back,
                     size: 30,
@@ -69,21 +68,12 @@ class _qutationviewState extends State<qutationviewnew> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Add Quotation"),
-                      // Text(
-                      //   "ab@gmail.com",
-                      //   style: TextStyle(fontWeight: FontWeight.bold),
-                      // )
                     ],
                   ),
                 ),
                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
                 InkWell(
                   onTap: () => {},
-                  //
-                  // Navigator.push(
-                  // context,
-                  // MaterialPageRoute(
-                  //     builder: (context) => const filtertransaction())),
                   child: Container(
                     width: 80,
                     height: 40,
@@ -112,7 +102,6 @@ class _qutationviewState extends State<qutationviewnew> {
             children: [
               Container(
                 height: 120,
-                // color: Colors.white,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -123,22 +112,6 @@ class _qutationviewState extends State<qutationviewnew> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(40),
-                      //     color: Colors.grey,
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Icon(
-                      //       Icons.store,
-                      //       color: Colors.blue,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   width:5,
-                      // ),
                       const Text(
                         "Details",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
@@ -148,18 +121,13 @@ class _qutationviewState extends State<qutationviewnew> {
                         child: TextField(
                           decoration: const InputDecoration(
                             border: InputBorder.none,
-                            // hintText: 'Username',
                           ),
-                          readOnly: true, //this is important
-                          onTap: _selectDate, //the method for opening data picker
+                          readOnly: true,
+                          onTap: _selectDate,
                           controller: _textControllerdate1,
                           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black), //the controller
                         ),
                       ),
-                      // Icon(
-                      //   Icons.add_box_rounded,
-                      //   color: Colors.grey,
-                      // ),
                     ],
                   ),
                 ),
@@ -169,7 +137,6 @@ class _qutationviewState extends State<qutationviewnew> {
               ),
               Container(
                 height: 250,
-                // color: Colors.white,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -180,43 +147,23 @@ class _qutationviewState extends State<qutationviewnew> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(40),
-                      //     color: Colors.grey,
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Icon(
-                      //       Icons.store,
-                      //       color: Colors.blue,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   width:5,
-                      // ),
                       const Text(
                         "Buisness info *",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
                       ),
                       const Divider(),
-
                       const Text(
                         "From",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
-
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const addbuisnes())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddBuisnes())),
                         child: const Text(
                           "Add Buisness",
                           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
                         ),
                       ),
                       const Divider(),
-
-                      ///  Flexible(fit: FlexFit.tight, child: SizedBox()),
                       Row(
                         children: [
                           Center(
@@ -224,12 +171,8 @@ class _qutationviewState extends State<qutationviewnew> {
                               checkColor: Colors.white,
                               activeColor: Colors.black,
                               value: valuefirst,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  valuefirst = value!;
-                                });
-                              },
-                            ), //Checkbox
+                              onChanged: (bool? value) => setState(() => valuefirst = value!),
+                            ),
                           ),
                           const Text(
                             'Buisness information show',
@@ -244,12 +187,8 @@ class _qutationviewState extends State<qutationviewnew> {
                               checkColor: Colors.white,
                               activeColor: Colors.black,
                               value: valuesecond,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  valuesecond = value!;
-                                });
-                              },
-                            ), //Checkbox
+                              onChanged: (bool? value) => setState(() => valuesecond = value!),
+                            ),
                           ),
                           const Text(
                             'Include TAX(%)',
@@ -267,16 +206,17 @@ class _qutationviewState extends State<qutationviewnew> {
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Center(
-                                          child: TextField(
-                                            decoration: InputDecoration.collapsed(hintText: 'Enter TAX(%)'),
-                                            style: TextStyle(
-                                              fontSize: 11,
-                                              color: Colors.black,
-                                            ),
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Center(
+                                        child: TextField(
+                                          decoration: InputDecoration.collapsed(hintText: 'Enter TAX(%)'),
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: Colors.black,
                                           ),
-                                        )),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 )
                               : const SizedBox()
@@ -289,7 +229,6 @@ class _qutationviewState extends State<qutationviewnew> {
               const SizedBox(height: 10),
               Container(
                 height: 120,
-                // color: Colors.white,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -300,22 +239,6 @@ class _qutationviewState extends State<qutationviewnew> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(40),
-                      //     color: Colors.grey,
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Icon(
-                      //       Icons.store,
-                      //       color: Colors.blue,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   width:5,
-                      // ),
                       const Text(
                         "Cleint *",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
@@ -326,16 +249,12 @@ class _qutationviewState extends State<qutationviewnew> {
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const addclient())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddClient())),
                         child: const Text(
                           "Add Cleint ",
                           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
                         ),
                       ),
-                      // Icon(
-                      //   Icons.add_box_rounded,
-                      //   color: Colors.grey,
-                      // ),
                     ],
                   ),
                 ),
@@ -343,7 +262,6 @@ class _qutationviewState extends State<qutationviewnew> {
               const SizedBox(height: 10),
               Container(
                 height: 120,
-                // color: Colors.white,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -354,22 +272,6 @@ class _qutationviewState extends State<qutationviewnew> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(40),
-                      //     color: Colors.grey,
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Icon(
-                      //       Icons.store,
-                      //       color: Colors.blue,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   width:5,
-                      // ),
                       Text(
                         "Sales Person *",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
@@ -380,31 +282,15 @@ class _qutationviewState extends State<qutationviewnew> {
                           border: InputBorder.none,
                           hintText: 'Sales person Name',
                         ),
-                        ////the method for opening data picker
-                        //controller: _textControllerdate1,
                         style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.black), //the controller
                       ),
-                      // Text(
-                      //   "Add Cleint ",
-                      //   style: TextStyle(
-                      //       fontSize: 15,
-                      //       fontWeight: FontWeight.bold,
-                      //       color: Colors.grey),
-                      // ),
-                      // Icon(
-                      //   Icons.add_box_rounded,
-                      //   color: Colors.grey,
-                      // ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Container(
                 height: 250,
-                // color: Colors.white,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -415,53 +301,29 @@ class _qutationviewState extends State<qutationviewnew> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(40),
-                      //     color: Colors.grey,
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Icon(
-                      //       Icons.store,
-                      //       color: Colors.blue,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   width:5,
-                      // ),
                       const Text(
                         "Items *",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
                       ),
                       const Divider(),
-
                       const Text(
                         "hhh",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
                       ),
                       const Row(
                         children: [
-                          SizedBox(
-                            width: 10,
-                          ),
+                          SizedBox(width: 10),
                           Text(
                             "Quantity",
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          // Icon(
-                          //   Icons.add_box_rounded,
-                          //   color: Colors.grey,
-                          // ),
                           Text(
                             "0",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
-
                       const Row(
                         children: [
                           SizedBox(
@@ -472,17 +334,12 @@ class _qutationviewState extends State<qutationviewnew> {
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          // Icon(
-                          //   Icons.add_box_rounded,
-                          //   color: Colors.grey,
-                          // ),
                           Text(
                             "1.025",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
-
                       const Row(
                         children: [
                           SizedBox(
@@ -493,17 +350,12 @@ class _qutationviewState extends State<qutationviewnew> {
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          // Icon(
-                          //   Icons.add_box_rounded,
-                          //   color: Colors.grey,
-                          // ),
                           Text(
                             "0.001",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
-
                       const Row(
                         children: [
                           SizedBox(
@@ -514,19 +366,14 @@ class _qutationviewState extends State<qutationviewnew> {
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          // Icon(
-                          //   Icons.add_box_rounded,
-                          //   color: Colors.grey,
-                          // ),
                           Text(
                             "0.00",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
-
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const additem())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddItem())),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -544,17 +391,6 @@ class _qutationviewState extends State<qutationviewnew> {
                           ],
                         ),
                       ),
-                      // Text(
-                      //   "Add Cleint ",
-                      //   style: TextStyle(
-                      //       fontSize: 15,
-                      //       fontWeight: FontWeight.bold,
-                      //       color: Colors.grey),
-                      // ),
-                      // Icon(
-                      //   Icons.add_box_rounded,
-                      //   color: Colors.grey,
-                      // ),
                     ],
                   ),
                 ),
@@ -573,22 +409,6 @@ class _qutationviewState extends State<qutationviewnew> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Container(
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(40),
-                      //     color: Colors.grey,
-                      //   ),
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Icon(
-                      //       Icons.store,
-                      //       color: Colors.blue,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   width:5,
-                      // ),
                       Text(
                         "Payment Details",
                         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.grey),
@@ -604,17 +424,12 @@ class _qutationviewState extends State<qutationviewnew> {
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          // Icon(
-                          //   Icons.add_box_rounded,
-                          //   color: Colors.grey,
-                          // ),
                           Text(
                             "0.00",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
-
                       Row(
                         children: [
                           SizedBox(
@@ -625,10 +440,6 @@ class _qutationviewState extends State<qutationviewnew> {
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          // Icon(
-                          //   Icons.add_box_rounded,
-                          //   color: Colors.grey,
-                          // ),
                           Text(
                             "0.00",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -639,9 +450,7 @@ class _qutationviewState extends State<qutationviewnew> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               InkWell(
                 onTap: () {
                   showCurrencyPicker(
@@ -662,7 +471,6 @@ class _qutationviewState extends State<qutationviewnew> {
                 child: Container(
                   height: 50,
                   width: 400,
-                  // color: Colors.white,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white,
@@ -682,7 +490,6 @@ class _qutationviewState extends State<qutationviewnew> {
               Container(
                 height: 50,
                 width: 400,
-                // color: Colors.white,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -701,7 +508,6 @@ class _qutationviewState extends State<qutationviewnew> {
               Container(
                 height: 50,
                 width: 400,
-                // color: Colors.white,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,

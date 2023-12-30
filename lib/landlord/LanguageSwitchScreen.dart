@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Const/Const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class languageswitchscreen extends StatefulWidget {
-  const languageswitchscreen({super.key});
+class LanguageSwitchScreen extends StatefulWidget {
+  const LanguageSwitchScreen({super.key});
 
   @override
-  State<languageswitchscreen> createState() => _languageswitchscreenState();
+  State<LanguageSwitchScreen> createState() => _LanguageSwitchScreenState();
 }
 
 //'English', 'Hindi', 'Germany', 'French', 'Arabia', 'Europe'  -- Provided Languages
@@ -26,7 +26,7 @@ List<LangModel> storelist = <LangModel>[
 
 String deflanguage = "", defindex = "";
 
-class _languageswitchscreenState extends State<languageswitchscreen> {
+class _LanguageSwitchScreenState extends State<LanguageSwitchScreen> {
   @override
   void initState() {
     super.initState();

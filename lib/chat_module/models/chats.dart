@@ -1,6 +1,5 @@
 import 'package:renttas_flutter_app/chat_module/models/messages.dart';
 import 'package:renttas_flutter_app/chat_module/models/participants.dart';
-import 'package:renttas_flutter_app/landlord/LanlordRegisterNew.dart';
 
 class Chats {
   final String? id;

@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutterfire_ui/auth.dart';
+
 import 'package:renttas_flutter_app/LiveChat/comps/styles.dart';
 
 import 'animated-dialog.dart';

@@ -29,93 +29,25 @@ class _addnewcompanyState extends State<addnewcompany> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           Container(
             child: Expanded(
               child: Row(
                 children: [
-                  SizedBox(
-                    width: 10,
-                  ),
+                  SizedBox(width: 10),
                   InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => commerialdashboard())),
-                    child: Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                    ),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard())),
+                    child: Icon(Icons.arrow_back, size: 30),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        widget.type == "0" ? Text("Add New company") : Text("Edit company")
-                        // Text(
-                        //   "ab@gmail.com",
-                        //   style: TextStyle(fontWeight: FontWeight.bold),
-                        // )
-                      ],
+                      children: [widget.type == "0" ? Text("Add New company") : Text("Edit company")],
                     ),
                   ),
-                  // Flexible(fit: FlexFit.tight, child: SizedBox()),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Icon(
-                  //     Icons.search,
-                  //     size: 24,
-                  //   ),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Container(
-                  //       padding: EdgeInsets.all(10),
-                  //       decoration: BoxDecoration(
-                  //           color: Colors.white,
-                  //           borderRadius: BorderRadius.circular(40)),
-                  //       //alignment: Alignment.center,
-                  //       child: Icon(
-                  //         Icons.qr_code_scanner_outlined,
-                  //         size: 20,
-                  //       )
-                  //     // Text(
-                  //     //   'Premium',
-                  //     //   style: TextStyle(
-                  //     //     fontSize: 18,
-                  //     //     fontWeight: FontWeight.bold,
-                  //     //   ),
-                  //     //   textAlign: TextAlign.center,
-                  //     // ),
-                  //   ),
-                  // ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Container(
-                  //       padding: EdgeInsets.all(10),
-                  //       decoration: BoxDecoration(
-                  //           color: Colors.white,
-                  //           borderRadius: BorderRadius.circular(40)),
-                  //       //alignment: Alignment.center,
-                  //       child: Icon(
-                  //         Icons.mobile_screen_share_rounded,
-                  //         size: 20,
-                  //       )
-                  //     // Text(
-                  //     //   'Premium',
-                  //     //   style: TextStyle(
-                  //     //     fontSize: 18,
-                  //     //     fontWeight: FontWeight.bold,
-                  //     //   ),
-                  //     //   textAlign: TextAlign.center,
-                  //     // ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -133,9 +65,7 @@ class _addnewcompanyState extends State<addnewcompany> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Enter Company name"),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -162,13 +92,9 @@ class _addnewcompanyState extends State<addnewcompany> {
                           )),
                     ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Text("Enter company address"),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -277,7 +203,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => commerialdashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
@@ -326,7 +252,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => commerialdashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {

@@ -15,12 +15,12 @@ import 'Model/GetProductViewModel.dart';
 import 'Model/GetStoreModel.dart';
 import 'Scanner/Scanner.dart';
 
-class productinoutnew extends StatefulWidget {
+class ProductinOutNew extends StatefulWidget {
   String type, name;
-  productinoutnew({super.key, required this.type, required this.name});
+  ProductinOutNew({super.key, required this.type, required this.name});
 
   @override
-  State<productinoutnew> createState() => _productinoutnewState();
+  State<ProductinOutNew> createState() => _ProductinOutNewState();
 }
 
 final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -32,7 +32,7 @@ late dynamic dropdownValue = null;
 late dynamic dropdownValue2 = null;
 String Productid = "", Storeid = "", Rate = "";
 
-class _productinoutnewState extends State<productinoutnew> {
+class _ProductinOutNewState extends State<ProductinOutNew> {
   DateTime dateTime = DateTime.now();
   String productid = "";
   TextEditingController _textControllerdate1 = new TextEditingController();
@@ -340,17 +340,6 @@ class _productinoutnewState extends State<productinoutnew> {
                                       style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
                                       decoration: new InputDecoration.collapsed(hintText: _textControllerdate1.text),
                                     ),
-                                    //     TextFormField(
-                                    //     //  "26/10/2023",
-                                    // decration:      InputDecoration(
-                                    //         border: InputBorder.none,
-                                    //         hintText: 'Username',
-                                    //       ),
-                                    //       style: TextStyle(
-                                    //           fontSize: 15,
-                                    //           color: Colors.black,
-                                    //           fontWeight: FontWeight.bold),
-                                    //     ),
                                   ),
                                   Flexible(fit: FlexFit.tight, child: SizedBox()),
                                   InkWell(onTap: _selectDate, child: Icon(Icons.calendar_month))
@@ -384,8 +373,9 @@ class _productinoutnewState extends State<productinoutnew> {
                             child: isloading == true
                                 ? Center(
                                     child: const CircularProgressIndicator(
-                                    color: Color(0xff54854C),
-                                  ))
+                                      color: Color(0xff54854C),
+                                    ),
+                                  )
                                 : productlist.isEmpty
                                     ? Center(child: Text("No Product"))
                                     : Container(
@@ -410,27 +400,10 @@ class _productinoutnewState extends State<productinoutnew> {
                                                   elevation: 16,
                                                   borderRadius: BorderRadius.zero,
                                                   style: const TextStyle(color: Colors.black, fontSize: 18),
-                                                  // underline: Container(
-                                                  //  height: 2,
-                                                  //  color: Colors.deepPurpleAccent,
-                                                  // ),
                                                   onChanged: (GetProduct? data) {
                                                     setState(() {
                                                       dropdownValue = data!;
-
                                                       Productid = data.id;
-
-                                                      //                              Dis = data.name;
-                                                      //                           d_id=   int.parse(data.id);
-
-                                                      // print(dropdownValue.name +
-                                                      //     " " +
-                                                      //     dropdownValue.id.toString());
-                                                      // log("id : ${dropdownValue.id}");
-                                                      // FplaceValue = null;
-                                                      // TplaceValue = null;
-
-                                                      // getPlaces();
                                                     });
                                                   },
                                                   items: productlist.map<DropdownMenuItem<GetProduct>>((GetProduct value) {
@@ -445,25 +418,6 @@ class _productinoutnewState extends State<productinoutnew> {
                                           ),
                                         ),
                                       ),
-
-                            // Padding(
-                            //     padding: const EdgeInsets.all(8.0),
-                            //     child: Center(
-                            //       child: TextFormField(
-                            //         decoration: new InputDecoration.collapsed(
-                            //             hintText: 'Enter Product name'),
-                            //         style: TextStyle(
-                            //             fontSize: 14,
-                            //             color: Colors.black,
-                            //             fontWeight: FontWeight.bold),
-                            //         validator: (value) {
-                            //           if (value!.isEmpty) {
-                            //             return 'Please enter product name!';
-                            //           }
-                            //           return null;
-                            //         },
-                            //       ),
-                            //     )),
                           ),
                         )
                       ],
@@ -474,7 +428,6 @@ class _productinoutnewState extends State<productinoutnew> {
                   ),
                   Container(
                     height: 80,
-                    //color: Colors.red,
                     child: Row(
                       children: [
                         Text(
@@ -491,17 +444,9 @@ class _productinoutnewState extends State<productinoutnew> {
                               border: Border.all(color: Colors.grey),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child:
-                                // storelist == null && storelist.isEmpty
-                                // ? Center(
-                                //     child: const CircularProgressIndicator(
-                                //       color: Color(0xff54854C),
-                                //     ),
-                                //   )
-                                // :
-                                Container(
+                            child: Container(
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(18), // <= No more error here :)
+                                borderRadius: BorderRadius.circular(18),
                                 color: Colors.white,
                               ),
                               width: 200,
@@ -510,7 +455,6 @@ class _productinoutnewState extends State<productinoutnew> {
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Row(
                                   children: [
-                                    //Icon(Icons.bloodtype),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8.0),
                                       child: DropdownButton<GetStore>(
@@ -522,59 +466,26 @@ class _productinoutnewState extends State<productinoutnew> {
                                         elevation: 16,
                                         borderRadius: BorderRadius.zero,
                                         style: const TextStyle(color: Colors.black, fontSize: 18),
-                                        // underline: Container(
-                                        //  height: 2,
-                                        //  color: Colors.deepPurpleAccent,
-                                        // ),
                                         onChanged: (GetStore? data) {
                                           setState(() {
                                             dropdownValue2 = data!;
-
                                             Storeid = data.id;
-
-                                            //                              Dis = data.name;
-                                            //                           d_id=   int.parse(data.id);
-
-                                            // print(dropdownValue.name +
-                                            //     " " +
-                                            //     dropdownValue.id.toString());
-                                            // log("id : ${dropdownValue.id}");
-                                            // FplaceValue = null;
-                                            // TplaceValue = null;
-
-                                            // getPlaces();
                                           });
                                         },
-                                        items: storelist.map<DropdownMenuItem<GetStore>>((GetStore value) {
-                                          return DropdownMenuItem<GetStore>(
-                                            value: value,
-                                            child: Text(value.storename),
-                                          );
-                                        }).toList(),
+                                        items: storelist.map<DropdownMenuItem<GetStore>>(
+                                          (GetStore value) {
+                                            return DropdownMenuItem<GetStore>(
+                                              value: value,
+                                              child: Text(value.storename),
+                                            );
+                                          },
+                                        ).toList(),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            // Padding(
-                            //     padding: const EdgeInsets.all(8.0),
-                            //     child: Center(
-                            //       child: TextFormField(
-                            //         decoration: new InputDecoration.collapsed(
-                            //             hintText: 'Enter Store name'),
-                            //         style: TextStyle(
-                            //             fontSize: 14,
-                            //             color: Colors.black,
-                            //             fontWeight: FontWeight.bold),
-                            //         validator: (value) {
-                            //           if (value!.isEmpty) {
-                            //             return 'Please enter store name!';
-                            //           }
-                            //           return null;
-                            //         },
-                            //       ),
-                            //     )),
                           ),
                         )
                       ],
@@ -585,7 +496,6 @@ class _productinoutnewState extends State<productinoutnew> {
                   ),
                   Container(
                     height: 80,
-                    //color: Colors.red,
                     child: Row(
                       children: [
                         Text(
@@ -603,20 +513,21 @@ class _productinoutnewState extends State<productinoutnew> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Center(
-                                  child: TextFormField(
-                                    controller: _textControllerqty,
-                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Quantity'),
-                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return 'Please enter product qty!';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                )),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                child: TextFormField(
+                                  controller: _textControllerqty,
+                                  decoration: new InputDecoration.collapsed(hintText: 'Enter Quantity'),
+                                  style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Please enter product qty!';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ),
+                            ),
                           ),
                         )
                       ],
@@ -627,7 +538,6 @@ class _productinoutnewState extends State<productinoutnew> {
                   ),
                   Container(
                     height: 80,
-                    //color: Colors.red,
                     child: Row(
                       children: [
                         Text(
@@ -645,31 +555,29 @@ class _productinoutnewState extends State<productinoutnew> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Center(
-                                  child: TextFormField(
-                                    controller: _textControllerrate,
-                                    decoration: new InputDecoration.collapsed(hintText: 'Enter Price'),
-                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return 'Please enter price!';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                )),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                child: TextFormField(
+                                  controller: _textControllerrate,
+                                  decoration: new InputDecoration.collapsed(hintText: 'Enter Price'),
+                                  style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return 'Please enter price!';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ),
+                            ),
                           ),
                         )
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15),
                   Container(
                     height: 80,
-                    //color: Colors.red,
                     child: Row(
                       children: [
                         Text(
@@ -706,9 +614,7 @@ class _productinoutnewState extends State<productinoutnew> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15),
                 ],
               ),
             ),

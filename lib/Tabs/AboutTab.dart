@@ -9,7 +9,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:renttas_flutter_app/Const/Const.dart';
 import 'package:path/path.dart' as path;
-import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
+import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;

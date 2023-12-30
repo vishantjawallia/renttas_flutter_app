@@ -2,16 +2,16 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:renttas_flutter_app/Inventory/ViewAllBusiness.dart';
 
-class joinbuisnesspage extends StatefulWidget {
-  const joinbuisnesspage({super.key});
+
+class JoinBuisnessPage extends StatefulWidget {
+  const JoinBuisnessPage({super.key});
 
   @override
-  State<joinbuisnesspage> createState() => _joinbuisnesspageState();
+  State<JoinBuisnessPage> createState() => _JoinBuisnessPageState();
 }
 
-class _joinbuisnesspageState extends State<joinbuisnesspage> {
+class _JoinBuisnessPageState extends State<JoinBuisnessPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

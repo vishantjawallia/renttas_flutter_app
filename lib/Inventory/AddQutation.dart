@@ -51,7 +51,7 @@ class _qutationviewState extends State<qutationview> {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const filtertransaction(),
+                  builder: (context) => const FilterTransaction(),
                 ),
               ),
               child: Container(
@@ -152,7 +152,7 @@ class _qutationviewState extends State<qutationview> {
                       ),
                       const SizedBox(height: 8),
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const addbuisnes())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddBuisnes())),
                         child: const Text(
                           "Add Buisness",
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
@@ -255,7 +255,7 @@ class _qutationviewState extends State<qutationview> {
                       ),
                       const SizedBox(height: 6),
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const addclient())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddClient())),
                         child: const Text(
                           "Add Cleint ",
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
@@ -393,7 +393,7 @@ class _qutationviewState extends State<qutationview> {
                         ],
                       ),
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const additem())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddItem())),
                         child: Center(
                           child: Container(
                             width: 150,

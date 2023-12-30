@@ -166,9 +166,12 @@ class _TenantsTabState extends State<MergeProperty> {
                                   Row(
                                     children: [
                                       IconButton(
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => viewmergedetails(data: tenant)));
-                                        },
+                                        onPressed: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => ViewMergeDetails(data: tenant),
+                                          ),
+                                        ),
                                         icon: Icon(Icons.details),
                                       ),
                                       Text('Details'),
@@ -282,26 +285,9 @@ class _TenantsTabState extends State<MergeProperty> {
       isTenantsTheir = false;
     }
     setState(() {
-      isLoading = false; // Set loading state to false after the data is loaded
+      isLoading = false;
     });
   }
-
-  // Future<void> deleteTenants(String mobileNumber) async {
-  //   setState(() {
-  //     dataList.removeWhere((tenant) => tenant['mobile'] == mobileNumber);
-  //   });
-  //   print(mobileNumber);
-  //   final request =
-  //   await http.Request('POST', Uri.parse(Api.propertyTenantDelete));
-  //   request.body = jsonEncode({"mobile": mobileNumber});
-  //   final response = await request.send();
-  //
-  //   final stream = response.stream;
-  //   final body = await stream.bytesToString();
-  //
-  //   final data = jsonDecode(body);
-  //   print(data);
-  // }
 
   void openPhoneDialer(String phoneNumber) async {
     String url = 'tel:$phoneNumber';

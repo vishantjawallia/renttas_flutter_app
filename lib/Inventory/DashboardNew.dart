@@ -65,7 +65,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(100),
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const mybusinesspage())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBusinessPage())),
                   child: Container(
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
@@ -111,7 +111,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                     onTap: () => Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => productinoutnew(type: "1", name: "Product In"),
+                                        builder: (context) => ProductinOutNew(type: "1", name: "Product In"),
                                       ),
                                     ),
                                     child: Container(
@@ -143,7 +143,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                     borderRadius: BorderRadius.circular(8),
                                     onTap: () => Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => productinoutnew(type: "0", name: "Product Out")),
+                                      MaterialPageRoute(builder: (context) => ProductinOutNew(type: "0", name: "Product Out")),
                                     ),
                                     child: Container(
                                       height: 50,
@@ -341,7 +341,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                         elevation: 5,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const lowstock())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LowStock())),
                           child: SizedBox(
                             height: 150,
                             width: 150,
@@ -381,7 +381,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                         elevation: 5,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const viewtransactions())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ViewTransactions())),
                           child: SizedBox(
                             height: 150,
                             width: 150,
@@ -416,7 +416,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                             elevation: 5,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(8),
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const storeview())),
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const StoreView())),
                               child: SizedBox(
                                 height: 70,
                                 width: 150,
@@ -452,7 +452,7 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const viewqutationmain(),
+                                  builder: (context) => const ViewQutationMain(),
                                 ),
                               ),
                               child: SizedBox(

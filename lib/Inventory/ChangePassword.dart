@@ -6,24 +6,24 @@ import 'package:flutter/material.dart';
 import 'MyBuisness.dart';
 import 'Setting.dart';
 
-class chnagepassword extends StatefulWidget {
-  const chnagepassword({super.key});
+class ChnagePassword extends StatefulWidget {
+  const ChnagePassword({super.key});
 
   @override
-  State<chnagepassword> createState() => _mybusinesspageState();
+  State<ChnagePassword> createState() => _ChnagePasswordState();
 }
 
 String selectedcurrency = "Select Currency";
 
-class _mybusinesspageState extends State<chnagepassword> {
+class _ChnagePasswordState extends State<ChnagePassword> {
   final textFieldFocusNode = FocusNode();
   bool _obscured = true;
 
   void _toggleObscured() {
     setState(() {
       _obscured = !_obscured;
-      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
-      textFieldFocusNode.canRequestFocus = false; // Prevents focus if tap on eye
+      if (textFieldFocusNode.hasPrimaryFocus) return;
+      textFieldFocusNode.canRequestFocus = false;
     });
   }
 
@@ -38,17 +38,16 @@ class _mybusinesspageState extends State<chnagepassword> {
         title: const Text('Change Password'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            //  mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
                 child: InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const mybusinesspage())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const MyBusinessPage())),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -67,20 +66,11 @@ class _mybusinesspageState extends State<chnagepassword> {
                           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 16),
                         ),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(2.0),
-                      //   child: Text(
-                      //     "Email: ab@gmail.com  ",
-                      //     style: TextStyle(color: Colors.blue, fontSize: 13),
-                      //   ),
-                      // )
                     ],
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 18,
-              ),
+              const SizedBox(height: 18),
               const Text(
                 "Password ",
                 style: TextStyle(color: Colors.grey, fontSize: 13),
@@ -90,37 +80,24 @@ class _mybusinesspageState extends State<chnagepassword> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    // boxShadow: const [
-                    //   BoxShadow(
-                    //     color: Colors.black,
-                    //     blurRadius: 6,
-                    //     offset: Offset(0, 2),
-                    //   ),
-                    // ],
                   ),
                   height: 60,
                   child: TextField(
-                    //  controller: landlordPassword,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _obscured,
                     focusNode: textFieldFocusNode,
                     style: const TextStyle(color: Colors.black87),
                     decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
                       hintText: "Enter Password",
                       hintStyle: const TextStyle(color: Colors.black38),
-                      filled: true, // Needed for adding a fill color
+                      filled: true,
                       fillColor: Colors.white,
-                      isDense: true, // Reduces height a bit
+                      isDense: true,
                       border: OutlineInputBorder(
-                        borderSide: BorderSide.none, // No border
-                        borderRadius: BorderRadius.circular(12), // Apply corner radius
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
                       ),
-                      // prefixIcon: Icon(
-                      //   Icons.lock_rounded,
-                      //   size: 24,
-                      //   color: Color(0xff5ac18e),
-                      // ),
                       suffixIcon: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
                         child: GestureDetector(
@@ -133,45 +110,30 @@ class _mybusinesspageState extends State<chnagepassword> {
                       ),
                     ),
                   )),
-              const SizedBox(
-                height: 18,
-              ),
+              const SizedBox(height: 18),
               Container(
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    // boxShadow: const [
-                    //   BoxShadow(
-                    //     color: Colors.black,
-                    //     blurRadius: 6,
-                    //     offset: Offset(0, 2),
-                    //   ),
-                    // ],
                   ),
                   height: 60,
                   child: TextField(
-                    //  controller: landlordPassword,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _obscured,
                     focusNode: textFieldFocusNode,
                     style: const TextStyle(color: Colors.black87),
                     decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
                       hintText: "Enter confirm Password",
                       hintStyle: const TextStyle(color: Colors.black38),
-                      filled: true, // Needed for adding a fill color
+                      filled: true,
                       fillColor: Colors.white,
-                      isDense: true, // Reduces height a bit
+                      isDense: true,
                       border: OutlineInputBorder(
-                        borderSide: BorderSide.none, // No border
-                        borderRadius: BorderRadius.circular(12), // Apply corner radius
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      // prefixIcon: Icon(
-                      //   Icons.lock_rounded,
-                      //   size: 24,
-                      //   color: Color(0xff5ac18e),
-                      // ),
                       suffixIcon: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
                         child: GestureDetector(
@@ -190,7 +152,7 @@ class _mybusinesspageState extends State<chnagepassword> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color(0xff54854C),
+                  color: const Color(0xff54854C),
                 ),
                 height: 50,
                 width: 400,

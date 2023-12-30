@@ -11,15 +11,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Common/ApiUrl.dart';
 import 'ViewCompanyDetails.dart';
 
-class newleaseadd extends StatefulWidget {
+class NewLeaseAdd extends StatefulWidget {
   String companyid, name, address;
-  newleaseadd({super.key, required this.companyid, required this.name, required this.address});
+  NewLeaseAdd({super.key, required this.companyid, required this.name, required this.address});
 
   @override
-  State<newleaseadd> createState() => _newleaseaddState();
+  State<NewLeaseAdd> createState() => _NewLeaseAddState();
 }
 
-class _newleaseaddState extends State<newleaseadd> {
+class _NewLeaseAddState extends State<NewLeaseAdd> {
   int _groupValue1 = -1;
   int _groupValue2 = -1;
   bool valuefirst = false;
@@ -55,24 +55,13 @@ class _newleaseaddState extends State<newleaseadd> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
         automaticallyImplyLeading: false,
         actions: const <Widget>[
           Expanded(
             child: Row(
               children: [
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10),
                 InkWell(
-                  // onTap: () => Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => ViewCompanyDetails())),
                   child: Icon(
                     Icons.arrow_back,
                     size: 30,
@@ -85,65 +74,9 @@ class _newleaseaddState extends State<newleaseadd> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Add Leases"),
-                      // Text(
-                      //   "ab@gmail.com",
-                      //   style: TextStyle(fontWeight: FontWeight.bold),
-                      // )
                     ],
                   ),
                 ),
-                // Flexible(fit: FlexFit.tight, child: SizedBox()),
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: Icon(
-                //     Icons.search,
-                //     size: 24,
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: Container(
-                //       padding: EdgeInsets.all(10),
-                //       decoration: BoxDecoration(
-                //           color: Colors.white,
-                //           borderRadius: BorderRadius.circular(40)),
-                //       //alignment: Alignment.center,
-                //       child: Icon(
-                //         Icons.qr_code_scanner_outlined,
-                //         size: 20,
-                //       )
-                //     // Text(
-                //     //   'Premium',
-                //     //   style: TextStyle(
-                //     //     fontSize: 18,
-                //     //     fontWeight: FontWeight.bold,
-                //     //   ),
-                //     //   textAlign: TextAlign.center,
-                //     // ),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: Container(
-                //       padding: EdgeInsets.all(10),
-                //       decoration: BoxDecoration(
-                //           color: Colors.white,
-                //           borderRadius: BorderRadius.circular(40)),
-                //       //alignment: Alignment.center,
-                //       child: Icon(
-                //         Icons.mobile_screen_share_rounded,
-                //         size: 20,
-                //       )
-                //     // Text(
-                //     //   'Premium',
-                //     //   style: TextStyle(
-                //     //     fontSize: 18,
-                //     //     fontWeight: FontWeight.bold,
-                //     //   ),
-                //     //   textAlign: TextAlign.center,
-                //     // ),
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -159,7 +92,6 @@ class _newleaseaddState extends State<newleaseadd> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text("Space use"),
-
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   const SizedBox(
                     height: 10,
@@ -206,7 +138,6 @@ class _newleaseaddState extends State<newleaseadd> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -417,7 +348,6 @@ class _newleaseaddState extends State<newleaseadd> {
                 const SizedBox(
                   height: 5,
                 ),
-
                 const Text("Asking Rent"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -481,7 +411,6 @@ class _newleaseaddState extends State<newleaseadd> {
                 const SizedBox(
                   height: 15,
                 ),
-
                 const Text("Payment date"),
                 const SizedBox(
                   height: 5,
@@ -506,7 +435,6 @@ class _newleaseaddState extends State<newleaseadd> {
                 const SizedBox(
                   height: 15,
                 ),
-
                 const Text("Time period"),
                 const SizedBox(
                   height: 5,
@@ -532,7 +460,6 @@ class _newleaseaddState extends State<newleaseadd> {
                     ),
                   ),
                 ),
-
                 const SizedBox(
                   height: 15,
                 ),
@@ -540,7 +467,6 @@ class _newleaseaddState extends State<newleaseadd> {
                 const SizedBox(
                   height: 5,
                 ),
-
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
@@ -575,39 +501,8 @@ class _newleaseaddState extends State<newleaseadd> {
                     ],
                   ),
                 ),
-
-                const SizedBox(
-                  height: 10,
-                ),
-
-                // Container(
-                //   decoration: BoxDecoration(
-                //     border: Border.all(color: Colors.black),
-                //     borderRadius: BorderRadius.circular(10),
-                //   ),
-                //   child:    Padding(
-                //     padding: const EdgeInsets.all(3.0),
-                //     child: Row(
-                //       children: [
-                //         Text("Quterly"),
-                //         Flexible(fit: FlexFit.tight, child: SizedBox()),
-                //         RadioListTile(
-                //           value: 1,
-                //           groupValue: _groupValue1,
-                //           title: Text("aaa"),
-                //           onChanged: (newValue) =>
-                //               setState(() => _groupValue1 = newValue as int),
-                //           activeColor: Colors.blue,
-                //           selected: false,
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 10),
+                const SizedBox(height: 15),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -671,29 +566,23 @@ class _newleaseaddState extends State<newleaseadd> {
       String timeperiod, String charge) async {
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
-    // log("userid in add compnay===" + userid.toString());
+
     setState(() {
       isloading = true;
     });
     String jsondata = jsonEncode(selectedItems);
     print('jsondata =${jsondata}');
 
-    // {"userid":"dsdsf","companyid":"dsdsf","categoryid":"lease","spaceuse":"dsdsf","availablespacemin":"dsdsf","availablespacemax":"lease","floortype":"[{'id':'1','name':'aaaa'}]","askingrentmin":"lease","askingrentmax":"lease","status":"lease"}
-
     Map data = {
       "userid": userid,
       "companyid": widget.companyid,
       "categoryid": "1",
-
       'spaceuse': spaceused,
       'floortype': jsondata,
       'availablespacemin': availablespacemin,
       'availablespacemax': availablespacemax,
       'askingrentmin': askingrentmin,
       'askingrentmax': askingrentmax,
-      // 'paymentdate': paymentdate,
-      //'timeperiod': timeperiod,
-      //'charge': charge,
       'status': "lease",
     };
     final headerss = {
@@ -715,13 +604,15 @@ class _newleaseaddState extends State<newleaseadd> {
 
       if (resposne['msg'].toString().contains("success")) {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ViewCompanyDetails(
-                      id: widget.companyid,
-                      name: widget.name,
-                      address: widget.address,
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewCompanyDetails(
+              id: widget.companyid,
+              name: widget.name,
+              address: widget.address,
+            ),
+          ),
+        );
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
@@ -737,22 +628,18 @@ class ViewBloodHospitalModel {
   ViewBloodHospitalModel({
     required this.id,
     required this.name,
-    //    required this.isChecked,
   });
 
   String id;
   String name;
-  // bool isChecked;
 
   factory ViewBloodHospitalModel.fromJson(Map<String, dynamic> json) => ViewBloodHospitalModel(
         id: json["id"],
         name: json["name"],
-        //    isChecked: false,
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        //"isChecked": isChecked,
       };
 }

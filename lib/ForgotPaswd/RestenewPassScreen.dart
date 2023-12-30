@@ -41,8 +41,8 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
   void _toggleObscured() {
     setState(() {
       _obscured = !_obscured;
-      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
-      textFieldFocusNode.canRequestFocus = false; // Prevents focus if tap on eye
+      if (textFieldFocusNode.hasPrimaryFocus) return;
+      textFieldFocusNode.canRequestFocus = false;
     });
   }
 
@@ -52,8 +52,8 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
   void _toggleObscuredconfirm() {
     setState(() {
       _obscuredconfirm = !_obscuredconfirm;
-      if (textFieldFocusNodeconfirm.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
-      textFieldFocusNodeconfirm.canRequestFocus = false; // Prevents focus if tap on eye
+      if (textFieldFocusNodeconfirm.hasPrimaryFocus) return;
+      textFieldFocusNodeconfirm.canRequestFocus = false;
     });
   }
 
@@ -196,15 +196,7 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
                               child: CustomButton(
                                 label: isLoading == false ? 'Reset Password' : 'Please wait',
                                 color: Colors.black,
-                                onPressed: () async {
-                                  loadRegister(widget.emil, confirmcontroller.text);
-                                  // if (_key.currentState!.validate()) {}
-                                  // Navigator.pushReplacement(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) =>
-                                  //             const ResetPasswordOTPScreen()));
-                                },
+                                onPressed: () async => loadRegister(widget.emil, confirmcontroller.text),
                                 size: size,
                                 textColor: Colors.white,
                                 borderSide: BorderSide.none,
@@ -235,19 +227,8 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandlordLoginNew()));
       } else {
         snack("Something went wrong", context);
-        // String otp=data["otp"].toString();
-
-        // Navigator.of(context).push(MaterialPageRoute(
-        //     builder: (context) => const LandloardDashBord()));
-        // otprecieved = data['emial_otp'] == null
-        //     ? ""
-        //     : otprecieved = data['emial_otp'].toString();
-        // // successDilog(data['msg']);
-        // _showImageAlertDialog(context, otprecieved, name, emails, mobi);
       }
-    } else {
-      //  faliedDilog(data['msg']);
-    }
+    } else {}
   }
 }
 

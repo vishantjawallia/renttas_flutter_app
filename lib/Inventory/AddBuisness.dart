@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import 'AddQutation.dart';
 
-class addbuisnes extends StatefulWidget {
-  const addbuisnes({super.key});
+class AddBuisnes extends StatefulWidget {
+  const AddBuisnes({super.key});
 
   @override
-  State<addbuisnes> createState() => _addbuisnesState();
+  State<AddBuisnes> createState() => _AddBuisnesState();
 }
 
-class _addbuisnesState extends State<addbuisnes> {
+class _AddBuisnesState extends State<AddBuisnes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +33,7 @@ class _addbuisnesState extends State<addbuisnes> {
                   width: 10,
                 ),
                 InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const qutationview())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const qutationview())),
                   child: const Icon(
                     Icons.arrow_back,
                     size: 30,
@@ -67,17 +64,13 @@ class _addbuisnesState extends State<addbuisnes> {
                   child: Container(
                     width: 80,
                     height: 40,
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(30)),
+                    decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
                     child: const Center(
                       child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
                             "Save",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                           )),
                     ),
                   ),
@@ -102,10 +95,7 @@ class _addbuisnesState extends State<addbuisnes> {
                   children: [
                     const Text(
                       'Buisness Name * ',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -121,12 +111,8 @@ class _addbuisnesState extends State<addbuisnes> {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: TextField(
-                                decoration: new InputDecoration.collapsed(
-                                    hintText: 'Enter Buisness name'),
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness name'),
+                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             )),
                       ),
@@ -144,10 +130,7 @@ class _addbuisnesState extends State<addbuisnes> {
                   children: [
                     const Text(
                       'Addess',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -163,12 +146,8 @@ class _addbuisnesState extends State<addbuisnes> {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: TextField(
-                                decoration: new InputDecoration.collapsed(
-                                    hintText: 'Enter Address'),
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                decoration: new InputDecoration.collapsed(hintText: 'Enter Address'),
+                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             )),
                       ),
@@ -186,10 +165,7 @@ class _addbuisnesState extends State<addbuisnes> {
                   children: [
                     const Text(
                       'Email',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -205,12 +181,8 @@ class _addbuisnesState extends State<addbuisnes> {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: TextField(
-                                decoration: new InputDecoration.collapsed(
-                                    hintText: 'Enter Buisness email'),
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness email'),
+                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             )),
                       ),
@@ -228,10 +200,7 @@ class _addbuisnesState extends State<addbuisnes> {
                   children: [
                     const Text(
                       'Website',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -247,12 +216,8 @@ class _addbuisnesState extends State<addbuisnes> {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: TextField(
-                                decoration: new InputDecoration.collapsed(
-                                    hintText: 'Enter Buisness web'),
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness web'),
+                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             )),
                       ),
@@ -270,10 +235,7 @@ class _addbuisnesState extends State<addbuisnes> {
                   children: [
                     const Text(
                       'Phone',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -289,12 +251,8 @@ class _addbuisnesState extends State<addbuisnes> {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: TextField(
-                                decoration: new InputDecoration.collapsed(
-                                    hintText: 'Enter Buisness phone'),
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness phone'),
+                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             )),
                       ),
@@ -312,10 +270,7 @@ class _addbuisnesState extends State<addbuisnes> {
                   children: [
                     const Text(
                       'Fax',
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -331,12 +286,8 @@ class _addbuisnesState extends State<addbuisnes> {
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
                               child: TextField(
-                                decoration: new InputDecoration.collapsed(
-                                    hintText: 'Enter Buisness fax'),
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness fax'),
+                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             )),
                       ),

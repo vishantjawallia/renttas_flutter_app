@@ -17,9 +17,9 @@ import 'package:pinput/pinput.dart';
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Wellcome/LoginPage.dart';
+
 import '../Wellcome/LoginPageNew.dart';
-import '../Wellcome/TypeUser.dart';
+
 import '../model/userModel.dart';
 import '../widgets/custom_text_field.dart';
 import 'AddPropertyLanlord.dart';

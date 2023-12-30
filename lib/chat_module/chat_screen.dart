@@ -2,14 +2,10 @@ import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:renttas_flutter_app/chat_module/models/messages.dart';
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../LiveChat/chatpage.dart';
 import '../LiveChat/comps/styles.dart';
 import '../LiveChat/comps/widgets.dart';
 import 'models/chats.dart';
@@ -37,10 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void loadItem() async {
     chatList.clear();
     setState(() => isLoad = true);
-    // final auth = FirebaseAuth.instance;
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    // user = auth.currentUser;
     userId = prefs.getString('userId') ?? "";
     String? name = prefs.getString('name');
     String? email = prefs.getString('email');
@@ -58,15 +51,10 @@ class _ChatScreenState extends State<ChatScreen> {
     await Future.delayed(const Duration(seconds: 2));
     chatList = Chats.fromJsonList(chats);
     setState(() => isLoad = false);
-
-    // setState(() {});
-
-    // setState(() => isLoad = true);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 

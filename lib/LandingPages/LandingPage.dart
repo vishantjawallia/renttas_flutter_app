@@ -4,17 +4,17 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../Wellcome/Landingmodel.dart';
-import '../Wellcome/LoginPage.dart';
+
 import '../Wellcome/LoginPageNew.dart';
 
-class landingpage extends StatefulWidget {
-  const landingpage({super.key});
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
 
   @override
-  State<landingpage> createState() => _landingpageState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class _landingpageState extends State<landingpage> {
+class _LandingPageState extends State<LandingPage> {
   List<SliderModel> slides = [];
   int currentIndex = 0;
   late PageController _controller;

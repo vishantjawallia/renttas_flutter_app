@@ -1,18 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
 
 import 'AddQutation.dart';
-import 'Dashboard.dart';
 
-class viewqutationmain extends StatefulWidget {
-  const viewqutationmain({super.key});
+class ViewQutationMain extends StatefulWidget {
+  const ViewQutationMain({super.key});
 
   @override
-  State<viewqutationmain> createState() => _viewqutationmainState();
+  State<ViewQutationMain> createState() => _ViewQutationMainState();
 }
 
-class _viewqutationmainState extends State<viewqutationmain> {
+class _ViewQutationMainState extends State<ViewQutationMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,16 +108,13 @@ class _viewqutationmainState extends State<viewqutationmain> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        // isExtended: true,
         backgroundColor: const Color(0xff54854C),
-        // backgroundColor: Colors.blue,
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const qutationview(),
           ),
         ),
-        // isExtended: true,
         child: const Icon(
           Icons.add,
           color: Colors.white,

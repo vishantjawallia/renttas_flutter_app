@@ -3,16 +3,16 @@
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-class mybusinesspage extends StatefulWidget {
-  const mybusinesspage({super.key});
+class MyBusinessPage extends StatefulWidget {
+  const MyBusinessPage({super.key});
 
   @override
-  State<mybusinesspage> createState() => _mybusinesspageState();
+  State<MyBusinessPage> createState() => _MyBusinessPageState();
 }
 
 String selectedcurrency = "Select Currency";
 
-class _mybusinesspageState extends State<mybusinesspage> {
+class _MyBusinessPageState extends State<MyBusinessPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

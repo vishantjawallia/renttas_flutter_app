@@ -6,7 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
-import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
+import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Const/Const.dart';

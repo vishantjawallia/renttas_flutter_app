@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Wellcome/LoginPageNew.dart';
-import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
+import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

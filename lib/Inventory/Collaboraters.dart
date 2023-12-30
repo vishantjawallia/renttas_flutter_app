@@ -2,19 +2,18 @@
 
 import 'package:flutter/material.dart';
 
-class collabratesview extends StatefulWidget {
-  const collabratesview({super.key});
+class CollabratesView extends StatefulWidget {
+  const CollabratesView({super.key});
 
   @override
-  State<collabratesview> createState() => _collabratesviewState();
+  State<CollabratesView> createState() => _CollabratesViewState();
 }
 
-class _collabratesviewState extends State<collabratesview> {
+class _CollabratesViewState extends State<CollabratesView> {
   bool valuefirst = false;
   bool valuesecond = false;
   @override
   Widget build(BuildContext context) {
-    //BestTutorSite _site = BestTutorSite.javatpoint;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -56,237 +55,235 @@ class _collabratesviewState extends State<collabratesview> {
         // ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"),
-                        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage("https://i.pinimg.com/originals/5c/87/b3/5c87b3c0466f830a480ba2214af2c73d.png"),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Ab@123 ',
+                          style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 2),
+                        Text(
+                          'Ab@gmail.com',
+                          style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                  const Column(
+                    children: [
+                      Text(
+                        'Owner',
+                        style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'Active',
+                        style: TextStyle(color: Color(0xff54854C), fontSize: 15, fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                          Text(
-                            'Ab@123 ',
-                            style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                          Checkbox(
+                            checkColor: Colors.white,
+                            activeColor: Colors.black,
+                            value: valuefirst,
+                            onChanged: (bool? value) => setState(() => valuefirst = value!),
                           ),
-                          SizedBox(height: 2),
-                          Text(
-                            'Ab@gmail.com',
+                          const Text(
+                            'Product',
                             style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
-                    ),
-                    const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                    const Column(
-                      children: [
-                        Text(
-                          'Owner',
-                          style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Active',
-                          style: TextStyle(color: Color(0xff54854C), fontSize: 15, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Checkbox(
-                              checkColor: Colors.white,
-                              activeColor: Colors.black,
-                              value: valuefirst,
-                              onChanged: (bool? value) => setState(() => valuefirst = value!),
-                            ),
-                            const Text(
-                              'Product',
-                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Checkbox(
-                              checkColor: Colors.white,
-                              activeColor: Colors.black,
-                              value: valuesecond,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  valuesecond = value!;
-                                });
-                              },
-                            ),
-                            const Text(
-                              'Store',
-                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Checkbox(
-                              checkColor: Colors.black,
-                              activeColor: Colors.black,
-                              value: valuefirst,
-                              onChanged: (bool? value) => setState(() => valuefirst = value!),
-                            ),
-                            const Text(
-                              'Report',
-                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Checkbox(
-                              checkColor: Colors.black,
-                              activeColor: Colors.black,
-                              value: valuefirst,
-                              onChanged: (bool? value) => setState(() => valuefirst = value!),
-                            ),
-                            const Text(
-                              'Qutation',
-                              style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.black,
-                                  value: valuefirst,
-                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
-                                ),
-                                const Text(
-                                  'Transaction',
-                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.black,
-                                  value: valuefirst,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      valuefirst = value!;
-                                    });
-                                  },
-                                ),
-                                const Text(
-                                  'PRate',
-                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.black,
-                                  value: valuefirst,
-                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
-                                ),
-                                const Text(
-                                  'Setting',
-                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.black,
-                                  value: valuefirst,
-                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
-                                ),
-                                const Text(
-                                  'Collaburate',
-                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.black,
-                                  value: valuefirst,
-                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
-                                ),
-                                const Text(
-                                  'SRate',
-                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Checkbox(
-                                  checkColor: Colors.black,
-                                  activeColor: Colors.black,
-                                  value: valuefirst,
-                                  onChanged: (bool? value) => setState(() => valuefirst = value!),
-                                ),
-                                const Text(
-                                  'Both',
-                                  style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                      Row(
+                        children: [
+                          Checkbox(
+                            checkColor: Colors.white,
+                            activeColor: Colors.black,
+                            value: valuesecond,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                valuesecond = value!;
+                              });
+                            },
+                          ),
+                          const Text(
+                            'Store',
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                            checkColor: Colors.black,
+                            activeColor: Colors.black,
+                            value: valuefirst,
+                            onChanged: (bool? value) => setState(() => valuefirst = value!),
+                          ),
+                          const Text(
+                            'Report',
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                            checkColor: Colors.black,
+                            activeColor: Colors.black,
+                            value: valuefirst,
+                            onChanged: (bool? value) => setState(() => valuefirst = value!),
+                          ),
+                          const Text(
+                            'Qutation',
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.black,
+                                activeColor: Colors.black,
+                                value: valuefirst,
+                                onChanged: (bool? value) => setState(() => valuefirst = value!),
+                              ),
+                              const Text(
+                                'Transaction',
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.black,
+                                activeColor: Colors.black,
+                                value: valuefirst,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    valuefirst = value!;
+                                  });
+                                },
+                              ),
+                              const Text(
+                                'PRate',
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.black,
+                                activeColor: Colors.black,
+                                value: valuefirst,
+                                onChanged: (bool? value) => setState(() => valuefirst = value!),
+                              ),
+                              const Text(
+                                'Setting',
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.black,
+                                activeColor: Colors.black,
+                                value: valuefirst,
+                                onChanged: (bool? value) => setState(() => valuefirst = value!),
+                              ),
+                              const Text(
+                                'Collaburate',
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.black,
+                                activeColor: Colors.black,
+                                value: valuefirst,
+                                onChanged: (bool? value) => setState(() => valuefirst = value!),
+                              ),
+                              const Text(
+                                'SRate',
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                checkColor: Colors.black,
+                                activeColor: Colors.black,
+                                value: valuefirst,
+                                onChanged: (bool? value) => setState(() => valuefirst = value!),
+                              ),
+                              const Text(
+                                'Both',
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

@@ -9,12 +9,12 @@ import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
 import 'CommertialDashboard.dart';
 
-class addnewcompanynew extends StatefulWidget {
+class AddNewCompanyNew extends StatefulWidget {
   String type, comapnyid, name;
-  addnewcompanynew({super.key, required this.type, required this.comapnyid, this.name = ""});
+  AddNewCompanyNew({super.key, required this.type, required this.comapnyid, this.name = ""});
 
   @override
-  State<addnewcompanynew> createState() => _addnewcompanynewState();
+  State<AddNewCompanyNew> createState() => _AddNewCompanyNewState();
 }
 
 var _formKey = GlobalKey<FormState>();
@@ -22,11 +22,10 @@ TextEditingController companynamecontroller = new TextEditingController();
 TextEditingController companyaddresscontroller = new TextEditingController();
 bool isloading = false;
 
-class _addnewcompanynewState extends State<addnewcompanynew> {
+class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
@@ -35,97 +34,6 @@ class _addnewcompanynewState extends State<addnewcompanynew> {
           style: const TextStyle(color: Colors.white),
         ),
       ),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.grey[300],
-
-      //   automaticallyImplyLeading: false,
-      //   actions: <Widget>[
-      //     Container(
-      //       child: Expanded(
-      //         child: Row(
-      //           children: [
-      //             SizedBox(
-      //               width: 10,
-      //             ),
-      //             InkWell(
-      //               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => commerialdashboard())),
-      //               child: Icon(
-      //                 Icons.arrow_back,
-      //                 size: 30,
-      //               ),
-      //             ),
-      //             Padding(
-      //               padding: const EdgeInsets.all(8.0),
-      //               child: Column(
-      //                 mainAxisAlignment: MainAxisAlignment.center,
-      //                 crossAxisAlignment: CrossAxisAlignment.start,
-      //                 children: [
-      //                   widget.type == "0" ? Text("Add New company") : Text("Edit company")
-      //                   // Text(
-      //                   //   "ab@gmail.com",
-      //                   //   style: TextStyle(fontWeight: FontWeight.bold),
-      //                   // )
-      //                 ],
-      //               ),
-      //             ),
-      //             // Flexible(fit: FlexFit.tight, child: SizedBox()),
-      //             // Padding(
-      //             //   padding: const EdgeInsets.all(8.0),
-      //             //   child: Icon(
-      //             //     Icons.search,
-      //             //     size: 24,
-      //             //   ),
-      //             // ),
-      //             // Padding(
-      //             //   padding: const EdgeInsets.all(8.0),
-      //             //   child: Container(
-      //             //       padding: EdgeInsets.all(10),
-      //             //       decoration: BoxDecoration(
-      //             //           color: Colors.white,
-      //             //           borderRadius: BorderRadius.circular(40)),
-      //             //       //alignment: Alignment.center,
-      //             //       child: Icon(
-      //             //         Icons.qr_code_scanner_outlined,
-      //             //         size: 20,
-      //             //       )
-      //             //     // Text(
-      //             //     //   'Premium',
-      //             //     //   style: TextStyle(
-      //             //     //     fontSize: 18,
-      //             //     //     fontWeight: FontWeight.bold,
-      //             //     //   ),
-      //             //     //   textAlign: TextAlign.center,
-      //             //     // ),
-      //             //   ),
-      //             // ),
-      //             // Padding(
-      //             //   padding: const EdgeInsets.all(8.0),
-      //             //   child: Container(
-      //             //       padding: EdgeInsets.all(10),
-      //             //       decoration: BoxDecoration(
-      //             //           color: Colors.white,
-      //             //           borderRadius: BorderRadius.circular(40)),
-      //             //       //alignment: Alignment.center,
-      //             //       child: Icon(
-      //             //         Icons.mobile_screen_share_rounded,
-      //             //         size: 20,
-      //             //       )
-      //             //     // Text(
-      //             //     //   'Premium',
-      //             //     //   style: TextStyle(
-      //             //     //     fontSize: 18,
-      //             //     //     fontWeight: FontWeight.bold,
-      //             //     //   ),
-      //             //     //   textAlign: TextAlign.center,
-      //             //     // ),
-      //             //   ),
-      //             // ),
-      //           ],
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -154,8 +62,14 @@ class _addnewcompanynewState extends State<addnewcompanynew> {
                           child: Center(
                             child: TextFormField(
                               controller: companynamecontroller,
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter company name'),
-                              style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                              decoration: new InputDecoration.collapsed(
+                                hintText: 'Enter company name',
+                              ),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Please enter your company name!';
@@ -281,7 +195,7 @@ class _addnewcompanynewState extends State<addnewcompanynew> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => commerialdashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
@@ -330,7 +244,7 @@ class _addnewcompanynewState extends State<addnewcompanynew> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => commerialdashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {

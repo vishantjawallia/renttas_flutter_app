@@ -29,6 +29,7 @@ import '../model/SubProperty.dart';
 import '../widgets/custom_ modal_progress_hud.dart';
 import 'AddSubproperties.dart';
 import 'LandlordAddProperty.dart';
+import 'LanlordProfile.dart';
 import 'lanlordProfile.dart';
 
 class LandloardDashBord extends StatefulWidget {
@@ -253,7 +254,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                   margin: EdgeInsets.only(left: 1),
                                   child: GestureDetector(
                                     onTap: () => Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context) => const lanlordProfile()),
+                                      MaterialPageRoute(builder: (context) => const LanlordProfile()),
                                     ),
                                     child: CircleAvatar(
                                       backgroundColor: Colors.white,
@@ -323,7 +324,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                               children: [
                                 InkWell(
                                   borderRadius: BorderRadius.circular(6),
-                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => notificationview())),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationView())),
                                   child: Container(
                                     padding: EdgeInsets.all(6),
                                     child: Icon(
@@ -335,7 +336,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                 SizedBox(width: 8, height: 0),
                                 InkWell(
                                   borderRadius: BorderRadius.circular(6),
-                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => premiumescreen())),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PremiumeScreen())),
                                   child: Container(
                                     padding: EdgeInsets.all(6),
                                     child: Row(

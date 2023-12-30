@@ -8,9 +8,7 @@ import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
-import 'Dashboard.dart';
 import 'Model/GetProductViewModel.dart';
-import 'NewProductAdd.dart';
 import 'NewProductAddNew.dart';
 
 class ProductViewNew extends StatefulWidget {
@@ -509,16 +507,9 @@ class _ProductViewNewState extends State<ProductViewNew> {
   }
 
   showAlertDialog(BuildContext context, String id) {
-    // set up the buttons
     Widget cancelButton = TextButton(
       child: const Text("Cancel"),
-      onPressed: () {
-        Navigator.pop(context);
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => const productview()));
-      },
+      onPressed: () => Navigator.pop(context),
     );
     Widget continueButton = TextButton(
       child: const Text("Continue"),
@@ -553,13 +544,14 @@ class _ProductViewNewState extends State<ProductViewNew> {
 
               if (resposne['respCode'].toString().contains("200")) {
                 Navigator.pop(context);
-                //getproduct();
                 print("Login Successfully Completed !!!!!!!!!!!!!!!!");
               } else {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Added failed.........'),
-                  backgroundColor: Colors.green,
-                ));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Added failed.........'),
+                    backgroundColor: Colors.green,
+                  ),
+                );
               }
             } else {
               print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -568,8 +560,6 @@ class _ProductViewNewState extends State<ProductViewNew> {
         } else {
           snack("Please select a store in store view", context);
         }
-
-        // Navigator.pop(context);
       },
     );
 
@@ -613,9 +603,7 @@ class _ProductViewNewState extends State<ProductViewNew> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -626,9 +614,7 @@ class _ProductViewNewState extends State<ProductViewNew> {
                     style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17),
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
                 InkWell(
                   onTap: () => Navigator.pop(context),
@@ -646,13 +632,9 @@ class _ProductViewNewState extends State<ProductViewNew> {
               ],
             ),
 
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const Divider(),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -665,19 +647,7 @@ class _ProductViewNewState extends State<ProductViewNew> {
                           "Store",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        // Flexible(fit: FlexFit.tight, child: SizedBox()),
-                        // Text(
-                        //   "IN",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
-                        // ),
-                        // Text(
-                        //   "OUT",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
-                        // ),
-                        // Text(
-                        //   "Current \nStock",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
-                        // ),
+                        SizedBox(width: 10),
                       ],
                     ),
                   ),
@@ -686,25 +656,16 @@ class _ProductViewNewState extends State<ProductViewNew> {
                   "IN",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
+                const SizedBox(width: 20),
                 const Text(
                   "OUT",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
+                const SizedBox(width: 20),
                 const Text(
                   "Current \nStock",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
-
-                // Text(
-                //   "1.00",
-                //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                // ),
               ],
             ),
             const SizedBox(
@@ -725,16 +686,6 @@ class _ProductViewNewState extends State<ProductViewNew> {
                         SizedBox(
                           width: 10,
                         ),
-                        // Flexible(fit: FlexFit.tight, child: SizedBox()),
-                        // Text(
-                        //   "IN",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
-                        // ),
-                        // Text(
-                        //   "OUT",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
-                        // ),
-                        // Text(
-                        //   "Current \nStock",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
-                        // ),
                       ],
                     ),
                   ),

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Commertial/NewContactadd.dart';
 
-
 import 'AddNewpropertytenant.dart';
 import 'Addfornewsale.dart';
 import 'AddnewProperty.dart';
@@ -12,7 +11,13 @@ import 'TapBarClasses/Leace.dart';
 
 class ViewCompanyDetails extends StatefulWidget {
   String id, name, address;
-  ViewCompanyDetails({Key? key, required this.id, required this.name, required this.address}) : super(key: key);
+
+  ViewCompanyDetails({
+    Key? key,
+    required this.id,
+    required this.name,
+    required this.address,
+  }) : super(key: key);
 
   @override
   State<ViewCompanyDetails> createState() => _ViewCompanyDetailsState();
@@ -49,15 +54,15 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
           Expanded(
             child: Row(
               children: [
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const commerialdashboard())),
-                  child: const Icon(
-                    Icons.arrow_back,
-                    size: 30,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CommerialDashboard(),
+                    ),
                   ),
+                  child: const Icon(Icons.arrow_back, size: 30),
                 ),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -66,10 +71,6 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("View Details"),
-                      // Text(
-                      //   "ab@gmail.com",
-                      //   style: TextStyle(fontWeight: FontWeight.bold),
-                      // )
                     ],
                   ),
                 ),
@@ -94,35 +95,28 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                     widget.name,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Text(
                     widget.address,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                   ),
-                  const SizedBox(
-                    height: 25,
-                  ),
+                  const SizedBox(height: 25),
                   TabBar(
-                    //dividerColor: Colors.grey,
                     controller: tabController,
                     isScrollable: true,
                     tabs: [
                       Container(
                         decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                        //  color: Colors.orange,
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: Tab(
-                            text: 'Leace',
-                            height: 30,
-                          ),
+                          child: Tab(text: 'Leace', height: 30),
                         ),
                       ),
                       Container(
-                        decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                        //  color: Colors.orange,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Tab(
@@ -132,8 +126,10 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                         ),
                       ),
                       Container(
-                        decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                        //  color: Colors.orange,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Tab(
@@ -143,8 +139,10 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                         ),
                       ),
                       Container(
-                        decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                        //  color: Colors.orange,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Tab(
@@ -154,8 +152,10 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                         ),
                       ),
                       Container(
-                        decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                        //  color: Colors.orange,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Tab(
@@ -171,7 +171,11 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                     child: TabBarView(
                       controller: tabController,
                       children: [
-                        leacepage(id: widget.id, name: widget.name, address: widget.address),
+                        LeacePage(
+                          id: widget.id,
+                          name: widget.name,
+                          address: widget.address,
+                        ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,9 +188,12 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                               children: [
                                 const Text("Property"),
                                 IconButton(
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const addnewproperty()));
-                                  },
+                                  onPressed: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const AddNewProperty(),
+                                    ),
+                                  ),
                                   icon: const Icon(
                                     Icons.add_box_rounded,
                                   ),
@@ -214,7 +221,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                 const Text("Sale"),
                                 IconButton(
                                   onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const addfornewsale()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AddForNewSale()));
                                   },
                                   icon: const Icon(
                                     Icons.add_box_rounded,
@@ -223,9 +230,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                 )
                               ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             const Center(child: Text("Forsale")),
                             const SizedBox(height: 20),
                           ],
@@ -234,17 +239,18 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text("Property tenant"),
                                 IconButton(
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const addnewpropertytenant()));
-                                  },
+                                  onPressed: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const AddNewPropertyTenant(),
+                                    ),
+                                  ),
                                   icon: const Icon(
                                     Icons.add_box_rounded,
                                   ),
@@ -252,12 +258,12 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                 )
                               ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Container(
-                              decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(25)),
-                              //    color: Colors.white,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[300],
+                                borderRadius: BorderRadius.circular(25),
+                              ),
                               height: 120,
                               alignment: Alignment.center,
                               child: Padding(
@@ -276,9 +282,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                                 "Co start group",
                                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                               ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
+                                              SizedBox(height: 10),
                                             ],
                                           ),
                                         ),
@@ -302,10 +306,6 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                             width: 10,
                                           ),
                                           InkWell(
-                                            // onTap: () => Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) => const newproductadd())),
                                             child: Container(
                                               decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
@@ -317,11 +317,8 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                               ),
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
+                                          const SizedBox(width: 10),
                                           InkWell(
-                                            //   onTap: () => showAlertDialog(context),
                                             child: Container(
                                               decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
@@ -340,8 +337,6 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                 ),
                               ),
                             ),
-
-                            // Center(child: Text("Leace")),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -349,16 +344,14 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text("Contact details"),
                                 IconButton(
                                   onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const newcontactadd()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NewContactAdd()));
                                   },
                                   icon: const Icon(
                                     Icons.add_box_rounded,
@@ -367,9 +360,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                 )
                               ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
@@ -386,16 +377,12 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                         "Mobile No : +91 7852463258",
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                       ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
+                                      const SizedBox(height: 10),
                                       const Text(
                                         "Email: abcd@gmail.com ",
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                       ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
+                                      const SizedBox(height: 5),
                                       const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                       Center(
                                         child: Row(
@@ -405,10 +392,6 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                               width: 10,
                                             ),
                                             InkWell(
-                                              // onTap: () => Navigator.push(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) => const newproductadd())),
                                               child: Container(
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
@@ -420,11 +403,8 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                                 ),
                                               ),
                                             ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
+                                            const SizedBox(width: 10),
                                             InkWell(
-                                              //   onTap: () => showAlertDialog(context),
                                               child: Container(
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
@@ -449,29 +429,13 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 100,
-                  )
+                  const SizedBox(height: 100)
                 ],
               ),
             ),
           ),
         ),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   // isExtended: true,
-      //   child: Icon(
-      //     Icons.add,
-      //     color: Colors.white,
-      //   ),
-      //   backgroundColor: Colors.blue,
-      //   onPressed: () {
-      //     log("message==="+tabController.previousIndex.toString());
-      //     // Navigator.push(context,
-      //     //     MaterialPageRoute(builder: (context) => const newleaseadd()));
-      //   },
-      // ),
     );
   }
 

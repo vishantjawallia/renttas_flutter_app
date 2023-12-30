@@ -6,8 +6,8 @@ import 'RestenewPassScreen.dart';
 
 class ResetPasswordOTPScreen extends StatefulWidget {
   static const String id = 'reset_password@gmail.com';
-  String email,otp;
-   ResetPasswordOTPScreen({super.key,required this.email, required this.otp});
+  String email, otp;
+  ResetPasswordOTPScreen({super.key, required this.email, required this.otp});
 
   @override
   State<ResetPasswordOTPScreen> createState() => _ResetPasswordScreenState();
@@ -25,7 +25,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
 
   @override
   Widget build(BuildContext context) {
-  ///  final String email = widget.email;
+    ///  final String email = widget.email;
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -34,8 +34,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
           height: size.height,
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.only(
-                left: 16.0, right: 16.0, top: 50.0, bottom: 25.0),
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 50.0, bottom: 25.0),
             child: Form(
               key: _key,
               child: Column(
@@ -63,14 +62,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  // const Text(
-                  //   'Email address',
-                  //   style: TextStyle(
-                  //     fontSize: 15,
-                  //     color: Colors.black,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,14 +80,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
                     child: CustomButton(
                       label: 'Verification',
                       color: Colors.black,
-                      onPressed: () async {
-                        // if (_key.currentState!.validate()) {}
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                     ResetNewpassScreen(emil: widget.email,)));
-                      },
+                      onPressed: () async => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResetNewpassScreen(
+                            emil: widget.email,
+                          ),
+                        ),
+                      ),
                       size: size,
                       textColor: Colors.white,
                       borderSide: BorderSide.none,
@@ -106,9 +97,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // const SizedBox(
-                      //   width: 40,
-                      // ),
                       const Text(
                         "Send code again ",
                         style: TextStyle(
@@ -117,12 +105,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => {
-                          // Navigator.of(context).push(
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const TypeUser()),
-                          //),
-                        },
+                        onTap: () {},
                         child: RichText(
                           text: const TextSpan(
                             text: "00:31",
@@ -168,12 +151,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
           maxLength: 1,
           decoration: InputDecoration(
             counter: const Offstage(),
-            enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: 2, color: Colors.black12),
-                borderRadius: BorderRadius.circular(12)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: 2, color: Colors.purple),
-                borderRadius: BorderRadius.circular(12)),
+            enabledBorder: OutlineInputBorder(borderSide: const BorderSide(width: 2, color: Colors.black12), borderRadius: BorderRadius.circular(12)),
+            focusedBorder: OutlineInputBorder(borderSide: const BorderSide(width: 2, color: Colors.purple), borderRadius: BorderRadius.circular(12)),
           ),
         ),
       ),
@@ -204,12 +183,7 @@ class CustomButton extends StatelessWidget {
       width: size.width,
       child: TextButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
-            backgroundColor: color,
-            side: borderSide,
-            // elevation: 1.5,
-            shadowColor: const Color(0xFF323247)),
+        style: TextButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17), backgroundColor: color, side: borderSide, shadowColor: const Color(0xFF323247)),
         child: Text(
           label,
           style: TextStyle(

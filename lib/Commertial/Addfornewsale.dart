@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-class addfornewsale extends StatefulWidget {
-  const addfornewsale({super.key});
+class AddForNewSale extends StatefulWidget {
+  const AddForNewSale({super.key});
 
   @override
-  State<addfornewsale> createState() => _addfornewsaleState();
+  State<AddForNewSale> createState() => _AddForNewSaleState();
 }
 
-class _addfornewsaleState extends State<addfornewsale> {
+class _AddForNewSaleState extends State<AddForNewSale> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

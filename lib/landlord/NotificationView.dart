@@ -9,14 +9,14 @@ import 'package:renttas_flutter_app/widgets/global_widget.dart';
 
 import '../main.dart';
 
-class notificationview extends StatefulWidget {
-  const notificationview({super.key});
+class NotificationView extends StatefulWidget {
+  const NotificationView({super.key});
 
   @override
-  State<notificationview> createState() => _notificationviewState();
+  State<NotificationView> createState() => _NotificationViewState();
 }
 
-class _notificationviewState extends State<notificationview> {
+class _NotificationViewState extends State<NotificationView> {
   @override
   void initState() {
     super.initState();
@@ -56,19 +56,11 @@ class _notificationviewState extends State<notificationview> {
       String token = value!;
     });
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xff54854C),
-          title: Text("notifcation".tr()),
-        ),
-        body: GlobalWidgets.notFound('notifcation'.tr())
-        // Center(
-        //   child: Column(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: const <Widget>[
-
-        //     ],
-        //   ),
-        // ),
-        );
+      appBar: AppBar(
+        backgroundColor: Color(0xff54854C),
+        title: Text("notifcation".tr()),
+      ),
+      body: GlobalWidgets.notFound('notifcation'.tr()),
+    );
   }
 }

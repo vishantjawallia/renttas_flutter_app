@@ -7,19 +7,19 @@ import 'package:http/http.dart' as http;
 import '../../Common/ApiUrl.dart';
 import '../NewLeaseadd.dart';
 
-class leacepage extends StatefulWidget {
+class LeacePage extends StatefulWidget {
   String id, name, address;
-  leacepage({super.key, required this.id, required this.name, required this.address});
+  LeacePage({super.key, required this.id, required this.name, required this.address});
 
   @override
-  State<leacepage> createState() => _leacepageState();
+  State<LeacePage> createState() => _LeacePageState();
 }
 
 List<Welcome> leasetlist = [];
 List<Floortype> fltp = [];
 bool isloaidng = false;
 
-class _leacepageState extends State<leacepage> {
+class _LeacePageState extends State<LeacePage> {
   @override
   void initState() {
     super.initState();
@@ -85,7 +85,7 @@ class _leacepageState extends State<leacepage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => newleaseadd(
+                          builder: (context) => NewLeaseAdd(
                                 companyid: widget.id,
                                 name: widget.name,
                                 address: widget.address,
@@ -211,13 +211,6 @@ class _leacepageState extends State<leacepage> {
     );
   }
 }
-
-//
-// [{"Id":"1","userid":"dsdsf","companyid":"dsdsf","categoryid":"lease","spaceuse":"dsdsf","availablespacemin":"dsdsf","availablespacemax":"lease","floortype":"[{'id':'1','name':'aaaa'}]","askingrentmin":"lease","askingrentmax":"lease","status":"lease"}]
-
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
 
 class Welcome {
   String id;

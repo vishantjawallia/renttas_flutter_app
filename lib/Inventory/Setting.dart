@@ -1,39 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
-
 import 'ChangePassword.dart';
-import 'Dashboard.dart';
 import 'MyBuisness.dart';
 
-class settingsview extends StatefulWidget {
-  const settingsview({super.key});
+class SettingsView extends StatefulWidget {
+  const SettingsView({super.key});
 
   @override
-  State<settingsview> createState() => _settingsviewState();
+  State<SettingsView> createState() => _SettingsViewState();
 }
 
-class _settingsviewState extends State<settingsview> {
+class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
         leading: const BackButton(),
         automaticallyImplyLeading: false,
-        // actions: <Widget>[
         title: const Text("Settings"),
-        // ],
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
         child: Column(
-          //  mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: Material(
@@ -45,7 +34,7 @@ class _settingsviewState extends State<settingsview> {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const mybusinesspage(),
+                      builder: (context) => const MyBusinessPage(),
                     ),
                   ),
                   child: Container(
@@ -58,13 +47,7 @@ class _settingsviewState extends State<settingsview> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)),
-                            child: const Icon(
-                              Icons.holiday_village,
-                              size: 30,
-                            )),
+                            height: 50, width: 50, decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)), child: const Icon(Icons.holiday_village, size: 30)),
                         const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
@@ -78,9 +61,7 @@ class _settingsviewState extends State<settingsview> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 18,
-            ),
+            const SizedBox(height: 18),
             Center(
               child: Material(
                 elevation: 5,
@@ -88,7 +69,12 @@ class _settingsviewState extends State<settingsview> {
                 borderRadius: BorderRadius.circular(20),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(20),
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const chnagepassword())),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ChnagePassword(),
+                    ),
+                  ),
                   child: Container(
                     height: 160,
                     width: double.infinity,
@@ -136,13 +122,11 @@ class _settingsviewState extends State<settingsview> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)),
-                            child: const Icon(
-                              Icons.delete,
-                              size: 30,
-                            )),
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)),
+                          child: const Icon(Icons.delete, size: 30),
+                        ),
                         const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
@@ -164,17 +148,9 @@ class _settingsviewState extends State<settingsview> {
 }
 
 showAlertDialog(BuildContext context) {
-  // set up the buttons
   Widget cancelButton = TextButton(
     child: const Text("Cancel"),
-    onPressed: () {
-      Navigator.pop(context);
-      // Navigator.pop(context);
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => const productview()));
-    },
+    onPressed: () => Navigator.pop(context),
   );
   Widget continueButton = TextButton(
     child: const Text("Continue"),
@@ -183,7 +159,6 @@ showAlertDialog(BuildContext context) {
     },
   );
 
-  // set up the AlertDialog
   AlertDialog alert = AlertDialog(
     title: const Text("Confirmation"),
     content: const Text("Are you sure want to delete ?"),

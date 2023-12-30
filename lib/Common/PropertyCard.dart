@@ -6,7 +6,8 @@ class PropertyCard extends StatelessWidget {
   final IconData icon;
   final Color color;
 
-  PropertyCard({
+  const PropertyCard({
+    super.key,
     required this.title,
     required this.description,
     required this.icon,

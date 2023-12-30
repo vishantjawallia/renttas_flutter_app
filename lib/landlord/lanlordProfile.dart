@@ -20,14 +20,14 @@ import 'package:store_redirect/store_redirect.dart';
 import '../MergeProperty/MergeProperty.dart';
 import '../chat_module/chat_screen.dart';
 
-class lanlordProfile extends StatefulWidget {
-  const lanlordProfile({Key? key}) : super(key: key);
+class LanlordProfile extends StatefulWidget {
+  const LanlordProfile({Key? key}) : super(key: key);
 
   @override
-  State<lanlordProfile> createState() => _lanlordProfileState();
+  State<LanlordProfile> createState() => _LanlordProfileState();
 }
 
-class _lanlordProfileState extends State<lanlordProfile> {
+class _LanlordProfileState extends State<LanlordProfile> {
   String selectedPropertyId = '';
   String selectedSubPropertyId = '';
   String userId = '';
@@ -247,7 +247,7 @@ class _lanlordProfileState extends State<lanlordProfile> {
                         width: double.infinity,
                         margin: const EdgeInsets.only(top: 12, left: 10),
                         child: GestureDetector(
-                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const languageswitchscreen())),
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LanguageSwitchScreen())),
                           child: Row(
                             children: [
                               const SizedBox(

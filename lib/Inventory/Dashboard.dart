@@ -107,7 +107,7 @@
 //                         onTap: () => Navigator.push(
 //                             context,
 //                             MaterialPageRoute(
-//                                 builder: (context) => const mybusinesspage())),
+//                                 builder: (context) => const MyBusinessPage())),
 //                         child: Container(
 //                             padding: EdgeInsets.all(10),
 //                             decoration: BoxDecoration(
@@ -403,7 +403,7 @@
 //                         onTap: () => Navigator.push(
 //                             context,
 //                             MaterialPageRoute(
-//                                 builder: (context) => const lowstock())),
+//                                 builder: (context) => const LowStock())),
 //                         child: Container(
 //                           height: 150,
 //                           width: 150,
@@ -487,7 +487,7 @@
 //                             onTap: () => Navigator.push(
 //                                 context,
 //                                 MaterialPageRoute(
-//                                     builder: (context) => const storeview())),
+//                                     builder: (context) => const StoreView())),
 //                             child: Container(
 //                               height: 70,
 //                               width: 150,

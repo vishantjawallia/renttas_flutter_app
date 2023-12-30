@@ -4,14 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Inventory/JoinBuisness.dart';
 
-class viewallbuisness extends StatefulWidget {
-  const viewallbuisness({super.key});
+class ViewAllBuisness extends StatefulWidget {
+  const ViewAllBuisness({super.key});
 
   @override
-  State<viewallbuisness> createState() => _viewallbuisnessState();
+  State<ViewAllBuisness> createState() => _ViewAllBuisnessState();
 }
 
-class _viewallbuisnessState extends State<viewallbuisness> {
+class _ViewAllBuisnessState extends State<ViewAllBuisness> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +75,7 @@ class _viewallbuisnessState extends State<viewallbuisness> {
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const joinbuisnesspage(),
+            builder: (context) => const JoinBuisnessPage(),
           ),
         ),
       ),

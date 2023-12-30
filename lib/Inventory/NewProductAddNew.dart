@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
-import 'ProductView.dart';
+
 import 'ProductViewNew.dart';
 
 class NewProductAddNew extends StatefulWidget {
@@ -164,36 +164,21 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  widget.type == "1" ? Text("Edit Product") : Text("New Product")
-                  // Text(
-                  //   "ab@gmail.com",
-                  //   style: TextStyle(fontWeight: FontWeight.bold),
-                  // )
-                ],
+                children: [widget.type == "1" ? Text("Edit Product") : Text("New Product")],
               ),
             ),
             Flexible(fit: FlexFit.tight, child: SizedBox()),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                  //alignment: Alignment.center,
-                  child: Icon(
-                    Icons.qr_code_scanner_outlined,
-                    size: 20,
-                    color: Color(0xff54854C),
-                  )
-                  // Text(
-                  //   'Premium',
-                  //   style: TextStyle(
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  //   textAlign: TextAlign.center,
-                  // ),
-                  ),
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
+                child: Icon(
+                  Icons.qr_code_scanner_outlined,
+                  size: 20,
+                  color: Color(0xff54854C),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

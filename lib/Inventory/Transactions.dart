@@ -1,20 +1,17 @@
 // ignore_for_file: sort_child_properties_last
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
 
-import 'Dashboard.dart';
 import 'Filtertransaction.dart';
 
-class viewtransactions extends StatefulWidget {
-  const viewtransactions({super.key});
+class ViewTransactions extends StatefulWidget {
+  const ViewTransactions({super.key});
 
   @override
-  State<viewtransactions> createState() => _viewtransactionsState();
+  State<ViewTransactions> createState() => _ViewTransactionsState();
 }
 
-class _viewtransactionsState extends State<viewtransactions> {
+class _ViewTransactionsState extends State<ViewTransactions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +36,7 @@ class _viewtransactionsState extends State<viewtransactions> {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const filtertransaction(),
+                  builder: (context) => const FilterTransaction(),
                 ),
               ),
               child: const Padding(
@@ -182,13 +179,13 @@ class _viewtransactionsState extends State<viewtransactions> {
               ),
             ),
             InkWell(
-              onTap: () => order_confirm(context),
+              onTap: () => orderConfirm(context),
               child: Material(
                 elevation: 5,
                 borderRadius: BorderRadius.circular(8),
                 color: Colors.white,
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   height: 95,
                   width: double.infinity,
                   child: const Row(
@@ -277,16 +274,14 @@ class _viewtransactionsState extends State<viewtransactions> {
           color: Colors.white,
         ),
         backgroundColor: const Color(0xff54854C),
-        // backgroundColor: Colors.blue,
-        onPressed: () {
-          //  _displayTextInputDialog(context);
-        },
+
+        onPressed: () {},
       ),
     );
   }
 }
 
-Future<dynamic> order_confirm(BuildContext context) {
+Future<dynamic> orderConfirm(BuildContext context) {
   return showModalBottomSheet(
     isScrollControlled: true,
     context: context,
@@ -388,7 +383,7 @@ Future<dynamic> order_confirm(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: const Row(
                     children: [
@@ -416,7 +411,7 @@ Future<dynamic> order_confirm(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: const Row(
                     children: [
@@ -438,22 +433,16 @@ Future<dynamic> order_confirm(BuildContext context) {
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           const Divider(),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           const Row(
             children: [
               Text(
                 "Remarkkk :",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              SizedBox(
-                width: 10,
-              ),
+              SizedBox(width: 10),
               Text("vvb "),
             ],
           )
@@ -464,16 +453,9 @@ Future<dynamic> order_confirm(BuildContext context) {
 }
 
 showAlertDialog(BuildContext context) {
-  // set up the buttons
   Widget cancelButton = TextButton(
     child: const Text("Cancel"),
-    onPressed: () {
-      // Navigator.pop(context);
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => const productview()));
-    },
+    onPressed: () {},
   );
   Widget continueButton = TextButton(
     child: const Text("Continue"),
@@ -482,7 +464,6 @@ showAlertDialog(BuildContext context) {
     },
   );
 
-  // set up the AlertDialog
   AlertDialog alert = AlertDialog(
     title: const Text("Confirmation"),
     content: const Text("Are you sure want to delete ?"),
@@ -492,7 +473,6 @@ showAlertDialog(BuildContext context) {
     ],
   );
 
-  // show the dialog
   showDialog(
     context: context,
     builder: (BuildContext context) {

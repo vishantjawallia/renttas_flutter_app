@@ -5,14 +5,14 @@ import 'package:renttas_flutter_app/Inventory/NewItem.dart';
 
 import 'Filtertransaction.dart';
 
-class additem extends StatefulWidget {
-  const additem({super.key});
+class AddItem extends StatefulWidget {
+  const AddItem({super.key});
 
   @override
-  State<additem> createState() => _additemState();
+  State<AddItem> createState() => _AddItemState();
 }
 
-class _additemState extends State<additem> {
+class _AddItemState extends State<AddItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _additemState extends State<additem> {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const filtertransaction(),
+                  builder: (context) => const FilterTransaction(),
                 ),
               ),
               child: Padding(
@@ -57,7 +57,7 @@ class _additemState extends State<additem> {
                 color: Colors.white,
                 elevation: 5,
                 child: InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const newitem())),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const NewItem())),
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     height: 70,

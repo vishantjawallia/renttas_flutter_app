@@ -4,19 +4,18 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:renttas_flutter_app/Inventory/DashboardNew.dart';
+
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../Common/ApiUrl.dart';
-import 'Dashboard.dart';
 import 'Model/GetStoreModel.dart';
 
-class storeview extends StatefulWidget {
-  const storeview({super.key});
+class StoreView extends StatefulWidget {
+  const StoreView({super.key});
 
   @override
-  State<storeview> createState() => _storeviewState();
+  State<StoreView> createState() => _StoreViewState();
 }
 
 TextEditingController storenamecontroller = new TextEditingController();
@@ -25,7 +24,7 @@ bool isloaidng = false;
 bool selectedone = false;
 String id = "1";
 
-class _storeviewState extends State<storeview> {
+class _StoreViewState extends State<StoreView> {
   void handleClick(String value, String id) {
     switch (value) {
       case 'Export':
@@ -156,35 +155,22 @@ class _storeviewState extends State<storeview> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-
         automaticallyImplyLeading: false,
-        leading: BackButton(),
-        title:
-            // <Widget>[
-            Row(
+        leading: const BackButton(),
+        title: Row(
           children: [
-            Text("Stores"),
+            const Text("Stores"),
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                  //alignment: Alignment.center,
                   child: const Icon(
                     Icons.mobile_screen_share_rounded,
                     size: 20,
-                    color: const Color(0xff54854C),
-                  )
-                  // Text(
-                  //   'Premium',
-                  //   style: TextStyle(
-                  //     fontSize: 18,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  //   textAlign: TextAlign.center,
-                  // ),
-                  ),
+                    color: Color(0xff54854C),
+                  )),
             ),
           ],
         ),
@@ -193,11 +179,13 @@ class _storeviewState extends State<storeview> {
       body: isloaidng == true
           ? const Center(
               child: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: CircularProgressIndicator(
-                    color: Color(0xff54854C),
-                  )))
+                height: 60,
+                width: 60,
+                child: CircularProgressIndicator(
+                  color: Color(0xff54854C),
+                ),
+              ),
+            )
           : storelist.isEmpty
               ? GlobalWidgets.notFound('Store')
               : ListView.builder(
@@ -276,8 +264,8 @@ class _storeviewState extends State<storeview> {
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Color(0xff54854C),
-        // backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xff54854C),
+
         onPressed: () {
           _displayTextInputDialog(context);
         },
@@ -335,60 +323,57 @@ class _storeviewState extends State<storeview> {
               ],
             ),
           ),
-          // TextField(
-          //   controller: _textFieldController,
-          //   decoration: InputDecoration(hintText: "Text Field fdffin Dialog"),
-          // ),
           actions: <Widget>[
             Center(
               child: TextButton(
-                  child: const Text(
-                    'Save',
-                    style: TextStyle(color: Colors.white),
+                child: const Text(
+                  'Save',
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(
+                    Color(0xff54854C),
                   ),
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                      const Color(0xff54854C),
-                    ),
-                  ),
-                  onPressed: () async {
-                    setState(() {
-                      isloaidng = true;
-                    });
-                    SharedPreferences logindata = await SharedPreferences.getInstance();
-                    String? userid = logindata.getString("userId");
-                    log("userid in add compnay===" + userid.toString());
+                ),
+                onPressed: () async {
+                  setState(() {
+                    isloaidng = true;
+                  });
+                  SharedPreferences logindata = await SharedPreferences.getInstance();
+                  String? userid = logindata.getString("userId");
+                  log("userid in add compnay===" + userid.toString());
 
-                    Map data = {
-                      'userid': userid,
-                      'storename': storenamecontroller.text,
-                    };
-                    final headerss = {
-                      'Content-Type': 'application/json',
-                    };
-                    print(data.toString());
-                    final response = await http.post(
-                      Uri.parse(ApiUrl.addstore),
-                      headers: headerss,
-                      body: jsonEncode(data),
-                    );
-                    setState(() {
-                      isloaidng = false;
-                    });
-                    print(response.body);
-                    if (response.statusCode == 200) {
-                      Map<String, dynamic> resposne = jsonDecode(response.body);
+                  Map data = {
+                    'userid': userid,
+                    'storename': storenamecontroller.text,
+                  };
+                  final headerss = {
+                    'Content-Type': 'application/json',
+                  };
+                  print(data.toString());
+                  final response = await http.post(
+                    Uri.parse(ApiUrl.addstore),
+                    headers: headerss,
+                    body: jsonEncode(data),
+                  );
+                  setState(() {
+                    isloaidng = false;
+                  });
+                  print(response.body);
+                  if (response.statusCode == 200) {
+                    Map<String, dynamic> resposne = jsonDecode(response.body);
 
-                      if (resposne['respCode'].toString().contains("200")) {
-                        Navigator.pop(context);
-                        getstores();
+                    if (resposne['respCode'].toString().contains("200")) {
+                      Navigator.pop(context);
+                      getstores();
 
-                        print("Login Successfully Completed !!!!!!!!!!!!!!!!");
-                      } else {
-                        print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                      }
+                      print("Login Successfully Completed !!!!!!!!!!!!!!!!");
+                    } else {
+                      print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     }
-                  }),
+                  }
+                },
+              ),
             )
           ],
         );
