@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, void_checks
+// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, void_checks, prefer_const_constructors_in_immutables
 
 import 'dart:developer';
 
@@ -16,7 +16,7 @@ import 'LandloardDashBord.dart';
 
 class AddSubproperties extends StatefulWidget {
   final selectedId;
-  AddSubproperties({required this.selectedId});
+  AddSubproperties({super.key, required this.selectedId});
 
   @override
   State<AddSubproperties> createState() => _AddSubpropertiesState();
@@ -25,12 +25,9 @@ class AddSubproperties extends StatefulWidget {
 class _AddSubpropertiesState extends State<AddSubproperties> {
   TextEditingController subPropertyController = TextEditingController();
   bool isLoading = false;
-  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final screenWidth = mediaQuery.size.width;
-    final screenHeight = mediaQuery.size.height;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
@@ -40,18 +37,6 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
           "add_room".tr(),
           // 'Add Room',
         ),
-        // backgroundColor: Colors.white,
-        // elevation: 0,
-        // leading: IconButton(
-        //   onPressed: () => Navigator.push(
-        //     context,
-        //     MaterialPageRoute(builder: (context) => const LandloardDashBord()),
-        //   ),
-        //   icon: const Icon(
-        //     Icons.arrow_back,
-        //     color: Colors.black,
-        //   ),
-        // ),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -60,11 +45,11 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
           children: [
             const SizedBox(height: 40),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "add_room".tr() + ":-",
                 // 'Add Room:-',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
                 ),
@@ -113,40 +98,6 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   width: double.infinity,
-                //   height: screenHeight * 0.06,
-                //   child: ElevatedButton(
-                //     style: ElevatedButton.styleFrom(
-                //       backgroundColor: const Color.fromARGB(255, 76, 16, 181),
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(9.0),
-                //       ),
-                //     ),
-                //     onPressed: isLoading
-                //         ? null
-                //         : () {
-                //             final isValid = _formKey.currentState!.validate();
-                //             if (!isValid) {
-                //               return;
-                //             }
-                //             _formKey.currentState!.save();
-
-                //             addSubProperty(widget.selectedId, subPropertyController.text);
-                //           },
-                //     child: isLoading
-                //         ? const CircularProgressIndicator(
-                //             color: Color(0xff54854C),
-                //           )
-                //         : const Text(
-                //             'ADD PROPERTY',
-                //             style: TextStyle(
-                //               fontSize: 18,
-                //               fontWeight: FontWeight.bold,
-                //             ),
-                //           ),
-                //   ),
-                // ),
               ],
             ),
           ],

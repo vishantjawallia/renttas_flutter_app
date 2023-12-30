@@ -6,7 +6,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class GlobalWidgets {
-  // toast
   static toast(value, {Color? color, int? sec}) {
     return BotToast.showText(
       text: value,
@@ -21,20 +20,6 @@ class GlobalWidgets {
   static notFound(
     String value,
   ) {
-    // return Flexible(
-    //   fit: FlexFit.tight,
-    //   child: Padding(
-    //     padding: const EdgeInsets.only(bottom: 50),
-    //     child: Text(
-    //       "$value not found !",
-    //       style: const TextStyle(
-    //         color: Colors.grey,
-    //         fontSize: 18,
-    //         fontWeight: FontWeight.w500,
-    //       ),
-    //     ),
-    //   ),
-    // );
     return Container(
       alignment: Alignment.center,
       child: Column(
@@ -59,7 +44,6 @@ class GlobalWidgets {
   }
 
   static loading() {
-    // ignore: prefer_const_constructors
     return Container(
       alignment: Alignment.center,
       child: const Column(

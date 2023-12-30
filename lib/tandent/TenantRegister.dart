@@ -16,7 +16,6 @@ import 'package:pinput/pinput.dart';
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Wellcome/LoginPage.dart';
 import '../Wellcome/LoginPageNew.dart';
 import '../model/userModel.dart';
 import 'Tenantdashbord.dart';
@@ -72,8 +71,8 @@ class _TenantRegisterState extends State<TenantRegister> {
   void _toggleObscured() {
     setState(() {
       _obscured = !_obscured;
-      if (textFieldFocusNode.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
-      textFieldFocusNode.canRequestFocus = false; // Prevents focus if tap on eye
+      if (textFieldFocusNode.hasPrimaryFocus) return;
+      textFieldFocusNode.canRequestFocus = false;
     });
   }
 
@@ -83,8 +82,8 @@ class _TenantRegisterState extends State<TenantRegister> {
   void _toggleObscuredconfirm() {
     setState(() {
       _obscuredconfirm = !_obscuredconfirm;
-      if (textFieldFocusNodeconfirm.hasPrimaryFocus) return; // If focus is on text field, dont unfocus
-      textFieldFocusNodeconfirm.canRequestFocus = false; // Prevents focus if tap on eye
+      if (textFieldFocusNodeconfirm.hasPrimaryFocus) return;
+      textFieldFocusNodeconfirm.canRequestFocus = false;
     });
   }
 
@@ -124,7 +123,6 @@ class _TenantRegisterState extends State<TenantRegister> {
                       initialCountryCode: 'IN',
                       onChanged: (phone) {
                         _onPhoneNumberChanged(phone.completeNumber);
-
                         setState(() {
                           phoneNumber = phone.completeNumber;
                           countryCode = phone.countryCode;
@@ -170,75 +168,47 @@ class _TenantRegisterState extends State<TenantRegister> {
                 return null;
               },
             ),
-            // TextFormField(
-            //   controller: districtController,
-            //   decoration: const InputDecoration(
-            //     icon: Icon(Icons.area_chart),
-            //     hintText: 'Enter your District',
-            //     labelText: 'District *',
-            //   ),
-            // ),
-            // TextFormField(
-            //   controller: blockController,
-            //   decoration: const InputDecoration(
-            //     icon: Icon(Icons.add_business),
-            //     hintText: 'Enter your Block',
-            //     labelText: 'Block *',
-            //   ),
-            // ),
-            // TextFormField(
-            //   controller: pincodeController,
-            //   keyboardType: TextInputType.number,
-            //   decoration: const InputDecoration(
-            //     icon: Icon(Icons.pin),
-            //     hintText: 'Enter your Pincode',
-            //     labelText: 'Pincode *',
-            //   ),
-            // ),
             TextFormField(
-                controller: passwordController,
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: _obscured,
-                focusNode: textFieldFocusNode,
-                decoration: InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
-                  icon: Icon(Icons.lock, size: 25),
-                  hintText: 'Enter your Password',
-                  labelText: 'Password', // Needed for adding a fill color
-                  isDense: true, // Reduces height a bit
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: GestureDetector(
-                      onTap: _toggleObscured,
-                      child: Icon(
-                        _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
-                        size: 24,
-                      ),
+              controller: passwordController,
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: _obscured,
+              focusNode: textFieldFocusNode,
+              decoration: InputDecoration(
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+                icon: Icon(Icons.lock, size: 25),
+                hintText: 'Enter your Password',
+                labelText: 'Password',
+                isDense: true,
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: GestureDetector(
+                    onTap: _toggleObscured,
+                    child: Icon(
+                      _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                      size: 24,
                     ),
                   ),
                 ),
-                onChanged: (value) {
-                  _password = value;
-                },
-                validator: (value) {
-                  if (value != null && value.isEmpty) {
-                    return 'Password is required please enter';
-                  }
-                  // you can check password length and specifications
-
-                  return null;
-                }),
+              ),
+              onChanged: (value) => _password = value,
+              validator: (value) {
+                if (value != null && value.isEmpty) {
+                  return 'Password is required please enter';
+                }
+                return null;
+              },
+            ),
             TextFormField(
                 controller: confirmPassword,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: _obscuredconfirm,
                 focusNode: textFieldFocusNodeconfirm,
                 decoration: InputDecoration(
-                  floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
                   icon: Icon(Icons.lock, size: 25),
                   hintText: 'Enter your Confirm-Password',
                   labelText: 'Confirm-Password',
-                  isDense: true, // Reduces height a bit
+                  isDense: true,
                   suffixIcon: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                     child: GestureDetector(
@@ -276,50 +246,7 @@ class _TenantRegisterState extends State<TenantRegister> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    // do the API call here
-                    //
-                    // print("sssss===" + phoneNumber);
-                    //
-                    // if (phoneNumber.length == 13) {
-                    //   setState(() {
-                    //     isLoading = true;
-                    //   });
-                    //   await _auth.verifyPhoneNumber(
-                    //     phoneNumber: phoneNumber.trim(),
-                    //     verificationCompleted: (phoneAuthCredential) async {
-                    //       setState(() {
-                    //         isLoading = false;
-                    //       });
-                    //     },
-                    //     verificationFailed: (verificationFailed) async {
-                    //       setState(() {
-                    //         isLoading = false;
-                    //       });
-                    //       print("verificationFailed message" +
-                    //           verificationFailed.message.toString());
-                    //     },
-                    //     codeSent: (verificationId, resendingToken) async {
-                    //       setState(() {
-                    //         isLoading = false;
-                    //         currentState =
-                    //             MobileVerificationState.SHOW_OTP_FORM_STATE;
-                    //         this.verificationId = verificationId;
-                    //       });
-                    //     },
-                    //     codeAutoRetrievalTimeout: (verificationId) async {},
-                    //   );
-                    // }
-
                     loadRegister(landlordName.text, emailController.text, phoneNumber, addressController.text, passwordController.text, confirmPassword.text, currency);
-
-                    // loadRegister(
-                    //     landlordName.text,
-                    //     emailController.text,
-                    //     phoneNumber,
-                    //     addressController.text,
-                    //     passwordController.text,
-                    //     confirmPassword.text,
-                    //     currency);
                   }
                 },
                 child: isLoading
@@ -371,24 +298,17 @@ class _TenantRegisterState extends State<TenantRegister> {
       });
       print("message======" + e.message.toString());
       snack(e.message.toString(), context);
-      // _scaffoldKey.currentState!
-      //     .showSnackBar(SnackBar(content: Text(e.message)));
     }
   }
 
   getOtpFormWidget(context) {
     return Column(
       children: [
-        // Spacer(),
-        // getloginotpwidget(context),
-        // Spacer(),
         Text(
           'ENTER OTP.',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         Center(
           child: Pinput(
             length: 6,
@@ -401,32 +321,35 @@ class _TenantRegisterState extends State<TenantRegister> {
             },
           ),
         ),
-        SizedBox(
-          height: 16,
-        ),
+        SizedBox(height: 16),
         ElevatedButton(
-            onPressed: () async {
-              log("inside onpress" + otp.toString());
-              PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otp.toString());
-
-              signInWithPhoneAuthCredential(phoneAuthCredential);
-
-              //    Navigator.pushReplacement(
-              // context, MaterialPageRoute(builder: (context) => dashboard()));
-            },
-            child: Text(
-              "VERIFY",
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          onPressed: () async {
+            log("inside onpress" + otp.toString());
+            PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
+              verificationId: verificationId,
+              smsCode: otp.toString(),
+            );
+            signInWithPhoneAuthCredential(phoneAuthCredential);
+          },
+          child: Text(
+            "VERIFY",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          style: ButtonStyle(
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            backgroundColor: MaterialStateProperty.all<Color>(
+              Colors.black38,
             ),
-            style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.black38,
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero,
+                side: BorderSide(
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.zero, side: BorderSide(color: Color.fromARGB(255, 0, 0, 0)))))),
-        // Spacer(
-        //   flex: 2,
-        // ),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -462,26 +385,21 @@ class _TenantRegisterState extends State<TenantRegister> {
         ),
       ),
       body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Container(
-            width: double.infinity,
-            color: Colors.white,
-            // decoration: BoxDecoration(
-            //     gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            //       Color.fromARGB(255, 192, 222, 227),
-            //       Color.fromARGB(255, 235, 230, 230),
-            //       Color.fromARGB(255, 242, 241, 239)
-            //     ])),
-            child: showLoading
-                ? Center(
-                    child: const CircularProgressIndicator(
-                    color: Color(0xff54854C),
-                  ))
-                : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
-                    ? getMobileFormWidget(context)
-                    : getOtpFormWidget(context),
-            padding: const EdgeInsets.all(16),
-          )),
+        physics: const BouncingScrollPhysics(),
+        child: Container(
+          width: double.infinity,
+          color: Colors.white,
+          child: showLoading
+              ? Center(
+                  child: const CircularProgressIndicator(
+                  color: Color(0xff54854C),
+                ))
+              : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
+                  ? getMobileFormWidget(context)
+                  : getOtpFormWidget(context),
+          padding: const EdgeInsets.all(16),
+        ),
+      ),
     );
   }
 
@@ -504,9 +422,6 @@ class _TenantRegisterState extends State<TenantRegister> {
     if (kDebugMode) {
       print("respi n tenant==" + response.body);
     }
-
-    // 232689546
-    //7032566568
 
     Map<String, dynamic> data = jsonDecode(response.body);
     final Map<String, dynamic> jsonData = jsonDecode(response.body);
@@ -538,17 +453,8 @@ class _TenantRegisterState extends State<TenantRegister> {
         prefs.setString("name", name);
         prefs.setBool("login", true);
         prefs.setString("sw", "0");
-        // otprecieved = data['emial_otp'] == null
-        //     ? ""
-        //     : otprecieved = data['emial_otp'].toString();
-        // // successDilog(data['msg']);
-        // _showImageAlertDialog(context, otprecieved);
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Tenantdashbord()));
       }
-      // RentalCustomAlert.showSuccessAlert(
-      //     context, "Register Successfully", "Let's Login");
-      // Navigator.of(context)
-      //     .push(MaterialPageRoute(builder: (context) => const LandlordLogin()));
     } else {
       faliedDilog(data['message']);
     }
@@ -599,35 +505,26 @@ void _showImageAlertDialog(BuildContext context, String otp) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        //  title: Text('Image Alert Dialog'), ̏
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Image.asset(
-              'assets/images/renttas.png', // Replace with your image path
-              width: 150, // Adjust image width as needed
+              'assets/images/renttas.png',
+              width: 150,
             ),
-            //   SizedBox(height: 2), // Adjust spacing as needed
             Text('Enter 4 digit OTP here'),
           ],
         ),
         actions: <Widget>[
           OTPTextField(
-              //       controller: otpController,
               length: 4,
               width: MediaQuery.of(context).size.width,
               textFieldAlignment: MainAxisAlignment.spaceAround,
               fieldWidth: 45,
               fieldStyle: FieldStyle.box,
-              //     outlineBorderRadius: 15,
               style: TextStyle(fontSize: 17),
-              onChanged: (pin) {
-                //  print("Changed: " + pin);
-              },
-              onCompleted: (pin) {
-                pinnumer = pin;
-                // print("Completed: " + pin);
-              }),
+              onChanged: (pin) {},
+              onCompleted: (pin) => pinnumer = pin),
           SizedBox(
             height: 10,
           ),
@@ -641,7 +538,6 @@ void _showImageAlertDialog(BuildContext context, String otp) {
                   snack("Enterd otp is incorrect", context);
                   Navigator.of(context).pop();
                 }
-                // Close the AlertDialog
               },
               child: Text('Verify OTP'),
             ),

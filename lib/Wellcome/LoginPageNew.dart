@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_unnecessary_containers, curly_braces_in_flow_control_structures
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_unnecessary_containers, curly_braces_in_flow_control_structures, avoid_print
 
 import 'dart:convert';
 import 'dart:developer';
@@ -69,23 +69,11 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
         child: GestureDetector(
           child: Stack(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: double.infinity,
                 width: double.infinity,
-                // decoration: const BoxDecoration(
-                //   gradient: LinearGradient(
-                //     begin: Alignment.topCenter,
-                //     end: Alignment.bottomCenter,
-                //     colors: [
-                //       // Colors.black,
-                //       // Colors.yellow,
-                //       // Colors.green,
-                //     ],
-                //   ),
-                // ),
                 child: SingleChildScrollView(
                   physics: BouncingScrollPhysics(),
-                  // padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -101,7 +89,6 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                       const SizedBox(height: 20),
                       Text(
                         "sign_in".tr(),
-                        // 'Sign In',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 40,
@@ -114,7 +101,6 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: Color(0xffF8F3E7),
-                          // border: Border.all(color: Color(0xffF5D580)),
                         ),
                         child: TextField(
                           controller: landlordEmail,
@@ -138,7 +124,6 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: Color(0xffEFE3E3),
-                          // border: Border.all(color: Color(0xffF5A0A0)),
                         ),
                         child: TextField(
                           controller: landlordPassword,
@@ -150,15 +135,15 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           ],
                           style: const TextStyle(color: Colors.black87),
                           decoration: InputDecoration(
-                            floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
                             hintText: 'password'.tr(),
                             hintStyle: TextStyle(color: Colors.black38),
-                            filled: true, // Needed for adding a fill color
+                            filled: true,
                             fillColor: Colors.transparent,
-                            isDense: true, // Reduces height a bit
+                            isDense: true,
                             border: OutlineInputBorder(
-                              borderSide: BorderSide.none, // No border
-                              borderRadius: BorderRadius.circular(12), // Apply corner radius
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             prefixIcon: Icon(
                               Icons.lock_rounded,
@@ -183,7 +168,6 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                       Container(
                         alignment: Alignment.centerRight,
                         margin: EdgeInsets.only(right: 20),
-                        // color: Colors.white,
                         child: InkWell(
                           onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ResetPasswordScreen())),
                           child: Container(
@@ -232,12 +216,8 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          // const SizedBox(
-                          //   width: 40,
-                          // ),
                           Text(
                             "dont_have_account".tr(),
-                            // "Don't Have An Account?",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -291,20 +271,6 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
       'Content-Type': 'application/json',
     };
     final response = await http.post(url, headers: headers, body: jsonEncode(requestData));
-
-    // final request = await http.Request('GET', Uri.parse(ApiUrl.Login));
-    // request.body = jsonEncode({
-    //   "email": ,
-    //   "password":
-    // });
-    //
-    // // Send the request.
-    // final response = await request.send();
-    //
-    // // Get the response body.
-    // final stream = response.stream;
-    // final body = await stream.bytesToString();
-    // print(body);
 
     print("responsedooo===" + response.body);
     final Map<String, dynamic> jsonData = jsonDecode(response.body);
@@ -382,10 +348,6 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
     );
   }
 
-// Future<void> _storeEmailAndPassword(String email, String password) async {
-//   await storage.write(key: "emailKey", value: email);
-//   await storage.write(key: "passwordKey", value: password);
-// }
   Future<void> shareData(String userId, String name, String email, String phone, String currency, String roleId) async {
     print("inshared");
     SharedPreferences preferences = await SharedPreferences.getInstance();

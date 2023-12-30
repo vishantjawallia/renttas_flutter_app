@@ -11,9 +11,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
-  'high_importance_channel', // id
-  'High Importance Notifications', // title
-  // 'This channel is used for important notifications.', // description
+  'high_importance_channel',
+  'High Importance Notifications',
   importance: Importance.high,
   playSound: true,
 );
@@ -26,16 +25,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('A bg message just showed up :  ${message.messageId}');
   print("abb===" + message.data.toString());
   flutterLocalNotificationsPlugin.show(
-      message.data.hashCode,
-      message.data['title'],
-      message.data['body'],
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          // channel.description,
-        ),
-      ));
+    message.data.hashCode,
+    message.data['title'],
+    message.data['body'],
+    NotificationDetails(
+      android: AndroidNotificationDetails(
+        channel.id,
+        channel.name,
+      ),
+    ),
+  );
 }
 
 Future<void> main() async {
@@ -52,10 +51,6 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true);
-  // FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-
-  // String? token = await FirebaseMessaging.instance.getToken();
-  // print("FCM tocken====" + token!);
   runApp(
     EasyLocalization(
       path: 'assets/transulation',
@@ -67,8 +62,6 @@ Future<void> main() async {
   );
 }
 
-// <key>REVERSED_CLIENT_ID</key>
-// <string>com.googleusercontent.app-1-115824667190-ios-10168919e60d7f9aa90697</string>
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -88,9 +81,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// // ignore: non_constant_identifier_names
-
-
-
-

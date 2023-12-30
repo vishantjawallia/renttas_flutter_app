@@ -63,7 +63,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
               child: Text('Cancel'),
               onPressed: () {
                 shouldExit = false;
-                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).pop();
               },
             ),
             TextButton(
@@ -71,7 +71,6 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
               onPressed: () {
                 shouldExit = true;
                 exit(0);
-                // Navigator.of(context).pop(); // Close the dialog
               },
             ),
           ],
@@ -90,7 +89,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
         appBar: PreferredSize(
           preferredSize: Size(double.infinity, 130),
           child: AppBar(
-            automaticallyImplyLeading: false, // Remove the back button
+            automaticallyImplyLeading: false,
             backgroundColor: Color(0xff54854C),
             title: Column(
               children: <Widget>[
@@ -100,7 +99,6 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // SizedBox(width: 10),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
@@ -115,9 +113,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                             backgroundColor: Colors.white,
                             radius: 20,
                             child: Text(
-                              // 'A',
                               name.isEmpty ? "A" : name.substring(0, 1).toUpperCase(),
-                              //  name.toUpperCase(),
                               style: TextStyle(
                                 fontSize: 22,
                                 color: Color(0xff54854C),
@@ -146,7 +142,6 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                   bottom: BorderSide(color: Colors.white, width: 4.0),
                 ),
               ),
-              // labelColor: const Color(0xff54854C),
               unselectedLabelColor: Colors.white,
               controller: _tabController,
               tabs: const [
