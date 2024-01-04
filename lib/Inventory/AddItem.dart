@@ -57,7 +57,12 @@ class _AddItemState extends State<AddItem> {
                 color: Colors.white,
                 elevation: 5,
                 child: InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const NewItem())),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NewItem(),
+                    ),
+                  ),
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     height: 70,

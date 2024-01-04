@@ -12,7 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../Common/PrivacyPolicy.dart';
 import '../Common/TermCondition.dart';
-import '../LiveChat/AuthGate.dart';
+
 // import '../MergeProperty/MergeProperty.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:store_redirect/store_redirect.dart';

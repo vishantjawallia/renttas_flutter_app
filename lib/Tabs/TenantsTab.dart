@@ -14,7 +14,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../model/TendentModel.dart';
 
 class TenantsTab extends StatefulWidget {
-  const TenantsTab({Key? key}) : super(key: key);
+  const TenantsTab({
+    super.key,
+  });
 
   @override
   State<TenantsTab> createState() => _TenantsTabState();
@@ -30,15 +32,15 @@ class _TenantsTabState extends State<TenantsTab> {
   String selectedCode = '';
   List<TendentModel> tandent = [];
   String selectedPropertyId = '';
-  String selectedSubProptyId = '';
+  String selectedSubPropertyId = '';
 
   Future<void> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       selectedPropertyId = prefs.getString('selectedPropertyId') ?? '';
-      selectedSubProptyId = prefs.getString('selectedSubProptyId') ?? '';
-      loadTenants(selectedPropertyId, selectedSubProptyId);
+      selectedSubPropertyId = prefs.getString('selectedSubPropertyId') ?? '';
     });
+    await loadTenants(selectedPropertyId, selectedSubPropertyId);
   }
 
   @override
@@ -120,9 +122,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        // SizedBox(width: 10),
                                         Container(
-                                          width: 140,
                                           alignment: Alignment.centerRight,
                                           child: Text(
                                             tenant.tenantName,
@@ -279,7 +279,10 @@ class _TenantsTabState extends State<TenantsTab> {
       isLoading = true;
     });
     final url = Uri.parse(ApiUrl.getTendentByIds);
-    final Map<String, dynamic> requestData = {"propertyId": propertyCode, "subPropertyId": subProperty};
+    final Map<String, dynamic> requestData = {
+      "propertyId": propertyCode,
+      "subPropertyId": subProperty,
+    };
 
     final headers = {
       'Content-Type': 'application/json',

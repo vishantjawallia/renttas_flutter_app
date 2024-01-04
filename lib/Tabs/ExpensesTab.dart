@@ -65,7 +65,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
           },
           label: Text(
             'expense'.tr().capitalizeFirstWord(),
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color: Colors.white,
@@ -191,86 +191,13 @@ class _ExpensesTabState extends State<ExpensesTab> {
                               ),
                             ),
                           );
-                          // return Card(
-                          //   elevation: 5,
-                          //   shape: RoundedRectangleBorder(
-                          //     borderRadius: BorderRadius.circular(10),
-                          //   ),
-                          //   child: Column(
-                          //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                          //     children: [
-                          //       // SizedBox(height: screenHeight * 0.02),
-                          //       Row(
-                          //         children: [
-                          //           SizedBox(width: screenWidth * 0.02),
-                          //           Text(
-                          //             expense.expensesDate.split('T')[0],
-                          //             style: const TextStyle(
-                          //               fontSize: 12,
-                          //               fontWeight: FontWeight.bold,
-                          //               color: Colors.grey,
-                          //             ),
-                          //           ),
-                          //           // SizedBox(width: screenWidth * 0.03),
-                          //           Column(
-                          //             children: [
-                          //               Text(
-                          //                 expense.name,
-                          //                 style: const TextStyle(
-                          //                   fontSize: 20,
-                          //                   fontWeight: FontWeight.bold,
-                          //                   color: Colors.grey,
-                          //                 ),
-                          //               ),
-                          //               // const SizedBox(width: 10),
-                          //               // Text(
-                          //               //   currency,
-                          //               //   style: const TextStyle(
-                          //               //     fontSize: 16,
-                          //               //     fontWeight: FontWeight.bold,
-                          //               //     color: Colors.blue,
-                          //               //   ),
-                          //               // ),
-                          //               Text(
-                          //                 " " + expense.amount,
-                          //                 // Convert amount to string
-                          //                 style: const TextStyle(
-                          //                   fontSize: 13,
-                          //                   fontWeight: FontWeight.bold,
-                          //                   color: Colors.red,
-                          //                 ),
-                          //               ),
-                          //             ],
-                          //           ),
-                          //           // const SizedBox(width: 50),
-                          //           IconButton(
-                          //             onPressed: () => showAlertDialogdelete(context, expense.id),
-                          //             icon: const Icon(
-                          //               Icons.delete,
-                          //               color: Colors.redAccent,
-                          //             ),
-                          //           ),
-                          //         ],
-                          //       ),
-                          //       Text(
-                          //         expense.description.toString(),
-                          //         // Convert amount to string
-                          //         style: const TextStyle(
-                          //           fontSize: 16,
-                          //           fontWeight: FontWeight.bold,
-                          //           color: Colors.grey,
-                          //         ),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // );
                         },
                       ),
                     ),
                     replacement: Flexible(
                       child: Center(
                         child: Padding(
-                          padding: EdgeInsets.only(bottom: 60.0),
+                          padding: const EdgeInsets.only(bottom: 60.0),
                           child: Text(
                             "${"expense".tr().capitalizeFirstWord()} not found !",
                             style: const TextStyle(

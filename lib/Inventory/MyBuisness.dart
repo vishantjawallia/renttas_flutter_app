@@ -1,7 +1,11 @@
-// ignore_for_file: sort_child_properties_last, avoid_print, avoid_unnecessary_containers, camel_case_types
+// ignore_for_file: sort_child_properties_last, avoid_print, avoid_unnecessary_containers, camel_case_types, prefer_final_fields, unused_field
+
+import 'dart:io';
 
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class MyBusinessPage extends StatefulWidget {
   const MyBusinessPage({super.key});
@@ -13,6 +17,12 @@ class MyBusinessPage extends StatefulWidget {
 String selectedcurrency = "Select Currency";
 
 class _MyBusinessPageState extends State<MyBusinessPage> {
+  File? file;
+  TextEditingController _name = TextEditingController();
+  TextEditingController _address = TextEditingController();
+  TextEditingController _number = TextEditingController();
+  TextEditingController _currency = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,17 +46,20 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(60),
-                          border: Border.all(color: Colors.grey.shade400),
-                        ),
-                        child: const Icon(
-                          Icons.image,
-                          size: 50,
+                      GestureDetector(
+                        onTap: selectImageHandler,
+                        child: Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(60),
+                            border: Border.all(color: Colors.grey.shade400),
+                          ),
+                          child: const Icon(
+                            Icons.image,
+                            size: 50,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -54,7 +67,11 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                         padding: EdgeInsets.all(3.0),
                         child: Text(
                           "Businesss Logo",
-                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                       const Padding(
@@ -76,7 +93,11 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                 ),
                 const Text(
                   "Buisness Name * ",
-                  style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 const SizedBox(width: 0.0, height: 4),
                 Container(
@@ -87,12 +108,20 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey.shade400),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: TextField(
-                        decoration: InputDecoration.collapsed(hintText: 'Enter Business name', hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
-                        style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                        controller: _name,
+                        decoration: const InputDecoration.collapsed(
+                          hintText: 'Enter Business name',
+                          hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                        ),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -111,12 +140,23 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey.shade400),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: TextField(
-                        decoration: InputDecoration.collapsed(hintText: 'Enter address', hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
-                        style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                        controller: _address,
+                        decoration: const InputDecoration.collapsed(
+                          hintText: 'Enter address',
+                          hintStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -124,7 +164,11 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                 const SizedBox(height: 18),
                 const Text(
                   "Phone number * ",
-                  style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Container(
@@ -135,15 +179,23 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                     border: Border.all(color: Colors.grey.shade400),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: TextField(
-                        decoration: InputDecoration.collapsed(
+                        controller: _number,
+                        decoration: const InputDecoration.collapsed(
                           hintText: 'Enter Phone number',
-                          hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                          hintStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
-                        style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -151,7 +203,11 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                 const SizedBox(height: 18),
                 const Text(
                   "Currency * ",
-                  style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 InkWell(
@@ -167,6 +223,7 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                         print('Select currency: ${currency.name}');
                         setState(() {
                           selectedcurrency = currency.name.toString();
+                          _currency.text = currency.name.toString();
                         });
                       },
                     );
@@ -186,7 +243,11 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                       child: Text(
                         selectedcurrency,
                         style: "Select Currency" == selectedcurrency
-                            ? const TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Colors.black54)
+                            ? const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black54,
+                              )
                             : const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -208,14 +269,18 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                     child: TextButton(
                       child: const Text(
                         'Save',
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(
                           Color(0xff54854C),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: saveHandler,
                     ),
                   ),
                 ),
@@ -226,4 +291,35 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
       ),
     );
   }
+
+  void selectImageHandler() async {
+    if (await Permission.camera.isGranted && await Permission.photos.isGranted) {
+      final picker = ImagePicker();
+      XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery); // or ImageSource.camera
+      if (pickedFile != null) {
+        File ff = File(pickedFile.path);
+        setState(() => file = ff);
+      }
+    }
+
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.camera,
+      Permission.photos,
+    ].request();
+
+    if (statuses[Permission.camera] == PermissionStatus.granted && statuses[Permission.photos] == PermissionStatus.granted) {
+      // Permission granted
+      final picker = ImagePicker();
+      XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery); // or ImageSource.camera
+      if (pickedFile != null) {
+        File ff = File(pickedFile.path);
+        setState(() => file = ff);
+      }
+    } else {
+      // Permission denied
+      // Handle accordingly, e.g., show an error message or request again
+    }
+  }
+
+  void saveHandler() {}
 }

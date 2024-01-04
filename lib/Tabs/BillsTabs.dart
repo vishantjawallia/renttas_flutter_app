@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, prefer_const_constructors, sort_child_properties_last, use_build_context_synchronously, unnecessary_new, prefer_final_fields, sized_box_for_whitespace
 
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -10,7 +9,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 import 'package:renttas_flutter_app/model/BillModel.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../Const/Const.dart';
 import '../Invoice/pages/pdfexport/pdfpreview.dart';
@@ -38,18 +36,9 @@ class BillsTabs extends StatefulWidget {
 class _BillsTabsState extends State<BillsTabs> {
   bool isLoading = false;
   bool isBillTheir = false;
-  // static String selectedPropertyId = '';
-  // static String selectedSubPropertyId = '';
   static String selectedSubPropertyName = '';
-  // List<BIllModel> widget.list = [];
 
-  Future<void> loadData() async {
-    // setState(() {});
-    // log("selectedPropertyId===>$selectedPropertyId");
-    // log("selectedSubPropertyId===>$selectedSubPropertyId");
-    // log("selectedSubPropertyName===>$selectedSubPropertyName");
-    // fetchBill(selectedPropertyId, selectedSubPropertyId);
-  }
+  Future<void> loadData() async {}
 
   @override
   void dispose() {

@@ -2,9 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
-import 'dart:math';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -24,13 +22,11 @@ import '../Tabs/DocumentsTab.dart';
 import '../Tabs/ExpensesTab.dart';
 import '../Tabs/TenantsTab.dart';
 import '../model/BillModel.dart';
-import '../model/Property.dart';
-import '../model/SubProperty.dart';
-import '../widgets/custom_ modal_progress_hud.dart';
+import 'LanlordProfile.dart';
+
 import 'AddSubproperties.dart';
 import 'LandlordAddProperty.dart';
 import 'LanlordProfile.dart';
-import 'lanlordProfile.dart';
 
 class LandloardDashBord extends StatefulWidget {
   const LandloardDashBord({Key? key}) : super(key: key);
