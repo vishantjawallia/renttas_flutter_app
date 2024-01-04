@@ -83,7 +83,12 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LandloardDashBord())),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LandloardDashBord(),
+            ),
+          ),
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
@@ -99,12 +104,10 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                 ),
               ),
             )
-          // Center(child: Container(height: 60, width: 60, child: const CircularProgressIndicator(color: Color(0xff54854C),)))
           : premiumelist.isEmpty
               ? Center(
                   child: Container(
                     height: 60,
-                    // width: 100,
                     child: Text(
                       "Plan not Found !",
                       style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.w600),
@@ -115,7 +118,6 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Align(
                           alignment: Alignment.center,
@@ -143,30 +145,24 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                             (index) {
                               return Padding(
                                 padding: const EdgeInsets.all(10.0),
-                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        isSelected = premiumelist[index].Id;
-                                        amou = premiumelist[index].amount;
-                                        validity = premiumelist[index].validity;
-                                      });
-                                    },
-                                    child: Container(
-                                      height: 110.0,
-                                      width: 150.0,
-                                      color: Colors.transparent,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          isSelected = premiumelist[index].Id;
+                                          amou = premiumelist[index].amount;
+                                          validity = premiumelist[index].validity;
+                                        });
+                                      },
                                       child: Container(
+                                        height: 110.0,
+                                        width: 150.0,
+                                        color: Colors.transparent,
+                                        child: Container(
                                           decoration: BoxDecoration(
-                                            border: isSelected == premiumelist[index].Id
-                                                ? Border.all(
-                                                    color: Color(0xff54854C),
-                                                    width: 2.0,
-                                                  )
-                                                : Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1.0,
-                                                  ),
+                                            border: isSelected == premiumelist[index].Id ? Border.all(color: Color(0xff54854C), width: 2.0) : Border.all(color: Colors.grey, width: 1.0),
                                             color: isSelected == premiumelist[index].Id ? Color(0xff54854C).withOpacity(0.085) : Colors.transparent,
                                             borderRadius: BorderRadius.all(Radius.circular(12.0)),
                                           ),
@@ -181,10 +177,7 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                                                         ? Container(
                                                             height: 20,
                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 7),
-                                                            decoration: BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(4),
-                                                              color: const Color.fromARGB(255, 12, 134, 118),
-                                                            ),
+                                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: const Color.fromARGB(255, 12, 134, 118)),
                                                             child: const Center(
                                                               child: Text(
                                                                 "Most Popular",
@@ -201,32 +194,27 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                                                   child: Column(
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      new Text(
+                                                      Text(
                                                         premiumelist[index].amount,
-                                                        style: const TextStyle(
-                                                          fontWeight: FontWeight.bold,
-                                                          color: Colors.black87,
-                                                          fontSize: 22,
-                                                        ),
                                                         textAlign: TextAlign.center,
+                                                        style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black87, fontSize: 22),
                                                       ),
-                                                      new Text(
+                                                      Text(
                                                         premiumelist[index].validity,
-                                                        style: const TextStyle(
-                                                          color: Colors.black87,
-                                                          fontSize: 18,
-                                                        ),
                                                         textAlign: TextAlign.center,
+                                                        style: const TextStyle(color: Colors.black87, fontSize: 18),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                          )),
-                                    ),
-                                  )
-                                ]),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               );
                             },
                           ),
@@ -237,11 +225,7 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                             padding: EdgeInsets.all(8.0),
                             child: Text(
                               "What you will get",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -262,12 +246,9 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Icon(
-                                Icons.check_outlined,
-                                color: Color.fromARGB(255, 39, 121, 41),
-                              ),
+                              Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
                               SizedBox(width: 10),
-                              Text("Auto Rent Reminders to Tenants via SMS & Email")
+                              Text("Auto Rent Reminders to Tenants via SMS & Email"),
                             ],
                           ),
                         ),
@@ -275,12 +256,9 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Icon(
-                                Icons.check_outlined,
-                                color: Color.fromARGB(255, 39, 121, 41),
-                              ),
+                              Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
                               SizedBox(width: 10),
-                              Text("Priority On-Call Support")
+                              Text("Priority On-Call Support"),
                             ],
                           ),
                         ),
@@ -296,14 +274,11 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                                 color: amou.isNotEmpty ? Color(0xff54854C) : Colors.grey,
                               ),
                               child: Center(
-                                  child: Text(
-                                amou.isNotEmpty ? ("Subscribe for " + amou + "/" + validity) : "Package Not Selected !",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                                child: Text(
+                                  amou.isNotEmpty ? ("Subscribe for " + amou + "/" + validity) : "Package Not Selected !",
+                                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
                                 ),
-                              )),
+                              ),
                             ),
                           ),
                         )

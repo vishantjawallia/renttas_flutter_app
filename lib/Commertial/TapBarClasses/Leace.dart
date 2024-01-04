@@ -83,17 +83,17 @@ class _LeacePageState extends State<LeacePage> {
               IconButton(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NewLeaseAdd(
-                                companyid: widget.id,
-                                name: widget.name,
-                                address: widget.address,
-                              )));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NewLeaseAdd(
+                        companyid: widget.id,
+                        name: widget.name,
+                        address: widget.address,
+                      ),
+                    ),
+                  );
                 },
-                icon: const Icon(
-                  Icons.add_box_rounded,
-                ),
+                icon: const Icon(Icons.add_box_rounded),
                 color: Colors.blue,
               )
             ],
@@ -103,20 +103,18 @@ class _LeacePageState extends State<LeacePage> {
           ),
           isloaidng == true
               ? Center(
-                  child: Container(
-                      height: 60,
-                      width: 60,
-                      child: const CircularProgressIndicator(
-                        color: Color(0xff54854C),
-                      )))
+                  child: const CircularProgressIndicator(color: Color(0xff54854C)),
+                )
               : leasetlist.isEmpty
                   ? Center(child: Container(height: 60, width: 60, child: Text("No data")))
                   : ListView.builder(
                       itemCount: leasetlist.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
-                          decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(25)),
-                          //    color: Colors.white,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(25),
+                          ),
                           height: 120,
                           alignment: Alignment.center,
                           child: Padding(
@@ -133,12 +131,9 @@ class _LeacePageState extends State<LeacePage> {
                                         children: [
                                           Text(
                                             leasetlist[index].spaceuse,
-                                            //  "Partiton 1",
                                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                           ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
+                                          SizedBox(height: 10),
                                         ],
                                       ),
                                     ),
@@ -147,11 +142,9 @@ class _LeacePageState extends State<LeacePage> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         leasetlist[index].status,
-                                        //  "Withheld",
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                       ),
                                     ),
-                                    //  Flexible(fit: FlexFit.tight, child: SizedBox()),
                                   ],
                                 ),
                                 Flexible(fit: FlexFit.tight, child: SizedBox()),
@@ -159,14 +152,8 @@ class _LeacePageState extends State<LeacePage> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(
-                                        width: 10,
-                                      ),
+                                      SizedBox(width: 10),
                                       InkWell(
-                                        // onTap: () => Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) => const newproductadd())),
                                         child: Container(
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
@@ -178,11 +165,8 @@ class _LeacePageState extends State<LeacePage> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
+                                      SizedBox(width: 10),
                                       InkWell(
-                                        //   onTap: () => showAlertDialog(context),
                                         child: Container(
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
@@ -201,10 +185,8 @@ class _LeacePageState extends State<LeacePage> {
                             ),
                           ),
                         );
-                      }),
-
-          // Center(child: Text("Leace")),
-
+                      },
+                    ),
           const SizedBox(height: 20),
         ],
       ),

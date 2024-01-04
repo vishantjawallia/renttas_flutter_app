@@ -25,12 +25,9 @@ bool isloaidng = false;
 class _CommerialDashboardState extends State<CommerialDashboard> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getcompanyfunct();
-    setState(() {
-      isloaidng = true;
-    });
+    setState(() => isloaidng = true);
   }
 
   getcompanyfunct() async {
@@ -55,9 +52,7 @@ class _CommerialDashboardState extends State<CommerialDashboard> {
         body: jsonEncode(data),
       );
 
-      setState(() {
-        isloaidng = false;
-      });
+      setState(() => isloaidng = false);
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = jsonDecode(response.body);
         List res = jsonData["data"];
@@ -74,30 +69,11 @@ class _CommerialDashboardState extends State<CommerialDashboard> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
-        // backgroundColor: Colors.grey[300],
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //  color: grey[300],
-        //   ),
-        // ),
         automaticallyImplyLeading: false,
-        actions: const <Widget>[
-          Expanded(
-            child: Row(
-              children: [],
-            ),
-          ),
-        ],
       ),
       body: isloaidng == true
           ? const Center(
-              child: SizedBox(
-                height: 60,
-                width: 60,
-                child: CircularProgressIndicator(
-                  color: Color(0xff54854C),
-                ),
-              ),
+              child: CircularProgressIndicator(color: Color(0xff54854C)),
             )
           : companylist.isEmpty
               ? const Center(child: SizedBox(height: 60, width: 60, child: Text("No data")))
@@ -108,7 +84,11 @@ class _CommerialDashboardState extends State<CommerialDashboard> {
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ViewCompanyDetails(id: companylist[index].id, name: companylist[index].companyname, address: companylist[index].address),
+                          builder: (context) => ViewCompanyDetails(
+                            id: companylist[index].id,
+                            name: companylist[index].companyname,
+                            address: companylist[index].address,
+                          ),
                         ),
                       ),
                       child: Padding(
@@ -190,7 +170,8 @@ class _CommerialDashboardState extends State<CommerialDashboard> {
                         ),
                       ),
                     );
-                  }),
+                  },
+                ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
         child: const Icon(
@@ -240,9 +221,7 @@ class _CommerialDashboardState extends State<CommerialDashboard> {
   }
 
   Future<void> deletecompany(String companyid) async {
-    setState(() {
-      isloading = true;
-    });
+    setState(() => isloading = true);
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
     log("userid in add compnay===" + userid.toString());
@@ -259,9 +238,7 @@ class _CommerialDashboardState extends State<CommerialDashboard> {
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isloading = false;
-    });
+    setState(() => isloading = false);
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
@@ -271,10 +248,12 @@ class _CommerialDashboardState extends State<CommerialDashboard> {
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Deletion failed.........'),
-          backgroundColor: Colors.green,
-        ));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Deletion failed.........'),
+            backgroundColor: Colors.green,
+          ),
+        );
       }
     } else {
       print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

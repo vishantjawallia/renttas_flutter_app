@@ -180,9 +180,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -201,9 +199,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                 )
                               ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             const Center(child: Text("Property")),
                             const SizedBox(height: 20),
                           ],
@@ -212,9 +208,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

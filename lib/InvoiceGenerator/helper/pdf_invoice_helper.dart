@@ -16,17 +16,19 @@ class PdfInvoicePdfHelper {
   static Future<File> generate(Invoice invoice) async {
     final pdf = Document();
 
-    pdf.addPage(MultiPage(
-      build: (context) => [
-        buildHeader(invoice),
-        SizedBox(height: 3 * PdfPageFormat.cm),
-        buildTitle(invoice),
-        buildInvoice(invoice),
-        Divider(),
-        buildTotal(invoice),
-      ],
-      footer: (context) => buildFooter(invoice),
-    ));
+    pdf.addPage(
+      MultiPage(
+        build: (context) => [
+          buildHeader(invoice),
+          SizedBox(height: 3 * PdfPageFormat.cm),
+          buildTitle(invoice),
+          buildInvoice(invoice),
+          Divider(),
+          buildTotal(invoice),
+        ],
+        footer: (context) => buildFooter(invoice),
+      ),
+    );
 
     return PdfHelper.saveDocument(name: 'my_invoice.pdf', pdf: pdf);
   }
@@ -81,12 +83,15 @@ class PdfInvoicePdfHelper {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(titles.length, (index) {
-        final title = titles[index];
-        final value = data[index];
+      children: List.generate(
+        titles.length,
+        (index) {
+          final title = titles[index];
+          final value = data[index];
 
-        return buildText(title: title, value: value, width: 200);
-      }),
+          return buildText(title: title, value: value, width: 200);
+        },
+      ),
     );
   }
 

@@ -21,32 +21,35 @@ class _NewContactAddState extends State<NewContactAdd> {
         backgroundColor: Colors.grey[300],
         automaticallyImplyLeading: false,
         actions: <Widget>[
-          Container(
-            child: Expanded(
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CommerialDashboard())),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      size: 30,
+          Expanded(
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CommerialDashboard(),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("New Contact "),
-                      ],
-                    ),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 30,
                   ),
-                ],
-              ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("New Contact "),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],

@@ -20,14 +20,20 @@ class _MyAppState extends State<ProductScanner> {
   }
 
   Future<void> startBarcodeScanStream() async {
-    FlutterBarcodeScanner.getBarcodeStreamReceiver('#ff6666', 'Cancel', true, ScanMode.BARCODE)!.listen((barcode) => print(barcode));
+    FlutterBarcodeScanner.getBarcodeStreamReceiver('#ff6666', 'Cancel', true, ScanMode.BARCODE)!.listen(
+      (barcode) => print(barcode),
+    );
   }
 
   Future<void> scanQR() async {
     String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#ff6666', 'Cancel', true, ScanMode.QR);
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+        '#ff6666',
+        'Cancel',
+        true,
+        ScanMode.QR,
+      );
       print(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
@@ -37,10 +43,8 @@ class _MyAppState extends State<ProductScanner> {
     setState(() => _scanBarcode = barcodeScanRes);
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#ff6666', 'Cancel', true, ScanMode.BARCODE);
       print(barcodeScanRes);
@@ -80,7 +84,7 @@ class _MyAppState extends State<ProductScanner> {
                     'Start barcode scan',
                   ),
                 ),
-                const SizedBox(width: 0.0, height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () => scanQR(),
                   style: ButtonStyle(
@@ -92,7 +96,7 @@ class _MyAppState extends State<ProductScanner> {
                     'Start QR scan',
                   ),
                 ),
-                const SizedBox(width: 0.0, height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () => startBarcodeScanStream(),
                   style: ButtonStyle(

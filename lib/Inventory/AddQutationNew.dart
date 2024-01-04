@@ -80,11 +80,12 @@ class _QutationViewNewState extends State<QutationViewNew> {
                     decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(30)),
                     child: const Center(
                       child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Save",
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                          )),
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Save",
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                        ),
+                      ),
                     ),
                   ),
                 ),

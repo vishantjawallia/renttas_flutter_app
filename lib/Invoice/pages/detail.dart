@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use, use_super_parameters
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:renttas_flutter_app/Invoice/pages/pdfexport/pdfpreview.dart';
 
 import '../../model/BillModel.dart';
@@ -66,23 +65,17 @@ class DetailPage extends StatelessWidget {
                     'Invoice Items',
                     style: Theme.of(context).textTheme.headline6,
                   ),
-                  // ...invoice.items.map(
-                  //   (e) => ListTile(
-                  //     title: Text(e.description),
-                  //     trailing: Text(
-                  //       e.cost.toStringAsFixed(2),
-                  //     ),
-                  //   ),
-                  // ),
                   DefaultTextStyle.merge(
                     style: Theme.of(context).textTheme.headline4,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const Text("Total"),
+                        const Text(
+                          "Total",
+                        ),
                         Text(
-                            //  invoice.totalCost().toStringAsFixed(2),
-                            invoice.totalAmount),
+                          invoice.totalAmount,
+                        ),
                       ],
                     ),
                   )

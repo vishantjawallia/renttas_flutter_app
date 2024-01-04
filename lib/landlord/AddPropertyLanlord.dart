@@ -6,11 +6,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
-import 'package:renttas_flutter_app/Common/RentalCustomAlert.dart';
+
 import 'package:renttas_flutter_app/Const/Const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../widgets/custom_ modal_progress_hud.dart';
 import '../widgets/custom_text_field.dart';
 import 'LandloardDashBord.dart';
 
@@ -106,85 +105,66 @@ class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
           ),
         ),
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
-                  child: Text(
-                    'Add new property :-',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                    ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
+                child: Text(
+                  'Add new property :-',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                // const SizedBox(height: 50),
-                CustomTextField(
-                  controller: propertyNameController,
-                  iconData: Icons.margin,
-                  hintText: 'Property Name',
-                ),
-                CustomTextField(
-                  controller: subpropertyNameController,
-                  iconData: Icons.subject_rounded,
-                  hintText: 'Sub Property Name',
-                ),
-                CustomTextField(
-                  controller: locationController,
-                  iconData: Icons.place,
-                  hintText: 'Location',
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                  child: SizedBox(
-                    width: 250,
-                    height: 60,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff54854C),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
+              ),
+              // const SizedBox(height: 50),
+              CustomTextField(
+                controller: propertyNameController,
+                iconData: Icons.margin,
+                hintText: 'Property Name',
+              ),
+              CustomTextField(
+                controller: subpropertyNameController,
+                iconData: Icons.subject_rounded,
+                hintText: 'Sub Property Name',
+              ),
+              CustomTextField(
+                controller: locationController,
+                iconData: Icons.place,
+                hintText: 'Location',
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                child: SizedBox(
+                  width: 250,
+                  height: 60,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff54854C),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                      onPressed: () {
-                        addProperty();
-                      },
-                      child: const Text(
-                        'Sumbit',
-                        // widget.type == "0" ? 'Sumbit' : 'Add Property',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    ),
+                    onPressed: () {
+                      addProperty();
+                    },
+                    child: const Text(
+                      'Sumbit',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ),
-                // TextField(
-                //   controller: propertyNameController,
-                //   decoration: const InputDecoration(labelText: 'Property Name'),
-                // ),
-                // const SizedBox(height: 10),
-                // TextField(
-                //   controller: locationController,
-                //   decoration: const InputDecoration(labelText: 'Location'),
-                // ),
-                // const SizedBox(height: 20),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     addProperty();
-                //   },
-                //   child: isloading == false ? Text(widget.type == "0" ? 'Add your first property' : 'Add Property') : const CircularProgressIndicator(color: Color(0xff54854C),),
-                // ),
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

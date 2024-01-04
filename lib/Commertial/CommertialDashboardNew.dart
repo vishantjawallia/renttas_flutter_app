@@ -57,9 +57,7 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
         body: jsonEncode(data),
       );
 
-      setState(() {
-        isloaidng = false;
-      });
+      setState(() => isloaidng = false);
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = jsonDecode(response.body);
         List res = jsonData["data"];
@@ -182,7 +180,8 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
                         ),
                       ),
                     );
-                  }),
+                  },
+                ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       floatingActionButton: FloatingActionButton(
         child: const Icon(

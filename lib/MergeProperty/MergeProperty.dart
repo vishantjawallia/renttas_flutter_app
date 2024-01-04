@@ -58,147 +58,148 @@ class _TenantsTabState extends State<MergeProperty> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: isLoading
-            ? SizedBox()
-            : FloatingActionButton.extended(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => AddTendent(),
-                    ),
-                  );
-                },
-                label: Text(
-                  'Tenant',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+      floatingActionButton: isLoading
+          ? SizedBox()
+          : FloatingActionButton.extended(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AddTendent(),
                   ),
-                ),
-                icon: Icon(Icons.add, color: Colors.white),
-                backgroundColor: Color(0xff54854C),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                );
+              },
+              label: Text(
+                'Tenant',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
                 ),
               ),
-        appBar: AppBar(
-          backgroundColor: const Color(0xff54854C),
-          title: Text("Merge property"),
-        ),
-        body: Column(
-          children: [
-            isLoading
-                ? Flexible(
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: Color(0xff54854C),
-                      ),
+              icon: Icon(Icons.add, color: Colors.white),
+              backgroundColor: Color(0xff54854C),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+      appBar: AppBar(
+        backgroundColor: const Color(0xff54854C),
+        title: Text("Merge property"),
+      ),
+      body: Column(
+        children: [
+          isLoading
+              ? Flexible(
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xff54854C),
                     ),
-                  )
-                : Visibility(
-                    visible: isTenantsTheir,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: tandent.length,
-                      itemBuilder: (context, index) {
-                        final tenant = tandent[index];
-                        return Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  SizedBox(width: 10),
-                                  Text(
-                                    tenant.tenantName,
-                                    style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
+                  ),
+                )
+              : Visibility(
+                  visible: isTenantsTheir,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: tandent.length,
+                    itemBuilder: (context, index) {
+                      final tenant = tandent[index];
+                      return Card(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                SizedBox(width: 10),
+                                Text(
+                                  tenant.tenantName,
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                SizedBox(width: 50),
+                                Text(
+                                  tenant.phone,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Colors.grey,
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => EditMergeProperty(data: tenant)));
+                                        // Delete logic
+                                      },
+                                      icon: Icon(Icons.edit),
                                     ),
-                                  ),
-                                  SizedBox(width: 50),
-                                  Text(
-                                    tenant.phone,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
+                                    Text('Edit'),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        // Delete logic
+                                        showAlertDialogdelete(context, tenant.id);
+                                      },
+                                      icon: Icon(Icons.delete),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                color: Colors.grey,
-                                height: 30,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditMergeProperty(data: tenant)));
-                                          // Delete logic
-                                        },
-                                        icon: Icon(Icons.edit),
-                                      ),
-                                      Text('Edit'),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {
-                                          // Delete logic
-                                          showAlertDialogdelete(context, tenant.id);
-                                        },
-                                        icon: Icon(Icons.delete),
-                                      ),
-                                      Text('Delete'),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      IconButton(
-                                        onPressed: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => ViewMergeDetails(data: tenant),
-                                          ),
+                                    Text('Delete'),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ViewMergeDetails(data: tenant),
                                         ),
-                                        icon: Icon(Icons.details),
                                       ),
-                                      Text('Details'),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                    replacement: Flexible(
-                      child: Center(
-                        child: Text(
-                          'Tenants not found !',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey,
-                          ),
+                                      icon: Icon(Icons.details),
+                                    ),
+                                    Text('Details'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  replacement: Flexible(
+                    child: Center(
+                      child: Text(
+                        'Tenants not found !',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey,
                         ),
                       ),
                     ),
-                  )
-          ],
-        ));
+                  ),
+                )
+        ],
+      ),
+    );
   }
 
   showAlertDialogdelete(BuildContext context, String expid) {
@@ -219,9 +220,7 @@ class _TenantsTabState extends State<MergeProperty> {
                 ),
                 TextButton(
                   onPressed: () async {
-                    setState(() {
-                      isLoading = true;
-                    });
+                    setState(() => isLoading = true);
 
                     final Map<String, dynamic> requestBody = {
                       "tenantid": expid,
@@ -235,9 +234,7 @@ class _TenantsTabState extends State<MergeProperty> {
                       },
                     );
                     print("expesss--" + response.body);
-                    setState(() {
-                      isLoading = false; // Set loading state to false after the data is loaded
-                    });
+                    setState(() => isLoading = false);
                     if (response.statusCode == 200) {
                       loadTenants(selectedPropertyId, selectedSubPropertyId);
                       Navigator.pop(context);
@@ -245,7 +242,9 @@ class _TenantsTabState extends State<MergeProperty> {
                       snack("Something went wrong", context);
                     }
                   },
-                  child: Text(isLoading == false ? "Continue" : "Please wait"),
+                  child: Text(
+                    isLoading == false ? "Continue" : "Please wait",
+                  ),
                 ),
               ],
             );
@@ -255,14 +254,18 @@ class _TenantsTabState extends State<MergeProperty> {
     );
   }
 
-  Future<void> loadTenants(String propertyCode, String subProperty) async {
+  Future<void> loadTenants(
+    String propertyCode,
+    String subProperty,
+  ) async {
     print(propertyCode);
     print(subProperty);
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
     final url = Uri.parse(ApiUrl.getTendentByIds);
-    final Map<String, dynamic> requestData = {"propertyId": propertyCode, "subPropertyId": subProperty};
+    final Map<String, dynamic> requestData = {
+      "propertyId": propertyCode,
+      "subPropertyId": subProperty,
+    };
 
     final headers = {
       'Content-Type': 'application/json',
@@ -284,9 +287,7 @@ class _TenantsTabState extends State<MergeProperty> {
     } else {
       isTenantsTheir = false;
     }
-    setState(() {
-      isLoading = false;
-    });
+    setState(() => isLoading = false);
   }
 
   void openPhoneDialer(String phoneNumber) async {

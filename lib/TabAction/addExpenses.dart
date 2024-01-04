@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
@@ -84,8 +83,7 @@ class _AddExpensesState extends State<AddExpenses> {
           backgroundColor: const Color(0xff54854C),
           title: Text(
             "expense".tr().capitalizeFirstWord(),
-            // 'Expense',
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
           centerTitle: true,
         ),
@@ -98,8 +96,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 margin: const EdgeInsets.only(top: 30, left: 10, right: 10),
                 child: Text(
                   "add_expense".tr(),
-                  // 'Add expense',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
@@ -111,11 +108,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: catagoryController,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.category),
-                    //  hintText: 'Make Payment?',
-                    labelText: 'category'.tr(),
-                  ),
+                  decoration: InputDecoration(icon: const Icon(Icons.category), labelText: 'category'.tr()),
                 ),
               ),
               Container(
@@ -123,8 +116,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 child: TextFormField(
                   controller: nameController,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.person),
-                    //  hintText: 'Make Payment?',
+                    icon: const Icon(Icons.person),
                     labelText: 'name'.tr(),
                   ),
                 ),
@@ -135,31 +127,13 @@ class _AddExpensesState extends State<AddExpenses> {
                 child: TextFormField(
                   controller: amountController,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.monetization_on),
-                    //  hintText: 'Make Payment?',
+                    icon: const Icon(Icons.monetization_on),
                     labelText: 'amount'.tr(),
                   ),
                 ),
               ),
               // Row(
-              //   children: [
-              //     SizedBox(
-              //       width: 10,
-              //     ),
-              //     Text('ExpensesType'),
-              //     SizedBox(
-              //       width: 10,
-              //     ),
-              //     buildTab('One-time'),
-              //     // SizedBox(width: 10),
-              //     // buildTab('Recurring'),
-              //   ],
-              // ),
-              // SizedBox(height: 20),
-              // // Render the appropriate content based on the selected tab
-              // selectedTab == 'One-time'
-              //     ? renderOneTimeContent()
-              //     : renderRecurringContent(),
+
               Column(
                 children: [
                   Padding(
@@ -170,9 +144,7 @@ class _AddExpensesState extends State<AddExpenses> {
                         labelText: 'expense_date'.tr(),
                       ),
                       readOnly: true,
-                      onTap: () {
-                        _selectDate(context, _expensesDateControlle);
-                      },
+                      onTap: () => _selectDate(context, _expensesDateControlle),
                     ),
                   ),
                 ],
@@ -182,8 +154,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 child: TextFormField(
                   controller: descController,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.description),
-                    //  hintText: 'Make Payment?',
+                    icon: const Icon(Icons.description),
                     labelText: 'description'.tr(),
                   ),
                 ),
@@ -203,10 +174,7 @@ class _AddExpensesState extends State<AddExpenses> {
                         )
                       : Text(
                           'save'.tr(),
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                 ),
               )
@@ -237,36 +205,21 @@ class _AddExpensesState extends State<AddExpenses> {
     );
   }
 
-  // Widget renderOneTimeContent() {
-  //   return Column(
-  //     children: [
-  //       Padding(
-  //         padding: const EdgeInsets.only(left: 40),
-  //         child: TextField(
-  //           controller: _expensesDateControlle,
-  //           decoration: InputDecoration(
-  //             labelText: 'Expense Date',
-  //           ),
-  //           readOnly: true,
-  //           onTap: () {
-  //             _selectDate(context, _expensesDateControlle);
-  //           },
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
   Widget renderRecurringContent() {
     return const Column(
       children: [
-        // Widgets for the Recurring tab
         Text('Recurring Content'),
       ],
     );
   }
 
-  Future<void> saveExpenses(String category, String name, String amount, String expenseDate, String description) async {
+  Future<void> saveExpenses(
+    String category,
+    String name,
+    String amount,
+    String expenseDate,
+    String description,
+  ) async {
     print("save exp");
     setState(() {
       isLoading = true;
@@ -295,7 +248,6 @@ class _AddExpensesState extends State<AddExpenses> {
       print("addeddd expese res[ppp--" + response.body);
 
       if (response.statusCode == 200) {
-        // Successful response, you can handle it accordingly
         print('Expense data successfully posted.');
         showDialog(
           context: context,
@@ -311,7 +263,12 @@ class _AddExpensesState extends State<AddExpenses> {
                       isLoading = false;
                     });
                     Navigator.of(context).pop();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LandloardDashBord(),
+                      ),
+                    );
                   },
                 ),
               ],
@@ -319,13 +276,9 @@ class _AddExpensesState extends State<AddExpenses> {
           },
         );
         print(response.body); // Print the response body
-        setState(() {
-          isLoading = false; // Set loading state to false after the data is loaded
-        });
+        setState(() => isLoading = false);
       } else {
-        setState(() {
-          isLoading = false; // Set loading state to false after the data is loaded
-        });
+        setState(() => isLoading = false);
         print('Failed to post expense data. Status code: ${response.statusCode}');
         print(response.body); // Print the response body
       }

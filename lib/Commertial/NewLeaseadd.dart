@@ -92,50 +92,49 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text("Space use"),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  RadioListTile(
-                    value: 0,
-                    groupValue: _groupValue1,
-                    title: const Text("Office"),
-                    onChanged: (newValue) {
-                      setState(() {
-                        spaceuse = "Office";
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 10),
+                    RadioListTile(
+                      value: 0,
+                      groupValue: _groupValue1,
+                      title: const Text("Office"),
+                      onChanged: (newValue) {
+                        setState(() {
+                          spaceuse = "Office";
+                          _groupValue1 = newValue as int;
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      selected: false,
+                    ),
+                    RadioListTile(
+                      value: 1,
+                      groupValue: _groupValue1,
+                      title: const Text("Indastrial"),
+                      onChanged: (newValue) => setState(() {
+                        spaceuse = "Indastrial";
                         _groupValue1 = newValue as int;
-                      });
-                    },
-                    activeColor: Colors.blue,
-                    selected: false,
-                  ),
-                  RadioListTile(
-                    value: 1,
-                    groupValue: _groupValue1,
-                    title: const Text("Indastrial"),
-                    onChanged: (newValue) => setState(() {
-                      spaceuse = "Indastrial";
-                      _groupValue1 = newValue as int;
-                    }),
-                    activeColor: Colors.blue,
-                    selected: false,
-                  ),
-                  RadioListTile(
-                    value: 2,
-                    groupValue: _groupValue1,
-                    title: const Text("building"),
-                    onChanged: (newValue) => setState(() {
-                      spaceuse = "building";
-                      _groupValue1 = newValue as int;
-                    }),
-                    activeColor: Colors.blue,
-                    selected: false,
-                  ),
-                ]),
-                const Text("Available space"),
-                const SizedBox(
-                  height: 5,
+                      }),
+                      activeColor: Colors.blue,
+                      selected: false,
+                    ),
+                    RadioListTile(
+                      value: 2,
+                      groupValue: _groupValue1,
+                      title: const Text("building"),
+                      onChanged: (newValue) => setState(() {
+                        spaceuse = "building";
+                        _groupValue1 = newValue as int;
+                      }),
+                      activeColor: Colors.blue,
+                      selected: false,
+                    ),
+                  ],
                 ),
+                const Text("Available space"),
+                const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -149,20 +148,21 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: TextFormField(
-                                controller: sqft1controller,
-                                decoration: const InputDecoration.collapsed(hintText: 'Enter Sqft'),
-                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Please enter your Sqft!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            )),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: TextFormField(
+                              controller: sqft1controller,
+                              decoration: const InputDecoration.collapsed(hintText: 'Enter Sqft'),
+                              style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your Sqft!';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     const Text("to"),
@@ -176,27 +176,26 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: TextFormField(
-                                controller: sqft2controller,
-                                decoration: const InputDecoration.collapsed(hintText: 'Enter Sqft'),
-                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Please enter your Sqft!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            )),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: TextFormField(
+                              controller: sqft2controller,
+                              decoration: const InputDecoration.collapsed(hintText: 'Enter Sqft'),
+                              style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your Sqft!';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 5),
                 Container(
                   height: 300,
                   width: 400,
@@ -242,9 +241,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black),
@@ -275,9 +272,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black),
@@ -308,9 +303,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black),
@@ -345,13 +338,10 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 5),
                 const Text("Asking Rent"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -363,20 +353,21 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: TextFormField(
-                                controller: askrentmincontroller,
-                                decoration: const InputDecoration.collapsed(hintText: 'Min'),
-                                style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Please enter your Min rent!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            )),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: TextFormField(
+                              controller: askrentmincontroller,
+                              decoration: const InputDecoration.collapsed(hintText: 'Min'),
+                              style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your Min rent!';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     const Text("to"),
@@ -408,13 +399,9 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
                 const Text("Payment date"),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 5),
                 Container(
                   height: 50,
                   decoration: BoxDecoration(
@@ -432,13 +419,9 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
                 const Text("Time period"),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 5),
                 Container(
                   height: 50,
                   decoration: BoxDecoration(
@@ -460,13 +443,9 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
                 const Text("Charges"),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 5),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
@@ -567,9 +546,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
 
-    setState(() {
-      isloading = true;
-    });
+    setState(() => isloading = true);
     String jsondata = jsonEncode(selectedItems);
     print('jsondata =${jsondata}');
 
@@ -596,9 +573,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
     );
 
     print("new lease add" + response.body);
-    setState(() {
-      isloading = false;
-    });
+    setState(() => isloading = false);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 

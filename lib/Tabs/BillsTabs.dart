@@ -53,16 +53,10 @@ class _BillsTabsState extends State<BillsTabs> {
 
   @override
   Widget build(BuildContext context) {
-    // if (widget.reload == true) {
-    //   log("Hello");
-    //   fetchBill(selectedPropertyId, selectedSubPropertyId);
-    //   // loadData();
-    // }
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (widget.loading == false) {
-            // snack("Add Room first", context);
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillTabAction()));
           } else {}
         },

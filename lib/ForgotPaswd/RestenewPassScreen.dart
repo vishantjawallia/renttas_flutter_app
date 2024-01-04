@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:http/http.dart' as http;
-import 'package:renttas_flutter_app/Wellcome/LoginPage.dart';
 
 import '../Common/ApiUrl.dart';
 import '../Const/Const.dart';
@@ -61,156 +60,142 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Container(
-                width: size.width,
-                //height: size.height,
-                color: Colors.white,
-                child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 50.0, bottom: 25.0),
-                    child: Form(
-                        key: _key,
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          GestureDetector(
-                            onTap: () => Navigator.pop(context),
-                            child: const Icon(Icons.arrow_back),
-                          ),
-                          const SizedBox(height: 70),
-                          const Text(
-                            "Create a new password",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'The password shoud be diffrent from the previous password',
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          SizedBox(
-                              // height: 350,
-                              child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                              child: TextField(
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscureText: _obscuredconfirm,
-                                  controller: controller,
-                                  decoration: InputDecoration(
-                                      suffixIcon: Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                        child: GestureDetector(
-                                          onTap: _toggleObscuredconfirm,
-                                          child: Icon(
-                                            _obscuredconfirm ? Icons.visibility_off_rounded : Icons.visibility_rounded,
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(borderSide: const BorderSide(color: Color.fromARGB(255, 207, 207, 207), width: 2), borderRadius: BorderRadius.circular(5)),
-                                      // floatingLabelStyle: GoogleFonts.mPlus1(
-                                      //   color: Colors.black,
-                                      //   fontSize: 18,
-                                      // ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: success ? Colors.green : Colors.red, width: 2),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      hintText: "New Password",
-                                      labelText: "New Password",
-                                      // hintStyle:
-                                      // GoogleFonts.mPlus1(color: Colors.black),
-                                      border: const OutlineInputBorder(borderSide: BorderSide()))),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                              child: TextField(
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscureText: _obscured,
-                                  controller: confirmcontroller,
-                                  decoration: InputDecoration(
-                                      suffixIcon: Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
-                                        child: GestureDetector(
-                                          onTap: _toggleObscured,
-                                          child: Icon(
-                                            _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(borderSide: const BorderSide(color: Color.fromARGB(255, 207, 207, 207), width: 2), borderRadius: BorderRadius.circular(5)),
-                                      // floatingLabelStyle: GoogleFonts.mPlus1(
-                                      //   color: Colors.black,
-                                      //   fontSize: 18,
-                                      // ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: success ? Colors.green : Colors.red, width: 2),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      hintText: "Confirm Password",
-                                      labelText: "Confirm Password",
-                                      // hintStyle:
-                                      // GoogleFonts.mPlus1(color: Colors.black),
-                                      border: const OutlineInputBorder(borderSide: BorderSide()))),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            FlutterPwValidator(
-                              defaultColor: Colors.grey.shade300,
-                              controller: confirmcontroller,
-                              successColor: Colors.green.shade700,
-                              minLength: 8,
-                              uppercaseCharCount: 1,
-                              numericCharCount: 3,
-                              specialCharCount: 1,
-                              normalCharCount: 3,
-                              width: 400,
-                              height: 200,
-                              onSuccess: () {
-                                setState(() {
-                                  success = true;
-                                });
-                              },
-                              onFail: () {
-                                setState(() {
-                                  success = false;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              height: 22,
-                            ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: CustomButton(
-                                label: isLoading == false ? 'Reset Password' : 'Please wait',
-                                color: Colors.black,
-                                onPressed: () async => loadRegister(widget.emil, confirmcontroller.text),
-                                size: size,
-                                textColor: Colors.white,
-                                borderSide: BorderSide.none,
+      body: SingleChildScrollView(
+        child: Container(
+          width: size.width,
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 50.0, bottom: 25.0),
+            child: Form(
+              key: _key,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(Icons.arrow_back),
+                  ),
+                  const SizedBox(height: 70),
+                  const Text(
+                    "Create a new password",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'The password shoud be diffrent from the previous password',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                          child: TextField(
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: _obscuredconfirm,
+                            controller: controller,
+                            decoration: InputDecoration(
+                              suffixIcon: Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                child: GestureDetector(
+                                  onTap: _toggleObscuredconfirm,
+                                  child: Icon(
+                                    _obscuredconfirm ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                                    size: 24,
+                                  ),
+                                ),
                               ),
+                              enabledBorder: OutlineInputBorder(borderSide: const BorderSide(color: Color.fromARGB(255, 207, 207, 207), width: 2), borderRadius: BorderRadius.circular(5)),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: success ? Colors.green : Colors.red, width: 2),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              hintText: "New Password",
+                              labelText: "New Password",
+                              border: const OutlineInputBorder(borderSide: BorderSide()),
                             ),
-                          ]))
-                        ]))))));
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                          child: TextField(
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: _obscured,
+                            controller: confirmcontroller,
+                            decoration: InputDecoration(
+                              suffixIcon: Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                                child: GestureDetector(
+                                  onTap: _toggleObscured,
+                                  child: Icon(
+                                    _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                                    size: 24,
+                                  ),
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(borderSide: const BorderSide(color: Color.fromARGB(255, 207, 207, 207), width: 2), borderRadius: BorderRadius.circular(5)),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: success ? Colors.green : Colors.red, width: 2),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              hintText: "Confirm Password",
+                              labelText: "Confirm Password",
+                              border: const OutlineInputBorder(borderSide: BorderSide()),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        FlutterPwValidator(
+                          defaultColor: Colors.grey.shade300,
+                          controller: confirmcontroller,
+                          successColor: Colors.green.shade700,
+                          minLength: 8,
+                          uppercaseCharCount: 1,
+                          numericCharCount: 3,
+                          specialCharCount: 1,
+                          normalCharCount: 3,
+                          width: 400,
+                          height: 200,
+                          onSuccess: () => setState(() => success = true),
+                          onFail: () => setState(() => success = false),
+                        ),
+                        SizedBox(height: 22),
+                        SizedBox(
+                          width: double.infinity,
+                          child: CustomButton(
+                            label: isLoading == false ? 'Reset Password' : 'Please wait',
+                            color: Colors.black,
+                            onPressed: () async => loadRegister(widget.emil, confirmcontroller.text),
+                            size: size,
+                            textColor: Colors.white,
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> loadRegister(String email, String newpaswd) async {
     print("Emial----" + email + "  ssss ===" + newpaswd);
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
     final url = Uri.parse(ApiUrl.restepaswd);
     final headers = {'Content-Type': 'application/json'};
     final datas = {"Email": email, "newpassword": newpaswd};
@@ -219,12 +204,15 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
 
     Map<String, dynamic> data = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      setState(() {
-        isLoading = false;
-      });
+      setState(() => isLoading = false);
       print("resp in forget paswd===" + response.body);
       if (data["msg"] == "success") {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandlordLoginNew()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LandlordLoginNew(),
+          ),
+        );
       } else {
         snack("Something went wrong", context);
       }
@@ -256,11 +244,11 @@ class CustomButton extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
-            backgroundColor: color,
-            side: borderSide,
-            // elevation: 1.5,
-            shadowColor: const Color(0xFF323247)),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
+          backgroundColor: color,
+          side: borderSide,
+          shadowColor: const Color(0xFF323247),
+        ),
         child: Text(
           label,
           style: TextStyle(

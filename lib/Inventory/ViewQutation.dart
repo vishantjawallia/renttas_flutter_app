@@ -112,7 +112,7 @@ class _ViewQutationMainState extends State<ViewQutationMain> {
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const qutationview(),
+            builder: (context) => const QutationView(),
           ),
         ),
         child: const Icon(

@@ -17,7 +17,6 @@ class _ViewMergeDetailsState extends State<ViewMergeDetails> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.grey[50],
-        // centerTitle: true,
         title: const Text(
           "View Details",
           style: TextStyle(fontSize: 18),

@@ -27,11 +27,6 @@ class _AddTendentState extends State<AddTendent> {
   static String selectedSubPropertyId = '';
   bool isLoading = false;
 
-  // List<String> options = [
-  //   'VISA',
-  //   'MASTER',
-  //   'PAYPAL',
-  // ];
   final TextEditingController _tenantName = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _advanceAmount = TextEditingController();
@@ -48,9 +43,7 @@ class _AddTendentState extends State<AddTendent> {
     );
 
     if (picked != null) {
-      setState(() {
-        controller.text = DateFormat('yyyy-MM-dd').format(picked);
-      });
+      setState(() => controller.text = DateFormat('yyyy-MM-dd').format(picked));
     }
   }
 
@@ -76,9 +69,7 @@ class _AddTendentState extends State<AddTendent> {
   }
 
   void _onPhoneNumberChanged(String phone) {
-    setState(() {
-      phoneNumber = phone;
-    });
+    setState(() => phoneNumber = phone);
     print(phone);
   }
 
@@ -107,7 +98,6 @@ class _AddTendentState extends State<AddTendent> {
         backgroundColor: Color(0xff54854C),
         title: Text(
           "add_tenant".tr(),
-          // 'Add Tenant',
         ),
         centerTitle: true,
       ),
@@ -116,28 +106,17 @@ class _AddTendentState extends State<AddTendent> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             children: [
-              // Container(
-              //   height: 50,
-              //   margin: EdgeInsets.only(top: 30, left: 10, right: 10),
-              //   child: Text(
-              //     'Add Tenant',
-              //     style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
-              //   ),
-              // ),
               SizedBox(height: 10),
-
               Container(
                 margin: EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: _tenantName,
                   decoration: InputDecoration(
                     icon: Icon(Icons.person),
-                    //  hintText: 'Make Payment?',
                     labelText: 'tenant_name'.tr(),
                   ),
                 ),
               ),
-
               Container(
                 padding: EdgeInsets.only(left: 10),
                 margin: EdgeInsets.only(top: 20),
@@ -151,12 +130,7 @@ class _AddTendentState extends State<AddTendent> {
                           labelText: '${"mobile_number".tr()} *',
                         ),
                         initialCountryCode: 'IN',
-                        onChanged: (phone) {
-                          _onPhoneNumberChanged(phone.completeNumber);
-                          print(phone.completeNumber);
-                          print(phone.countryCode);
-                          print(phone.countryISOCode);
-                        },
+                        onChanged: (phone) => _onPhoneNumberChanged(phone.completeNumber),
                       ),
                     ),
                   ],
@@ -168,7 +142,6 @@ class _AddTendentState extends State<AddTendent> {
                   controller: _email,
                   decoration: InputDecoration(
                     icon: Icon(Icons.email),
-                    //  hintText: 'Make Payment?',
                     labelText: 'email_id_optional'.tr(),
                   ),
                 ),
@@ -179,7 +152,6 @@ class _AddTendentState extends State<AddTendent> {
                   controller: _advanceAmount,
                   decoration: InputDecoration(
                     icon: Icon(Icons.currency_rupee),
-                    //  hintText: 'Make Payment?',
                     labelText: 'advance_amount'.tr(),
                   ),
                 ),
@@ -214,24 +186,17 @@ class _AddTendentState extends State<AddTendent> {
                         labelText: 'end_date'.tr(),
                       ),
                       readOnly: true,
-                      onTap: () {
-                        _selectDate(context, _endDateController);
-                      },
+                      onTap: () => _selectDate(context, _endDateController),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               SizedBox(
                 height: 50,
                 width: 350,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                    elevation: 8,
-                  ),
+                  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)), elevation: 8),
                   onPressed: isLoading ? null : () => saveTenant(_tenantName.text, phoneNumber, _email.text, _advanceAmount.text, _startDateController.text, _endDateController.text),
                   child: isLoading
                       ? CircularProgressIndicator(

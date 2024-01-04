@@ -38,7 +38,7 @@ class _LandlordAddPropertyState extends State<LandlordAddProperty> {
                     ),
                   );
                 },
-                child: PropertyCard(
+                child: const PropertyCard(
                   title: 'Residential Property',
                   description: 'A beautiful home in a peaceful neighborhood.',
                   icon: Icons.home,
@@ -48,7 +48,7 @@ class _LandlordAddPropertyState extends State<LandlordAddProperty> {
               const SizedBox(height: 24),
               GestureDetector(
                 onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PropertyCardsApp())),
-                child: PropertyCard(
+                child: const PropertyCard(
                   title: 'Commercial Property',
                   description: 'A prime location for your business venture.',
                   icon: Icons.business,

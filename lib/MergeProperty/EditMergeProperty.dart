@@ -121,16 +121,13 @@ class _AddTendentState extends State<EditMergeProperty> {
                 style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Container(
               margin: EdgeInsets.only(top: 10, left: 8),
               child: TextFormField(
                 controller: _tenantName,
                 decoration: const InputDecoration(
                   icon: Icon(Icons.person),
-                  //  hintText: 'Make Payment?',
                   labelText: 'Tenant Name',
                 ),
               ),
@@ -165,7 +162,6 @@ class _AddTendentState extends State<EditMergeProperty> {
                 controller: _email,
                 decoration: const InputDecoration(
                   icon: Icon(Icons.email),
-                  //  hintText: 'Make Payment?',
                   labelText: 'Email Id (Optional)',
                 ),
               ),
@@ -187,9 +183,7 @@ class _AddTendentState extends State<EditMergeProperty> {
                 children: [],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             SizedBox(
               height: 50,
               width: 350,
@@ -212,10 +206,22 @@ class _AddTendentState extends State<EditMergeProperty> {
     );
   }
 
-  Future<void> saveTenant(String tenantid, String name, String phoneNumber, String email, String advanceAmount) async {
+  Future<void> saveTenant(
+    String tenantid,
+    String name,
+    String phoneNumber,
+    String email,
+    String advanceAmount,
+  ) async {
     // Replace with your server URL
 
-    final Map<String, dynamic> data = {"tenantid": tenantid, "tenantName": name, "phone": phoneNumber, "email": email, "advanceAmount": advanceAmount};
+    final Map<String, dynamic> data = {
+      "tenantid": tenantid,
+      "tenantName": name,
+      "phone": phoneNumber,
+      "email": email,
+      "advanceAmount": advanceAmount,
+    };
 
     final headers = {'Content-Type': 'application/json'};
 
@@ -272,9 +278,11 @@ class _AddTendentState extends State<EditMergeProperty> {
           actions: <Widget>[
             TextButton(
               child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
-              },
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const LandloardDashBord(),
+                ),
+              ),
             ),
           ],
         );

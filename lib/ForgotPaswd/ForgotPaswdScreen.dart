@@ -137,9 +137,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Future<void> loadRegister(
     String email,
   ) async {
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
     final url = Uri.parse(ApiUrl.forgetPassword);
     final headers = {'Content-Type': 'application/json'};
     final datas = {
@@ -152,9 +150,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
     print("response forget ===" + data.toString());
     if (response.statusCode == 200) {
-      setState(() {
-        isLoading = false;
-      });
+      setState(() => isLoading = false);
       print("resp in forget paswd===" + response.body);
       if (data["msg"] == "email is invalid") {
         snack(data["msg"], context);
@@ -192,7 +188,6 @@ void _showImageAlertDialog(
         ),
         actions: <Widget>[
           OTPTextField(
-            //   controller: otpcontroller,
             length: 4,
             width: MediaQuery.of(context).size.width,
             textFieldAlignment: MainAxisAlignment.spaceAround,
@@ -259,7 +254,6 @@ class CustomButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
             backgroundColor: color,
             side: borderSide,
-            // elevation: 1.5,
             shadowColor: const Color(0xFF323247)),
         child: Text(
           label,

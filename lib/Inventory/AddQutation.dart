@@ -11,14 +11,14 @@ import 'package:renttas_flutter_app/Inventory/AddItem.dart';
 import 'Filtertransaction.dart';
 import 'ViewQutation.dart';
 
-class qutationview extends StatefulWidget {
-  const qutationview({super.key});
+class QutationView extends StatefulWidget {
+  const QutationView({super.key});
 
   @override
-  State<qutationview> createState() => _qutationviewState();
+  State<QutationView> createState() => _QutationViewState();
 }
 
-class _qutationviewState extends State<qutationview> {
+class _QutationViewState extends State<QutationView> {
   String choosedoption = "";
   bool valuefirst = false;
   bool valuesecond = false;
@@ -30,7 +30,6 @@ class _qutationviewState extends State<qutationview> {
     final DateTime? picked = await showDatePicker(context: context, initialDate: dateTime, initialDatePickerMode: DatePickerMode.day, firstDate: DateTime(1850), lastDate: DateTime(2101));
     if (picked != null) {
       dateTime = picked;
-      //assign the chosen date to the controller
       _textControllerdate1.text = DateFormat.yMd().format(dateTime);
     }
   }
@@ -96,11 +95,7 @@ class _qutationviewState extends State<qutationview> {
                     children: [
                       const Text(
                         "Details",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const Divider(),
                       TextField(
@@ -135,20 +130,12 @@ class _qutationviewState extends State<qutationview> {
                     children: [
                       const Text(
                         "Buisness info *",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const Divider(),
                       const Text(
                         "From",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const SizedBox(height: 8),
                       InkWell(
@@ -166,20 +153,12 @@ class _qutationviewState extends State<qutationview> {
                               checkColor: Colors.white,
                               activeColor: Colors.black,
                               value: valuefirst,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  valuefirst = value!;
-                                });
-                              },
+                              onChanged: (bool? value) => setState(() => valuefirst = value!),
                             ),
                           ),
                           const Text(
                             'Buisness information show',
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: TextStyle(color: Colors.black54, fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -195,11 +174,7 @@ class _qutationviewState extends State<qutationview> {
                           ),
                           const Text(
                             'Include TAX(%)',
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                            style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           valuesecond == true
@@ -216,10 +191,7 @@ class _qutationviewState extends State<qutationview> {
                                     ),
                                     child: const TextField(
                                       decoration: InputDecoration.collapsed(hintText: 'Enter TAX (%)'),
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        color: Colors.black,
-                                      ),
+                                      style: TextStyle(fontSize: 13, color: Colors.black),
                                     ),
                                   ),
                                 )
@@ -414,11 +386,7 @@ class _qutationviewState extends State<qutationview> {
                                 SizedBox(width: 6),
                                 Text(
                                   "Add item",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                                 ),
                               ],
                             ),
@@ -444,11 +412,7 @@ class _qutationviewState extends State<qutationview> {
                     children: [
                       Text(
                         "Payment Details",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       Divider(),
                       SizedBox(height: 2),
@@ -459,49 +423,27 @@ class _qutationviewState extends State<qutationview> {
                           ),
                           Text(
                             "Sub total",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54,
-                            ),
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          // Icon(
-                          //   Icons.add_box_rounded,
-                          //   color: Colors.grey,
-                          // ),
                           Text(
                             "0.00",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54,
-                            ),
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                         ],
                       ),
                       SizedBox(height: 4),
                       Row(
                         children: [
-                          SizedBox(
-                            width: 10,
-                          ),
+                          SizedBox(width: 10),
                           Text(
                             "Total",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54,
-                            ),
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                           Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             "0.00",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54,
-                            ),
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                         ],
                       ),
@@ -519,12 +461,7 @@ class _qutationviewState extends State<qutationview> {
                     showCurrencyName: true,
                     showCurrencyCode: true,
                     favorite: ['eur'],
-                    onSelect: (Currency currency) {
-                      print('Select currency: ${currency.name}');
-                      setState(() {
-                        selectedcurrency = currency.name.toString();
-                      });
-                    },
+                    onSelect: (Currency currency) => setState(() => selectedcurrency = currency.name.toString()),
                   );
                 },
                 child: Container(
@@ -538,11 +475,7 @@ class _qutationviewState extends State<qutationview> {
                     padding: const EdgeInsets.all(15),
                     child: Text(
                       selectedcurrency,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: 'Select Currency' == selectedcurrency ? Colors.black54 : Colors.black,
-                      ),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: 'Select Currency' == selectedcurrency ? Colors.black54 : Colors.black),
                     ),
                   ),
                 ),

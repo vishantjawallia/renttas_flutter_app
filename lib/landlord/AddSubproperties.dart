@@ -35,7 +35,6 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
         backgroundColor: const Color(0xff54854C),
         title: Text(
           "add_room".tr(),
-          // 'Add Room',
         ),
       ),
       body: SingleChildScrollView(
@@ -48,7 +47,6 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "add_room".tr() + ":-",
-                // 'Add Room:-',
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w600,
@@ -109,9 +107,7 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
   Future<void> addSubProperty(String propertyId, String subProperty) async {
     log("sssss====" + propertyId + " suvvvvv==" + subProperty);
 
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
     final Map<String, dynamic> requestData = {"propertyId": propertyId, "subPropertyName": subProperty};
     // Replace with your actual API URL
 
@@ -124,9 +120,7 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
     );
     log("sssss====" + response.body);
     if (response.statusCode == 200) {
-      setState(() {
-        isLoading = false;
-      });
+      setState(() => isLoading = false);
       successDilog("SubProperty Added Successfully");
     } else {
       faliedDilog("Something Went Wring");

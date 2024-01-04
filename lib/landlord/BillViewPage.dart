@@ -28,325 +28,288 @@ class _BillViewPageState extends State<BillViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Bill & Payment details"),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                // Center(
-                //   child: Container(
-                //       height: 60,
-                //       //width: 400,
-                //       decoration: BoxDecoration(
-                //         border: Border.all(
-                //           color: Colors.black,
-                //           width: 1.0,
-                //         ),
-                //       ),
-                //       child: FittedBox(
-                //         child: DataTable(
-                //           columns: _buildColumns(),
-                //           rows: _buildRows(),
-                //         ),
-                //       )),
-                // ),
-                Divider(
-                  color: Colors.black,
-                  thickness: 2,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Rent billno",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    Text(
-                      "Rent billdate",
-                      style: TextStyle(color: Colors.grey),
-                    )
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Name",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      widget.Data.rentStartDate,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Tenant",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      "Name",
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Total Rent ",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      "₹ " + widget.Data.rentAmount,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Rent Period",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      widget.Data.rentStartDate,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Rent Due date",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      widget.Data.rentEndDate,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Center(
-                  child: Text(
-                    "Rent & Maintanance",
-                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      appBar: AppBar(
+        title: Text("Bill & Payment details"),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Divider(
+                color: Colors.black,
+                thickness: 2,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Rent billno",
+                    style: TextStyle(color: Colors.grey),
                   ),
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Rent",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      "₹ " + widget.Data.rentAmount,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Maintanace",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      "₹ " + widget.Data.maintenanceAmount,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Previous balance",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      "₹ " + widget.Data.previousBalance,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Adjustment",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      "₹ 0",
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Adjustment remark",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      "₹ 0",
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                Center(
-                  child: Text(
-                    "Electricity",
-                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  Text(
+                    "Rent billdate",
+                    style: TextStyle(color: Colors.grey),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Name",
+                    style: TextStyle(color: Colors.black),
                   ),
+                  Text(
+                    widget.Data.rentStartDate,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Tenant",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    "Name",
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Total Rent ",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    "₹ " + widget.Data.rentAmount,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Rent Period",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    widget.Data.rentStartDate,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Rent Due date",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    widget.Data.rentEndDate,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Center(
+                child: Text(
+                  "Rent & Maintanance",
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Rent",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    "₹ " + widget.Data.rentAmount,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Maintanace",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    "₹ " + widget.Data.maintenanceAmount,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Previous balance",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    "₹ " + widget.Data.previousBalance,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Adjustment",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    "₹ 0",
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Adjustment remark",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    "₹ 0",
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Center(
+                child: Text(
+                  "Electricity",
+                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Electricity type",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    Text(
-                      widget.Data.electricityType,
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        showAlertDialogdelete(context, widget.Data.id);
-                      },
-                      child: Container(
-                          height: 30,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            color: Colors.white,
-                          ),
-                          child: Center(
-                              child: Text(
-                            isloading == false ? "Delete" : "Please wait",
-                            style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
-                          ))),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Share.share('Check');
-                      },
-                      child: Container(
-                          height: 30,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            color: Colors.white,
-                          ),
-                          child: Center(
-                              child: Text(
-                            "Share",
-                            style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
-                          ))),
-                    ),
-                    // InkWell(
-                    //   onTap: () {
-                    //     // Pdf load
-                    //   },
-                    //   child: Container(
-                    //       height: 30,
-                    //       width: 80,
-                    //       decoration: BoxDecoration(
-                    //         border: Border.all(color: Colors.grey),
-                    //         color: Colors.white,
-                    //       ),
-                    //       child: Center(
-                    //           child: Text(
-                    //         "Download",
-                    //         style: TextStyle(
-                    //             fontSize: 15,
-                    //             color: Colors.blue,
-                    //             fontWeight: FontWeight.bold),
-                    //       ))),
-                    // ),
-                  ],
-                ),
-              ],
-            ),
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Electricity type",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    widget.Data.electricityType,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      showAlertDialogdelete(context, widget.Data.id);
+                    },
+                    child: Container(
+                        height: 30,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                            child: Text(
+                          isloading == false ? "Delete" : "Please wait",
+                          style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
+                        ))),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Share.share('Check');
+                    },
+                    child: Container(
+                        height: 30,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                            child: Text(
+                          "Share",
+                          style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
+                        ))),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   showAlertDialogdelete(BuildContext context, String billid) {
-    // show the dialog
     showDialog(
       context: context,
       builder: (context) {
@@ -452,15 +415,7 @@ class _BillViewPageState extends State<BillViewPage> {
           DataCell(Text('-300')),
           DataCell(_verticalDivider),
           DataCell(Icon(Icons.navigate_next_outlined)),
-          // Add more cells as needed
         ],
-        // color: MaterialStateProperty.resolveWith<Color>(
-        //       (Set<MaterialState> states) {
-        //     return states.contains(MaterialState.selected)
-        //         ? Theme.of(context).colorScheme.primary.withOpacity(0.08)
-        //         : Colors.white;
-        //   },
-        // ),
       ),
       DataRow(
         cells: [
@@ -476,7 +431,6 @@ class _BillViewPageState extends State<BillViewPage> {
           // Add more cells as needed
         ],
       ),
-      // Add more rows as needed
     ];
   }
 

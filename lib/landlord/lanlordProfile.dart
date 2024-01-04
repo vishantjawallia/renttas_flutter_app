@@ -13,7 +13,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../Common/PrivacyPolicy.dart';
 import '../Common/TermCondition.dart';
 
-// import '../MergeProperty/MergeProperty.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:store_redirect/store_redirect.dart';
 
@@ -84,11 +83,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
     onSubmitted: (response) {
       print('rating: ${response.rating}, comment: ${response.comment}');
       if (response.rating < 1.0) {
-        // send their comments to your email or anywhere you wish
-        // ask the user to contact you instead of leaving a bad review
       } else {
-        //go to app store
-        //https://play.google.com/store/apps/details?id=com.ganlaxmine.renttas
         StoreRedirect.redirect(androidAppId: 'com.ganlaxmine.renttas', iOSAppId: 'com.ganlaxmine.renttas');
       }
     },
@@ -99,12 +94,11 @@ class _LanlordProfileState extends State<LanlordProfile> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        automaticallyImplyLeading: false, // Remove the back button
+        automaticallyImplyLeading: false,
         backgroundColor: Color(0xff54854C),
         leading: BackButton(),
         title: Text(
           "my_account".tr(),
-          // 'My Account ',
         ),
         centerTitle: true,
       ),
@@ -124,14 +118,9 @@ class _LanlordProfileState extends State<LanlordProfile> {
                 padding: const EdgeInsets.only(left: 15),
                 height: 20,
                 width: double.infinity,
-                // color: Colors.grey.shade300,
                 child: Text(
                   "user_detail".tr(),
-                  // 'User Detail',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
               ),
               Container(
@@ -149,43 +138,31 @@ class _LanlordProfileState extends State<LanlordProfile> {
                         margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
                         child: Row(
                           children: [
-                            const SizedBox(
-                              // height: 30,
-                              // width: 30,
-                              child: Icon(Icons.person),
-                            ),
+                            Icon(Icons.person),
                             Container(
                               padding: const EdgeInsets.only(left: 14),
                               child: Text(
                                 name.capitalizeFirstWord(),
                                 style: const TextStyle(
                                   fontSize: 16,
-                                  // fontWeight: FontWeight.w600,
                                 ),
                               ),
                             )
                           ],
                         ),
                       ),
-                      const SizedBox(width: 0.0, height: 5),
+                      const SizedBox(height: 5),
                       Container(
                         width: double.infinity,
                         margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
                         child: Row(
                           children: [
-                            const SizedBox(
-                              // height: 30,
-                              // width: 30,
-                              child: Icon(Icons.email),
-                            ),
+                            Icon(Icons.email),
                             Container(
                               padding: const EdgeInsets.only(left: 14),
                               child: Text(
                                 email,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  // fontWeight: FontWeight.w600,
-                                ),
+                                style: const TextStyle(fontSize: 16),
                               ),
                             )
                           ],
@@ -196,19 +173,12 @@ class _LanlordProfileState extends State<LanlordProfile> {
                         margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
-                            const SizedBox(
-                              // height: 30,
-                              // width: 30,
-                              child: Icon(Icons.phone),
-                            ),
+                            Icon(Icons.phone),
                             Container(
                               padding: const EdgeInsets.only(left: 14),
                               child: Text(
                                 phone,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  // fontWeight: FontWeight.w500,
-                                ),
+                                style: const TextStyle(fontSize: 16),
                               ),
                             ),
                           ],
@@ -223,10 +193,8 @@ class _LanlordProfileState extends State<LanlordProfile> {
                 padding: const EdgeInsets.only(left: 15),
                 height: 20,
                 width: double.infinity,
-                // color: Colors.grey.shade300,
                 child: Text(
                   "help_support".tr(),
-                  // 'Help & Support',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -273,12 +241,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty()));
-
-                          /// chat whats app
-                          // _launchWhatsapp("8139084095");
-                        },
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty())),
                         child: Container(
                           width: double.infinity,
                           margin: const EdgeInsets.only(top: 5, left: 10),
@@ -293,7 +256,6 @@ class _LanlordProfileState extends State<LanlordProfile> {
                                 padding: const EdgeInsets.only(left: 14),
                                 child: Text(
                                   "merge_properties".tr(),
-                                  // 'Merge Properties ',
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -310,13 +272,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatScreen()));
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthGate()));
-
-                          /// chat whats app
-                          // _launchWhatsapp("8139084095");
-                        },
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatScreen())),
                         child: Container(
                           width: double.infinity,
                           margin: const EdgeInsets.only(top: 5, left: 10),
@@ -374,174 +330,165 @@ class _LanlordProfileState extends State<LanlordProfile> {
                     ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
-                      child: Column(children: <Widget>[
-                        InkWell(
-                          onTap: () async {
-                            showDialog(
-                              context: context,
-                              builder: (context) => _dialog,
-                            );
-                            // final InAppReview inAppReview = InAppReview.instance;
-                            //
-                            // if (await inAppReview.isAvailable()) {
-                            //   inAppReview.requestReview();
-                            // }
-                            if (kDebugMode) {
-                              print("Object clickeddd");
-                            }
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            margin: const EdgeInsets.only(left: 10),
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(Icons.reviews_outlined),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: Text(
-                                    "rate_this_app".tr(),
-                                    // 'Rate this app ',
-                                    style: TextStyle(fontSize: 16),
+                      child: Column(
+                        children: <Widget>[
+                          InkWell(
+                            onTap: () async {
+                              showDialog(
+                                context: context,
+                                builder: (context) => _dialog,
+                              );
+                              if (kDebugMode) {
+                                print("Object clickeddd");
+                              }
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              margin: const EdgeInsets.only(left: 10),
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: Icon(Icons.reviews_outlined),
                                   ),
-                                )
-                              ],
+                                  Container(
+                                    padding: const EdgeInsets.only(left: 14),
+                                    child: Text(
+                                      "rate_this_app".tr(),
+                                      // 'Rate this app ',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: Divider(
-                            color: Colors.grey.shade300,
+                          Container(
+                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            child: Divider(
+                              color: Colors.grey.shade300,
+                            ),
                           ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas');
-                          },
-                          child: Container(
-                            // width: double.infinity,
-                            margin: const EdgeInsets.only(top: 5, left: 10),
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(Icons.share),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: Text(
-                                    "share_app".tr(),
-                                    // 'Share App ',
+                          InkWell(
+                            onTap: () => Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas'),
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 5, left: 10),
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: Icon(Icons.share),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.only(left: 14),
+                                    child: Text(
+                                      "share_app".tr(),
+                                      // 'Share App ',
 
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: Divider(
-                            color: Colors.grey.shade300,
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.only(top: 5, left: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const TermCondition()));
-                            },
-                            child: Row(
-                              children: [
-                                const SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: Text(
-                                    "terms_condition".tr(),
-                                    // 'Terms & Conditions ',
-                                    style: TextStyle(
-                                      fontSize: 16,
+                                      style: TextStyle(fontSize: 16),
                                     ),
-                                  ),
-                                ),
-                              ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: Divider(
-                            color: Colors.grey.shade300,
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.only(top: 5, left: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicy()));
-                            },
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(Icons.note_alt_outlined),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: Text(
-                                    "privacy_policy".tr(),
-                                    // 'Privacy Policy ',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                          Container(
+                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            child: Divider(
+                              color: Colors.grey.shade300,
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                          child: Divider(
-                            color: Colors.grey.shade300,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () => showAlertDialog(context),
-                          child: Container(
+                          Container(
                             width: double.infinity,
                             margin: const EdgeInsets.only(top: 5, left: 10),
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(Icons.power_settings_new_outlined),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.only(left: 14),
-                                  child: Text(
-                                    "logout".tr(),
-                                    // 'Logout',
-                                    style: TextStyle(
-                                      fontSize: 16,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const TermCondition()));
+                              },
+                              child: Row(
+                                children: [
+                                  const SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
+                                  Container(
+                                    padding: const EdgeInsets.only(left: 14),
+                                    child: Text(
+                                      "terms_condition".tr(),
+                                      // 'Terms & Conditions ',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ]),
+                          Container(
+                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            child: Divider(
+                              color: Colors.grey.shade300,
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.only(top: 5, left: 10),
+                            child: GestureDetector(
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicy())),
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: Icon(Icons.note_alt_outlined),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.only(left: 14),
+                                    child: Text(
+                                      "privacy_policy".tr(),
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            child: Divider(
+                              color: Colors.grey.shade300,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => showAlertDialog(context),
+                            child: Container(
+                              width: double.infinity,
+                              margin: const EdgeInsets.only(top: 5, left: 10),
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: Icon(Icons.power_settings_new_outlined),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.only(left: 14),
+                                    child: Text(
+                                      "logout".tr(),
+                                      // 'Logout',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -550,62 +497,26 @@ class _LanlordProfileState extends State<LanlordProfile> {
           ),
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.person),
-      //       label: 'Edit Profile',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.settings),
-      //       label: 'Settings',
-      //     ),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   selectedItemColor: Colors.blue,
-      //   onTap: _onItemTapped,
-      // ),
     );
   }
 }
 
 showAlertDialog(BuildContext context) {
-  // set up the buttons
   Widget cancelButton = TextButton(
     child: Text(
       "cancel".tr(),
-      // "Cancel",
       style: TextStyle(color: Color(0xff54854C)),
     ),
-    onPressed: () {
-      Navigator.pop(context);
-      // Navigator.pop(context);
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => const productview()));
-    },
+    onPressed: () => Navigator.pop(context),
   );
   Widget continueButton = TextButton(
     child: Text(
-      // "Continue",
       "continue".tr(),
       style: TextStyle(color: Color(0xff54854C)),
     ),
     onPressed: () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.clear();
-      // await prefs.setBool("login", false);
-      // await prefs.setString('userId', "");
-      // await prefs.setString('email', "");
-      // await prefs.setString('phone', "");
-      // await prefs.setString('name', "");
-      // await prefs.setString('mbno', "");
-      // await prefs.setString("sw", "");
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const LandlordLoginNew()), (route) => false);
     },
   );
@@ -614,16 +525,11 @@ showAlertDialog(BuildContext context) {
   AlertDialog alert = AlertDialog(
     title: Text(
       "confirmation".tr(),
-      // "Confirmation",
     ),
     content: Text(
       "are_you_sure_logout".tr(),
-      // "Are you sure want to logout ?",
     ),
-    actions: [
-      cancelButton,
-      continueButton,
-    ],
+    actions: [cancelButton, continueButton],
   );
 
   // show the dialog
@@ -637,10 +543,10 @@ showAlertDialog(BuildContext context) {
 
 extension CapitalizeFirstWordExtension on String {
   String capitalizeFirstWord() {
-    if (this.isEmpty) {
+    if (isEmpty) {
       return this;
     }
 
-    return this[0].toUpperCase() + this.substring(1);
+    return this[0].toUpperCase() + substring(1);
   }
 }

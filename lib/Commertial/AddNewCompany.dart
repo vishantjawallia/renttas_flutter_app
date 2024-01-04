@@ -76,20 +76,21 @@ class _addnewcompanyState extends State<addnewcompany> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: TextFormField(
-                              controller: companynamecontroller,
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter company name'),
-                              style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your company name!';
-                                }
-                                return null;
-                              },
-                            ),
-                          )),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: TextFormField(
+                            controller: companynamecontroller,
+                            decoration: new InputDecoration.collapsed(hintText: 'Enter company name'),
+                            style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your company name!';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(height: 5),
@@ -105,20 +106,21 @@ class _addnewcompanyState extends State<addnewcompany> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: TextFormField(
-                              controller: companyaddresscontroller,
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter company address'),
-                              style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your company address!';
-                                }
-                                return null;
-                              },
-                            ),
-                          )),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: TextFormField(
+                            controller: companyaddresscontroller,
+                            decoration: new InputDecoration.collapsed(hintText: 'Enter company address'),
+                            style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your company address!';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -174,9 +176,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       return;
     }
     _formKey.currentState!.save();
-    setState(() {
-      isloading = true;
-    });
+    setState(() => isloading = true);
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
     log("userid in add compnay===" + userid.toString());
@@ -195,9 +195,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isloading = false;
-    });
+    setState(() => isloading = false);
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
@@ -223,9 +221,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       return;
     }
     _formKey.currentState!.save();
-    setState(() {
-      isloading = true;
-    });
+    setState(() => isloading = true);
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
 
@@ -244,9 +240,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isloading = false;
-    });
+    setState(() => isloading = false);
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);

@@ -54,7 +54,6 @@ class _LandingPageState extends State<LandingPage> {
             ),
           ),
           Container(
-            // width: 400,
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(
               bottom: 80,
@@ -104,8 +103,6 @@ class _LandingPageState extends State<LandingPage> {
                     (index) => buildDot(index, context),
                   ),
                 ),
-
-                // Text('Hrlling,'),
                 InkWell(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   onTap: () => rightArrowHandler(context),
@@ -125,7 +122,6 @@ class _LandingPageState extends State<LandingPage> {
                         ),
                         const SizedBox(width: 4, height: 0.0),
                         const Icon(
-                          // Icons.arrow_forward_rounded,
                           Icons.arrow_circle_right_outlined,
                           color: Color(0xff54854C),
                           size: 30,
@@ -190,21 +186,11 @@ class Slider extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 24),
-          // !(image!.contains("step"))
-          // ?
           Image(
             height: 320,
             image: AssetImage(image!),
             fit: BoxFit.contain,
           ),
-          // : Align(
-          //     heightFactor: 0.74111,
-          //     alignment: Alignment.center,
-          //     child: Image(
-          //       image: AssetImage(image!),
-          //       fit: BoxFit.contain,
-          //     ),
-          //   ),
           const SizedBox(height: 14),
           Text(
             text!,
@@ -213,7 +199,6 @@ class Slider extends StatelessWidget {
               color: Colors.black,
               fontSize: 24,
             ),
-            // textAlign: TextAlign.start,
           ),
           const SizedBox(height: 8),
           Text(

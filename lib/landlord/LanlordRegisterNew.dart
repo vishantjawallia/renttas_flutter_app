@@ -117,7 +117,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                       ),
               ),
             ),
-            const SizedBox(width: 0.0, height: 55),
+            const SizedBox(height: 55),
             !(currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE)
                 ? const SizedBox()
                 : Row(
@@ -134,12 +134,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                       ),
                       const SizedBox(width: 4, height: 0.0),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          // Navigator.of(context).pushReplacement(
-                          //   MaterialPageRoute(builder: (context) => const LandlordLoginNew()),
-                          // ),
-                        },
+                        onTap: () => Navigator.of(context).pop(),
                         child: RichText(
                           text: TextSpan(
                             text: "login".tr(),
@@ -154,7 +149,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                       ),
                     ],
                   ),
-            const SizedBox(width: 0.0, height: 80),
+            const SizedBox(height: 80),
           ],
         ),
       ),
@@ -214,23 +209,24 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
             color: const Color(0xffEFE3E3),
           ),
           child: IntlPhoneField(
-              disableLengthCheck: true,
-              flagsButtonMargin: EdgeInsets.zero,
-              flagsButtonPadding: EdgeInsets.zero,
-              dropdownIconPosition: IconPosition.trailing,
-              decoration: InputDecoration(
-                enabled: !(currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
-                hintText: 'mobile_number'.tr() + " *",
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                hintStyle: const TextStyle(color: Colors.black38),
-                filled: true,
-                fillColor: Colors.transparent,
-                isDense: true,
-                border: const OutlineInputBorder(borderSide: BorderSide.none),
-              ),
-              initialCountryCode: 'IN',
-              onChanged: (phone) {
-                setState(() {
+            disableLengthCheck: true,
+            flagsButtonMargin: EdgeInsets.zero,
+            flagsButtonPadding: EdgeInsets.zero,
+            dropdownIconPosition: IconPosition.trailing,
+            decoration: InputDecoration(
+              enabled: !(currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
+              hintText: 'mobile_number'.tr() + " *",
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              hintStyle: const TextStyle(color: Colors.black38),
+              filled: true,
+              fillColor: Colors.transparent,
+              isDense: true,
+              border: const OutlineInputBorder(borderSide: BorderSide.none),
+            ),
+            initialCountryCode: 'IN',
+            onChanged: (phone) {
+              setState(
+                () {
                   phoneNumber = phone.completeNumber;
                   countryCode = phone.countryCode;
                   if (countryCode == "+91") {
@@ -240,21 +236,24 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                   } else {
                     currency = "USD";
                   }
-                });
-              }),
+                },
+              );
+            },
+          ),
         ),
         CustomTextField(
-          enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE), controller: passwordController, obscureText: true, hintText: ("password".tr() + " *"),
-          // 'Password *',
+          enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
+          controller: passwordController,
+          obscureText: true,
+          hintText: ("password".tr() + " *"),
         ),
         CustomTextField(
           enabled: (currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE),
           controller: confirmPassword,
           obscureText: true,
           hintText: "confirm_password".tr() + " *",
-          //  'Confirm password *',
         ),
-        const SizedBox(width: 0.0, height: 40)
+        const SizedBox(height: 40)
       ],
     );
   }
@@ -438,7 +437,6 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
       }
     } on FirebaseAuthException catch (e) {
       setState(() => isLoading = false);
-      // snack(e.message.toString(), context);
       return GlobalWidgets.toast('${e.message}');
     }
   }
@@ -461,7 +459,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(width: 0.0, height: 50),
+              const SizedBox(height: 50),
               const Text(
                 'Enter Verification Code',
                 textAlign: TextAlign.start,
@@ -470,7 +468,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(width: 0.0, height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 10),
@@ -514,12 +512,10 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                     pinAnimationType: PinAnimationType.fade,
                     length: 6,
                     controller: otpcontroller,
-                    // onChanged: (val) {
-                    // },
                   ),
                 ),
               ),
-              const SizedBox(width: 0.0, height: 40),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -548,11 +544,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                                 }
                               },
                             text: (snapshot.data ?? 0) > 0 ? "${snapshot.data}s" : "RESEND",
-                            style: const TextStyle(
-                              color: Color(0xff894747),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
+                            style: const TextStyle(color: Color(0xff894747), fontWeight: FontWeight.bold, fontSize: 15),
                           ),
                         );
                       },
@@ -560,7 +552,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                   ),
                 ],
               ),
-              const SizedBox(width: 0.0, height: 30),
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -571,41 +563,38 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
   void resendOtpHanlder() {}
 }
 
-void _showImageAlertDialog(BuildContext context, String otp, String name, String email, String phoneno) {
+void _showImageAlertDialog(
+  BuildContext context,
+  String otp,
+  String name,
+  String email,
+  String phoneno,
+) {
   String pinnumer = "";
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        //  title: Text('Image Alert Dialog'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Image.asset(
-              'assets/images/renttas.png', // Replace with your image path
-              width: 150, // Adjust image width as needed
+              'assets/images/renttas.png',
+              width: 150,
             ),
-            //   SizedBox(height: 2), // Adjust spacing as needed
             const Text('Enter 4 digit OTP here'),
           ],
         ),
         actions: <Widget>[
           OTPTextField(
-              //   controller: otpcontroller,
               length: 4,
               width: MediaQuery.of(context).size.width,
               textFieldAlignment: MainAxisAlignment.spaceAround,
               fieldWidth: 45,
               fieldStyle: FieldStyle.box,
-              //     outlineBorderRadius: 15,
               style: const TextStyle(fontSize: 17),
-              onChanged: (pin) {
-                //  print("Changed: " + pin);
-              },
-              onCompleted: (pin) {
-                pinnumer = pin;
-                //   print("Completed: " + pinnumer);
-              }),
+              onChanged: (pin) {},
+              onCompleted: (pin) => pinnumer = pin),
           const SizedBox(
             height: 10,
           ),
@@ -620,14 +609,11 @@ void _showImageAlertDialog(BuildContext context, String otp, String name, String
                   prefs.setString("name", name);
                   prefs.setBool("login", false);
                   prefs.setString("storeid", "1");
-
                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
                 } else {
                   snack("Enterd otp is incorrect", context);
                   Navigator.of(context).pop();
                 }
-
-                // Close the AlertDialog
               },
               child: const Text('Verify OTP'),
             ),

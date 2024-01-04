@@ -169,7 +169,6 @@ class _accountsreportState extends State<accountsreport> {
                 ),
                 Container(
                   height: 70,
-                  //color: Color(0xff54854C).withOpacity(0.3),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -183,7 +182,7 @@ class _accountsreportState extends State<accountsreport> {
                               "Revenue",
                               style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500),
                             ),
-                            SizedBox(width: 0.0, height: 2),
+                            SizedBox(height: 2),
                             Text(
                               "Total rent collected",
                               softWrap: true,

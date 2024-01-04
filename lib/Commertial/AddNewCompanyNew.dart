@@ -45,9 +45,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Enter Company name"),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -58,35 +56,32 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: TextFormField(
-                              controller: companynamecontroller,
-                              decoration: new InputDecoration.collapsed(
-                                hintText: 'Enter company name',
-                              ),
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your company name!';
-                                }
-                                return null;
-                              },
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: TextFormField(
+                            controller: companynamecontroller,
+                            decoration: new InputDecoration.collapsed(
+                              hintText: 'Enter company name',
                             ),
-                          )),
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your company name!';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Text("Enter company address"),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -97,25 +92,24 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: TextFormField(
-                              controller: companyaddresscontroller,
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter company address'),
-                              style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your company address!';
-                                }
-                                return null;
-                              },
-                            ),
-                          )),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: TextFormField(
+                            controller: companyaddresscontroller,
+                            decoration: new InputDecoration.collapsed(hintText: 'Enter company address'),
+                            style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your company address!';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -166,9 +160,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
       return;
     }
     _formKey.currentState!.save();
-    setState(() {
-      isloading = true;
-    });
+    setState(() => isloading = true);
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
     log("userid in add compnay===" + userid.toString());
@@ -187,9 +179,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isloading = false;
-    });
+    setState(() => isloading = false);
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
@@ -199,10 +189,12 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Added failed.........'),
-          backgroundColor: Colors.green,
-        ));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Added failed.........'),
+            backgroundColor: Colors.green,
+          ),
+        );
       }
     } else {
       print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -215,9 +207,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
       return;
     }
     _formKey.currentState!.save();
-    setState(() {
-      isloading = true;
-    });
+    setState(() => isloading = true);
     SharedPreferences logindata = await SharedPreferences.getInstance();
     String? userid = logindata.getString("userId");
 
@@ -236,9 +226,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isloading = false;
-    });
+    setState(() => isloading = false);
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
@@ -248,10 +236,12 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Added failed.........'),
-          backgroundColor: Colors.green,
-        ));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Added failed.........'),
+            backgroundColor: Colors.green,
+          ),
+        );
       }
     } else {
       print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

@@ -285,7 +285,6 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                             ),
                                           ),
                                         )
-                                      // SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 3))
                                       : InkWell(
                                           borderRadius: BorderRadius.circular(6),
                                           onTap: () => _openBottomSheet(context),
@@ -407,11 +406,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                         if (isSubproperty)
                           Align(
                             alignment: Alignment.topLeft,
-                            child:
-                                // StatefulBuilder(
-                                // builder: (BuildContext context, StateSetter setState) {
-                                // return
-                                SingleChildScrollView(
+                            child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 10),
@@ -617,17 +612,12 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                   ),
                 ),
               ),
-              // if (loadTabBar && selectedSubProperty.isNotEmpty)
               Expanded(
                 child: TabBarView(
                   key: _tabKey,
                   controller: _tabController,
                   children: [
-                    BillsTabs(
-                      loading: isLoading,
-                      list: bills,
-                      // data: isSubproperty,
-                    ),
+                    BillsTabs(loading: isLoading, list: bills),
                     TenantsTab(),
                     ExpensesTab(),
                     DocumentsTab(),
@@ -635,7 +625,6 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                   ],
                 ),
               ),
-              //  if (!loadTabBar) CircularProgressIndicator(color: Color(0xff54854C),),
             ],
           ),
         ),
