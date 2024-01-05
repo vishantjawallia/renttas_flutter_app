@@ -17,7 +17,7 @@ import '../widgets/custom_text_field.dart';
 import 'RestenewPassScreen.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
-  static const String id = 'reset_password';
+  static String id = 'reset_password';
   const ResetPasswordScreen({Key? key}) : super(key: key);
 
   @override
@@ -178,15 +178,15 @@ void _showImageAlertDialog(
       return AlertDialog(
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: [
             Image.asset(
               'assets/images/renttas.png',
               width: 150,
             ),
-            const Text('Enter 4 digit OTP here'),
+            Text('Enter 4 digit OTP here'),
           ],
         ),
-        actions: <Widget>[
+        actions: [
           OTPTextField(
             length: 4,
             width: MediaQuery.of(context).size.width,
@@ -218,7 +218,7 @@ void _showImageAlertDialog(
                   Navigator.of(context).pop();
                 }
               },
-              child: const Text('Verify OTP'),
+              child: Text('Verify OTP'),
             ),
           ),
         ],
@@ -250,11 +250,7 @@ class CustomButton extends StatelessWidget {
       width: size.width,
       child: TextButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17),
-            backgroundColor: color,
-            side: borderSide,
-            shadowColor: const Color(0xFF323247)),
+        style: TextButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 17), backgroundColor: color, side: borderSide, shadowColor: const Color(0xFF323247)),
         child: Text(
           label,
           style: TextStyle(

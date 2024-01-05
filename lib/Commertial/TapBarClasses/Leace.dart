@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, prefer_interpolation_to_compose_strings, empty_catches, avoid_print, camel_case_types, must_be_immutable
+// ignore_for_file:  sized_box_for_whitespace, prefer_interpolation_to_compose_strings, empty_catches, avoid_print, camel_case_types, must_be_immutable
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -73,7 +73,7 @@ class _LeacePageState extends State<LeacePage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
@@ -98,12 +98,12 @@ class _LeacePageState extends State<LeacePage> {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           isloaidng == true
-              ? Center(
-                  child: const CircularProgressIndicator(color: Color(0xff54854C)),
+              ? const Center(
+                  child: CircularProgressIndicator(color: Color(0xff54854C)),
                 )
               : leasetlist.isEmpty
                   ? Center(child: Container(height: 60, width: 60, child: Text("No data")))
@@ -131,49 +131,49 @@ class _LeacePageState extends State<LeacePage> {
                                         children: [
                                           Text(
                                             leasetlist[index].spaceuse,
-                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                           ),
-                                          SizedBox(height: 10),
+                                          const SizedBox(height: 10),
                                         ],
                                       ),
                                     ),
-                                    Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                    const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         leasetlist[index].status,
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                       ),
                                     ),
                                   ],
                                 ),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 Center(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(width: 10),
+                                      const SizedBox(width: 10),
                                       InkWell(
                                         child: Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: Colors.grey,
                                           ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(8),
                                             child: Icon(Icons.edit),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(width: 10),
+                                      const SizedBox(width: 10),
                                       InkWell(
                                         child: Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: Colors.grey,
                                           ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(8),
                                             child: Icon(Icons.delete_outline),
                                           ),
                                         ),

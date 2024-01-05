@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'RestenewPassScreen.dart';
 
 class ResetPasswordOTPScreen extends StatefulWidget {
-  static const String id = 'reset_password@gmail.com';
+  static String id = 'reset_password@gmail.com';
   String email, otp;
   ResetPasswordOTPScreen({super.key, required this.email, required this.otp});
 
@@ -45,9 +45,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
                     child: const Icon(Icons.arrow_back),
                   ),
                   const SizedBox(height: 70),
-                  const Text(
+                  Text(
                     "Please Check Your Email",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -97,9 +97,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordOTPScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "Send code again ",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 13,
                         ),

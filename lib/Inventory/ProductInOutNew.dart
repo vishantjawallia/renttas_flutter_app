@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, prefer_interpolation_to_compose_strings, sort_child_properties_last, sized_box_for_whitespace, avoid_unnecessary_containers, unnecessary_new, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers, empty_catches, prefer_final_fields, avoid_init_to_null, non_constant_identifier_names, unnecessary_late, avoid_print, camel_case_types, must_be_immutable
+// ignore_for_file:  use_build_context_synchronously, prefer_interpolation_to_compose_strings, sort_child_properties_last, sized_box_for_whitespace, avoid_unnecessary_containers, unnecessary_new, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers, empty_catches, prefer_final_fields, avoid_init_to_null, non_constant_identifier_names, unnecessary_late, avoid_print, camel_case_types, must_be_immutable
 
 import 'dart:convert';
 import 'dart:developer';
@@ -89,7 +89,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
           Map<String, dynamic> resposne = jsonDecode(response.body);
 
           if (resposne['respCode'].toString().contains("200")) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => InentoryDashboardNew()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew()));
 
             print("Login Successfully Completed !!!!!!!!!!!!!!!!");
           } else {
@@ -210,29 +210,29 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xff54854C),
+        backgroundColor: const Color(0xff54854C),
         // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
+        //   decoration: BoxDecoration(
         //  color: grey[300],
         //   ),
         // ),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
+        actions: [
           Container(
             child: Expanded(
               child: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   InkWell(
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InentoryDashboardNew())),
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       // size: 30,
                     ),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -241,12 +241,12 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       children: [
                         Text(
                           widget.name ?? "New Transaction",
-                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                         ),
                       ],
                     ),
                   ),
-                  Flexible(fit: FlexFit.tight, child: SizedBox()),
+                  const Flexible(fit: FlexFit.tight, child: SizedBox()),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
@@ -255,9 +255,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                         MaterialPageRoute(builder: (context) => ProductScanner()),
                       ),
                       child: Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
-                        child: Icon(
+                        child: const Icon(
                           Icons.qr_code_scanner_outlined,
                           size: 20,
                           color: Color(0xff54854C),
@@ -265,17 +265,17 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
                       child: isloading == true
-                          ? CircularProgressIndicator(
+                          ? const CircularProgressIndicator(
                               color: Color(0xff54854C),
                             )
                           : Text(
                               'Save',
-                              style: TextStyle(color: Color(0xff54854C), fontWeight: FontWeight.w600, fontSize: 16),
+                              style: const TextStyle(color: Color(0xff54854C), fontWeight: FontWeight.w600, fontSize: 16),
                             ),
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.white),
@@ -315,9 +315,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       children: [
                         Text(
                           ' Date ',
-                          style: TextStyle(color: Colors.grey, fontSize: 17, fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.grey, fontSize: 17, fontWeight: FontWeight.bold),
                         ),
-                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -337,12 +337,12 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                       readOnly: true,
                                       onTap: _selectDate,
                                       controller: _textControllerdate1,
-                                      style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
                                       decoration: new InputDecoration.collapsed(hintText: _textControllerdate1.text),
                                     ),
                                   ),
-                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                  InkWell(onTap: _selectDate, child: Icon(Icons.calendar_month))
+                                  const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  InkWell(onTap: _selectDate, child: const Icon(Icons.calendar_month))
                                 ],
                               ),
                             ),
@@ -351,16 +351,16 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Container(
                     height: 80,
                     child: Row(
                       children: [
                         Text(
                           ' Product * ',
-                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -371,8 +371,8 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: isloading == true
-                                ? Center(
-                                    child: const CircularProgressIndicator(
+                                ? const Center(
+                                    child: CircularProgressIndicator(
                                       color: Color(0xff54854C),
                                     ),
                                   )
@@ -392,8 +392,8 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                               Padding(
                                                 padding: const EdgeInsets.only(left: 8.0),
                                                 child: DropdownButton<GetProduct>(
-                                                  hint: const Text("Select Product"),
-                                                  underline: SizedBox(),
+                                                  hint: Text("Select Product"),
+                                                  underline: const SizedBox(),
                                                   value: dropdownValue,
                                                   icon: const Icon(Icons.arrow_drop_down),
                                                   iconSize: 24,
@@ -423,7 +423,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
@@ -432,9 +432,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       children: [
                         Text(
                           ' Store * ',
-                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -458,8 +458,8 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8.0),
                                       child: DropdownButton<GetStore>(
-                                        hint: const Text("Select Store"),
-                                        underline: SizedBox(),
+                                        hint: Text("Select Store"),
+                                        underline: const SizedBox(),
                                         value: dropdownValue2,
                                         icon: const Icon(Icons.arrow_drop_down),
                                         iconSize: 24,
@@ -491,7 +491,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
@@ -500,9 +500,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       children: [
                         Text(
                           ' Quantity * ',
-                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -518,7 +518,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                 child: TextFormField(
                                   controller: _textControllerqty,
                                   decoration: new InputDecoration.collapsed(hintText: 'Enter Quantity'),
-                                  style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                   validator: (value) {
                                     if (value!.isEmpty) {
                                       return 'Please enter product qty!';
@@ -533,7 +533,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
@@ -542,9 +542,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       children: [
                         Text(
                           ' Rate  ',
-                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -560,7 +560,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                 child: TextFormField(
                                   controller: _textControllerrate,
                                   decoration: new InputDecoration.collapsed(hintText: 'Enter Price'),
-                                  style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                   validator: (value) {
                                     if (value!.isEmpty) {
                                       return 'Please enter price!';
@@ -575,16 +575,16 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Container(
                     height: 80,
                     child: Row(
                       children: [
                         Text(
                           ' Remark  ',
-                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -600,7 +600,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                   child: TextFormField(
                                     controller: _textControllerremark,
                                     decoration: new InputDecoration.collapsed(hintText: 'Enter Remark'),
-                                    style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Please enter remark!';
@@ -614,7 +614,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                 ],
               ),
             ),

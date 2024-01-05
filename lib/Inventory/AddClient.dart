@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'AddQutation.dart';
@@ -18,7 +17,7 @@ class _AddClientState extends State<AddClient> {
       appBar: AppBar(
         // backgroundColor: Colors.grey[300],
         automaticallyImplyLeading: false,
-        actions: <Widget>[
+        actions: [
           Row(
             children: [
               const SizedBox(width: 10),
@@ -31,8 +30,8 @@ class _AddClientState extends State<AddClient> {
                 ),
                 child: const Icon(Icons.arrow_back, size: 30),
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,12 +50,12 @@ class _AddClientState extends State<AddClient> {
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "Save",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -79,9 +78,9 @@ class _AddClientState extends State<AddClient> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       ' Client Name * ',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -122,9 +121,9 @@ class _AddClientState extends State<AddClient> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Address',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,

@@ -1,6 +1,5 @@
 // ignore_for_file: sort_child_properties_last
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'CommertialDashboard.dart';
@@ -20,7 +19,7 @@ class _NewContactAddState extends State<NewContactAdd> {
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         automaticallyImplyLeading: false,
-        actions: <Widget>[
+        actions: [
           Expanded(
             child: Row(
               children: [
@@ -39,8 +38,8 @@ class _NewContactAddState extends State<NewContactAdd> {
                     size: 30,
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +60,7 @@ class _NewContactAddState extends State<NewContactAdd> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Enter Contact number"),
+              Text("Enter Contact number"),
               const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -84,7 +83,7 @@ class _NewContactAddState extends State<NewContactAdd> {
                 ),
               ),
               const SizedBox(height: 5),
-              const Text("Enter Email"),
+              Text("Enter Email"),
               const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -116,9 +115,9 @@ class _NewContactAddState extends State<NewContactAdd> {
                 width: 400,
                 child: Center(
                   child: TextButton(
-                    child: const Text(
+                    child: Text(
                       'Save',
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                     style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Colors.blue),

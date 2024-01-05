@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages, sort_child_properties_last, prefer_const_constructors, use_build_context_synchronously, sized_box_for_whitespace, avoid_print, prefer_interpolation_to_compose_strings, non_constant_identifier_names, unnecessary_brace_in_string_interps, use_super_parameters, unused_field
+// ignore_for_file: depend_on_referenced_packages, sort_child_properties_last,  use_build_context_synchronously, sized_box_for_whitespace, avoid_print, prefer_interpolation_to_compose_strings, non_constant_identifier_names, unnecessary_brace_in_string_interps, use_super_parameters, unused_field
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -88,17 +88,17 @@ class _DocumentsTabState extends State<DocumentsTab> {
         },
         label: Text(
           'Document',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
         ),
-        icon: Icon(
+        icon: const Icon(
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Color(0xff54854C),
+        backgroundColor: const Color(0xff54854C),
         // backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
@@ -107,10 +107,10 @@ class _DocumentsTabState extends State<DocumentsTab> {
       body: Column(
         children: [
           isLoading
-              ? Flexible(
+              ? const Flexible(
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(bottom: 60.0),
+                      padding: EdgeInsets.only(bottom: 60.0),
                       child: CircularProgressIndicator(
                         color: Color(0xff54854C),
                       ),
@@ -121,7 +121,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
                   visible: documents.isNotEmpty,
                   child: Expanded(
                     child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 250.0, // Maximum width of each card
                         crossAxisSpacing: 10.0, // Horizontal space between cards
                         mainAxisSpacing: 10.0, // Vertical space between cards
@@ -136,7 +136,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
                           ),
                           child: Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               GestureDetector(
@@ -161,14 +161,14 @@ class _DocumentsTabState extends State<DocumentsTab> {
                                   ),
                                 ),
                               ),
-                              Divider(),
+                              const Divider(),
                               Row(
                                 children: [
                                   Column(
                                     children: [
                                       Text(
                                         document.docName,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black,
@@ -176,20 +176,20 @@ class _DocumentsTabState extends State<DocumentsTab> {
                                       ),
                                       Text(
                                         document.docType,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 12,
                                           color: Colors.grey,
                                         ),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(width: 15),
+                                  const SizedBox(width: 15),
                                   IconButton(
                                     onPressed: () {
                                       showAlertDialogdelete(context, document.id);
                                       //deleteDocument(document.id);
                                     },
-                                    icon: Icon(Icons.delete),
+                                    icon: const Icon(Icons.delete),
                                   ),
                                 ],
                               ),
@@ -205,7 +205,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
                         padding: const EdgeInsets.only(bottom: 60.0),
                         child: Text(
                           '${"document".tr()} not found !',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                             color: Colors.grey,
@@ -239,13 +239,13 @@ class _DocumentsTabState extends State<DocumentsTab> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                      margin: EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(5),
                       child: Column(
                         children: [
                           Container(
-                              margin: EdgeInsets.only(right: 300),
+                              margin: const EdgeInsets.only(right: 300),
                               child: IconButton(
-                                icon: Icon(Icons.close),
+                                icon: const Icon(Icons.close),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
@@ -296,14 +296,14 @@ class _DocumentsTabState extends State<DocumentsTab> {
                           ),
                           TextField(
                             controller: docName,
-                            decoration: InputDecoration(icon: Icon(Icons.verified_user), labelText: "Document Name"),
+                            decoration: const InputDecoration(icon: Icon(Icons.verified_user), labelText: "Document Name"),
                           ),
                           ElevatedButton(
                               onPressed: () {
                                 saveDoc(_imageFile, docType, docName.text, selectedPropertyId, selectedSubPropertyId);
                               },
                               child: Text('Add')),
-                          SizedBox(
+                          const SizedBox(
                             height: 100,
                           )
                         ],
@@ -326,7 +326,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
             return AlertDialog(
               title: Text("Confirmation"),
               content: Text(contentText),
-              actions: <Widget>[
+              actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Text("Cancel"),
@@ -479,7 +479,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
     final stream = response.stream;
     final body = await stream.bytesToString();
     print(body);
-    await Future.delayed(Duration(seconds: 12));
+    await Future.delayed(const Duration(seconds: 12));
     await loadDocument(selectedPropertyId, selectedSubPropertyId);
     setState(() {
       isLoading = false;

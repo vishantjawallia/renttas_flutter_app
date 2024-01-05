@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, camel_case_types
+// ignore_for_file: prefer_const_literals_to_create_immutables,  camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Inventory/NewItem.dart';
@@ -18,7 +18,7 @@ class _AddItemState extends State<AddItem> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        leading: BackButton(),
+        leading: const BackButton(),
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,8 +34,8 @@ class _AddItemState extends State<AddItem> {
                   builder: (context) => const FilterTransaction(),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Icon(
                   Icons.search,
                   size: 25,
@@ -51,7 +51,7 @@ class _AddItemState extends State<AddItem> {
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Column(
             children: [
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Material(
                 borderRadius: BorderRadius.circular(8),
                 color: Colors.white,
@@ -64,26 +64,26 @@ class _AddItemState extends State<AddItem> {
                     ),
                   ),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     height: 70,
                     width: 500,
                     child: Row(
                       children: [
                         Text(
                           "product1",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          style: const TextStyle(color: Colors.black, fontSize: 18),
                         ),
-                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Text(
                           "0.00",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          style: const TextStyle(color: Colors.black, fontSize: 18),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Material(
                 borderRadius: BorderRadius.circular(8),
                 elevation: 5,
@@ -91,23 +91,23 @@ class _AddItemState extends State<AddItem> {
                 child: Container(
                   height: 70,
                   width: 500,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       Text(
                         "product2",
-                        style: TextStyle(color: Colors.black, fontSize: 18),
+                        style: const TextStyle(color: Colors.black, fontSize: 18),
                       ),
-                      Flexible(fit: FlexFit.tight, child: SizedBox()),
+                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
                       Text(
                         "1.00",
-                        style: TextStyle(color: Colors.black, fontSize: 18),
+                        style: const TextStyle(color: Colors.black, fontSize: 18),
                       ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),

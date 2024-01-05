@@ -30,7 +30,7 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
         backgroundColor: const Color(0xff54854C),
         automaticallyImplyLeading: false,
         leading: const BackButton(),
-        title: const Text('My Business'),
+        title: Text('My Business'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
@@ -63,22 +63,22 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Padding(
-                        padding: EdgeInsets.all(3.0),
+                      Padding(
+                        padding: const EdgeInsets.all(3.0),
                         child: Text(
                           "Businesss Logo",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             fontSize: 16,
                           ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.all(2.0),
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
                         child: Text(
                           "ab@gmail.com",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Color(0xff54854C),
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -91,9 +91,9 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                 const SizedBox(
                   height: 18,
                 ),
-                const Text(
+                Text(
                   "Buisness Name * ",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -127,9 +127,9 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                   ),
                 ),
                 const SizedBox(height: 18),
-                const Text(
+                Text(
                   "Address * ",
-                  style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                  style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 4),
                 Container(
@@ -162,9 +162,9 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                   ),
                 ),
                 const SizedBox(height: 18),
-                const Text(
+                Text(
                   "Phone number * ",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -201,9 +201,9 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                   ),
                 ),
                 const SizedBox(height: 18),
-                const Text(
+                Text(
                   "Currency * ",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -267,9 +267,9 @@ class _MyBusinessPageState extends State<MyBusinessPage> {
                   width: 400,
                   child: Center(
                     child: TextButton(
-                      child: const Text(
+                      child: Text(
                         'Save',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

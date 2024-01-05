@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, unnecessary_brace_in_string_interps, use_super_parameters, unused_field, unnecessary_null_comparison
+// ignore_for_file:  avoid_unnecessary_containers, unnecessary_brace_in_string_interps, use_super_parameters, unused_field, unnecessary_null_comparison
 
 import 'dart:io';
 
@@ -22,6 +22,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
   static String selectedPropertyId = '';
   static String selectedSubPropertyId = '';
   static String userId = '';
+
   static String name = '';
 
   bool loadTabbar = false;
@@ -58,7 +59,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
         return AlertDialog(
           title: Text('Confirm Exit'),
           content: Text('Are you sure you want to exit?'),
-          actions: <Widget>[
+          actions: [
             TextButton(
               child: Text('Cancel'),
               onPressed: () {
@@ -87,13 +88,13 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
       onWillPop: () async => await _showExitConfirmationDialog(context),
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size(double.infinity, 130),
+          preferredSize: const Size(double.infinity, 130),
           child: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Color(0xff54854C),
+            backgroundColor: const Color(0xff54854C),
             title: Column(
-              children: <Widget>[
-                SizedBox(width: 0.0, height: 14),
+              children: [
+                const SizedBox(width: 0.0, height: 14),
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -105,7 +106,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => TendentProfile(),
+                                builder: (context) => const TendentProfile(),
                               ),
                             );
                           },
@@ -114,7 +115,7 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                             radius: 20,
                             child: Text(
                               name.isEmpty ? "A" : name.substring(0, 1).toUpperCase(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 22,
                                 color: Color(0xff54854C),
                                 fontWeight: FontWeight.w600,
@@ -123,10 +124,10 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
                           ),
                         ),
                       ),
-                      SizedBox(width: 6),
+                      const SizedBox(width: 6),
                       Text(
                         "Welcome ${name}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                         ),
                       ),
@@ -136,8 +137,8 @@ class _TenantdashbordState extends State<Tenantdashbord> with SingleTickerProvid
               ],
             ),
             bottom: TabBar(
-              labelStyle: TextStyle(fontSize: 16),
-              indicator: BoxDecoration(
+              labelStyle: const TextStyle(fontSize: 16),
+              indicator: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(color: Colors.white, width: 4.0),
                 ),

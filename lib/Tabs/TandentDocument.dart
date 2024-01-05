@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last
+// ignore_for_file: sort_child_properties_last, avoid_print
 
 import 'dart:convert';
 
@@ -12,7 +12,7 @@ import '../TabAction/LoadDocImage.dart';
 import '../widgets/global_widget.dart';
 
 class TandentDocument extends StatefulWidget {
-  const TandentDocument({Key? key}) : super(key: key);
+  const TandentDocument({super.key});
 
   @override
   State<TandentDocument> createState() => _TandentDocumentState();
@@ -172,7 +172,7 @@ class _TandentDocumentState extends State<TandentDocument> {
     final response = await http.post(url, headers: headers, body: jsonEncode(requestData));
 
     final Map<String, dynamic> responseData = json.decode(response.body);
-    print("get doc by mobileeee===" + response.body);
+    print("get doc by mobileeee===${response.body}");
     //
     // final request =
     // await http.Request('GET', Uri.parse("${ApiUrl.getDocByMobile}${mobile}"));

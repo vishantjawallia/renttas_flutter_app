@@ -46,10 +46,9 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
           showDoneButton: true,
           showNextButton: true,
           showSkipButton: true,
-          // isBottomSafeArea: true,
-          skip: const Text("Skip", style: TextStyle(fontWeight: FontWeight.w600)),
+          skip: Text("Skip", style: const TextStyle(fontWeight: FontWeight.w600)),
           next: const Icon(Icons.forward),
-          done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w600)),
+          done: Text("Done", style: const TextStyle(fontWeight: FontWeight.w600)),
           dotsDecorator: getDotsDecorator()),
     );
   }

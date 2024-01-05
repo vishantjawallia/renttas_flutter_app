@@ -36,20 +36,6 @@ class _TypeUserState extends State<TypeUser> {
         padding: const EdgeInsets.only(right: 20, left: 20, top: 100),
         child: Column(
           children: [
-            // Row(
-            //   children: [
-            //     BackButton(),
-            //     // const SizedBox(width: 0.0, height: 30),
-            //     const Text(
-            //       'Select user type',
-            //       style: TextStyle(
-            //         fontSize: 30,
-            //         fontWeight: FontWeight.w600,
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // const SizedBox(width: 0.0, height: 40),
             InkWell(
               onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LanlordRegisterNew())),
               child: Container(

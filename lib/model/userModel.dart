@@ -40,7 +40,7 @@ class UserModel {
       role:json['data']==null?"": json['data']['role'],
       updatedAt:json['data']==null?"": json['data']['updatedAt'],
       createdAt:json['data']==null?"": json['data']['createdAt'],
-      overallStatus: json['loginstatus']==null?"": json['loginstatus'],
+      overallStatus: json['loginstatus'] ?? "",
       message: json['msg'],
     );
   }

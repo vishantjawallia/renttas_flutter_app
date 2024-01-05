@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, avoid_print, use_super_parameters
+// ignore_for_file:  unused_local_variable, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, avoid_print, use_super_parameters
 
 import 'dart:convert';
 
@@ -118,9 +118,9 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
                         const SizedBox(height: 20),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
+                          child: Text(
                             'Property Details :-',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ),
                         const SizedBox(height: 18),
@@ -129,123 +129,123 @@ class _TandentAboutUsState extends State<TandentAboutUs> {
                           children: [
                             Text(
                               "Property Name :",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               proprname,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                         Row(
                           children: [
                             Text(
                               "Address :",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               address,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             )
                           ],
                         ),
-                        Divider(),
-                        SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text("Property Owner Details :-", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                          child: Text("Property Owner Details :-", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
                         ),
-                        SizedBox(height: 18),
-                        Divider(),
+                        const SizedBox(height: 18),
+                        const Divider(),
                         Row(
                           children: [
                             Text(
                               "Owner Name :",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               ownername,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             )
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                         Row(
                           children: [
                             Text(
                               "DOC NAME :",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               ownerdocname,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             )
                           ],
                         ),
-                        Divider(),
-                        SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text("Rent Details :-", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                          child: Text("Rent Details :-", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
                         ),
-                        SizedBox(height: 18),
-                        Divider(),
+                        const SizedBox(height: 18),
+                        const Divider(),
                         Row(
                           children: [
                             Text(
                               "Rent :",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               rent,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             )
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                         Row(
                           children: [
                             Text(
                               "Maintenance :",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               maintanance,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             )
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                         Row(
                           children: [
                             Text(
                               "Rent Cycle",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
-                        Divider(),
-                        SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text("Electricity:-", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                          child: Text("Electricity:-", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
                         ),
-                        SizedBox(height: 18),
-                        Divider(),
+                        const SizedBox(height: 18),
+                        const Divider(),
                         Row(
                           children: [
                             Text(
                               "Electricity Type :",
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               electricy,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             )
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                       ],
                     ),
                   ),

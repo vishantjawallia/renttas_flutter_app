@@ -159,7 +159,7 @@ class _StoreViewState extends State<StoreView> {
         leading: const BackButton(),
         title: Row(
           children: [
-            const Text("Stores"),
+            Text("Stores"),
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -280,9 +280,9 @@ class _StoreViewState extends State<StoreView> {
         return AlertDialog(
           title: Row(
             children: [
-              const Text(
+              Text(
                 "Add Store",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               const Flexible(fit: FlexFit.tight, child: SizedBox()),
               InkWell(onTap: () => Navigator.pop(context), child: const Icon(Icons.close_rounded))
@@ -296,9 +296,9 @@ class _StoreViewState extends State<StoreView> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   "Store Name",
-                  style: TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.grey),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -323,12 +323,12 @@ class _StoreViewState extends State<StoreView> {
               ],
             ),
           ),
-          actions: <Widget>[
+          actions: [
             Center(
               child: TextButton(
-                child: const Text(
+                child: Text(
                   'Save',
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 style: const ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(

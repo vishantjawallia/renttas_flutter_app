@@ -91,24 +91,24 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       body: isloaidngfirst == true
-          ? const Center(
+          ? Center(
               child: CircularProgressIndicator(
                 color: Color(0xff54854C),
               ),
             )
           : Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
+              padding: EdgeInsets.only(left: 8, right: 8),
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 50),
+                    margin: EdgeInsets.only(top: 50),
                     height: 50,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                     child: TabBar(
                       isScrollable: true,
-                      indicator: const BoxDecoration(
+                      indicator: BoxDecoration(
                         color: Color(0xff54854C),
                       ),
                       labelColor: Colors.white,
@@ -142,10 +142,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
 
                             Container(
                               alignment: Alignment.topLeft,
-                              margin: const EdgeInsets.only(top: 20, left: 10),
+                              margin: EdgeInsets.only(top: 20, left: 10),
                               child: Text(
                                 "${"details".tr()}:",
-                                // 'Details:',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16,
@@ -154,7 +153,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                               ),
                             ),
 
-                            const Divider(
+                            Divider(
                               //  margin:EdgeInsets.only(top: 10),
                               color: Colors.grey,
                             ),
@@ -162,8 +161,8 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                               children: [
                                 Container(
                                   alignment: Alignment.topLeft,
-                                  margin: const EdgeInsets.only(left: 8, top: 8),
-                                  padding: const EdgeInsets.only(right: 25),
+                                  margin: EdgeInsets.only(left: 8, top: 8),
+                                  padding: EdgeInsets.only(right: 25),
                                   child: Text(
                                     "property_name".tr(),
                                     // 'Property Name',
@@ -171,13 +170,13 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 ),
                                 Container(
                                   alignment: Alignment.topLeft,
-                                  margin: const EdgeInsets.only(left: 25, top: 8),
-                                  padding: const EdgeInsets.only(left: 30),
+                                  margin: EdgeInsets.only(left: 25, top: 8),
+                                  padding: EdgeInsets.only(left: 30),
                                   child: Text(selectedPropertyName),
                                 ),
                               ],
                             ),
-                            const Divider(
+                            Divider(
                               //  margin:EdgeInsets.only(top: 10),
                               color: Colors.grey,
                             ),
@@ -185,8 +184,8 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                               children: [
                                 Container(
                                   alignment: Alignment.topLeft,
-                                  margin: const EdgeInsets.only(left: 8, top: 8),
-                                  padding: const EdgeInsets.only(right: 25),
+                                  margin: EdgeInsets.only(left: 8, top: 8),
+                                  padding: EdgeInsets.only(right: 25),
                                   child: Text(
                                     "owner_name".tr(),
                                     // 'Owner Name',
@@ -194,15 +193,15 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 ),
                                 Container(
                                   alignment: Alignment.topLeft,
-                                  margin: const EdgeInsets.only(left: 25, top: 8),
-                                  padding: const EdgeInsets.only(left: 45),
+                                  margin: EdgeInsets.only(left: 25, top: 8),
+                                  padding: EdgeInsets.only(left: 45),
                                   child: Text(landlordName),
                                 ),
                               ],
                             ),
                             SizedBox(width: 0.0, height: 10),
                             if (isLocationTheir)
-                              const Divider(
+                              Divider(
                                 //  margin:EdgeInsets.only(top: 10),
                                 color: Colors.grey,
                               ),
@@ -211,37 +210,37 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 children: [
                                   Container(
                                     alignment: Alignment.topLeft,
-                                    margin: const EdgeInsets.only(left: 8, top: 8),
-                                    padding: const EdgeInsets.only(right: 25),
+                                    margin: EdgeInsets.only(left: 8, top: 8),
+                                    padding: EdgeInsets.only(right: 25),
                                     child: Text(
                                       'address'.tr(),
                                     ),
                                   ),
                                   Container(
                                     alignment: Alignment.topLeft,
-                                    margin: const EdgeInsets.only(left: 25, top: 8),
-                                    padding: const EdgeInsets.only(left: 45),
+                                    margin: EdgeInsets.only(left: 25, top: 8),
+                                    padding: EdgeInsets.only(left: 45),
                                     child: Text(location),
                                   ),
                                 ],
                               ),
                             if (isLocationTheir)
-                              const Divider(
+                              Divider(
                                 //  margin:EdgeInsets.only(top: 10),
                                 color: Colors.grey,
                               ),
                             if (isPanTheir)
                               Container(
                                 alignment: Alignment.topLeft,
-                                margin: const EdgeInsets.only(left: 8, top: 18, bottom: 10),
-                                padding: const EdgeInsets.only(right: 25),
-                                child: const Text(
+                                margin: EdgeInsets.only(left: 8, top: 18, bottom: 10),
+                                padding: EdgeInsets.only(right: 25),
+                                child: Text(
                                   'Property Owner Details:',
                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                                 ),
                               ),
                             if (isPanTheir)
-                              const Divider(
+                              Divider(
                                 //  margin:EdgeInsets.only(top: 10),
                                 color: Colors.grey,
                               ),
@@ -250,24 +249,24 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 children: [
                                   Container(
                                     alignment: Alignment.topLeft,
-                                    margin: const EdgeInsets.only(left: 8, top: 8),
-                                    padding: const EdgeInsets.only(right: 25),
-                                    child: const Text(
+                                    margin: EdgeInsets.only(left: 8, top: 8),
+                                    padding: EdgeInsets.only(right: 25),
+                                    child: Text(
                                       'OwnerName',
                                     ),
                                   ),
                                   Container(
                                     alignment: Alignment.topLeft,
-                                    margin: const EdgeInsets.only(left: 25, top: 8),
-                                    padding: const EdgeInsets.only(left: 45),
-                                    child: const Text(
+                                    margin: EdgeInsets.only(left: 25, top: 8),
+                                    padding: EdgeInsets.only(left: 45),
+                                    child: Text(
                                       "property_owner",
                                     ),
                                   ),
                                 ],
                               ),
                             if (isPanTheir)
-                              const Divider(
+                              Divider(
                                 //  margin:EdgeInsets.only(top: 10),
                                 color: Colors.grey,
                               ),
@@ -276,36 +275,36 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 children: [
                                   Container(
                                     alignment: Alignment.topLeft,
-                                    margin: const EdgeInsets.only(left: 8, top: 8),
-                                    padding: const EdgeInsets.only(right: 25),
-                                    child: const Text('PAN'),
+                                    margin: EdgeInsets.only(left: 8, top: 8),
+                                    padding: EdgeInsets.only(right: 25),
+                                    child: Text('PAN'),
                                   ),
                                   Container(
                                     alignment: Alignment.topLeft,
-                                    margin: const EdgeInsets.only(left: 25, top: 8),
-                                    padding: const EdgeInsets.only(left: 45),
-                                    child: const Text("pan"),
+                                    margin: EdgeInsets.only(left: 25, top: 8),
+                                    padding: EdgeInsets.only(left: 45),
+                                    child: Text("pan"),
                                   ),
                                 ],
                               ),
                             if (isPanTheir)
-                              const Divider(
+                              Divider(
                                 //  margin:EdgeInsets.only(top: 10),
                                 color: Colors.grey,
                               ),
                             stcodeadd == "201"
                                 ? Padding(
-                                    padding: const EdgeInsets.only(left: 8, top: 8),
+                                    padding: EdgeInsets.only(left: 8, top: 8),
                                     child: Row(
                                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         if (!isLocationTheir)
                                           Padding(
-                                            padding: const EdgeInsets.only(right: 45),
+                                            padding: EdgeInsets.only(right: 45),
                                             child: OutlinedButton(
                                               style: ButtonStyle(
-                                                foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
-                                                // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
+                                                foregroundColor: MaterialStateProperty.all(Color(0xff54854C)),
+                                                // maximumSize: MaterialStateProperty.all(Size(200, 40)),
                                                 // iconColor: MaterialStateProperty.all(Colors.white),
                                                 // foregroundColor: MaterialStateProperty.all(Colors.white),
                                                 // backgroundColor: MaterialStateProperty.all(Colors.blue.shade100),
@@ -326,9 +325,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                             ),
                                           ),
                                         // Container(
-                                        //   margin: const EdgeInsets.only(left: 10, top: 15),
+                                        //   margin: EdgeInsets.only(left: 10, top: 15),
                                         //   child: InkWell(
-                                        //     child: const Text(
+                                        //     child: Text(
                                         //       '+ Property Address',
                                         //       style: TextStyle(color: Colors.blue),
                                         //     ),
@@ -337,11 +336,11 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                         // ),
                                         if (!isPanTheir)
                                           Padding(
-                                            padding: const EdgeInsets.only(left: 8.0),
+                                            padding: EdgeInsets.only(left: 8.0),
                                             child: OutlinedButton(
                                               style: ButtonStyle(
-                                                foregroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
-                                                // maximumSize: MaterialStateProperty.all(const Size(200, 40)),
+                                                foregroundColor: MaterialStateProperty.all(Color(0xff54854C)),
+                                                // maximumSize: MaterialStateProperty.all(Size(200, 40)),
                                                 // iconColor: MaterialStateProperty.all(Colors.white),
                                                 // foregroundColor: MaterialStateProperty.all(Colors.white),
                                                 // backgroundColor: MaterialStateProperty.all(Colors.blue),
@@ -363,9 +362,9 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                           ),
 
                                         // Container(
-                                        //   margin: const EdgeInsets.only(left: 10, top: 15),
+                                        //   margin: EdgeInsets.only(left: 10, top: 15),
                                         //   child: InkWell(
-                                        //       child: const Text(
+                                        //       child: Text(
                                         //         '+ Property Owner Details',
                                         //         style: TextStyle(color: Colors.blue),
                                         //       ),
@@ -382,7 +381,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                     child: SingleChildScrollView(
                                       physics: BouncingScrollPhysics(),
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                                         child: SizedBox(
                                           width: double.infinity,
                                           child: Column(
@@ -413,31 +412,31 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                                   fontSize: 16,
                                                 ),
                                               ),
-                                              const SizedBox(height: 8),
+                                              SizedBox(height: 8),
                                               Text(
                                                 "${"address".tr()} : ${address.capitalizeFirstWord()}",
                                               ),
-                                              const SizedBox(height: 5),
+                                              SizedBox(height: 5),
                                               Text(
                                                 "${"pincode".tr()} : ${pincode.capitalizeFirstWord()}",
                                               ),
-                                              const SizedBox(height: 15),
+                                              SizedBox(height: 15),
                                               Text(
                                                 "${"owner_details".tr()}:-",
                                                 // "Owner details:-",
                                                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                                               ),
-                                              const SizedBox(height: 8),
+                                              SizedBox(height: 8),
                                               Text(
                                                 "${"owner_name".tr()}: ${ownername.capitalizeFirstWord()}",
                                               ),
-                                              const SizedBox(
+                                              SizedBox(
                                                 height: 5,
                                               ),
                                               Text(
                                                 "${"document_name".tr()} : ${Docname.capitalizeFirstWord()}",
                                               ),
-                                              const SizedBox(height: 5),
+                                              SizedBox(height: 5),
                                             ],
                                           ),
                                         ),
@@ -461,14 +460,14 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 30),
+                            SizedBox(height: 30),
                             ElevatedButton(
                               onPressed: () {},
                               child: Text("click_add_rent".tr()
                                   // ' +  Click to add rent',
                                   ),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xff54854C),
+                                backgroundColor: Color(0xff54854C),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -503,7 +502,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
           alignment: Alignment.center,
           color: Colors.white,
           height: 200,
-          child: const Text(
+          child: Text(
             'Add Address',
             style: TextStyle(fontSize: 18),
           ),
@@ -516,40 +515,32 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
             Container(
               color: Colors.white,
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
+                    Text(
                       'Owner Address',
                     ),
                     TextFormField(
                       controller: addressControler,
-                      decoration: const InputDecoration(labelText: 'Address'),
+                      decoration: InputDecoration(labelText: 'Address'),
                     ),
-                    const SizedBox(width: 0.0, height: 8),
+                    SizedBox(width: 0.0, height: 8),
                     TextFormField(
                       controller: pinCode,
-                      decoration: const InputDecoration(labelText: 'PinCode'),
+                      decoration: InputDecoration(labelText: 'PinCode'),
                     ),
-                    const SizedBox(width: 0.0, height: 20),
+                    SizedBox(width: 0.0, height: 20),
                     ElevatedButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xff54854C))),
+                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xff54854C))),
                       onPressed: () {
                         addaddress(addressControler.text, pinCode.text);
                         //  Navigator.pop(context);
                       },
-                      child: const Text('Save'),
+                      child: Text('Save'),
                     ),
-                    const SizedBox(width: 0.0, height: 8),
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     Navigator.pop(context);
-                    //   },
-                    //   child: const Text('Close'),
-                    // ),
-
-                    //  SizedBox(height: isKeyboardVisible ? 300 : 0), // Spacer for keyboard
+                    SizedBox(width: 0.0, height: 8),
                   ],
                 ),
               ),
@@ -701,10 +692,10 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
       headerBuilder: (BuildContext context, double offset) {
         return Container(
           color: Colors.white,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           alignment: Alignment.centerRight,
           child: IconButton(
-            icon: const Icon(Icons.close),
+            icon: Icon(Icons.close),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -714,34 +705,34 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
       bodyBuilder: (BuildContext context, double bottomSheetOffset) {
         return SliverChildListDelegate([
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
-                  margin: const EdgeInsets.all(5),
+                  margin: EdgeInsets.all(5),
                   child: Column(
                     children: [
-                      const Text(
+                      Text(
                         'Add Address',
                         style: TextStyle(fontSize: 18),
                       ),
                       TextField(
                         controller: propertyOwner,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           icon: Icon(Icons.supervised_user_circle_outlined),
                           labelText: "Property Owner",
                         ),
                       ),
-                      const SizedBox(width: 0.0, height: 10),
+                      SizedBox(width: 0.0, height: 10),
                       TextField(
                         controller: documentName,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           icon: Icon(Icons.credit_card),
                           labelText: "Document Name",
                         ),
                       ),
-                      const SizedBox(width: 0.0, height: 20),
+                      SizedBox(width: 0.0, height: 20),
                       StatefulBuilder(
                         builder: (BuildContext context, StateSetter setState) {
                           return _imageFile == null
@@ -751,14 +742,14 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                   // height: 50,
                                   child: ElevatedButton(
                                     style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.6)),
+                                      backgroundColor: MaterialStateProperty.all(Color(0xff54854C).withOpacity(0.6)),
                                     ),
                                     onPressed: () {
                                       _pickImage().then((_) {
                                         setState(() {});
                                       });
                                     },
-                                    child: const Text("Choose Image"),
+                                    child: Text("Choose Image"),
                                   ),
                                 )
                               : Container(
@@ -768,12 +759,12 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 );
                         },
                       ),
-                      const SizedBox(width: 0.0, height: 20),
+                      SizedBox(width: 0.0, height: 20),
                       Container(
                         alignment: Alignment.centerLeft,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
+                            backgroundColor: MaterialStateProperty.all(Color(0xff54854C)),
                           ),
                           onPressed: () async {
                             // saveDoc(
@@ -852,10 +843,10 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                               print('Error saving document: $e');
                             }
                           },
-                          child: const Text('Submit For Verification'),
+                          child: Text('Submit For Verification'),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 100,
                       ),
                     ],

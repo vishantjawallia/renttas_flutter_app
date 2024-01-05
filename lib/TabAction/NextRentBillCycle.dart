@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, prefer_interpolation_to_compose_strings, sort_child_properties_last, use_build_context_synchronously, avoid_print, must_be_immutable
+// ignore_for_file:  avoid_unnecessary_containers, use_key_in_widget_constructors, prefer_interpolation_to_compose_strings, sort_child_properties_last, use_build_context_synchronously, avoid_print, must_be_immutable
 
 import 'dart:convert';
 
@@ -63,26 +63,9 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.black,
-                Colors.green,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back),
-          color: Colors.black,
-        ),
-        title: Text('RENTTAS', style: TextStyle(color: Colors.black)),
+        backgroundColor: const Color(0xff54854C),
+        leading: const BackButton(),
+        title: Text('Bill Detail'),
         centerTitle: true,
       ),
       body: Column(
@@ -95,181 +78,86 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10, left: 5),
-                        padding: EdgeInsets.only(left: 15),
+                        margin: const EdgeInsets.only(top: 16, left: 5),
+                        padding: const EdgeInsets.only(left: 15),
                         height: 20,
                         width: double.infinity,
-                        // color: Colors.grey,
                         child: Text(
-                          'Next Rent Bill Cycle',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey),
+                          'Next rent bill cycle:-',
+                          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18, color: Colors.black),
                         ),
                       ),
+                      const SizedBox(height: 20),
                       Container(
-                        width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 22),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Rent Cycle',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                            Text(
+                              'Rent Cycle',
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(left: 50),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.rentCycle,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                            Text(
+                              widget.rentCycle,
+                              style: const TextStyle(fontSize: 16, color: Colors.black54),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 12),
                       Container(
-                        width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 22),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Rent Start Date ',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                            Text(
+                              'Rent Start Date ',
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.rentStartData,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                            Text(
+                              widget.rentStartData,
+                              style: const TextStyle(fontSize: 16, color: Colors.black54),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
+                      const SizedBox(
+                        height: 12,
                       ),
                       Container(
-                        width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 22),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Rent End Date',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                            Text(
+                              'Rent End Date',
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.rentEndDate,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                            Text(
+                              widget.rentEndDate,
+                              style: const TextStyle(fontSize: 16, color: Colors.black54),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       Container(
-                        width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 22),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Collect Rent By',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                            Text(
+                              'Collect Rent By',
+                              style: const TextStyle(fontSize: 16),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.collectdBy,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                            Text(
+                              widget.collectdBy,
+                              style: const TextStyle(fontSize: 16, color: Colors.black54),
                             ),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
                       ),
                     ],
                   ),
@@ -279,28 +167,27 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10, left: 5),
-                        padding: EdgeInsets.only(left: 15),
+                        margin: const EdgeInsets.only(top: 10, left: 5),
+                        padding: const EdgeInsets.only(left: 15),
                         height: 20,
                         width: double.infinity,
-                        // color: Colors.grey,
                         child: Text(
                           'Monthly Fixed  Charges ',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey),
                         ),
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Previous Balance ',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -314,7 +201,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.perviousBalance.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -328,26 +215,26 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Rent',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 110),
+                              padding: const EdgeInsets.only(left: 110),
                               child: Align(
                                 alignment: Alignment.centerRight,
                                 child: Container(
@@ -355,7 +242,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.rentAmount.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -369,26 +256,26 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Maintenance',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 45),
+                              padding: const EdgeInsets.only(left: 45),
                               child: Align(
                                 alignment: Alignment.centerRight,
                                 child: Container(
@@ -396,7 +283,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.maintenanceAmount.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -410,26 +297,26 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Total',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 95),
+                              padding: const EdgeInsets.only(left: 95),
                               child: Align(
                                 alignment: Alignment.centerRight,
                                 child: Container(
@@ -437,7 +324,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.totalAmount.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -451,7 +338,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],
@@ -462,28 +349,28 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       Container(
-                        margin: EdgeInsets.only(top: 10, left: 5),
-                        padding: EdgeInsets.only(left: 15),
+                        margin: const EdgeInsets.only(top: 10, left: 5),
+                        padding: const EdgeInsets.only(left: 15),
                         height: 20,
                         width: double.infinity,
                         // color: Colors.grey,
                         child: Text(
                           'BillS',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey),
                         ),
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Electric Bill',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -497,7 +384,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.electricityType,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -513,14 +400,14 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Electric Charges',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -534,7 +421,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.electricCharge.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -548,19 +435,19 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Water Bills',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -574,7 +461,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.waterBillType,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -590,14 +477,14 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Water Charges',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -611,7 +498,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.waterBillCharge.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -625,26 +512,26 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Gas Bill',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 30),
+                              padding: const EdgeInsets.only(left: 30),
                               child: Align(
                                 alignment: Alignment.centerRight,
                                 child: Container(
@@ -652,7 +539,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.gasBillType.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -668,14 +555,14 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                       ),
                       Container(
                         width: double.infinity,
-                        margin: EdgeInsets.only(top: 10, left: 10),
+                        margin: const EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(right: 50, left: 10),
+                              padding: const EdgeInsets.only(right: 50, left: 10),
                               child: Text(
                                 'Gas Charge',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -689,7 +576,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                                     children: [
                                       Text(
                                         widget.gasBillCharge.toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey,
@@ -703,7 +590,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],
@@ -715,13 +602,13 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
           if (!isLoading)
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Container(
                   height: 70,
                   width: 170,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: OutlinedButton(
                     onPressed: () {},
                     child: Text("Total:-" + widget.totalAmount.toString()),
@@ -731,7 +618,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                 Container(
                   height: 70,
                   width: 180,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -758,7 +645,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
                           widget.selectedItems);
                     },
                     child: isLoading == true
-                        ? CircularProgressIndicator(
+                        ? const CircularProgressIndicator(
                             color: Color(0xff54854C),
                           )
                         : Text('Save'),
@@ -768,7 +655,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
               ],
             ),
           if (isLoading)
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               color: Color(0xff54854C),
             ),
         ],
@@ -828,7 +715,7 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
 
       print("Cycle----" + response.body);
       if (response.statusCode == 200) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandloardDashBord()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
       } else {
         snack("Something went wrong, please try again", context);
         print("Failed to send data. Status code: ${response.statusCode}");

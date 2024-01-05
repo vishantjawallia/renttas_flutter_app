@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_unnecessary_containers, curly_braces_in_flow_control_structures, avoid_print
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, non_constant_identifier_names, use_build_context_synchronously
 
 import 'dart:convert';
 import 'dart:developer';
@@ -21,7 +21,7 @@ import '../tandent/Tenantdashbord.dart';
 import 'TypeUser.dart';
 
 class LandlordLoginNew extends StatefulWidget {
-  const LandlordLoginNew({Key? key}) : super(key: key);
+  const LandlordLoginNew({super.key});
 
   @override
   State<LandlordLoginNew> createState() => _LandlordLoginNewState();
@@ -50,7 +50,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
       backgroundColor: Colors.black,
       elevation: 10,
       behavior: SnackBarBehavior.floating,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
@@ -68,39 +68,39 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
           child: Stack(
-            children: <Widget>[
+            children: [
               SizedBox(
                 height: double.infinity,
                 width: double.infinity,
                 child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image(
+                    children: [
+                      const Image(
                         height: 230,
                         image: AssetImage('assets/images/login_bg.png'),
                         fit: BoxFit.fill,
                       ),
-                      Image(
+                      const Image(
                         height: 150,
                         image: AssetImage('assets/images/user_profile.png'),
                       ),
                       const SizedBox(height: 20),
                       Text(
                         "sign_in".tr(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.only(top: 20, bottom: 10, right: 20, left: 20),
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.only(top: 20, bottom: 10, right: 20, left: 20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: Color(0xffF8F3E7),
+                          color: const Color(0xffF8F3E7),
                         ),
                         child: TextField(
                           controller: landlordEmail,
@@ -108,22 +108,22 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           style: const TextStyle(color: Colors.black87),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 14),
-                            prefixIcon: Icon(
+                            contentPadding: const EdgeInsets.only(top: 14),
+                            prefixIcon: const Icon(
                               Icons.email,
                               color: Color(0xff54854C),
                             ),
                             hintText: 'email'.tr(),
-                            hintStyle: TextStyle(color: Colors.black38),
+                            hintStyle: const TextStyle(color: Colors.black38),
                           ),
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: Color(0xffEFE3E3),
+                          color: const Color(0xffEFE3E3),
                         ),
                         child: TextField(
                           controller: landlordPassword,
@@ -137,7 +137,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             hintText: 'password'.tr(),
-                            hintStyle: TextStyle(color: Colors.black38),
+                            hintStyle: const TextStyle(color: Colors.black38),
                             filled: true,
                             fillColor: Colors.transparent,
                             isDense: true,
@@ -145,7 +145,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            prefixIcon: Icon(
+                            prefixIcon: const Icon(
                               Icons.lock_rounded,
                               size: 24,
                               color: Color(0xff54854C),
@@ -164,22 +164,20 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 0.0, height: 10),
+                      const SizedBox(width: 0.0, height: 10),
                       Container(
                         alignment: Alignment.centerRight,
-                        margin: EdgeInsets.only(right: 20),
+                        margin: const EdgeInsets.only(right: 20),
                         child: InkWell(
                           onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ResetPasswordScreen())),
-                          child: Container(
-                            child: Text(
-                              "forget_pass".tr(),
-                              // "Forget Your Password ?",
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                decoration: TextDecoration.underline,
-                                color: Colors.black,
-                                fontSize: 14,
-                              ),
+                          child: Text(
+                            "forget_pass".tr(),
+                            // "Forget Your Password ?",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                              decoration: TextDecoration.underline,
+                              color: Colors.black,
+                              fontSize: 14,
                             ),
                           ),
                         ),
@@ -190,7 +188,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                         height: 60,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xff54854C),
+                            backgroundColor: const Color(0xff54854C),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -203,7 +201,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                               : Text(
                                   "login".tr(),
                                   // 'Login',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -211,19 +209,19 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                                 ),
                         ),
                       ),
-                      SizedBox(width: 0.0, height: 60),
+                      const SizedBox(width: 0.0, height: 60),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             "dont_have_account".tr(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
                             ),
                           ),
-                          SizedBox(width: 4, height: 0.0),
+                          const SizedBox(width: 4, height: 0.0),
                           GestureDetector(
                             onTap: () => {
                               Navigator.of(context).push(
@@ -234,7 +232,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                               text: TextSpan(
                                 text: "sign_up".tr(),
                                 // "Sign Up",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xff894747),
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline,
@@ -245,7 +243,7 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
                           ),
                         ],
                       ),
-                      SizedBox(width: 0.0, height: 50),
+                      const SizedBox(width: 0.0, height: 50),
                     ],
                   ),
                 ),
@@ -333,11 +331,11 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Login Failed'),
+          title: Text('Login Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },

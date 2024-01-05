@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'package:renttas_flutter_app/LiveChat/comps/styles.dart';
 
-import 'animated-dialog.dart';
 
 class ChatWidgets {
   static Widget card({title, time, subtitle, onTap}) {
@@ -59,7 +58,7 @@ class ChatWidgets {
                 child: Center(
                     child: Text(
                   name,
-                  style: TextStyle(height: 1.5, fontSize: 12, color: Colors.white),
+                  style: const TextStyle(height: 1.5, fontSize: 12, color: Colors.white),
                   overflow: TextOverflow.ellipsis,
                 )))
           ],
@@ -155,7 +154,7 @@ class ChatWidgets {
                   color: Colors.white,
                 ),
                 ListTile(
-                  leading: Icon(Icons.person),
+                  leading: const Icon(Icons.person),
                   title: Text('Profile'),
                   onTap: () {
                     // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
@@ -163,7 +162,7 @@ class ChatWidgets {
                 ),
                 ListTile(
                   leading: const Icon(Icons.logout),
-                  title: const Text('Logout'),
+                  title: Text('Logout'),
                   onTap: () async => await FirebaseAuth.instance.signOut(),
                 )
               ],

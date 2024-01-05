@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file:  sort_child_properties_last, avoid_print
 
 import 'dart:convert';
 
@@ -62,23 +62,23 @@ class _TenantsTabState extends State<TenantsTab> {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => AddTendent(),
+                builder: (context) => const AddTendent(),
               ),
             );
           },
           label: Text(
             'Tenant',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color: Colors.white,
             ),
           ),
-          icon: Icon(
+          icon: const Icon(
             Icons.add,
             color: Colors.white,
           ),
-          backgroundColor: Color(0xff54854C),
+          backgroundColor: const Color(0xff54854C),
           // backgroundColor: Colors.blue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -88,10 +88,10 @@ class _TenantsTabState extends State<TenantsTab> {
           children: [
             // Other widgets
             isLoading
-                ? Flexible(
+                ? const Flexible(
                     child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom: 60.0),
+                        padding: EdgeInsets.only(bottom: 60.0),
                         child: CircularProgressIndicator(
                           color: Color(0xff54854C),
                         ),
@@ -105,7 +105,7 @@ class _TenantsTabState extends State<TenantsTab> {
                       child: ListView.builder(
                         shrinkWrap: false,
                         itemCount: tandent.length,
-                        padding: EdgeInsets.only(top: 4),
+                        padding: const EdgeInsets.only(top: 4),
                         itemBuilder: (context, index) {
                           final tenant = tandent[index];
                           return Padding(
@@ -117,7 +117,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                                 child: Column(
                                   children: [
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -126,7 +126,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                           alignment: Alignment.centerRight,
                                           child: Text(
                                             tenant.tenantName,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.black,
@@ -135,13 +135,13 @@ class _TenantsTabState extends State<TenantsTab> {
                                             maxLines: 2,
                                           ),
                                         ),
-                                        SizedBox(width: 50),
+                                        const SizedBox(width: 50),
                                         Container(
                                           alignment: Alignment.centerRight,
                                           width: 140,
                                           child: Text(
                                             tenant.phone,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.black54,
@@ -152,7 +152,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                         ),
                                       ],
                                     ),
-                                    Divider(
+                                    const Divider(
                                       color: Colors.grey,
                                       height: 30,
                                     ),
@@ -164,7 +164,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                         children: [
                                           TextButton(
                                             style: ButtonStyle(
-                                              maximumSize: MaterialStateProperty.all(Size(120, 40)),
+                                              maximumSize: MaterialStateProperty.all(const Size(120, 40)),
                                               iconColor: MaterialStateProperty.all(Colors.white),
                                               foregroundColor: MaterialStateProperty.all(Colors.white),
                                               backgroundColor: MaterialStateProperty.all(Colors.redAccent),
@@ -174,12 +174,12 @@ class _TenantsTabState extends State<TenantsTab> {
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
-                                                Icon(Icons.delete),
-                                                SizedBox(width: 6, height: 0.0),
+                                                const Icon(Icons.delete),
+                                                const SizedBox(width: 6, height: 0.0),
                                                 Text(
                                                   "remove".tr().toUpperCase(),
                                                   // 'REMOVE',
-                                                  style: TextStyle(fontSize: 16),
+                                                  style: const TextStyle(fontSize: 16),
                                                 ),
                                               ],
                                             ),
@@ -187,7 +187,7 @@ class _TenantsTabState extends State<TenantsTab> {
                                           // SizedBox(width: 14),
                                           TextButton(
                                             style: ButtonStyle(
-                                              maximumSize: MaterialStateProperty.all(Size(120, 40)),
+                                              maximumSize: MaterialStateProperty.all(const Size(120, 40)),
                                               iconColor: MaterialStateProperty.all(Colors.white),
                                               foregroundColor: MaterialStateProperty.all(Colors.white),
                                               backgroundColor: MaterialStateProperty.all(Colors.green),
@@ -197,12 +197,12 @@ class _TenantsTabState extends State<TenantsTab> {
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
-                                                Icon(Icons.phone),
-                                                SizedBox(width: 6, height: 0.0),
+                                                const Icon(Icons.phone),
+                                                const SizedBox(width: 6, height: 0.0),
                                                 Text(
                                                   "call".tr().toUpperCase(),
                                                   // 'CALL',
-                                                  style: TextStyle(fontSize: 16),
+                                                  style: const TextStyle(fontSize: 16),
                                                 ),
                                               ],
                                             ),
@@ -245,7 +245,7 @@ class _TenantsTabState extends State<TenantsTab> {
                           padding: const EdgeInsets.only(bottom: 60.0),
                           child: Text(
                             '${"tenants".tr()} not found !',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               color: Colors.grey,
@@ -255,7 +255,7 @@ class _TenantsTabState extends State<TenantsTab> {
                       ),
                     ),
                     // Padding(
-                    //   padding: const EdgeInsets.only(top: 250, left: 30),
+                    //   padding: EdgeInsets.only(top: 250, left: 30),
                     //   child: Center(
                     //     child: Text(
                     //       'No tenants found',

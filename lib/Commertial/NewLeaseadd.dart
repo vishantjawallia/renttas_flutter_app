@@ -56,19 +56,19 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         automaticallyImplyLeading: false,
-        actions: const <Widget>[
+        actions: [
           Expanded(
             child: Row(
               children: [
-                SizedBox(width: 10),
-                InkWell(
+                const SizedBox(width: 10),
+                const InkWell(
                   child: Icon(
                     Icons.arrow_back,
                     size: 30,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +91,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Space use"),
+                Text("Space use"),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -99,7 +99,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     RadioListTile(
                       value: 0,
                       groupValue: _groupValue1,
-                      title: const Text("Office"),
+                      title: Text("Office"),
                       onChanged: (newValue) {
                         setState(() {
                           spaceuse = "Office";
@@ -112,7 +112,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     RadioListTile(
                       value: 1,
                       groupValue: _groupValue1,
-                      title: const Text("Indastrial"),
+                      title: Text("Indastrial"),
                       onChanged: (newValue) => setState(() {
                         spaceuse = "Indastrial";
                         _groupValue1 = newValue as int;
@@ -123,7 +123,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     RadioListTile(
                       value: 2,
                       groupValue: _groupValue1,
-                      title: const Text("building"),
+                      title: Text("building"),
                       onChanged: (newValue) => setState(() {
                         spaceuse = "building";
                         _groupValue1 = newValue as int;
@@ -133,7 +133,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                     ),
                   ],
                 ),
-                const Text("Available space"),
+                Text("Available space"),
                 const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,7 +165,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                         ),
                       ),
                     ),
-                    const Text("to"),
+                    Text("to"),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -220,7 +220,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                             padding: const EdgeInsets.all(3.0),
                             child: Row(
                               children: [
-                                const Text("Cotiogus in buildig"),
+                                Text("Cotiogus in buildig"),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 Checkbox(
                                   checkColor: Colors.white,
@@ -251,7 +251,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                             padding: const EdgeInsets.all(3.0),
                             child: Row(
                               children: [
-                                const Text("Cotinogus in floor"),
+                                Text("Cotinogus in floor"),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 Checkbox(
                                   checkColor: Colors.white,
@@ -282,7 +282,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                             padding: const EdgeInsets.all(3.0),
                             child: Row(
                               children: [
-                                const Text("in one suit"),
+                                Text("in one suit"),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 Checkbox(
                                   checkColor: Colors.white,
@@ -313,7 +313,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                             padding: const EdgeInsets.all(3.0),
                             child: Row(
                               children: [
-                                const Text("Total in buildig"),
+                                Text("Total in buildig"),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 Checkbox(
                                   checkColor: Colors.white,
@@ -339,7 +339,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Text("Asking Rent"),
+                Text("Asking Rent"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -370,7 +370,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                         ),
                       ),
                     ),
-                    const Text("to"),
+                    Text("to"),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -400,7 +400,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                   ],
                 ),
                 const SizedBox(height: 15),
-                const Text("Payment date"),
+                Text("Payment date"),
                 const SizedBox(height: 5),
                 Container(
                   height: 50,
@@ -420,7 +420,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Text("Time period"),
+                Text("Time period"),
                 const SizedBox(height: 5),
                 Container(
                   height: 50,
@@ -444,7 +444,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                   ),
                 ),
                 const SizedBox(height: 15),
-                const Text("Charges"),
+                Text("Charges"),
                 const SizedBox(height: 5),
                 Container(
                   decoration: BoxDecoration(
@@ -456,7 +456,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                       RadioListTile(
                         value: 0,
                         groupValue: _groupValue2,
-                        title: const Text("Yearly"),
+                        title: Text("Yearly"),
                         onChanged: (newValue) => setState(() {
                           seletedcharges = "Yearly";
                           print("rrrrr==" + newValue.toString());
@@ -468,7 +468,7 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                       RadioListTile(
                         value: 1,
                         groupValue: _groupValue2,
-                        title: const Text("Quterly"),
+                        title: Text("Quterly"),
                         onChanged: (newValue) => setState(() {
                           seletedcharges = "Quterly";
                           print("rrrrr==" + newValue.toString());
@@ -492,9 +492,9 @@ class _NewLeaseAddState extends State<NewLeaseAdd> {
                   child: Center(
                     child: TextButton(
                       child: isloading == false
-                          ? const Text(
+                          ? Text(
                               'Save',
-                              style: TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.white),
                             )
                           : const CircularProgressIndicator(
                               color: Color(0xff54854C),

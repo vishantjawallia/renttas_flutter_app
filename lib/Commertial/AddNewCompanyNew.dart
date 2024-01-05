@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sort_child_properties_last, use_build_context_synchronously, unnecessary_new, prefer_interpolation_to_compose_strings, avoid_print, camel_case_types, must_be_immutable
+// ignore_for_file: avoid_unnecessary_containers,  sort_child_properties_last, use_build_context_synchronously, unnecessary_new, prefer_interpolation_to_compose_strings, avoid_print, camel_case_types, must_be_immutable
 
 import 'dart:convert';
 import 'dart:developer';
@@ -45,7 +45,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Enter Company name"),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -60,10 +60,10 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                         child: Center(
                           child: TextFormField(
                             controller: companynamecontroller,
-                            decoration: new InputDecoration.collapsed(
+                            decoration: const InputDecoration.collapsed(
                               hintText: 'Enter company name',
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14,
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -79,9 +79,9 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text("Enter company address"),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -96,8 +96,8 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                         child: Center(
                           child: TextFormField(
                             controller: companyaddresscontroller,
-                            decoration: new InputDecoration.collapsed(hintText: 'Enter company address'),
-                            style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                            decoration: const InputDecoration.collapsed(hintText: 'Enter company address'),
+                            style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your company address!';
@@ -109,7 +109,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -120,17 +120,17 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
                     child: Center(
                       child: TextButton(
                         child: isloading == true
-                            ? CircularProgressIndicator(
+                            ? const CircularProgressIndicator(
                                 color: Color(0xff54854C),
                               )
                             : widget.type == "0"
                                 ? Text(
                                     'Save',
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   )
                                 : Text(
                                     'Update',
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                         style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(Colors.blue),
@@ -185,7 +185,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
@@ -232,7 +232,7 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {

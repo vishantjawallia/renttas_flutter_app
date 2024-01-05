@@ -132,11 +132,11 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Failed'),
+          title: Text('Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -152,11 +152,11 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Success'),
+          title: Text('Success'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
               },

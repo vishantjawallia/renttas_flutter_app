@@ -5,7 +5,7 @@ class Chats {
   final String? id;
   final List<Participants>? participants;
   final List<Messages>? messages;
-  const Chats({this.id, this.participants, this.messages});
+  Chats({this.id, this.participants, this.messages});
   Chats copyWith({
     String? id,
     List<Participants>? participants,

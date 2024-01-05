@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sort_child_properties_last, use_build_context_synchronously, unnecessary_new, prefer_interpolation_to_compose_strings, avoid_print, camel_case_types, must_be_immutable
+// ignore_for_file: avoid_unnecessary_containers,  sort_child_properties_last, use_build_context_synchronously, unnecessary_new, prefer_interpolation_to_compose_strings, avoid_print, camel_case_types, must_be_immutable
 
 import 'dart:convert';
 import 'dart:developer';
@@ -35,10 +35,10 @@ class _addnewcompanyState extends State<addnewcompany> {
             child: Expanded(
               child: Row(
                 children: [
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard())),
-                    child: Icon(Icons.arrow_back, size: 30),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CommerialDashboard())),
+                    child: const Icon(Icons.arrow_back, size: 30),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -65,7 +65,7 @@ class _addnewcompanyState extends State<addnewcompany> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Enter Company name"),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -80,8 +80,8 @@ class _addnewcompanyState extends State<addnewcompany> {
                         child: Center(
                           child: TextFormField(
                             controller: companynamecontroller,
-                            decoration: new InputDecoration.collapsed(hintText: 'Enter company name'),
-                            style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                            decoration: const InputDecoration.collapsed(hintText: 'Enter company name'),
+                            style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your company name!';
@@ -93,9 +93,9 @@ class _addnewcompanyState extends State<addnewcompany> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text("Enter company address"),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -110,8 +110,8 @@ class _addnewcompanyState extends State<addnewcompany> {
                         child: Center(
                           child: TextFormField(
                             controller: companyaddresscontroller,
-                            decoration: new InputDecoration.collapsed(hintText: 'Enter company address'),
-                            style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                            decoration: const InputDecoration.collapsed(hintText: 'Enter company address'),
+                            style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Please enter your company address!';
@@ -123,7 +123,7 @@ class _addnewcompanyState extends State<addnewcompany> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
@@ -136,17 +136,17 @@ class _addnewcompanyState extends State<addnewcompany> {
                     child: Center(
                       child: TextButton(
                         child: isloading == true
-                            ? CircularProgressIndicator(
+                            ? const CircularProgressIndicator(
                                 color: Color(0xff54854C),
                               )
                             : widget.type == "0"
                                 ? Text(
                                     'Save',
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   )
                                 : Text(
                                     'Update',
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                         style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(Colors.blue),
@@ -201,7 +201,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
@@ -246,7 +246,7 @@ class _addnewcompanyState extends State<addnewcompany> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CommerialDashboard()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const CommerialDashboard()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {

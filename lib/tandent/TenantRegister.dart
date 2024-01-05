@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters, constant_identifier_names, prefer_const_constructors, use_build_context_synchronously, prefer_interpolation_to_compose_strings, sort_child_properties_last, sized_box_for_whitespace, unused_element, avoid_print, prefer_final_fields, prefer_typing_uninitialized_variables, curly_braces_in_flow_control_structures, unused_field
+// ignore_for_file: use_super_parameters, constant_identifier_names,  use_build_context_synchronously, prefer_interpolation_to_compose_strings, sort_child_properties_last, sized_box_for_whitespace, unused_element, avoid_print, prefer_final_fields, prefer_typing_uninitialized_variables, curly_braces_in_flow_control_structures, unused_field
 
 import 'dart:developer';
 
@@ -39,7 +39,7 @@ void snack(String msg, BuildContext context) {
     backgroundColor: Colors.black,
     elevation: 10,
     behavior: SnackBarBehavior.floating,
-    margin: EdgeInsets.all(5),
+    margin: const EdgeInsets.all(5),
   );
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
@@ -175,7 +175,7 @@ class _TenantRegisterState extends State<TenantRegister> {
               focusNode: textFieldFocusNode,
               decoration: InputDecoration(
                 floatingLabelBehavior: FloatingLabelBehavior.never,
-                icon: Icon(Icons.lock, size: 25),
+                icon: const Icon(Icons.lock, size: 25),
                 hintText: 'Enter your Password',
                 labelText: 'Password',
                 isDense: true,
@@ -205,7 +205,7 @@ class _TenantRegisterState extends State<TenantRegister> {
                 focusNode: textFieldFocusNodeconfirm,
                 decoration: InputDecoration(
                   floatingLabelBehavior: FloatingLabelBehavior.never,
-                  icon: Icon(Icons.lock, size: 25),
+                  icon: const Icon(Icons.lock, size: 25),
                   hintText: 'Enter your Confirm-Password',
                   labelText: 'Confirm-Password',
                   isDense: true,
@@ -253,22 +253,22 @@ class _TenantRegisterState extends State<TenantRegister> {
                     ? const CircularProgressIndicator(
                         color: Color(0xff54854C),
                       )
-                    : const Text(
+                    : Text(
                         'Register',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
-              onTap: () => {Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LandlordLoginNew()))},
+              onTap: () => {Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LandlordLoginNew()))},
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: "Already have a Account?Login",
                   style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
                 ),
@@ -306,9 +306,9 @@ class _TenantRegisterState extends State<TenantRegister> {
       children: [
         Text(
           'ENTER OTP.',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Center(
           child: Pinput(
             length: 6,
@@ -321,7 +321,7 @@ class _TenantRegisterState extends State<TenantRegister> {
             },
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         ElevatedButton(
           onPressed: () async {
             log("inside onpress" + otp.toString());
@@ -333,7 +333,7 @@ class _TenantRegisterState extends State<TenantRegister> {
           },
           child: Text(
             "VERIFY",
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           style: ButtonStyle(
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -341,7 +341,7 @@ class _TenantRegisterState extends State<TenantRegister> {
               Colors.black38,
             ),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
+              const RoundedRectangleBorder(
                 borderRadius: BorderRadius.zero,
                 side: BorderSide(
                   color: Color.fromARGB(255, 0, 0, 0),
@@ -356,7 +356,7 @@ class _TenantRegisterState extends State<TenantRegister> {
 
   getloginotpwidget(context) {
     return Container(
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         //   children: [Icon(size: 100, Icons.lock_person_sharp)],
       ),
@@ -369,7 +369,7 @@ class _TenantRegisterState extends State<TenantRegister> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RENTTAS'),
+        title: Text('RENTTAS'),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -390,8 +390,8 @@ class _TenantRegisterState extends State<TenantRegister> {
           width: double.infinity,
           color: Colors.white,
           child: showLoading
-              ? Center(
-                  child: const CircularProgressIndicator(
+              ? const Center(
+                  child: CircularProgressIndicator(
                   color: Color(0xff54854C),
                 ))
               : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
@@ -465,11 +465,11 @@ class _TenantRegisterState extends State<TenantRegister> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -485,11 +485,11 @@ class _TenantRegisterState extends State<TenantRegister> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {},
             ),
           ],
@@ -507,7 +507,7 @@ void _showImageAlertDialog(BuildContext context, String otp) {
       return AlertDialog(
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: [
             Image.asset(
               'assets/images/renttas.png',
               width: 150,
@@ -515,17 +515,17 @@ void _showImageAlertDialog(BuildContext context, String otp) {
             Text('Enter 4 digit OTP here'),
           ],
         ),
-        actions: <Widget>[
+        actions: [
           OTPTextField(
               length: 4,
               width: MediaQuery.of(context).size.width,
               textFieldAlignment: MainAxisAlignment.spaceAround,
               fieldWidth: 45,
               fieldStyle: FieldStyle.box,
-              style: TextStyle(fontSize: 17),
+              style: const TextStyle(fontSize: 17),
               onChanged: (pin) {},
               onCompleted: (pin) => pinnumer = pin),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Center(

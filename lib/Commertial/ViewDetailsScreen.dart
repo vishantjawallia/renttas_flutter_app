@@ -19,7 +19,7 @@ class _ViewDetailScreenState extends State<ViewDetailScreen> {
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         automaticallyImplyLeading: false,
-        actions: <Widget>[
+        actions: [
           Expanded(
             child: Row(
               children: [
@@ -36,8 +36,8 @@ class _ViewDetailScreenState extends State<ViewDetailScreen> {
                     size: 30,
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,14 +59,14 @@ class _ViewDetailScreenState extends State<ViewDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Company name 1",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
               ),
               const SizedBox(height: 10),
-              const Text(
+              Text(
                 "ABCD line \n 123 flat \n snjhkhkjhk     ",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
               ),
               const SizedBox(height: 10),
               Container(
@@ -76,22 +76,22 @@ class _ViewDetailScreenState extends State<ViewDetailScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "Company name 1",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "ABCD line \n 123 flat \n snjhkhkjhk     ",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                           ],
                         ),
                       ),

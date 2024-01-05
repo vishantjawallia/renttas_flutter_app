@@ -206,7 +206,7 @@ class _AddExpensesState extends State<AddExpenses> {
   }
 
   Widget renderRecurringContent() {
-    return const Column(
+    return Column(
       children: [
         Text('Recurring Content'),
       ],
@@ -253,11 +253,11 @@ class _AddExpensesState extends State<AddExpenses> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Added'),
-              content: const Text('ExpensesAdded Successfully'),
-              actions: <Widget>[
+              title: Text('Added'),
+              content: Text('ExpensesAdded Successfully'),
+              actions: [
                 TextButton(
-                  child: const Text('OK'),
+                  child: Text('OK'),
                   onPressed: () {
                     setState(() {
                       isLoading = false;

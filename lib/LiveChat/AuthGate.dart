@@ -7,11 +7,11 @@
 // // void main() async {
 // //   WidgetsFlutterBinding.ensureInitialized();
 // //   await Firebase.initializeApp();
-// //   runApp(const MyApp());
+// //   runApp(MyApp());
 // // }
 // //
 // // class MyApp extends StatelessWidget {
-// //   const MyApp({Key? key}) : super(key: key);
+// //   MyApp({Key? key}) : super(key: key);
 // //
 // //   @override
 // //   Widget build(BuildContext context) {
@@ -20,13 +20,13 @@
 // //       title: 'Flutter Demo',
 // //       theme: ThemeData(primarySwatch: Colors.indigo),
 // //       themeMode: ThemeMode.light,
-// //       home: const AuthGate(),
+// //       home: AuthGate(),
 // //     );
 // //   }
 // // }
 
 // class AuthGate extends StatefulWidget {
-//   const AuthGate({Key? key}) : super(key: key);
+//   AuthGate({Key? key}) : super(key: key);
 
 //   @override
 //   State<AuthGate> createState() => _AuthGateState();
@@ -54,9 +54,9 @@
 //       stream: FirebaseAuth.instance.authStateChanges(),
 //       builder: (context, snapshot) {
 //         if (snapshot.hasData) {
-//           return const MyHomePage();
+//           return MyHomePage();
 //         } else {
-//           return const SignInScreen(
+//           return SignInScreen(
 //             providerConfigs: [EmailProviderConfiguration()],
 //           );
 //         }

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, prefer_interpolation_to_compose_strings, use_build_context_synchronously, unused_element, avoid_print, prefer_final_fields, unnecessary_import, must_be_immutable, non_constant_identifier_names
+// ignore_for_file: prefer_const_literals_to_create_immutables,  prefer_interpolation_to_compose_strings, use_build_context_synchronously, unused_element, avoid_print, prefer_final_fields, unnecessary_import, must_be_immutable, non_constant_identifier_names
 
 import 'dart:convert';
 
@@ -36,7 +36,7 @@ class _BillViewPageState extends State<BillViewPage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Divider(
+              const Divider(
                 color: Colors.black,
                 thickness: 2,
               ),
@@ -45,11 +45,11 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Rent billno",
-                    style: TextStyle(color: Colors.grey),
+                    style: const TextStyle(color: Colors.grey),
                   ),
                   Text(
                     "Rent billdate",
-                    style: TextStyle(color: Colors.grey),
+                    style: const TextStyle(color: Colors.grey),
                   )
                 ],
               ),
@@ -58,15 +58,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Name",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     widget.Data.rentStartDate,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -75,15 +75,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Tenant",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     "Name",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -92,15 +92,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Total Rent ",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     "₹ " + widget.Data.rentAmount,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -109,15 +109,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Rent Period",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     widget.Data.rentStartDate,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -126,25 +126,25 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Rent Due date",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     widget.Data.rentEndDate,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
               Center(
                 child: Text(
                   "Rent & Maintanance",
-                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -153,15 +153,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Rent",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     "₹ " + widget.Data.rentAmount,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -170,15 +170,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Maintanace",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     "₹ " + widget.Data.maintenanceAmount,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -187,15 +187,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Previous balance",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     "₹ " + widget.Data.previousBalance,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -204,15 +204,15 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Adjustment",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     "₹ 0",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -221,25 +221,25 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Adjustment remark",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     "₹ 0",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
               Center(
                 child: Text(
                   "Electricity",
-                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
@@ -248,19 +248,19 @@ class _BillViewPageState extends State<BillViewPage> {
                 children: [
                   Text(
                     "Electricity type",
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   Text(
                     widget.Data.electricityType,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -280,7 +280,7 @@ class _BillViewPageState extends State<BillViewPage> {
                         child: Center(
                             child: Text(
                           isloading == false ? "Delete" : "Please wait",
-                          style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
                         ))),
                   ),
                   InkWell(
@@ -297,7 +297,7 @@ class _BillViewPageState extends State<BillViewPage> {
                         child: Center(
                             child: Text(
                           "Share",
-                          style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
                         ))),
                   ),
                 ],
@@ -319,7 +319,7 @@ class _BillViewPageState extends State<BillViewPage> {
             return AlertDialog(
               title: Text("Confirmation"),
               content: Text(contentText),
-              actions: <Widget>[
+              actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Text("Cancel"),
@@ -347,10 +347,10 @@ class _BillViewPageState extends State<BillViewPage> {
                     });
                     if (response.statusCode == 200) {
                       if (widget.type == "1") {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandloardDashBord()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
                       }
                       if (widget.type == "0") {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Tenantdashbord()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Tenantdashbord()));
                       }
                     } else {
                       snack("Something went wrong", context);
@@ -371,7 +371,7 @@ class _BillViewPageState extends State<BillViewPage> {
       DataColumn(
         label: Text(
           'Paid Date',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
@@ -379,25 +379,25 @@ class _BillViewPageState extends State<BillViewPage> {
       DataColumn(
         label: Text(
           'Paid by Name',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
       DataColumn(
         label: Text(
           'Rent paid',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
       DataColumn(
         label: Text(
           'Balance',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
-      DataColumn(label: SizedBox()),
+      const DataColumn(label: SizedBox()),
       // Add more columns as needed
     ];
   }
@@ -414,7 +414,7 @@ class _BillViewPageState extends State<BillViewPage> {
           DataCell(_verticalDivider),
           DataCell(Text('-300')),
           DataCell(_verticalDivider),
-          DataCell(Icon(Icons.navigate_next_outlined)),
+          const DataCell(Icon(Icons.navigate_next_outlined)),
         ],
       ),
       DataRow(
@@ -427,7 +427,7 @@ class _BillViewPageState extends State<BillViewPage> {
           DataCell(_verticalDivider),
           DataCell(Text('2500')),
           DataCell(_verticalDivider),
-          DataCell(Icon(Icons.navigate_next_outlined)),
+          const DataCell(Icon(Icons.navigate_next_outlined)),
           // Add more cells as needed
         ],
       ),

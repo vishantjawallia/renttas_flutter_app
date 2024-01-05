@@ -10,7 +10,7 @@ import 'Wellcome/SplashScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-const AndroidNotificationChannel channel = AndroidNotificationChannel(
+AndroidNotificationChannel channel = const AndroidNotificationChannel(
   'high_importance_channel',
   'High Importance Notifications',
   importance: Importance.high,
@@ -49,8 +49,14 @@ Future<void> main() async {
   );
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
-  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true);
+  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(
+        channel,
+      );
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
   runApp(
     EasyLocalization(
       path: 'assets/transulation',
@@ -58,10 +64,7 @@ Future<void> main() async {
       fallbackLocale: const Locale('en', 'EN'),
       supportedLocales: [
         const Locale('en', 'EN'),
-        const Locale(
-          'ar',
-          'AR',
-        ),
+        const Locale('ar', 'AR'),
       ],
       child: const MyApp(),
     ),
@@ -69,7 +72,9 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +87,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      navigatorObservers: [BotToastNavigatorObserver()],
+      navigatorObservers: [
+        BotToastNavigatorObserver(),
+      ],
       home: const SplashScreen(),
     );
   }

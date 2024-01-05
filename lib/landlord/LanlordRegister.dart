@@ -19,7 +19,7 @@
 // import 'LandloardDashBord.dart';
 
 // class LanlordRegister extends StatefulWidget {
-//   const LanlordRegister({Key? key}) : super(key: key);
+//   LanlordRegister({Key? key}) : super(key: key);
 
 //   @override
 //   State<LanlordRegister> createState() => _LanlordRegisterState();
@@ -37,7 +37,7 @@
 //     backgroundColor: Colors.black,
 //     elevation: 10,
 //     behavior: SnackBarBehavior.floating,
-//     margin: const EdgeInsets.all(5),
+//     margin: EdgeInsets.all(5),
 //   );
 //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 // }
@@ -119,13 +119,13 @@
 //     return Form(
 //       key: _formKey,
 //       child: Container(
-//         padding: const EdgeInsets.only(left: 10),
-//         margin: const EdgeInsets.only(top: 20),
+//         padding: EdgeInsets.only(left: 10),
+//         margin: EdgeInsets.only(top: 20),
 //         child: Column(
 //           children: [
 //             TextFormField(
 //               controller: landlordName,
-//               decoration: const InputDecoration(
+//               decoration: InputDecoration(
 //                 icon: Icon(Icons.person),
 //                 hintText: 'What do people call you?',
 //                 labelText: 'Name *',
@@ -138,13 +138,13 @@
 //               },
 //             ),
 //             Container(
-//               padding: const EdgeInsets.only(left: 10),
-//               margin: const EdgeInsets.only(top: 20),
+//               padding: EdgeInsets.only(left: 10),
+//               margin: EdgeInsets.only(top: 20),
 //               child: Row(
 //                 children: [
 //                   Expanded(
 //                     child: IntlPhoneField(
-//                       decoration: const InputDecoration(
+//                       decoration: InputDecoration(
 //                         hintText: 'Enter your mobile number',
 //                         labelText: 'Mobile Number *',
 //                       ),
@@ -171,7 +171,7 @@
 //             ),
 //             TextFormField(
 //               controller: emailController,
-//               decoration: const InputDecoration(
+//               decoration: InputDecoration(
 //                 icon: Icon(Icons.email),
 //                 hintText: 'Enter your mail id',
 //                 labelText: 'Email *',
@@ -185,7 +185,7 @@
 //             ),
 //             TextFormField(
 //               controller: addressController,
-//               decoration: const InputDecoration(
+//               decoration: InputDecoration(
 //                 icon: Icon(Icons.home),
 //                 hintText: 'Enter your Address details',
 //                 labelText: 'Address *',
@@ -199,7 +199,7 @@
 //             ),
 //             // TextFormField(
 //             //   controller: districtController,
-//             //   decoration: const InputDecoration(
+//             //   decoration: InputDecoration(
 //             //     icon: Icon(Icons.area_chart),
 //             //     hintText: 'Enter your District',
 //             //     labelText: 'District *',
@@ -207,7 +207,7 @@
 //             // ),
 //             // TextFormField(
 //             //   controller: blockController,
-//             //   decoration: const InputDecoration(
+//             //   decoration: InputDecoration(
 //             //     icon: Icon(Icons.add_business),
 //             //     hintText: 'Enter your Block',
 //             //     labelText: 'Block *',
@@ -216,7 +216,7 @@
 //             // TextFormField(
 //             //   controller: pincodeController,
 //             //   keyboardType: TextInputType.number,
-//             //   decoration: const InputDecoration(
+//             //   decoration: InputDecoration(
 //             //     icon: Icon(Icons.pin),
 //             //     hintText: 'Enter your Pincode',
 //             //     labelText: 'Pincode *',
@@ -229,12 +229,12 @@
 //                 focusNode: textFieldFocusNode,
 //                 decoration: InputDecoration(
 //                   floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
-//                   icon: const Icon(Icons.lock, size: 25),
+//                   icon: Icon(Icons.lock, size: 25),
 //                   hintText: 'Enter your Password',
 //                   labelText: 'Password', // Needed for adding a fill color
 //                   isDense: true, // Reduces height a bit
 //                   suffixIcon: Padding(
-//                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+//                     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
 //                     child: GestureDetector(
 //                       onTap: _toggleObscured,
 //                       child: Icon(
@@ -262,12 +262,12 @@
 //                 focusNode: textFieldFocusNodeconfirm,
 //                 decoration: InputDecoration(
 //                   floatingLabelBehavior: FloatingLabelBehavior.never, //Hides label on focus or if filled
-//                   icon: const Icon(Icons.lock, size: 25),
+//                   icon: Icon(Icons.lock, size: 25),
 //                   hintText: 'Enter your Confirm-Password',
 //                   labelText: 'Confirm-Password',
 //                   isDense: true, // Reduces height a bit
 //                   suffixIcon: Padding(
-//                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+//                     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
 //                     child: GestureDetector(
 //                       onTap: _toggleObscuredconfirm,
 //                       child: Icon(
@@ -289,7 +289,7 @@
 //                   }
 //                   return null;
 //                 }),
-//             const SizedBox(
+//             SizedBox(
 //               height: 10,
 //             ),
 //             SizedBox(
@@ -347,8 +347,8 @@
 //                   }
 //                 },
 //                 child: isLoading
-//                     ? const Center(child: CircularProgressIndicator(color: Color(0xff54854C),))
-//                     : const Text(
+//                     ? Center(child: CircularProgressIndicator(color: Color(0xff54854C),))
+//                     : Text(
 //                         'Register',
 //                         style: TextStyle(
 //                           fontSize: 18,
@@ -357,13 +357,13 @@
 //                       ),
 //               ),
 //             ),
-//             const SizedBox(
+//             SizedBox(
 //               height: 30,
 //             ),
 //             GestureDetector(
-//               onTap: () => {Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LandlordLoginNew()))},
+//               onTap: () => {Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LandlordLoginNew()))},
 //               child: RichText(
-//                 text: const TextSpan(
+//                 text: TextSpan(
 //                   text: "Already have a Account?Login",
 //                   style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
 //                 ),
@@ -381,11 +381,11 @@
 //         // Spacer(),
 //         //    getloginotpwidget(context),
 //         // Spacer(),
-//         const Text(
+//         Text(
 //           'ENTER OTP.',
 //           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
 //         ),
-//         const SizedBox(
+//         SizedBox(
 //           height: 10,
 //         ),
 //         Center(
@@ -400,7 +400,7 @@
 //             },
 //           ),
 //         ),
-//         const SizedBox(
+//         SizedBox(
 //           height: 16,
 //         ),
 //         ElevatedButton(
@@ -418,8 +418,8 @@
 //                 backgroundColor: MaterialStateProperty.all<Color>(
 //                   Colors.black38,
 //                 ),
-//                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(const RoundedRectangleBorder(borderRadius: BorderRadius.zero, side: BorderSide(color: Color.fromARGB(255, 0, 0, 0))))),
-//             child: const Text(
+//                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.zero, side: BorderSide(color: Color.fromARGB(255, 0, 0, 0))))),
+//             child: Text(
 //               "VERIFY",
 //               style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
 //             )),
@@ -435,10 +435,10 @@
 //     return Scaffold(
 //       key: _scaffoldKey,
 //       appBar: AppBar(
-//         title: const Text('RENTTAS'),
+//         title: Text('RENTTAS'),
 //         centerTitle: true,
 //         flexibleSpace: Container(
-//           decoration: const BoxDecoration(
+//           decoration: BoxDecoration(
 //             gradient: LinearGradient(
 //               colors: [
 //                 Colors.black,
@@ -452,7 +452,7 @@
 //       ),
 //       body: Container(
 //         child: SingleChildScrollView(
-//             // physics: const BouncingScrollPhysics(),
+//             // physics: BouncingScrollPhysics(),
 //             child: Container(
 //           width: double.infinity,
 //           color: Colors.white,
@@ -463,11 +463,11 @@
 //           //       Color.fromARGB(255, 242, 241, 239)
 //           //     ])),
 //           child: showLoading
-//               ? const Center(child: CircularProgressIndicator(color: Color(0xff54854C),))
+//               ? Center(child: CircularProgressIndicator(color: Color(0xff54854C),))
 //               : currentState == MobileVerificationState.SHOW_MOBILE_FORM_STATE
 //                   ? getMobileFormWidget(context)
 //                   : getOtpFormWidget(context),
-//           padding: const EdgeInsets.all(16),
+//           padding: EdgeInsets.all(16),
 //         )),
 //       ),
 //     );
@@ -476,7 +476,7 @@
 //   getloginotpwidget(context) {
 //     return Container(
 //       height: 400,
-//       child: const Column(
+//       child: Column(
 //         mainAxisAlignment: MainAxisAlignment.center,
 //         //   children: [Icon(size: 100, Icons.lock_person_sharp)],
 //       ),
@@ -532,7 +532,7 @@
 //         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddPropertyLanlord(type: "0", userid: userId)));
 
 //         // Navigator.of(context).push(
-//         //     MaterialPageRoute(builder: (context) => const LandloardDashBord()));
+//         //     MaterialPageRoute(builder: (context) => LandloardDashBord()));
 //         // otprecieved = data['emial_otp'] == null
 //         //     ? ""
 //         //     : otprecieved = data['emial_otp'].toString();
@@ -562,11 +562,11 @@
 //       context: context,
 //       builder: (BuildContext context) {
 //         return AlertDialog(
-//           title: const Text('Register  Failed'),
+//           title: Text('Register  Failed'),
 //           content: Text(respMsg),
-//           actions: <Widget>[
+//           actions: [
 //             TextButton(
-//               child: const Text('OK'),
+//               child: Text('OK'),
 //               onPressed: () {
 //                 Navigator.of(context).pop();
 //               },
@@ -582,13 +582,13 @@
 //       context: context,
 //       builder: (BuildContext context) {
 //         return AlertDialog(
-//           title: const Text('Register  Failed'),
+//           title: Text('Register  Failed'),
 //           content: Text(respMsg),
-//           actions: <Widget>[
+//           actions: [
 //             TextButton(
-//               child: const Text('OK'),
+//               child: Text('OK'),
 //               onPressed: () {
-//                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandlordLoginNew()));
+//                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => LandlordLoginNew()));
 //               },
 //             ),
 //           ],
@@ -607,16 +607,16 @@
 //         //  title: Text('Image Alert Dialog'),
 //         content: Column(
 //           mainAxisSize: MainAxisSize.min,
-//           children: <Widget>[
+//           children: [
 //             Image.asset(
 //               'assets/images/renttas.png', // Replace with your image path
 //               width: 150, // Adjust image width as needed
 //             ),
 //             //   SizedBox(height: 2), // Adjust spacing as needed
-//             const Text('Enter 4 digit OTP here'),
+//             Text('Enter 4 digit OTP here'),
 //           ],
 //         ),
-//         actions: <Widget>[
+//         actions: [
 //           OTPTextField(
 //               //   controller: otpcontroller,
 //               length: 4,
@@ -625,7 +625,7 @@
 //               fieldWidth: 45,
 //               fieldStyle: FieldStyle.box,
 //               //     outlineBorderRadius: 15,
-//               style: const TextStyle(fontSize: 17),
+//               style: TextStyle(fontSize: 17),
 //               onChanged: (pin) {
 //                 //  print("Changed: " + pin);
 //               },
@@ -633,7 +633,7 @@
 //                 pinnumer = pin;
 //                 //   print("Completed: " + pinnumer);
 //               }),
-//           const SizedBox(
+//           SizedBox(
 //             height: 10,
 //           ),
 //           Center(
@@ -648,7 +648,7 @@
 //                   prefs.setBool("login", false);
 //                   prefs.setString("storeid", "1");
 
-//                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
+//                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => LandloardDashBord()));
 //                 } else {
 //                   snack("Enterd otp is incorrect", context);
 //                   Navigator.of(context).pop();
@@ -656,7 +656,7 @@
 
 //                 // Close the AlertDialog
 //               },
-//               child: const Text('Verify OTP'),
+//               child: Text('Verify OTP'),
 //             ),
 //           ),
 //         ],

@@ -12,7 +12,7 @@
 //   final double height;
 //   final double width;
 
-//   const AnimatedDialog({Key? key, required this.height, required this.width}) : super(key: key);
+//   AnimatedDialog({Key? key, required this.height, required this.width}) : super(key: key);
 
 //   @override
 //   State<AnimatedDialog> createState() => _AnimatedDialogState();
@@ -26,7 +26,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     if (widget.height != 0) {
-//       Timer(const Duration(milliseconds: 200), () {
+//       Timer(Duration(milliseconds: 200), () {
 //         setState(() {
 //           show = true;
 //         });
@@ -41,7 +41,7 @@
 //       alignment: AlignmentDirectional.topEnd,
 //       children: [
 //         AnimatedContainer(
-//           duration: const Duration(milliseconds: 200),
+//           duration: Duration(milliseconds: 200),
 //           height: widget.height,
 //           width: widget.width,
 //           decoration: BoxDecoration(
@@ -64,7 +64,7 @@
 //                         }),
 //                         Expanded(
 //                           child: Padding(
-//                             padding: const EdgeInsets.symmetric(horizontal: 8.0),
+//                             padding: EdgeInsets.symmetric(horizontal: 8.0),
 //                             child: StreamBuilder(
 //                                 stream: firestore.collection('Users').snapshots(),
 //                                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {

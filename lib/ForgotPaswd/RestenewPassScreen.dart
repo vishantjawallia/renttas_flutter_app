@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures, use_super_parameters, must_be_immutable, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_print
+// ignore_for_file:  curly_braces_in_flow_control_structures, use_super_parameters, must_be_immutable, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_print
 
 import 'dart:convert';
 
@@ -12,7 +12,7 @@ import '../Wellcome/LoginPageNew.dart';
 
 class ResetNewpassScreen extends StatefulWidget {
   String emil;
-  static const String id = 'reset_password@gmail.com';
+  static String id = 'reset_password@gmail.com';
   ResetNewpassScreen({Key? key, required this.emil}) : super(key: key);
 
   @override
@@ -76,9 +76,9 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
                     child: const Icon(Icons.arrow_back),
                   ),
                   const SizedBox(height: 70),
-                  const Text(
+                  Text(
                     "Create a new password",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -87,7 +87,7 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
                   const SizedBox(height: 10),
                   Text(
                     'The password shoud be diffrent from the previous password',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 13,
                       color: Colors.black,
                     ),
@@ -125,7 +125,7 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 2.0),
                           child: TextField(
@@ -169,7 +169,7 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
                           onSuccess: () => setState(() => success = true),
                           onFail: () => setState(() => success = false),
                         ),
-                        SizedBox(height: 22),
+                        const SizedBox(height: 22),
                         SizedBox(
                           width: double.infinity,
                           child: CustomButton(
@@ -210,7 +210,7 @@ class _ResetPasswordScreenState extends State<ResetNewpassScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => LandlordLoginNew(),
+            builder: (context) => const LandlordLoginNew(),
           ),
         );
       } else {

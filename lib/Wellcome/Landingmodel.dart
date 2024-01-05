@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class SliderModel {
   String? image;
   String? text;
@@ -17,6 +19,7 @@ class SliderModel {
   void setDescription(String getDescription) {
     description = getDescription;
   }
+  
 
 // getter for image
   String? getImage() {
@@ -34,7 +37,7 @@ class SliderModel {
 
 List<SliderModel> getSlides() {
   List<SliderModel> slides = [];
-  SliderModel sliderModel = new SliderModel();
+  SliderModel sliderModel = SliderModel();
 
 // 1
   sliderModel.setImage("assets/images/propertyland.png");
@@ -48,7 +51,7 @@ List<SliderModel> getSlides() {
   );
   slides.add(sliderModel);
 
-  sliderModel = new SliderModel();
+  sliderModel = SliderModel();
 
 // 2
   sliderModel.setImage("assets/images/step2.png");
@@ -62,7 +65,7 @@ List<SliderModel> getSlides() {
   );
   slides.add(sliderModel);
 
-  sliderModel = new SliderModel();
+  sliderModel = SliderModel();
 
 // 3
   sliderModel.setImage("assets/images/step3.png");
@@ -76,6 +79,6 @@ List<SliderModel> getSlides() {
   );
   slides.add(sliderModel);
 
-  sliderModel = new SliderModel();
+  sliderModel = SliderModel();
   return slides;
 }

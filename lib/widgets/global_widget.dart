@@ -17,6 +17,7 @@ class GlobalWidgets {
     );
   }
 
+
   static notFound(
     String value,
   ) {

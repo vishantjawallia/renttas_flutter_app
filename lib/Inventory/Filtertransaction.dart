@@ -57,7 +57,7 @@ class _FilterTransactionState extends State<FilterTransaction> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            const Text("Filter"),
+            Text("Filter"),
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             InkWell(
               onTap: () {},
@@ -66,9 +66,9 @@ class _FilterTransactionState extends State<FilterTransaction> {
                 elevation: 5,
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
-                  child: const Text(
+                  child: Text(
                     "Rest",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Color(0xff54854C),
@@ -92,9 +92,9 @@ class _FilterTransactionState extends State<FilterTransaction> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       ' Product ',
-                      style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -129,9 +129,9 @@ class _FilterTransactionState extends State<FilterTransaction> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Store ',
-                      style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -162,9 +162,9 @@ class _FilterTransactionState extends State<FilterTransaction> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Select type ',
-                      style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -178,12 +178,12 @@ class _FilterTransactionState extends State<FilterTransaction> {
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.grey,
                             ),
-                            child: const Padding(
-                                padding: EdgeInsets.all(8.0),
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
                                 child: Center(
                                   child: Text(
                                     "IN",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -196,12 +196,12 @@ class _FilterTransactionState extends State<FilterTransaction> {
                             width: 80,
                             height: 80,
                             decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(20), color: Colors.grey),
-                            child: const Padding(
-                              padding: EdgeInsets.all(8.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Center(
                                 child: Text(
                                   "OUT",
-                                  style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
@@ -217,9 +217,9 @@ class _FilterTransactionState extends State<FilterTransaction> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Quick type ',
-                      style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -238,7 +238,7 @@ class _FilterTransactionState extends State<FilterTransaction> {
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                               ),
-                              hint: const Text('Select Period'),
+                              hint: Text('Select Period'),
                               items: <String>['This month', 'Last month', 'Custom date', '2023'].map(
                                 (String value) {
                                   return DropdownMenuItem<String>(
@@ -316,18 +316,18 @@ class _FilterTransactionState extends State<FilterTransaction> {
                     )
                   : const SizedBox(height: 20),
               TextButton(
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.filter_alt,
                       size: 18,
                       color: Colors.white,
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
                       'Apply Filter',
-                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                   ],
                 ),

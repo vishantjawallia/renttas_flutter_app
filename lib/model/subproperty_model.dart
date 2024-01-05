@@ -2,7 +2,7 @@ class SubPropertyModel {
   final String? subPropertyName;
   final String? id;
   final String? propertyId;
-  const SubPropertyModel({this.subPropertyName, this.id, this.propertyId});
+  SubPropertyModel({this.subPropertyName, this.id, this.propertyId});
   SubPropertyModel copyWith({String? subPropertyName, String? id, String? propertyId}) {
     return SubPropertyModel(subPropertyName: subPropertyName ?? this.subPropertyName, id: id ?? this.id, propertyId: propertyId ?? this.propertyId);
   }

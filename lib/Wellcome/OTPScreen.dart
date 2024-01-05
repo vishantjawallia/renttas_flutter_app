@@ -1,9 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, prefer_is_empty
+// ignore_for_file: library_private_types_in_public_api,  prefer_is_empty
 
 import 'package:flutter/material.dart';
 
 class Otpscreen extends StatefulWidget {
-  const Otpscreen({Key? key}) : super(key: key);
+  const Otpscreen({super.key});
 
   @override
   _OtpState createState() => _OtpState();
@@ -14,25 +14,25 @@ class _OtpState extends State<Otpscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xfff7f6fb),
+      backgroundColor: const Color(0xfff7f6fb),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
             child: Column(
               children: [
                 Align(
                   alignment: Alignment.topLeft,
                   child: GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       size: 32,
                       color: Colors.black54,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 18,
                 ),
                 Container(
@@ -46,33 +46,33 @@ class _OtpState extends State<Otpscreen> {
                     'assets/images/renttas.png',
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
                 Text(
                   'Verification',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   "Enter 4 digit OTP here",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.black38,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 28,
                 ),
                 Container(
-                  padding: EdgeInsets.all(28),
+                  padding: const EdgeInsets.all(28),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
@@ -88,7 +88,7 @@ class _OtpState extends State<Otpscreen> {
                           _textFieldOTP(first: false, last: true),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 22,
                       ),
                       SizedBox(
@@ -105,10 +105,10 @@ class _OtpState extends State<Otpscreen> {
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(14.0),
+                            padding: const EdgeInsets.all(14.0),
                             child: Text(
                               'Verify',
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ),
                         ),
@@ -116,18 +116,18 @@ class _OtpState extends State<Otpscreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 18,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // const SizedBox(
+                    // SizedBox(
                     //   width: 40,
                     // ),
-                    const Text(
+                    Text(
                       "Didn't you receive any code ? ",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 10,
                       ),
@@ -136,7 +136,7 @@ class _OtpState extends State<Otpscreen> {
                       onTap: () => {
                         // Navigator.of(context).push(
                         //   MaterialPageRoute(
-                        //       builder: (context) => const TypeUser()),
+                        //       builder: (context) => TypeUser()),
                         //),
                       },
                       child: RichText(
@@ -161,7 +161,7 @@ class _OtpState extends State<Otpscreen> {
   }
 
   Widget _textFieldOTP({required bool first, last}) {
-    return Container(
+    return SizedBox(
       height: 55,
       child: AspectRatio(
         aspectRatio: 1.0,
@@ -178,13 +178,13 @@ class _OtpState extends State<Otpscreen> {
           showCursor: false,
           readOnly: false,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           keyboardType: TextInputType.number,
           maxLength: 1,
           decoration: InputDecoration(
-            counter: Offstage(),
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 2, color: Colors.black12), borderRadius: BorderRadius.circular(12)),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 2, color: Colors.purple), borderRadius: BorderRadius.circular(12)),
+            counter: const Offstage(),
+            enabledBorder: OutlineInputBorder(borderSide: const BorderSide(width: 2, color: Colors.black12), borderRadius: BorderRadius.circular(12)),
+            focusedBorder: OutlineInputBorder(borderSide: const BorderSide(width: 2, color: Colors.purple), borderRadius: BorderRadius.circular(12)),
           ),
         ),
       ),

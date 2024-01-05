@@ -57,11 +57,11 @@ If you have any questions or concerns about this Privacy Policy or our data prac
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(),
-        backgroundColor: const Color(0xff54854C),
-        title: const Text('Privacy Policy'),
+        backgroundColor: Color(0xff54854C),
+        title: Text('Privacy Policy'),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Html(data: htmlText),
       ),
     );

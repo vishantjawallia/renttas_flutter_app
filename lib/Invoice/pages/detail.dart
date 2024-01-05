@@ -70,7 +70,7 @@ class DetailPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const Text(
+                        Text(
                           "Total",
                         ),
                         Text(

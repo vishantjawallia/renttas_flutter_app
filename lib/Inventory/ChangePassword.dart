@@ -35,7 +35,7 @@ class _ChnagePasswordState extends State<ChnagePassword> {
         leading: const BackButton(),
         backgroundColor: const Color(0xff54854C),
         automaticallyImplyLeading: false,
-        title: const Text('Change Password'),
+        title: Text('Change Password'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -59,11 +59,11 @@ class _ChnagePasswordState extends State<ChnagePassword> {
                             Icons.change_circle,
                             size: 50,
                           )),
-                      const Padding(
-                        padding: EdgeInsets.all(3.0),
+                      Padding(
+                        padding: const EdgeInsets.all(3.0),
                         child: Text(
                           "Change Password",
-                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 16),
+                          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 16),
                         ),
                       ),
                     ],
@@ -71,9 +71,9 @@ class _ChnagePasswordState extends State<ChnagePassword> {
                 ),
               ),
               const SizedBox(height: 18),
-              const Text(
+              Text(
                 "Password ",
-                style: TextStyle(color: Colors.grey, fontSize: 13),
+                style: const TextStyle(color: Colors.grey, fontSize: 13),
               ),
               Container(
                   alignment: Alignment.centerLeft,
@@ -158,9 +158,9 @@ class _ChnagePasswordState extends State<ChnagePassword> {
                 width: 400,
                 child: Center(
                   child: TextButton(
-                    child: const Text(
+                    child: Text(
                       'Change Password',
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                     style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Color(0xff54854C)),

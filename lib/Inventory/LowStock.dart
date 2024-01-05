@@ -77,12 +77,12 @@ class _LowStockState extends State<LowStock> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         automaticallyImplyLeading: false,
-        leading: BackButton(),
-        title: const Row(
+        leading: const BackButton(),
+        title: Row(
           children: [
             Text("Low Stocks"),
-            Flexible(fit: FlexFit.tight, child: SizedBox()),
-            Padding(
+            const Flexible(fit: FlexFit.tight, child: SizedBox()),
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(
                 Icons.search,
@@ -162,28 +162,28 @@ class _LowStockState extends State<LowStock> {
                                     //   Icons.equalizer,
                                     //   color: Colors.grey,
                                     // ),
-                                    const Text(
+                                    Text(
                                       "= 1.00",
-                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                     ),
                                     const SizedBox(
                                       width: 10,
                                     ),
                                   ],
                                 ),
-                                const Text(
+                                Text(
                                   "Low Stock limit - 2",
-                                  style: TextStyle(color: Colors.blue),
+                                  style: const TextStyle(color: Colors.blue),
                                 )
                               ],
                             ),
                           ),
                           const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               '1',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),

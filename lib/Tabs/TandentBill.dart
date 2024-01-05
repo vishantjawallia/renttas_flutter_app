@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last, prefer_const_constructors, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_print, unnecessary_new, prefer_final_fields, sized_box_for_whitespace, prefer_is_empty, use_super_parameters, unused_local_variable
+// ignore_for_file: sort_child_properties_last,  use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_print, unnecessary_new, prefer_final_fields, sized_box_for_whitespace, prefer_is_empty, use_super_parameters, unused_local_variable
 
 import 'dart:convert';
 import 'dart:io';
@@ -107,7 +107,7 @@ class _TandentBillState extends State<TandentBill> {
                   visible: isBillTheir,
                   child: Expanded(
                     child: ListView.builder(
-                      padding: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 10),
                       shrinkWrap: true,
                       itemCount: dataList.length,
                       itemBuilder: (context, index) {
@@ -132,7 +132,7 @@ class _TandentBillState extends State<TandentBill> {
                                         children: [
                                           Text(
                                             name,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.black,
@@ -140,7 +140,7 @@ class _TandentBillState extends State<TandentBill> {
                                           ),
                                           Text(
                                             bill.rentStartDate,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               // fontSize: 13,
                                               color: Colors.black54,
                                             ),
@@ -149,19 +149,19 @@ class _TandentBillState extends State<TandentBill> {
                                       ),
                                       Container(
                                         padding: const EdgeInsets.all(6.0),
-                                        decoration: BoxDecoration(color: Color(0xff54854C), borderRadius: BorderRadius.circular(6)),
+                                        decoration: BoxDecoration(color: const Color(0xff54854C), borderRadius: BorderRadius.circular(6)),
                                         child: Column(
                                           children: [
                                             Text(
                                               "₹ " "${bill.totalAmount.toString()}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
                                               ),
                                             ),
                                             Text(
                                               "(recieved)",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
                                               ),
@@ -179,7 +179,7 @@ class _TandentBillState extends State<TandentBill> {
                                                           type: '0',
                                                         )));
                                           },
-                                          icon: Icon(Icons.arrow_forward)),
+                                          icon: const Icon(Icons.arrow_forward)),
                                     ],
                                   ),
                                 ),
@@ -195,11 +195,11 @@ class _TandentBillState extends State<TandentBill> {
                                         //                       context, bill['id']);*/
                                       },
                                       child: Container(
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         child: Column(
-                                          children: const [
-                                            Icon(Icons.add_box),
-                                            SizedBox(width: 0.0, height: 4),
+                                          children: [
+                                            const Icon(Icons.add_box),
+                                            const SizedBox(width: 0.0, height: 4),
                                             Text('Receive'),
                                           ],
                                         ),
@@ -218,11 +218,11 @@ class _TandentBillState extends State<TandentBill> {
                                         /* shareOnWhatsApp(message);*/
                                       },
                                       child: Container(
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         child: Column(
-                                          children: const [
-                                            Icon(Icons.share),
-                                            SizedBox(width: 0.0, height: 4),
+                                          children: [
+                                            const Icon(Icons.share),
+                                            const SizedBox(width: 0.0, height: 4),
                                             Text('Share'),
                                           ],
                                         ),
@@ -238,7 +238,7 @@ class _TandentBillState extends State<TandentBill> {
                                             status = await Permission.storage.request();
                                           }
                                           if (status.isGranted) {
-                                            //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                                            //   downloadsFolderPath = '/storage/emulated/0/Download/';
                                             //   Directory dir = Directory(downloadsFolderPath);
                                             // var file=  makePdf(bill,selectedSubPropertyName);
                                             //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
@@ -252,11 +252,11 @@ class _TandentBillState extends State<TandentBill> {
                                         }
                                       },
                                       child: Container(
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         child: Column(
-                                          children: const [
-                                            Icon(Icons.downloading_outlined),
-                                            SizedBox(width: 0.0, height: 4),
+                                          children: [
+                                            const Icon(Icons.downloading_outlined),
+                                            const SizedBox(width: 0.0, height: 4),
                                             Text('Download'),
                                           ],
                                         ),
@@ -376,7 +376,7 @@ class _TandentBillState extends State<TandentBill> {
                         //                       status = await Permission.storage.request();
                         //                     }
                         //                     if (status.isGranted) {
-                        //                       //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                        //                       //   downloadsFolderPath = '/storage/emulated/0/Download/';
                         //                       //   Directory dir = Directory(downloadsFolderPath);
                         //                       // var file=  makePdf(bill,selectedSubPropertyName);
                         //                       //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
@@ -469,7 +469,7 @@ class _TandentBillState extends State<TandentBill> {
         builder: (builder) {
           return StatefulBuilder(builder: (context, setstate) {
             return SingleChildScrollView(
-              padding: EdgeInsetsDirectional.only(
+              padding: const EdgeInsetsDirectional.only(
                 start: 20,
                 end: 10,
                 bottom: 30,
@@ -479,7 +479,7 @@ class _TandentBillState extends State<TandentBill> {
                 // direction: Axis.vertical,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -487,25 +487,25 @@ class _TandentBillState extends State<TandentBill> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.close,
                               color: Colors.black,
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(
                           "Add Recived Rent Payment",
-                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          style: const TextStyle(fontSize: 18, color: Colors.black),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(
                           "Rent paid through",
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                          style: const TextStyle(fontSize: 16, color: Colors.grey),
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -576,7 +576,7 @@ class _TandentBillState extends State<TandentBill> {
                   ),
                   Flexible(
                     child: Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         top: 8,
                         left: 8,
                         right: 8,
@@ -589,14 +589,14 @@ class _TandentBillState extends State<TandentBill> {
                         width: MediaQuery.of(context).size.width / 1,
                         //   color: Colors.amber,
                         child: TextFormField(
-                          cursorColor: Color.fromARGB(255, 3, 61, 109),
+                          cursorColor: const Color.fromARGB(255, 3, 61, 109),
                           //  controller: namecontroller,
                           readOnly: true, //this is important
                           onTap: _selectDate, //the method for opening data picker
                           controller: _textControllerdate1,
                           decoration: InputDecoration(
                               hintText: 'choose date',
-                              prefixIcon: Padding(
+                              prefixIcon: const Padding(
                                 padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                                 child: Icon(Icons.calendar_month),
                               ),
@@ -604,7 +604,7 @@ class _TandentBillState extends State<TandentBill> {
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
                                   "Rent Paid date",
-                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
+                                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                                 ),
                               )),
                         ),
@@ -613,7 +613,7 @@ class _TandentBillState extends State<TandentBill> {
                   ),
                   Flexible(
                     child: Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         top: 8,
                         left: 8,
                         right: 8,
@@ -626,11 +626,11 @@ class _TandentBillState extends State<TandentBill> {
                         width: MediaQuery.of(context).size.width / 1,
                         //   color: Colors.amber,
                         child: TextFormField(
-                          cursorColor: Color.fromARGB(255, 3, 61, 109),
+                          cursorColor: const Color.fromARGB(255, 3, 61, 109),
                           controller: recievedcontroller,
                           decoration: InputDecoration(
                               hintText: 'Rent recived',
-                              prefixIcon: Padding(
+                              prefixIcon: const Padding(
                                 padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                                 child: Icon(Icons.monetization_on),
                               ),
@@ -638,7 +638,7 @@ class _TandentBillState extends State<TandentBill> {
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
                                   "Rent recived",
-                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
+                                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                                 ),
                               )),
                         ),
@@ -661,7 +661,7 @@ class _TandentBillState extends State<TandentBill> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           child: Text(
                             "Save",
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

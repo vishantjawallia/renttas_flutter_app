@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, avoid_print, unnecessary_new, prefer_const_literals_to_create_immutables, prefer_const_constructors, prefer_interpolation_to_compose_strings, non_constant_identifier_names, deprecated_member_use, sized_box_for_whitespace, empty_catches, unused_local_variable
+// ignore_for_file: camel_case_types, avoid_print, unnecessary_new, prefer_const_literals_to_create_immutables,  prefer_interpolation_to_compose_strings, non_constant_identifier_names, deprecated_member_use, sized_box_for_whitespace, empty_catches, unused_local_variable
 
 import 'dart:convert';
 import 'dart:developer';
@@ -30,7 +30,7 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
 
   void getprrmiumet() async {
     setState(() => isloaidng = true);
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final value = await getpre();
     setState(() {
       isloaidng = false;
@@ -86,7 +86,7 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => LandloardDashBord(),
+              builder: (context) => const LandloardDashBord(),
             ),
           ),
           icon: const Icon(
@@ -96,9 +96,9 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
         ),
       ),
       body: isloaidng == true
-          ? Center(
+          ? const Center(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 60.0),
+                padding: EdgeInsets.only(bottom: 60.0),
                 child: CircularProgressIndicator(
                   color: Color(0xff54854C),
                 ),
@@ -110,7 +110,7 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                     height: 60,
                     child: Text(
                       "Plan not Found !",
-                      style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.w600),
                     ),
                   ),
                 )
@@ -123,15 +123,15 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                           alignment: Alignment.center,
                           child: Column(
                             children: [
-                              const Text(
+                              Text(
                                 "Get More Features",
-                                style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600),
+                                style: const TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600),
                               ),
-                              const Text(
+                              Text(
                                 "Current plan : Free Forever",
-                                style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w600),
+                                style: const TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w600),
                               ),
-                              Center(child: Divider()),
+                              const Center(child: Divider()),
                             ],
                           ),
                         ),
@@ -162,9 +162,9 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                                         color: Colors.transparent,
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            border: isSelected == premiumelist[index].Id ? Border.all(color: Color(0xff54854C), width: 2.0) : Border.all(color: Colors.grey, width: 1.0),
-                                            color: isSelected == premiumelist[index].Id ? Color(0xff54854C).withOpacity(0.085) : Colors.transparent,
-                                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                                            border: isSelected == premiumelist[index].Id ? Border.all(color: const Color(0xff54854C), width: 2.0) : Border.all(color: Colors.grey, width: 1.0),
+                                            color: isSelected == premiumelist[index].Id ? const Color(0xff54854C).withOpacity(0.085) : Colors.transparent,
+                                            borderRadius: const BorderRadius.all(Radius.circular(12.0)),
                                           ),
                                           child: new Center(
                                             child: Stack(
@@ -176,16 +176,16 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                                                     child: premiumelist[index].mostpopular == "1"
                                                         ? Container(
                                                             height: 20,
-                                                            margin: EdgeInsets.fromLTRB(0, 0, 0, 7),
+                                                            margin: const EdgeInsets.fromLTRB(0, 0, 0, 7),
                                                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: const Color.fromARGB(255, 12, 134, 118)),
-                                                            child: const Center(
+                                                            child: Center(
                                                               child: Text(
                                                                 "Most Popular",
-                                                                style: TextStyle(color: Colors.white),
+                                                                style: const TextStyle(color: Colors.white),
                                                               ),
                                                             ),
                                                           )
-                                                        : SizedBox(),
+                                                        : const SizedBox(),
                                                   ),
                                                 ),
                                                 Align(
@@ -219,13 +219,13 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                             },
                           ),
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "What you will get",
-                              style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                              style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -233,11 +233,11 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.check_outlined,
                                 color: Color.fromARGB(255, 39, 121, 41),
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text("SMS & Email Update to Tenants")
                             ],
                           ),
@@ -246,8 +246,8 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
-                              SizedBox(width: 10),
+                              const Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
+                              const SizedBox(width: 10),
                               Text("Auto Rent Reminders to Tenants via SMS & Email"),
                             ],
                           ),
@@ -256,14 +256,14 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
-                              SizedBox(width: 10),
+                              const Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
+                              const SizedBox(width: 10),
                               Text("Priority On-Call Support"),
                             ],
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 46, bottom: 46),
+                          margin: const EdgeInsets.only(top: 46, bottom: 46),
                           child: InkWell(
                             onTap: () => showBottomSheet(context),
                             child: Container(
@@ -271,12 +271,12 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
-                                color: amou.isNotEmpty ? Color(0xff54854C) : Colors.grey,
+                                color: amou.isNotEmpty ? const Color(0xff54854C) : Colors.grey,
                               ),
                               child: Center(
                                 child: Text(
                                   amou.isNotEmpty ? ("Subscribe for " + amou + "/" + validity) : "Package Not Selected !",
-                                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
@@ -298,7 +298,7 @@ showBottomSheet(context) {
       return StatefulBuilder(
         builder: (context, setstate) {
           return SingleChildScrollView(
-            padding: EdgeInsetsDirectional.only(
+            padding: const EdgeInsetsDirectional.only(
               start: 20,
               end: 10,
               bottom: 30,
@@ -307,7 +307,7 @@ showBottomSheet(context) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -315,36 +315,36 @@ showBottomSheet(context) {
                     Flexible(
                       child: Text(
                         "Filter",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 50,
                     ),
-                    Flexible(
+                    const Flexible(
                       fit: FlexFit.tight,
                       child: SizedBox(),
                     ),
                     InkWell(
                       onTap: () => Navigator.pop(context),
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.grey,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8),
                           child: Icon(Icons.close_rounded),
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 RadioListTile(

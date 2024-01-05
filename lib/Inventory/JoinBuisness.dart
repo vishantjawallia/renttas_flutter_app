@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class JoinBuisnessPage extends StatefulWidget {
   const JoinBuisnessPage({super.key});
@@ -21,7 +19,7 @@ class _JoinBuisnessPageState extends State<JoinBuisnessPage> {
         leading: const BackButton(),
         title: Row(
           children: [
-            const Text("Join To Buisness"),
+            Text("Join To Buisness"),
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             InkWell(
               onTap: () => {},
@@ -29,12 +27,12 @@ class _JoinBuisnessPageState extends State<JoinBuisnessPage> {
                 width: 80,
                 height: 40,
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
-                child: const Center(
+                child: Center(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Save",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Color(0xff54854C),
                       ),
@@ -53,26 +51,26 @@ class _JoinBuisnessPageState extends State<JoinBuisnessPage> {
           child: Column(
             children: [
               const SizedBox(height: 15),
-              const Text(
+              Text(
                 'To Join Buisness Enter The Buisness Code',
-                style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+                style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 4),
-              const Text(
+              Text(
                 'OR',
-                style: TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 6),
-              const Text(
+              Text(
                 'Scan QR Code',
-                style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+                style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 24),
               Row(
                 children: [
-                  const Text(
+                  Text(
                     'Your Name',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -109,9 +107,9 @@ class _JoinBuisnessPageState extends State<JoinBuisnessPage> {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  const Text(
+                  Text(
                     ' Your Name',
-                    style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                    style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   const Flexible(fit: FlexFit.tight, child: SizedBox()),
                   Padding(
@@ -146,9 +144,9 @@ class _JoinBuisnessPageState extends State<JoinBuisnessPage> {
                 ],
               ),
               const SizedBox(height: 35),
-              const Text(
+              Text(
                 'You Can Get This Code For Newly Buisness',
-                style: TextStyle(color: Colors.black54, fontSize: 16, fontWeight: FontWeight.w600),
+                style: const TextStyle(color: Colors.black54, fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ],
           ),

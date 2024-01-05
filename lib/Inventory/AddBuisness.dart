@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new, prefer_const_constructors, unnecessary_import
+// ignore_for_file: unnecessary_,  unnecessary_import
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class _AddBuisnesState extends State<AddBuisnes> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         automaticallyImplyLeading: false,
-        leading: BackButton(),
+        leading: const BackButton(),
         title: Row(
           children: [
             Text("Add Buisness"),
@@ -32,12 +32,12 @@ class _AddBuisnesState extends State<AddBuisnes> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Center(
+                child: Center(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Save",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Color(0xff54854C),
@@ -60,9 +60,9 @@ class _AddBuisnesState extends State<AddBuisnes> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Buisness Name * ',
-                      style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -74,12 +74,12 @@ class _AddBuisnesState extends State<AddBuisnes> {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Center(
                             child: TextField(
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness name'),
-                              style: const TextStyle(fontSize: 14, color: Colors.black),
+                              decoration: InputDecoration.collapsed(hintText: 'Enter Buisness name'),
+                              style: TextStyle(fontSize: 14, color: Colors.black),
                             ),
                           ),
                         ),
@@ -93,9 +93,9 @@ class _AddBuisnesState extends State<AddBuisnes> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Addess',
-                      style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -107,12 +107,12 @@ class _AddBuisnesState extends State<AddBuisnes> {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Center(
                             child: TextField(
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter Address'),
-                              style: const TextStyle(fontSize: 14, color: Colors.black),
+                              decoration: InputDecoration.collapsed(hintText: 'Enter Address'),
+                              style: TextStyle(fontSize: 14, color: Colors.black),
                             ),
                           ),
                         ),
@@ -126,9 +126,9 @@ class _AddBuisnesState extends State<AddBuisnes> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Email',
-                      style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -140,12 +140,12 @@ class _AddBuisnesState extends State<AddBuisnes> {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Center(
                               child: TextField(
-                                decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness email'),
-                                style: const TextStyle(fontSize: 14, color: Colors.black),
+                                decoration: InputDecoration.collapsed(hintText: 'Enter Buisness email'),
+                                style: TextStyle(fontSize: 14, color: Colors.black),
                               ),
                             )),
                       ),
@@ -158,9 +158,9 @@ class _AddBuisnesState extends State<AddBuisnes> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Website',
-                      style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -172,12 +172,12 @@ class _AddBuisnesState extends State<AddBuisnes> {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Center(
                             child: TextField(
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness web'),
-                              style: const TextStyle(fontSize: 14, color: Colors.black),
+                              decoration: InputDecoration.collapsed(hintText: 'Enter Buisness web'),
+                              style: TextStyle(fontSize: 14, color: Colors.black),
                             ),
                           ),
                         ),
@@ -191,9 +191,9 @@ class _AddBuisnesState extends State<AddBuisnes> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Phone',
-                      style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -205,12 +205,12 @@ class _AddBuisnesState extends State<AddBuisnes> {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Center(
                             child: TextField(
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness phone'),
-                              style: const TextStyle(fontSize: 14, color: Colors.black),
+                              decoration: InputDecoration.collapsed(hintText: 'Enter Buisness phone'),
+                              style: TextStyle(fontSize: 14, color: Colors.black),
                             ),
                           ),
                         ),
@@ -224,9 +224,9 @@ class _AddBuisnesState extends State<AddBuisnes> {
                 height: 80,
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       'Fax',
-                      style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
@@ -238,12 +238,12 @@ class _AddBuisnesState extends State<AddBuisnes> {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Center(
                             child: TextField(
-                              decoration: new InputDecoration.collapsed(hintText: 'Enter Buisness fax'),
-                              style: const TextStyle(fontSize: 14, color: Colors.black),
+                              decoration: InputDecoration.collapsed(hintText: 'Enter Buisness fax'),
+                              style: TextStyle(fontSize: 14, color: Colors.black),
                             ),
                           ),
                         ),

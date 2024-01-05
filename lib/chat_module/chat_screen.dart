@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
       backgroundColor: const Color(0xff54854C),
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        title: const Text(
+        title: Text(
           'Chat for Support',
         ),
         elevation: 0,

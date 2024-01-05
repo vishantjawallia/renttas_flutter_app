@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, must_be_immutable
-
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import '../Accounts/AccountsReport.dart';
 import 'Collaboraters.dart';
@@ -47,9 +43,9 @@ class DrawerItems extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                      const Text(
+                      Text(
                         "Inventory\nManagement",
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
+                        style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ],
                   ),
@@ -133,6 +129,7 @@ class DrawerItems extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CustomItem extends StatelessWidget {
   String itemname;
   IconData icon;
@@ -153,7 +150,7 @@ class CustomItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => accountsreport(
+              builder: (context) => const AccountsReport(
                 userid: '',
               ),
             ),

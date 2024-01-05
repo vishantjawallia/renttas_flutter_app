@@ -3,7 +3,7 @@ class Supplier {
   final String address;
   final String paymentInfo;
 
-  const Supplier({
+  Supplier({
     required this.name,
     required this.address,
     required this.paymentInfo,

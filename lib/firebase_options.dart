@@ -43,7 +43,7 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
+  static FirebaseOptions web = const FirebaseOptions(
     apiKey: 'AIzaSyAMCrhOkOWB7ZzIYLTGjgJyHAeVfzd-20Y',
     appId: '1:115824667190:web:1b4596c0452457d4a90697',
     messagingSenderId: '115824667190',
@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
     measurementId: 'G-17TNQ46E2K',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
+  static FirebaseOptions android = const FirebaseOptions(
     apiKey: 'AIzaSyCO6WDfqQ3qeW9OL4ouR7LwTW67-iZCjxE',
     appId: '1:115824667190:android:fead76cce4d14d44a90697',
     messagingSenderId: '115824667190',
@@ -61,7 +61,7 @@ class DefaultFirebaseOptions {
     storageBucket: 'renttas-8eb75.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
+  static FirebaseOptions ios = const FirebaseOptions(
     apiKey: 'AIzaSyAlLikkR7hjtqzuPniJdDgs3KNgVT-m7pU',
     appId: '1:115824667190:ios:10168919e60d7f9aa90697',
     messagingSenderId: '115824667190',
@@ -70,7 +70,7 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.renttasFlutterApp',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
+  static FirebaseOptions macos = const FirebaseOptions(
     apiKey: 'AIzaSyAlLikkR7hjtqzuPniJdDgs3KNgVT-m7pU',
     appId: '1:115824667190:ios:f698172175e1c2fda90697',
     messagingSenderId: '115824667190',

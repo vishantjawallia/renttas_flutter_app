@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class ExpenseModel {
   final String id;
   final String landlordId;

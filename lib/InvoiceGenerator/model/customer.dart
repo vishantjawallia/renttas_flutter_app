@@ -2,7 +2,7 @@ class Customer {
   final String name;
   final String address;
 
-  const Customer({
+  Customer({
     required this.name,
     required this.address,
   });

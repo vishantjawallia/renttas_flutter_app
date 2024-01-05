@@ -59,7 +59,7 @@ class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
   Future<void> addProperty() async {
     setState(() => isloading = true);
 
-    const String apiUrl = ApiUrl.createProperties; // Replace with your API endpoint
+    String apiUrl = ApiUrl.createProperties; // Replace with your API endpoint
 
     final Map<String, dynamic> requestData = {
       "landlordId": landlordId,
@@ -112,17 +112,17 @@ class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
                 child: Text(
                   'Add new property :-',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              // const SizedBox(height: 50),
+              // SizedBox(height: 50),
               CustomTextField(
                 controller: propertyNameController,
                 iconData: Icons.margin,
@@ -153,9 +153,9 @@ class _AddPropertyLanlordState extends State<AddPropertyLanlord> {
                     onPressed: () {
                       addProperty();
                     },
-                    child: const Text(
+                    child: Text(
                       'Sumbit',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

@@ -74,7 +74,7 @@ class _LanguageSwitchScreenState extends State<LanguageSwitchScreen> {
                             defindex == index.toString()
                                 ? const Icon(
                                     Icons.check_rounded,
-                                    color: const Color(0xff54854C),
+                                    color: Color(0xff54854C),
                                     size: 30,
                                   )
                                 : const SizedBox()

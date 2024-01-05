@@ -14,7 +14,7 @@ class PropertyCardsApp extends StatelessWidget {
       appBar: AppBar(
         leading: const BackButton(),
         backgroundColor: const Color(0xff54854C),
-        title: const Text(
+        title: Text(
           'Commercial Property List',
         ),
       ),
@@ -116,7 +116,7 @@ class CommercialPropertyDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Commercial Property Detail'),
+        title: Text('Commercial Property Detail'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -17,8 +18,7 @@ class _tttttttState extends State<ttttttt> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            _showImageAlertDialog(
-                context); // Call the function to display the AlertDialog with an image
+            _showImageAlertDialog(context); // Call the function to display the AlertDialog with an image
           },
           child: Text('Show Image AlertDialog'),
         ),
@@ -34,7 +34,7 @@ class _tttttttState extends State<ttttttt> {
           //  title: Text('Image Alert Dialog'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
+            children: [
               Image.asset(
                 'assets/images/renttas.png', // Replace with your image path
                 width: 150, // Adjust image width as needed
@@ -43,7 +43,7 @@ class _tttttttState extends State<ttttttt> {
               Text('Enter 4 digit OTP here'),
             ],
           ),
-          actions: <Widget>[
+          actions: [
             OTPTextField(
                 //       controller: otpController,
                 length: 4,
@@ -52,20 +52,19 @@ class _tttttttState extends State<ttttttt> {
                 fieldWidth: 45,
                 fieldStyle: FieldStyle.box,
                 //     outlineBorderRadius: 15,
-                style: TextStyle(fontSize: 17),
+                style: const TextStyle(fontSize: 17),
                 onChanged: (pin) {
-                  print("Changed: " + pin);
+                  print("Changed: $pin");
                 },
                 onCompleted: (pin) {
-                  print("Completed: " + pin);
+                  print("Completed: $pin");
                 }),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Center(
               child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.orange)),
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.orange)),
                 onPressed: () {
                   Navigator.of(context).pop(); // Close the AlertDialog
                 },

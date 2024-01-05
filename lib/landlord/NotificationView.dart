@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_interpolation_to_compose_strings, camel_case_types, no_leading_underscores_for_local_identifiers, avoid_print
+// ignore_for_file:  unused_local_variable, prefer_interpolation_to_compose_strings, camel_case_types, no_leading_underscores_for_local_identifiers, avoid_print
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -35,7 +35,7 @@ class _NotificationViewState extends State<NotificationView> {
             android: AndroidNotificationDetails(
               channel.id,
               channel.name,
-              color: Color(0xff54854C),
+              color: const Color(0xff54854C),
               playSound: true,
               icon: '@mipmap/ic_launcher',
             ),
@@ -57,7 +57,7 @@ class _NotificationViewState extends State<NotificationView> {
     });
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff54854C),
+        backgroundColor: const Color(0xff54854C),
         title: Text("notifcation".tr()),
       ),
       body: GlobalWidgets.notFound('notifcation'.tr()),

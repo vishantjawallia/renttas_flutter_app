@@ -56,7 +56,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
       await launchUrl(whatsappAndroid);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text("WhatsApp is not installed on the device"),
         ),
       );
@@ -70,10 +70,10 @@ class _LanlordProfileState extends State<LanlordProfile> {
   }
 
   final _dialog = RatingDialog(
-    title: const Text(
+    title: Text(
       'Renttas',
     ),
-    message: const Text('Rate our App ?'),
+    message: Text('Rate our App ?'),
     image: Image.asset(
       "assets/images/splash_logo.png",
       fit: BoxFit.fill,
@@ -111,11 +111,11 @@ class _LanlordProfileState extends State<LanlordProfile> {
           child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.only(
+                margin: EdgeInsets.only(
                   bottom: 10,
                   left: 5,
                 ),
-                padding: const EdgeInsets.only(left: 15),
+                padding: EdgeInsets.only(left: 15),
                 height: 20,
                 width: double.infinity,
                 child: Text(
@@ -124,26 +124,26 @@ class _LanlordProfileState extends State<LanlordProfile> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 5),
+                margin: EdgeInsets.only(left: 5),
                 width: double.infinity,
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 12, bottom: 20, right: 4, left: 4),
-                    child: Column(children: <Widget>[
+                    padding: EdgeInsets.only(top: 12, bottom: 20, right: 4, left: 4),
+                    child: Column(children: [
                       Container(
                         width: double.infinity,
-                        margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
+                        margin: EdgeInsets.only(top: 5, left: 10, bottom: 8),
                         child: Row(
                           children: [
                             Icon(Icons.person),
                             Container(
-                              padding: const EdgeInsets.only(left: 14),
+                              padding: EdgeInsets.only(left: 14),
                               child: Text(
                                 name.capitalizeFirstWord(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
@@ -151,18 +151,18 @@ class _LanlordProfileState extends State<LanlordProfile> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 5),
+                      SizedBox(height: 5),
                       Container(
                         width: double.infinity,
-                        margin: const EdgeInsets.only(top: 5, left: 10, bottom: 8),
+                        margin: EdgeInsets.only(top: 5, left: 10, bottom: 8),
                         child: Row(
                           children: [
                             Icon(Icons.email),
                             Container(
-                              padding: const EdgeInsets.only(left: 14),
+                              padding: EdgeInsets.only(left: 14),
                               child: Text(
                                 email,
-                                style: const TextStyle(fontSize: 16),
+                                style: TextStyle(fontSize: 16),
                               ),
                             )
                           ],
@@ -170,15 +170,15 @@ class _LanlordProfileState extends State<LanlordProfile> {
                       ),
                       Container(
                         width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
+                        margin: EdgeInsets.only(top: 10, left: 10),
                         child: Row(
                           children: [
                             Icon(Icons.phone),
                             Container(
-                              padding: const EdgeInsets.only(left: 14),
+                              padding: EdgeInsets.only(left: 14),
                               child: Text(
                                 phone,
-                                style: const TextStyle(fontSize: 16),
+                                style: TextStyle(fontSize: 16),
                               ),
                             ),
                           ],
@@ -189,8 +189,8 @@ class _LanlordProfileState extends State<LanlordProfile> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 10, left: 5),
-                padding: const EdgeInsets.only(left: 15),
+                margin: EdgeInsets.only(top: 10, left: 5),
+                padding: EdgeInsets.only(left: 15),
                 height: 20,
                 width: double.infinity,
                 child: Text(
@@ -202,7 +202,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(right: 5, left: 5, top: 5),
+                margin: EdgeInsets.only(right: 5, left: 5, top: 5),
                 height: 178,
                 width: double.infinity,
                 child: Card(
@@ -210,22 +210,22 @@ class _LanlordProfileState extends State<LanlordProfile> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       Container(
                         width: double.infinity,
-                        margin: const EdgeInsets.only(top: 12, left: 10),
+                        margin: EdgeInsets.only(top: 12, left: 10),
                         child: GestureDetector(
-                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LanguageSwitchScreen())),
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LanguageSwitchScreen())),
                           child: Row(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 30,
                                 width: 30,
                                 child: Icon(Icons.language),
                               ),
                               Container(
-                                padding: const EdgeInsets.only(left: 14),
-                                child: const Text(
+                                padding: EdgeInsets.only(left: 14),
+                                child: Text(
                                   'Choose language ',
                                   style: TextStyle(fontSize: 16),
                                 ),
@@ -235,25 +235,25 @@ class _LanlordProfileState extends State<LanlordProfile> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                        margin: EdgeInsets.only(left: 8, right: 8, top: 5),
                         child: Divider(
                           color: Colors.grey.shade300,
                         ),
                       ),
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const MergeProperty())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MergeProperty())),
                         child: Container(
                           width: double.infinity,
-                          margin: const EdgeInsets.only(top: 5, left: 10),
+                          margin: EdgeInsets.only(top: 5, left: 10),
                           child: Row(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 30,
                                 width: 30,
                                 child: Icon(Icons.merge),
                               ),
                               Container(
-                                padding: const EdgeInsets.only(left: 14),
+                                padding: EdgeInsets.only(left: 14),
                                 child: Text(
                                   "merge_properties".tr(),
                                   style: TextStyle(
@@ -266,25 +266,25 @@ class _LanlordProfileState extends State<LanlordProfile> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                        margin: EdgeInsets.only(left: 8, right: 8, top: 5),
                         child: Divider(
                           color: Colors.grey.shade300,
                         ),
                       ),
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatScreen())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen())),
                         child: Container(
                           width: double.infinity,
-                          margin: const EdgeInsets.only(top: 5, left: 10),
+                          margin: EdgeInsets.only(top: 5, left: 10),
                           child: Row(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 30,
                                 width: 30,
                                 child: Icon(Icons.chat),
                               ),
                               Container(
-                                padding: const EdgeInsets.only(left: 14),
+                                padding: EdgeInsets.only(left: 14),
                                 child: Text(
                                   "live_chat".tr(),
                                   // 'Live chat',
@@ -302,8 +302,8 @@ class _LanlordProfileState extends State<LanlordProfile> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 10, left: 5),
-                padding: const EdgeInsets.only(left: 15),
+                margin: EdgeInsets.only(top: 10, left: 5),
+                padding: EdgeInsets.only(left: 15),
                 height: 20,
                 width: double.infinity,
                 // color: Colors.grey.shade300,
@@ -318,7 +318,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
               InkWell(
                 onTap: () {},
                 child: Container(
-                  margin: const EdgeInsets.only(
+                  margin: EdgeInsets.only(
                     right: 5,
                     left: 5,
                   ),
@@ -331,7 +331,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
                       child: Column(
-                        children: <Widget>[
+                        children: [
                           InkWell(
                             onTap: () async {
                               showDialog(
@@ -344,16 +344,16 @@ class _LanlordProfileState extends State<LanlordProfile> {
                             },
                             child: Container(
                               width: double.infinity,
-                              margin: const EdgeInsets.only(left: 10),
+                              margin: EdgeInsets.only(left: 10),
                               child: Row(
                                 children: [
-                                  const SizedBox(
+                                  SizedBox(
                                     height: 30,
                                     width: 30,
                                     child: Icon(Icons.reviews_outlined),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.only(left: 14),
+                                    padding: EdgeInsets.only(left: 14),
                                     child: Text(
                                       "rate_this_app".tr(),
                                       // 'Rate this app ',
@@ -365,7 +365,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            margin: EdgeInsets.only(left: 8, right: 8, top: 5),
                             child: Divider(
                               color: Colors.grey.shade300,
                             ),
@@ -373,16 +373,16 @@ class _LanlordProfileState extends State<LanlordProfile> {
                           InkWell(
                             onTap: () => Share.share('hey! check out this new app https://play.google.com/store/search?com.ganlaxmine.renttas'),
                             child: Container(
-                              margin: const EdgeInsets.only(top: 5, left: 10),
+                              margin: EdgeInsets.only(top: 5, left: 10),
                               child: Row(
                                 children: [
-                                  const SizedBox(
+                                  SizedBox(
                                     height: 30,
                                     width: 30,
                                     child: Icon(Icons.share),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.only(left: 14),
+                                    padding: EdgeInsets.only(left: 14),
                                     child: Text(
                                       "share_app".tr(),
                                       // 'Share App ',
@@ -395,23 +395,23 @@ class _LanlordProfileState extends State<LanlordProfile> {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            margin: EdgeInsets.only(left: 8, right: 8, top: 5),
                             child: Divider(
                               color: Colors.grey.shade300,
                             ),
                           ),
                           Container(
                             width: double.infinity,
-                            margin: const EdgeInsets.only(top: 5, left: 10),
+                            margin: EdgeInsets.only(top: 5, left: 10),
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const TermCondition()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => TermCondition()));
                               },
                               child: Row(
                                 children: [
-                                  const SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
+                                  SizedBox(height: 30, width: 30, child: Icon(Icons.note_alt_rounded)),
                                   Container(
-                                    padding: const EdgeInsets.only(left: 14),
+                                    padding: EdgeInsets.only(left: 14),
                                     child: Text(
                                       "terms_condition".tr(),
                                       // 'Terms & Conditions ',
@@ -425,25 +425,25 @@ class _LanlordProfileState extends State<LanlordProfile> {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            margin: EdgeInsets.only(left: 8, right: 8, top: 5),
                             child: Divider(
                               color: Colors.grey.shade300,
                             ),
                           ),
                           Container(
                             width: double.infinity,
-                            margin: const EdgeInsets.only(top: 5, left: 10),
+                            margin: EdgeInsets.only(top: 5, left: 10),
                             child: GestureDetector(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicy())),
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPolicy())),
                               child: Row(
                                 children: [
-                                  const SizedBox(
+                                  SizedBox(
                                     height: 30,
                                     width: 30,
                                     child: Icon(Icons.note_alt_outlined),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.only(left: 14),
+                                    padding: EdgeInsets.only(left: 14),
                                     child: Text(
                                       "privacy_policy".tr(),
                                       style: TextStyle(
@@ -456,7 +456,7 @@ class _LanlordProfileState extends State<LanlordProfile> {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                            margin: EdgeInsets.only(left: 8, right: 8, top: 5),
                             child: Divider(
                               color: Colors.grey.shade300,
                             ),
@@ -465,16 +465,16 @@ class _LanlordProfileState extends State<LanlordProfile> {
                             onTap: () => showAlertDialog(context),
                             child: Container(
                               width: double.infinity,
-                              margin: const EdgeInsets.only(top: 5, left: 10),
+                              margin: EdgeInsets.only(top: 5, left: 10),
                               child: Row(
                                 children: [
-                                  const SizedBox(
+                                  SizedBox(
                                     height: 30,
                                     width: 30,
                                     child: Icon(Icons.power_settings_new_outlined),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.only(left: 14),
+                                    padding: EdgeInsets.only(left: 14),
                                     child: Text(
                                       "logout".tr(),
                                       // 'Logout',
@@ -517,7 +517,7 @@ showAlertDialog(BuildContext context) {
     onPressed: () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.clear();
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const LandlordLoginNew()), (route) => false);
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => LandlordLoginNew()), (route) => false);
     },
   );
 

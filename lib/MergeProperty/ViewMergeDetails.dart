@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/model/TendentModel.dart';
 
@@ -17,9 +18,9 @@ class _ViewMergeDetailsState extends State<ViewMergeDetails> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.grey[50],
-        title: const Text(
+        title: Text(
           "View Details",
-          style: TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 18),
         ),
       ),
       body: SafeArea(
@@ -101,9 +102,9 @@ class _ViewMergeDetailsState extends State<ViewMergeDetails> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "Advance amount ",
-                                        style: TextStyle(fontSize: 18),
+                                        style: const TextStyle(fontSize: 18),
                                       ),
                                       Text(
                                         widget.data.advanceAmount,

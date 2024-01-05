@@ -42,7 +42,7 @@ class _AboutUsState extends State<AboutUs> {
       appBar: AppBar(
         leading: const BackButton(),
         backgroundColor: const Color(0xff54854C),
-        title: const Text('About Us'),
+        title: Text('About Us'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

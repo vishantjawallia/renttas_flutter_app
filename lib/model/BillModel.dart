@@ -1,4 +1,3 @@
-import 'package:renttas_flutter_app/Tabs/BillsTabs.dart';
 
 class BIllModel {
   final String id;
@@ -60,11 +59,11 @@ class BIllModel {
       maintenanceAmount: json['maintenanceAmount'],
       totalAmount: json['totalAmount'],
       electricityType: json['electricityType'],
-      electricCharge: json['electricCharge'] == null ? "" : json['electricCharge'],
+      electricCharge: json['electricCharge'] ?? "",
       waterBillType: json['waterBillType'],
-      waterBillCharge: json['waterBillCharge'] == null ? "" : json['waterBillCharge'],
+      waterBillCharge: json['waterBillCharge'] ?? "",
       gasBillType: json['gasBillType'],
-      gasBillCharge: json['gasBillCharge'] == null ? "" : json['gasBillCharge'],
+      gasBillCharge: json['gasBillCharge'] ?? "",
       createdAt: json['createdAt'],
       updatedAt: json['updatedAt'],
     );

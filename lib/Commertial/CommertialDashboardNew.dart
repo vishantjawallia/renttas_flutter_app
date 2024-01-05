@@ -64,7 +64,9 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
 
         return res.map((e) => GetCompany.fromJson(e)).toList();
       }
-    } catch (e) {}
+    } catch (e) {
+      
+    }
     return companylist;
   }
 
@@ -205,18 +207,18 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
 
   showAlertDialog(BuildContext context, String companyid) {
     Widget cancelButton = TextButton(
-      child: const Text("Cancel"),
+      child: Text("Cancel"),
       onPressed: () => Navigator.pop(context),
     );
     Widget continueButton = TextButton(
-      child: const Text("Continue"),
+      child: Text("Continue"),
       onPressed: () => deletecompany(companyid),
     );
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: const Text("Confirmation"),
-      content: const Text("Are you sure want to delete ?"),
+      title: Text("Confirmation"),
+      content: Text("Are you sure want to delete ?"),
       actions: [
         cancelButton,
         continueButton,
@@ -256,11 +258,11 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['respCode'].toString().contains("200")) {
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => const commerialdashboardnew()));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => commerialdashboardnew()));
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Deletion failed.........'),
           backgroundColor: Colors.green,
         ));

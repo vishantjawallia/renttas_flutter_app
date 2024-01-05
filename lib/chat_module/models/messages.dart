@@ -3,7 +3,7 @@ class Messages {
   final String? senderId;
   final String? timestamp;
   final String? content;
-  const Messages({this.id, this.senderId, this.timestamp, this.content});
+  Messages({this.id, this.senderId, this.timestamp, this.content});
   Messages copyWith({String? id, String? senderId, String? timestamp, String? content}) {
     return Messages(id: id ?? this.id, senderId: senderId ?? this.senderId, timestamp: timestamp ?? this.timestamp, content: content ?? this.content);
   }

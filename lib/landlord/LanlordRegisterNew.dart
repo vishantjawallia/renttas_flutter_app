@@ -8,7 +8,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -85,7 +84,7 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
-          children: <Widget>[
+          children: [
             const Image(
               height: 230,
               image: AssetImage('assets/images/login_bg.png'),
@@ -347,11 +346,11 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -367,11 +366,11 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandlordLoginNew()));
               },
@@ -445,9 +444,9 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
     return Column(
       children: [
         const SizedBox(height: 30),
-        const Text(
+        Text(
           'Sigin',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 40,
             fontWeight: FontWeight.bold,
@@ -460,10 +459,10 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
-              const Text(
+              Text(
                 'Enter Verification Code',
                 textAlign: TextAlign.start,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
@@ -520,9 +519,9 @@ class _LanlordRegisterState extends State<LanlordRegisterNew> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     "I haven't get the code:",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
                     ),
@@ -577,15 +576,15 @@ void _showImageAlertDialog(
       return AlertDialog(
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: [
             Image.asset(
               'assets/images/renttas.png',
               width: 150,
             ),
-            const Text('Enter 4 digit OTP here'),
+            Text('Enter 4 digit OTP here'),
           ],
         ),
-        actions: <Widget>[
+        actions: [
           OTPTextField(
               length: 4,
               width: MediaQuery.of(context).size.width,
@@ -615,7 +614,7 @@ void _showImageAlertDialog(
                   Navigator.of(context).pop();
                 }
               },
-              child: const Text('Verify OTP'),
+              child: Text('Verify OTP'),
             ),
           ),
         ],

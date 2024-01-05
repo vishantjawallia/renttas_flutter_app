@@ -50,7 +50,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         automaticallyImplyLeading: false,
-        actions: <Widget>[
+        actions: [
           Expanded(
             child: Row(
               children: [
@@ -64,8 +64,8 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                   ),
                   child: const Icon(Icons.arrow_back, size: 30),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,7 +184,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text("Property"),
+                                Text("Property"),
                                 IconButton(
                                   onPressed: () => Navigator.push(
                                     context,
@@ -200,7 +200,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                               ],
                             ),
                             const SizedBox(height: 10),
-                            const Center(child: Text("Property")),
+                            Center(child: Text("Property")),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -212,7 +212,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text("Sale"),
+                                Text("Sale"),
                                 IconButton(
                                   onPressed: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => const AddForNewSale()));
@@ -225,7 +225,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                               ],
                             ),
                             const SizedBox(height: 10),
-                            const Center(child: Text("Forsale")),
+                            Center(child: Text("Forsale")),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -237,7 +237,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text("Property tenant"),
+                                Text("Property tenant"),
                                 IconButton(
                                   onPressed: () => Navigator.push(
                                     context,
@@ -264,28 +264,28 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    const Row(
+                                    Row(
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 "Co start group",
-                                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                               ),
-                                              SizedBox(height: 10),
+                                              const SizedBox(height: 10),
                                             ],
                                           ),
                                         ),
-                                        Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Text(
                                             "GD1,GD2,GD3....",
-                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                           ),
                                         ),
                                         //  Flexible(fit: FlexFit.tight, child: SizedBox()),
@@ -342,7 +342,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text("Contact details"),
+                                Text("Contact details"),
                                 IconButton(
                                   onPressed: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => const NewContactAdd()));
@@ -367,14 +367,14 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         "Mobile No : +91 7852463258",
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                                       ),
                                       const SizedBox(height: 10),
-                                      const Text(
+                                      Text(
                                         "Email: abcd@gmail.com ",
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                       ),
                                       const SizedBox(height: 5),
                                       const Flexible(fit: FlexFit.tight, child: SizedBox()),

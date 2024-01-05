@@ -10,7 +10,7 @@ class PropertyModel {
   final String? propertyTypeId;
   final String? pin;
   final List<SubPropertyModel>? subproperty;
-  const PropertyModel({
+  PropertyModel({
     this.id,
     this.landlordId,
     this.propertyName,

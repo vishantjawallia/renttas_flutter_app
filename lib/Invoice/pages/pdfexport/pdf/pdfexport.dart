@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, unnecessary_brace_in_string_interps, prefer_interpolation_to_compose_strings
+// ignore_for_file:  non_constant_identifier_names, unnecessary_brace_in_string_interps, prefer_interpolation_to_compose_strings
 
 import 'dart:typed_data';
 import 'package:easy_localization/easy_localization.dart';
@@ -8,14 +8,14 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../../../../model/BillModel.dart';
 
-Future<Uint8List> makePdf(BIllModel invoice,String subname) async {
+Future<Uint8List> makePdf(BIllModel invoice, String subname) async {
   dynamic currentTime = DateFormat.jm().format(DateTime.now());
   var now = DateTime.now();
   var formatterDate = DateFormat('dd/MM/yy');
   String actualDate = formatterDate.format(now);
   final pdf = Document();
-  int amountt=int.parse(invoice.maintenanceAmount)+int.parse(invoice.rentAmount);
-  int finalamount=amountt-int.parse(invoice.previousBalance);
+  int amountt = int.parse(invoice.maintenanceAmount) + int.parse(invoice.rentAmount);
+  int finalamount = amountt - int.parse(invoice.previousBalance);
 
   final imageLogo = MemoryImage((await rootBundle.load('assets/images/renttas.png')).buffer.asUint8List());
   pdf.addPage(
@@ -32,7 +32,7 @@ Future<Uint8List> makePdf(BIllModel invoice,String subname) async {
                     Text("Bill No: ${invoice.id}"),
                     Text("Bill Date: ${actualDate}"),
                     Text("Bill Time: ${currentTime}"),
-                    Text("Bill Period: ${invoice.rentStartDate +" to "+invoice.rentEndDate}"),
+                    Text("Bill Period: ${invoice.rentStartDate + " to " + invoice.rentEndDate}"),
                     //Text("Due date :${invoice. +" to "+invoice.rentEndDate}"),
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +56,7 @@ Future<Uint8List> makePdf(BIllModel invoice,String subname) async {
                         style: Theme.of(context).header4,
                         textAlign: TextAlign.center,
                       ),
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                     ),
                   ],
                 ),
@@ -90,7 +90,7 @@ Future<Uint8List> makePdf(BIllModel invoice,String subname) async {
                 "THANK YOU FOR YOUR CUSTOM!",
                 style: Theme.of(context).header2,
               ),
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
             ),
             Text("Please forward the below slip to your accounts payable department."),
             Divider(
@@ -102,12 +102,7 @@ Future<Uint8List> makePdf(BIllModel invoice,String subname) async {
               border: TableBorder.all(color: PdfColors.black),
               children: [
                 TableRow(
-                  children: [
-                    PaddedText('Rent'),
-                    PaddedText(
-                      invoice.rentAmount
-                    )
-                  ],
+                  children: [PaddedText('Rent'), PaddedText(invoice.rentAmount)],
                 ),
                 TableRow(
                   children: [
@@ -135,14 +130,14 @@ Future<Uint8List> makePdf(BIllModel invoice,String subname) async {
                       'Total',
                     ),
                     //PaddedText('\$${(invoice.rentAmount + invoice.maintenanceAmount)}')
-                 PaddedText(finalamount.toString())
-                   // PaddedText((int.parse(invoice.rentAmount)+int.parse(invoice.maintenanceAmount)-int.parse(invoice.previousBalance)).toRadixString(2))
+                    PaddedText(finalamount.toString())
+                    // PaddedText((int.parse(invoice.rentAmount)+int.parse(invoice.maintenanceAmount)-int.parse(invoice.previousBalance)).toRadixString(2))
                   ],
                 )
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(30),
+              padding: const EdgeInsets.all(30),
               child: Text(
                 'Powerd by RENTTAS',
                 style: Theme.of(context).header3.copyWith(
@@ -164,7 +159,7 @@ Widget PaddedText(
   final TextAlign align = TextAlign.left,
 }) =>
     Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Text(
         text,
         textAlign: align,

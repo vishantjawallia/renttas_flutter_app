@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters, prefer_final_fields, unused_element, prefer_const_constructors, avoid_print, use_build_context_synchronously, prefer_interpolation_to_compose_strings
+// ignore_for_file: use_super_parameters, prefer_final_fields, unused_element,  avoid_print, use_build_context_synchronously, prefer_interpolation_to_compose_strings
 
 import 'dart:convert';
 
@@ -104,10 +104,10 @@ class _AddTendentState extends State<EditMergeProperty> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           color: Colors.black,
         ),
-        title: Text('RENTTAS', style: TextStyle(color: Colors.black)),
+        title: Text('RENTTAS', style: const TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -115,15 +115,15 @@ class _AddTendentState extends State<EditMergeProperty> {
           children: [
             Container(
               height: 50,
-              margin: EdgeInsets.only(top: 30, left: 10, right: 10),
+              margin: const EdgeInsets.only(top: 30, left: 10, right: 10),
               child: Text(
                 'Edit Tenant',
-                style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 8),
+              margin: const EdgeInsets.only(top: 10, left: 8),
               child: TextFormField(
                 controller: _tenantName,
                 decoration: const InputDecoration(
@@ -133,8 +133,8 @@ class _AddTendentState extends State<EditMergeProperty> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 10),
-              margin: EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(left: 10),
+              margin: const EdgeInsets.only(top: 20),
               child: Row(
                 children: [
                   Expanded(
@@ -157,7 +157,7 @@ class _AddTendentState extends State<EditMergeProperty> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 8),
+              margin: const EdgeInsets.only(top: 10, left: 8),
               child: TextFormField(
                 controller: _email,
                 decoration: const InputDecoration(
@@ -167,7 +167,7 @@ class _AddTendentState extends State<EditMergeProperty> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 8),
+              margin: const EdgeInsets.only(top: 10, left: 8),
               child: TextFormField(
                 controller: _advanceAmount,
                 decoration: const InputDecoration(
@@ -176,14 +176,14 @@ class _AddTendentState extends State<EditMergeProperty> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             SizedBox(
               height: 50,
               width: 350,
@@ -194,7 +194,7 @@ class _AddTendentState extends State<EditMergeProperty> {
                 ),
                 onPressed: isLoading ? null : () => saveTenant(widget.data.id, _tenantName.text, phoneNumber, _email.text, _advanceAmount.text),
                 child: isLoading
-                    ? CircularProgressIndicator(
+                    ? const CircularProgressIndicator(
                         color: Color(0xff54854C),
                       )
                     : Text("Edit"),
@@ -253,11 +253,11 @@ class _AddTendentState extends State<EditMergeProperty> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -273,11 +273,11 @@ class _AddTendentState extends State<EditMergeProperty> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => const LandloardDashBord(),

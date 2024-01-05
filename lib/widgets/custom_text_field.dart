@@ -33,6 +33,7 @@ class CustomTextField extends StatefulWidget {
     this.enabled,
     this.keyboardType,
   });
+  
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState(obscureText);

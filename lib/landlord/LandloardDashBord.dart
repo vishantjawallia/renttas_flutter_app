@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_interpolation_to_compose_strings, deprecated_member_use, unused_local_variable, unnecessary_overrides, unnecessary_null_comparison, avoid_unnecessary_containers, use_build_context_synchronously, sort_child_properties_last, use_super_parameters, unused_field, unused_element, prefer_null_aware_operators
+// ignore_for_file:  avoid_print, prefer_interpolation_to_compose_strings, deprecated_member_use, unused_local_variable, unnecessary_overrides, unnecessary_null_comparison, avoid_unnecessary_containers, use_build_context_synchronously, sort_child_properties_last, use_super_parameters, unused_field, unused_element, prefer_null_aware_operators
 
 import 'dart:async';
 import 'dart:convert';
@@ -26,7 +26,6 @@ import 'LanlordProfile.dart';
 
 import 'AddSubproperties.dart';
 import 'LandlordAddProperty.dart';
-import 'LanlordProfile.dart';
 
 class LandloardDashBord extends StatefulWidget {
   const LandloardDashBord({Key? key}) : super(key: key);
@@ -103,10 +102,10 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
               Flexible(
                 fit: FlexFit.tight,
                 child: Container(
-                  margin: EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   child: ListView.builder(
                     itemCount: propertyLists.length,
-                    padding: EdgeInsets.only(top: 10),
+                    padding: const EdgeInsets.only(top: 10),
                     itemBuilder: (BuildContext context, int index) {
                       PropertyModel property = propertyLists[index];
 
@@ -144,24 +143,24 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.2) : Colors.white,
+                              color: selectedPropertyName == property.propertyName ? const Color(0xff54854C).withOpacity(0.2) : Colors.white,
                               border: Border.all(
                                 width: 1,
-                                color: selectedPropertyName == property.propertyName ? Color(0xff54854C).withOpacity(0.3) : Colors.grey,
+                                color: selectedPropertyName == property.propertyName ? const Color(0xff54854C).withOpacity(0.3) : Colors.grey,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
+                              children: [
                                 Text(
                                   property.propertyName ?? "",
                                   style: const TextStyle(
                                     fontSize: 16,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 100,
                                 ),
                                 selectedPropertyName == property.propertyName
@@ -169,7 +168,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                         Icons.check_circle_outline_sharp,
                                         color: Color(0xff54854C),
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ],
                             ),
                           ),
@@ -186,19 +185,19 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                   height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff54854C),
+                      backgroundColor: const Color(0xff54854C),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
                     onPressed: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LandlordAddProperty()),
+                      MaterialPageRoute(builder: (context) => const LandlordAddProperty()),
                     ),
                     child: Text(
                       "add_property".tr(),
                       // 'Add Property',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -207,7 +206,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
             ],
           ),
         );
@@ -230,10 +229,10 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            backgroundColor: Color(0xff54854C),
+            backgroundColor: const Color(0xff54854C),
             toolbarHeight: !isSubproperty ? 130 : 200,
             automaticallyImplyLeading: false,
-            actions: <Widget>[
+            actions: [
               Container(
                 child: Expanded(
                   child: Padding(
@@ -245,9 +244,9 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                           children: [
                             Row(
                               children: [
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Container(
-                                  margin: EdgeInsets.only(left: 1),
+                                  margin: const EdgeInsets.only(left: 1),
                                   child: GestureDetector(
                                     onTap: () => Navigator.of(context).push(
                                       MaterialPageRoute(builder: (context) => const LanlordProfile()),
@@ -257,7 +256,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                       radius: 22,
                                       child: Text(
                                         firstName.isEmpty ? "A" : (firstName).substring(0, 1).toUpperCase(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Color(0xff54854C),
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20,
@@ -298,7 +297,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                   alignment: Alignment.centerLeft,
                                                   child: Text(
                                                     selectedPropertyName,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       color: Colors.white,
                                                       fontWeight: FontWeight.w600,
                                                       fontSize: 18,
@@ -307,7 +306,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                     overflow: TextOverflow.clip,
                                                   ),
                                                 ),
-                                                Icon(Icons.arrow_drop_down, size: 34)
+                                                const Icon(Icons.arrow_drop_down, size: 34)
                                               ],
                                             ),
                                           ),
@@ -319,30 +318,30 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                               children: [
                                 InkWell(
                                   borderRadius: BorderRadius.circular(6),
-                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationView())),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationView())),
                                   child: Container(
-                                    padding: EdgeInsets.all(6),
-                                    child: Icon(
+                                    padding: const EdgeInsets.all(6),
+                                    child: const Icon(
                                       Icons.notification_add,
                                       color: Colors.white,
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 8, height: 0),
+                                const SizedBox(width: 8, height: 0),
                                 InkWell(
                                   borderRadius: BorderRadius.circular(6),
-                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PremiumeScreen())),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PremiumeScreen())),
                                   child: Container(
-                                    padding: EdgeInsets.all(6),
+                                    padding: const EdgeInsets.all(6),
                                     child: Row(
                                       children: [
-                                        Icon(Icons.star, color: Color.fromARGB(255, 229, 175, 26)),
+                                        const Icon(Icons.star, color: Color.fromARGB(255, 229, 175, 26)),
                                         Container(
-                                          padding: EdgeInsets.all(6),
+                                          padding: const EdgeInsets.all(6),
                                           alignment: Alignment.center,
                                           child: Text(
                                             ' ' + "premium".tr(),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Color.fromARGB(255, 229, 175, 26),
                                               fontSize: 18,
                                               fontWeight: FontWeight.w600,
@@ -362,18 +361,16 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                           padding: const EdgeInsets.only(left: 10, top: 18),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
+                            children: [
                               Text(
                                 "title".tr().toString().toUpperCase(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 24,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
-                              // TODO: ask for add property how this functionality work'
-
                               InkWell(
                                 borderRadius: BorderRadius.circular(6),
                                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddSubproperties(selectedId: selectedPropertyId))),
@@ -381,14 +378,14 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                   padding: const EdgeInsets.all(5),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.add_box, size: 26, color: Colors.white),
-                                      SizedBox(width: 6, height: 0.0),
+                                      const Icon(Icons.add_box, size: 26, color: Colors.white),
+                                      const SizedBox(width: 6, height: 0.0),
                                       Padding(
-                                        padding: EdgeInsets.only(right: 8.0),
+                                        padding: const EdgeInsets.only(right: 8.0),
                                         child: Text(
                                           "add_room".tr().toUpperCase(),
                                           // 'ADD ROOM',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -423,7 +420,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                 borderRadius: BorderRadius.circular(6),
                                               )
                                             : BoxDecoration(
-                                                color: Color.fromARGB(255, 229, 175, 26),
+                                                color: const Color.fromARGB(255, 229, 175, 26),
                                                 borderRadius: BorderRadius.circular(6),
                                               ),
                                         padding: const EdgeInsets.all(10),
@@ -438,7 +435,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: 20),
+                                    const SizedBox(width: 20),
                                     Align(
                                       heightFactor: 1.55,
                                       alignment: Alignment.center,
@@ -452,7 +449,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                         width: 2,
                                       ),
                                     ),
-                                    SizedBox(width: 2),
+                                    const SizedBox(width: 2),
                                     isLoading
                                         ? Padding(
                                             padding: const EdgeInsets.only(left: 14.0),
@@ -473,7 +470,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(width: 15),
+                                                const SizedBox(width: 15),
                                                 SizedBox(
                                                   // width: 50.0,
                                                   height: 38,
@@ -489,7 +486,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(width: 15),
+                                                const SizedBox(width: 15),
                                                 SizedBox(
                                                   // width: 50.0,
                                                   height: 38,
@@ -535,9 +532,9 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                                                   decoration: alldt == false
                                                       ? selectedSubProperty[index].id! == selectedSubPropertyId
                                                           ? BoxDecoration(
-                                                              color: Color.fromARGB(255, 229, 175, 26),
+                                                              color: const Color.fromARGB(255, 229, 175, 26),
                                                               borderRadius: BorderRadius.circular(6),
-                                                              border: Border.all(width: 1.5, color: Color.fromARGB(255, 229, 175, 26)),
+                                                              border: Border.all(width: 1.5, color: const Color.fromARGB(255, 229, 175, 26)),
                                                             )
                                                           : BoxDecoration(
                                                               color: Colors.grey.shade100.withOpacity(0.2),
@@ -582,19 +579,19 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
             children: [
               Container(
                 height: 50,
-                padding: EdgeInsets.symmetric(horizontal: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 6),
                 color: Colors.white,
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: TabBar(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     isScrollable: true,
                     indicatorSize: TabBarIndicatorSize.tab,
                     tabAlignment: TabAlignment.start,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       fontSize: 18,
                     ),
-                    indicator: BoxDecoration(
+                    indicator: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(color: Color(0xff54854C), width: 4.0),
                       ),
@@ -618,10 +615,10 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
                   controller: _tabController,
                   children: [
                     BillsTabs(loading: isLoading, list: bills),
-                    TenantsTab(),
-                    ExpensesTab(),
-                    DocumentsTab(),
-                    AboutTab(),
+                    const TenantsTab(),
+                    const ExpensesTab(),
+                    const DocumentsTab(),
+                    const AboutTab(),
                   ],
                 ),
               ),
@@ -784,7 +781,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
           content: Text("are_you_sure".tr()
               // 'Are you sure you want to exit?',
               ),
-          actions: <Widget>[
+          actions: [
             TextButton(
               child: Text(
                 'cancel'.tr(),

@@ -19,7 +19,7 @@ class _LandlordAddPropertyState extends State<LandlordAddProperty> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        title: const Text('Add Property'),
+        title: Text('Add Property'),
       ),
       body: Center(
         child: Padding(

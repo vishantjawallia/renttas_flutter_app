@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, prefer_const_constructors, use_build_context_synchronously, unused_element
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print,  use_build_context_synchronously, unused_element
 
 import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:renttas_flutter_app/Common/RentalCustomAlert.dart';
 
@@ -95,7 +94,7 @@ class _AddTendentState extends State<AddTendent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff54854C),
+        backgroundColor: const Color(0xff54854C),
         title: Text(
           "add_tenant".tr(),
         ),
@@ -106,26 +105,26 @@ class _AddTendentState extends State<AddTendent> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             children: [
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
-                margin: EdgeInsets.only(top: 10, left: 8),
+                margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: _tenantName,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     labelText: 'tenant_name'.tr(),
                   ),
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(left: 10),
-                margin: EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(top: 20),
                 child: Row(
                   children: [
                     Expanded(
                       child: IntlPhoneField(
                         decoration: InputDecoration(
-                          icon: Icon(Icons.phone_android),
+                          icon: const Icon(Icons.phone_android),
                           hintText: 'enter_your_mobile'.tr(),
                           labelText: '${"mobile_number".tr()} *',
                         ),
@@ -137,21 +136,21 @@ class _AddTendentState extends State<AddTendent> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 10, left: 8),
+                margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: _email,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.email),
+                    icon: const Icon(Icons.email),
                     labelText: 'email_id_optional'.tr(),
                   ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 10, left: 8),
+                margin: const EdgeInsets.only(top: 10, left: 8),
                 child: TextFormField(
                   controller: _advanceAmount,
                   decoration: InputDecoration(
-                    icon: Icon(Icons.currency_rupee),
+                    icon: const Icon(Icons.currency_rupee),
                     labelText: 'advance_amount'.tr(),
                   ),
                 ),
@@ -163,7 +162,7 @@ class _AddTendentState extends State<AddTendent> {
                   children: [
                     Text(
                       '${"start_date".tr()}:',
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     TextField(
                       controller: _startDateController,
@@ -175,10 +174,10 @@ class _AddTendentState extends State<AddTendent> {
                         _selectDate(context, _startDateController);
                       },
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       '${"end_date".tr()}:',
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     TextField(
                       controller: _endDateController,
@@ -191,7 +190,7 @@ class _AddTendentState extends State<AddTendent> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SizedBox(
                 height: 50,
                 width: 350,
@@ -199,12 +198,12 @@ class _AddTendentState extends State<AddTendent> {
                   style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)), elevation: 8),
                   onPressed: isLoading ? null : () => saveTenant(_tenantName.text, phoneNumber, _email.text, _advanceAmount.text, _startDateController.text, _endDateController.text),
                   child: isLoading
-                      ? CircularProgressIndicator(
+                      ? const CircularProgressIndicator(
                           color: Color(0xff54854C),
                         )
                       : Text(
                           "save".tr(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                           ),
                         ),
@@ -260,11 +259,11 @@ class _AddTendentState extends State<AddTendent> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -280,11 +279,11 @@ class _AddTendentState extends State<AddTendent> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Register  Failed'),
+          title: Text('Register  Failed'),
           content: Text(respMsg),
-          actions: <Widget>[
+          actions: [
             TextButton(
-              child: const Text('OK'),
+              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LandloardDashBord()));
               },

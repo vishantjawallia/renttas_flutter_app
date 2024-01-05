@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_interpolation_to_compose_strings, avoid_print, use_build_context_synchronously, use_super_parameters
+// ignore_for_file:  sort_child_properties_last, prefer_interpolation_to_compose_strings, avoid_print, use_build_context_synchronously, use_super_parameters
 
 import 'dart:convert';
 
@@ -59,24 +59,24 @@ class _TenantsTabState extends State<MergeProperty> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: isLoading
-          ? SizedBox()
+          ? const SizedBox()
           : FloatingActionButton.extended(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AddTendent(),
+                    builder: (context) => const AddTendent(),
                   ),
                 );
               },
               label: Text(
                 'Tenant',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                 ),
               ),
-              icon: Icon(Icons.add, color: Colors.white),
-              backgroundColor: Color(0xff54854C),
+              icon: const Icon(Icons.add, color: Colors.white),
+              backgroundColor: const Color(0xff54854C),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -88,7 +88,7 @@ class _TenantsTabState extends State<MergeProperty> {
       body: Column(
         children: [
           isLoading
-              ? Flexible(
+              ? const Flexible(
                   child: Center(
                     child: CircularProgressIndicator(
                       color: Color(0xff54854C),
@@ -109,22 +109,22 @@ class _TenantsTabState extends State<MergeProperty> {
                         ),
                         child: Column(
                           children: [
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Row(
                               children: [
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Text(
                                   tenant.tenantName,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),
                                 ),
-                                SizedBox(width: 50),
+                                const SizedBox(width: 50),
                                 Text(
                                   tenant.phone,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -132,7 +132,7 @@ class _TenantsTabState extends State<MergeProperty> {
                                 ),
                               ],
                             ),
-                            Divider(
+                            const Divider(
                               color: Colors.grey,
                               height: 30,
                             ),
@@ -146,7 +146,7 @@ class _TenantsTabState extends State<MergeProperty> {
                                         Navigator.push(context, MaterialPageRoute(builder: (context) => EditMergeProperty(data: tenant)));
                                         // Delete logic
                                       },
-                                      icon: Icon(Icons.edit),
+                                      icon: const Icon(Icons.edit),
                                     ),
                                     Text('Edit'),
                                   ],
@@ -158,7 +158,7 @@ class _TenantsTabState extends State<MergeProperty> {
                                         // Delete logic
                                         showAlertDialogdelete(context, tenant.id);
                                       },
-                                      icon: Icon(Icons.delete),
+                                      icon: const Icon(Icons.delete),
                                     ),
                                     Text('Delete'),
                                   ],
@@ -172,7 +172,7 @@ class _TenantsTabState extends State<MergeProperty> {
                                           builder: (context) => ViewMergeDetails(data: tenant),
                                         ),
                                       ),
-                                      icon: Icon(Icons.details),
+                                      icon: const Icon(Icons.details),
                                     ),
                                     Text('Details'),
                                   ],
@@ -188,7 +188,7 @@ class _TenantsTabState extends State<MergeProperty> {
                     child: Center(
                       child: Text(
                         'Tenants not found !',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Colors.grey,
@@ -213,7 +213,7 @@ class _TenantsTabState extends State<MergeProperty> {
             return AlertDialog(
               title: Text("Confirmation"),
               content: Text(contentText),
-              actions: <Widget>[
+              actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Text("Cancel"),

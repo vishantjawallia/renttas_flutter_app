@@ -29,7 +29,7 @@ class _TermConditionState extends State<TermCondition> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        title: const Text('Term & Condition'),
+        title: Text('Term & Condition'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

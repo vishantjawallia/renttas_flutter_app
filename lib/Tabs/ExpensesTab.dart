@@ -14,7 +14,7 @@ import '../TabAction/addExpenses.dart';
 import '../model/ExpenseModel.dart';
 
 class ExpensesTab extends StatefulWidget {
-  const ExpensesTab({Key? key}) : super(key: key);
+  const ExpensesTab({super.key});
 
   @override
   State<ExpensesTab> createState() => _ExpensesTabState();
@@ -118,7 +118,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
+                                      children: [
                                         Flexible(
                                           child: Column(
                                             children: [
@@ -210,7 +210,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                       ),
                     ),
                     // Padding(
-                    //   padding: const EdgeInsets.only(top: 230, left: 90),
+                    //   padding: EdgeInsets.only(top: 230, left: 90),
                     //   child: Text(
                     //     'No Expenses found',
                     //     style: TextStyle(
@@ -277,12 +277,12 @@ class _ExpensesTabState extends State<ExpensesTab> {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: const Text("Confirmation"),
+              title: Text("Confirmation"),
               content: Text(contentText),
-              actions: <Widget>[
+              actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text("Cancel"),
+                  child: Text("Cancel"),
                 ),
                 TextButton(
                   onPressed: () async {

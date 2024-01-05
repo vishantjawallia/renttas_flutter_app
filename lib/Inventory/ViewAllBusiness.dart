@@ -1,6 +1,5 @@
 // ignore_for_file: sort_child_properties_last, camel_case_types
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Inventory/JoinBuisness.dart';
 
@@ -19,7 +18,7 @@ class _ViewAllBuisnessState extends State<ViewAllBuisness> {
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
         centerTitle: false,
-        title: const Text("My Buisness"),
+        title: Text("My Buisness"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -35,7 +34,7 @@ class _ViewAllBuisnessState extends State<ViewAllBuisness> {
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
@@ -44,16 +43,16 @@ class _ViewAllBuisnessState extends State<ViewAllBuisness> {
                         children: [
                           Text(
                             "Hello",
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: const TextStyle(color: Colors.black, fontSize: 18),
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
                             "Your buisness ",
-                            style: TextStyle(color: Colors.black54, fontSize: 16),
+                            style: const TextStyle(color: Colors.black54, fontSize: 16),
                           ),
                         ],
                       ),
-                      Icon(
+                      const Icon(
                         Icons.delete,
                         color: Colors.red,
                       ),

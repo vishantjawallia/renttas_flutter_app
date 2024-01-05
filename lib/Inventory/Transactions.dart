@@ -20,10 +20,10 @@ class _ViewTransactionsState extends State<ViewTransactions> {
         // backgroundColor: Colors.grey[300],
         automaticallyImplyLeading: false,
         leading: const BackButton(),
-        // actions: <Widget>[
+        // actions: [
         title: Row(
           children: [
-            const Text("Transactions"),
+            Text("Transactions"),
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             const Padding(
               padding: EdgeInsets.all(8.0),
@@ -63,7 +63,7 @@ class _ViewTransactionsState extends State<ViewTransactions> {
                 borderRadius: BorderRadius.circular(8),
                 elevation: 5,
                 child: ExpansionTile(
-                  title: const Text('Stock Information'),
+                  title: Text('Stock Information'),
                   children: [
                     Container(
                       decoration: BoxDecoration(
@@ -76,20 +76,20 @@ class _ViewTransactionsState extends State<ViewTransactions> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Row(
+                            Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.download,
                                   color: Colors.greenAccent,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text("Total In"),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 Text(
                                   '1.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -103,11 +103,11 @@ class _ViewTransactionsState extends State<ViewTransactions> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                const Text("Total Out"),
+                                Text("Total Out"),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                const Text(
+                                Text(
                                   '0.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -120,11 +120,11 @@ class _ViewTransactionsState extends State<ViewTransactions> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                const Text("Products"),
+                                Text("Products"),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                const Text(
+                                Text(
                                   '1.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -137,28 +137,28 @@ class _ViewTransactionsState extends State<ViewTransactions> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                const Text("Low Stocks"),
+                                Text("Low Stocks"),
                                 const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                const Text(
+                                Text(
                                   '0.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                             const SizedBox(
                               height: 9,
                             ),
-                            const Row(
+                            Row(
                               children: [
-                                Icon(Icons.handshake, color: Colors.purpleAccent),
-                                SizedBox(
+                                const Icon(Icons.handshake, color: Colors.purpleAccent),
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text("In Hand"),
-                                Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                const Flexible(fit: FlexFit.tight, child: SizedBox()),
                                 Text(
                                   '1.00',
-                                  style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -171,11 +171,11 @@ class _ViewTransactionsState extends State<ViewTransactions> {
               ),
             ),
             const SizedBox(height: 15),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 '25/10/2022',
-                style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
               ),
             ),
             InkWell(
@@ -188,71 +188,71 @@ class _ViewTransactionsState extends State<ViewTransactions> {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   height: 95,
                   width: double.infinity,
-                  child: const Row(
+                  child: Row(
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Icon(
                           Icons.download,
                           color: Colors.greenAccent,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "hhhh",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
                               "Purchase rate : 10000",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ],
                         ),
                       ),
-                      Flexible(fit: FlexFit.tight, child: SizedBox()),
+                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
                       Padding(
-                        padding: EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.store,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
                                   "Main store",
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                 )
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            Flexible(fit: FlexFit.tight, child: SizedBox()),
+                            const Flexible(fit: FlexFit.tight, child: SizedBox()),
                             Text(
                               "1.00",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ],
@@ -316,10 +316,10 @@ Future<dynamic> orderConfirm(BuildContext context) {
               const SizedBox(
                 width: 10,
               ),
-              const Flexible(
+              Flexible(
                 child: Text(
                   "hhh",
-                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ),
               const SizedBox(
@@ -360,17 +360,17 @@ Future<dynamic> orderConfirm(BuildContext context) {
           const SizedBox(
             height: 20,
           ),
-          const Text(
+          Text(
             "PID - 101",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
           ),
-          const Text(
+          Text(
             "Date :25/10/2023",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.grey),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.grey),
           ),
-          const Text(
+          Text(
             "Store Name:Main Store ",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.grey),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.grey),
           ),
           const SizedBox(
             height: 10,
@@ -385,13 +385,13 @@ Future<dynamic> orderConfirm(BuildContext context) {
               Flexible(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const Row(
+                  child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.line_weight,
                         color: Colors.purple,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
@@ -401,9 +401,9 @@ Future<dynamic> orderConfirm(BuildContext context) {
                   ),
                 ),
               ),
-              const Text(
+              Text(
                 "1.00",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -413,13 +413,13 @@ Future<dynamic> orderConfirm(BuildContext context) {
               Flexible(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const Row(
+                  child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.monetization_on,
                         color: Colors.purpleAccent,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text("Purchase Rate"),
@@ -427,22 +427,22 @@ Future<dynamic> orderConfirm(BuildContext context) {
                   ),
                 ),
               ),
-              const Text(
+              Text(
                 "1000.0",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ],
           ),
           const SizedBox(height: 10),
           const Divider(),
           const SizedBox(height: 10),
-          const Row(
+          Row(
             children: [
               Text(
                 "Remarkkk :",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text("vvb "),
             ],
           )
@@ -454,19 +454,19 @@ Future<dynamic> orderConfirm(BuildContext context) {
 
 showAlertDialog(BuildContext context) {
   Widget cancelButton = TextButton(
-    child: const Text("Cancel"),
+    child: Text("Cancel"),
     onPressed: () {},
   );
   Widget continueButton = TextButton(
-    child: const Text("Continue"),
+    child: Text("Continue"),
     onPressed: () {
       Navigator.pop(context);
     },
   );
 
   AlertDialog alert = AlertDialog(
-    title: const Text("Confirmation"),
-    content: const Text("Are you sure want to delete ?"),
+    title: Text("Confirmation"),
+    content: Text("Are you sure want to delete ?"),
     actions: [
       cancelButton,
       continueButton,

@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, use_key_in_widget_constructors
+// ignore_for_file: avoid_print, use_key_in_widget_constructors, library_private_types_in_public_api
 
 import 'dart:async';
 
@@ -62,7 +62,7 @@ class _MyAppState extends State<ProductScanner> {
       appBar: AppBar(
         leading: const BackButton(),
         backgroundColor: const Color(0xff54854C),
-        title: const Text('Barcode scan'),
+        title: Text('Barcode scan'),
       ),
       body: Builder(
         builder: (BuildContext context) {
@@ -72,7 +72,7 @@ class _MyAppState extends State<ProductScanner> {
               direction: Axis.vertical,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
+              children: [
                 ElevatedButton(
                   style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(const Size(double.infinity, 45)),
@@ -80,7 +80,7 @@ class _MyAppState extends State<ProductScanner> {
                     textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                   ),
                   onPressed: () => scanBarcodeNormal(),
-                  child: const Text(
+                  child: Text(
                     'Start barcode scan',
                   ),
                 ),
@@ -92,7 +92,7 @@ class _MyAppState extends State<ProductScanner> {
                     backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
                     textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Start QR scan',
                   ),
                 ),
@@ -104,7 +104,7 @@ class _MyAppState extends State<ProductScanner> {
                     backgroundColor: MaterialStateProperty.all(const Color(0xff54854C)),
                     textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Start barcode scan stream',
                   ),
                 ),

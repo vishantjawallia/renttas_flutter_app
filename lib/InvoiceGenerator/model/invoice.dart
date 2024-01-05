@@ -8,7 +8,7 @@ class Invoice {
   final Customer customer;
   final List<InvoiceItem> items;
 
-  const Invoice({
+  Invoice({
     required this.info,
     required this.supplier,
     required this.customer,
@@ -22,7 +22,7 @@ class InvoiceInfo {
   final DateTime date;
   final DateTime dueDate;
 
-  const InvoiceInfo({
+  InvoiceInfo({
     required this.description,
     required this.number,
     required this.date,
@@ -37,7 +37,7 @@ class InvoiceItem {
   final double vat;
   final double unitPrice;
 
-  const InvoiceItem({
+  InvoiceItem({
     required this.description,
     required this.date,
     required this.quantity,

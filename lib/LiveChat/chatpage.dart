@@ -9,7 +9,7 @@
 // class ChatPage extends StatefulWidget {
 //   final String id;
 //   final String name;
-//   const ChatPage({Key? key, required this.id, required this.name}) : super(key: key);
+//   ChatPage({Key? key, required this.id, required this.name}) : super(key: key);
 
 //   @override
 //   State<ChatPage> createState() => _ChatPageState();
@@ -26,13 +26,13 @@
 //         backgroundColor: Colors.indigo.shade400,
 //         title: Text(widget.name),
 //         elevation: 0,
-//         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))],
+//         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))],
 //       ),
 //       body: Column(
 //         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: [
 //           Padding(
-//             padding: const EdgeInsets.all(18.0),
+//             padding: EdgeInsets.all(18.0),
 //             child: Row(
 //               mainAxisAlignment: MainAxisAlignment.start,
 //               crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +41,7 @@
 //                   'Chats',
 //                   style: Styles.h1(),
 //                 ),
-//                 const Spacer(),
+//                 Spacer(),
 //                 StreamBuilder(
 //                     stream: firestore.collection('Users').doc(widget.id).snapshots(),
 //                     builder: (context, AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot) {
@@ -52,8 +52,8 @@
 //                               style: Styles.h1().copyWith(fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white70),
 //                             );
 //                     }),
-//                 const Spacer(),
-//                 const SizedBox(
+//                 Spacer(),
+//                 SizedBox(
 //                   width: 50,
 //                 )
 //               ],
@@ -98,7 +98,7 @@
 //                         );
 //                       }
 //                     } else {
-//                       return const Center(
+//                       return Center(
 //                         child: CircularProgressIndicator(
 //                           color: Colors.indigo,
 //                         ),

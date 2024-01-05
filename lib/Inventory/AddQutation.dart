@@ -44,7 +44,7 @@ class _QutationViewState extends State<QutationView> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            const Text("Add Quotation"),
+            Text("Add Quotation"),
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             InkWell(
               onTap: () => Navigator.push(
@@ -57,12 +57,12 @@ class _QutationViewState extends State<QutationView> {
                 width: 80,
                 height: 40,
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(30)),
-                child: const Center(
+                child: Center(
                   child: Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "Save",
-                        style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff54854C)),
+                        style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xff54854C)),
                       )),
                 ),
               ),
@@ -93,9 +93,9 @@ class _QutationViewState extends State<QutationView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         "Details",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const Divider(),
                       TextField(
@@ -128,21 +128,21 @@ class _QutationViewState extends State<QutationView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         "Buisness info *",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const Divider(),
-                      const Text(
+                      Text(
                         "From",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const SizedBox(height: 8),
                       InkWell(
                         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddBuisnes())),
-                        child: const Text(
+                        child: Text(
                           "Add Buisness",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                         ),
                       ),
                       const Divider(),
@@ -156,9 +156,9 @@ class _QutationViewState extends State<QutationView> {
                               onChanged: (bool? value) => setState(() => valuefirst = value!),
                             ),
                           ),
-                          const Text(
+                          Text(
                             'Buisness information show',
-                            style: TextStyle(color: Colors.black54, fontSize: 16, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: Colors.black54, fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -172,9 +172,9 @@ class _QutationViewState extends State<QutationView> {
                               onChanged: (bool? value) => setState(() => valuesecond = value!),
                             ),
                           ),
-                          const Text(
+                          Text(
                             'Include TAX(%)',
-                            style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 16),
+                            style: const TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           valuesecond == true
@@ -215,22 +215,22 @@ class _QutationViewState extends State<QutationView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         "Cleint *",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const Divider(),
                       const SizedBox(height: 4),
-                      const Text(
+                      Text(
                         "Bill TO ",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const SizedBox(height: 6),
                       InkWell(
                         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AddClient())),
-                        child: const Text(
+                        child: Text(
                           "Add Cleint ",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                         ),
                       ),
                     ],
@@ -249,9 +249,9 @@ class _QutationViewState extends State<QutationView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         "Sales Person *",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const Divider(),
                       Container(
@@ -291,76 +291,76 @@ class _QutationViewState extends State<QutationView> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         "Items *",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       const Divider(),
-                      const Text(
+                      Text(
                         "hhh",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                       ),
-                      const Row(
+                      Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
                             "Quantity",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
+                          const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             "0",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                         ],
                       ),
-                      const Row(
+                      Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
                             "Price",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
+                          const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             "1.025",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                         ],
                       ),
-                      const Row(
+                      Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
                             "VAT",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
+                          const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             "0.001",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                         ],
                       ),
-                      const Row(
+                      Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
                             "Amount",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
+                          const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             "0.00",
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -375,18 +375,18 @@ class _QutationViewState extends State<QutationView> {
                               color: const Color(0xff54854C),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.add_circle_outline,
                                   size: 22,
                                   color: Colors.white,
                                 ),
-                                SizedBox(width: 6),
+                                const SizedBox(width: 6),
                                 Text(
                                   "Add item",
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                                 ),
                               ],
                             ),
@@ -404,46 +404,46 @@ class _QutationViewState extends State<QutationView> {
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(15),
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Payment Details",
-                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
-                      Divider(),
-                      SizedBox(height: 2),
+                      const Divider(),
+                      const SizedBox(height: 2),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
                             "Sub total",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
+                          const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             "0.00",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                         ],
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Row(
                         children: [
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Text(
                             "Total",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
-                          Flexible(fit: FlexFit.tight, child: SizedBox()),
+                          const Flexible(fit: FlexFit.tight, child: SizedBox()),
                           Text(
                             "0.00",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
                           ),
                         ],
                       ),

@@ -3,7 +3,7 @@ class Participants {
   final String? userId;
   final String? role;
   final String? name;
-  const Participants({
+  Participants({
     this.id,
     this.userId,
     this.role,

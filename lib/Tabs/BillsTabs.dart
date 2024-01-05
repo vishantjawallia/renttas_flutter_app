@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, prefer_const_constructors, sort_child_properties_last, use_build_context_synchronously, unnecessary_new, prefer_final_fields, sized_box_for_whitespace
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print,  sort_child_properties_last, use_build_context_synchronously, unnecessary_new, prefer_final_fields, sized_box_for_whitespace
 
 import 'dart:convert';
 import 'dart:io';
@@ -57,22 +57,22 @@ class _BillsTabsState extends State<BillsTabs> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           if (widget.loading == false) {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => BillTabAction()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BillTabAction()));
           } else {}
         },
         label: Text(
           'Rent Bill',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
         ),
-        icon: Icon(
+        icon: const Icon(
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Color(0xff54854C),
+        backgroundColor: const Color(0xff54854C),
         // backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -82,10 +82,10 @@ class _BillsTabsState extends State<BillsTabs> {
           children: [
             // Other widgets
             widget.loading
-                ? Flexible(
+                ? const Flexible(
                     child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom: 60.0),
+                        padding: EdgeInsets.only(bottom: 60.0),
                         child: CircularProgressIndicator(
                           color: Color(0xff54854C),
                         ),
@@ -99,7 +99,7 @@ class _BillsTabsState extends State<BillsTabs> {
                             padding: const EdgeInsets.only(bottom: 60.0),
                             child: Text(
                               'Bill not found !',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.grey,
@@ -134,7 +134,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                             children: [
                                               Text(
                                                 selectedSubPropertyName,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors.black,
@@ -142,7 +142,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                               ),
                                               Text(
                                                 bill.rentStartDate,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   // fontSize: 13,
                                                   color: Colors.black54,
                                                 ),
@@ -161,7 +161,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                                   children: [
                                                     Text(
                                                       "₹ " + bill.previousBalance.toString(),
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         // fontSize: 11,
                                                         fontWeight: FontWeight.bold,
                                                         color: Colors.white,
@@ -169,7 +169,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                                     ),
                                                     Text(
                                                       "(${"balance".tr()})",
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         // fontSize: 11,
                                                         fontWeight: FontWeight.bold,
                                                         color: Colors.white,
@@ -178,15 +178,15 @@ class _BillsTabsState extends State<BillsTabs> {
                                                   ],
                                                 ),
                                               ),
-                                              SizedBox(width: 14, height: 0.0),
+                                              const SizedBox(width: 14, height: 0.0),
                                               Container(
                                                 padding: const EdgeInsets.all(6.0),
-                                                decoration: BoxDecoration(color: Color(0xff54854C), borderRadius: BorderRadius.circular(6)),
+                                                decoration: BoxDecoration(color: const Color(0xff54854C), borderRadius: BorderRadius.circular(6)),
                                                 child: Column(
                                                   children: [
                                                     Text(
                                                       "₹ " + bill.rentAmount.toString(),
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         fontWeight: FontWeight.bold,
                                                         color: Colors.white,
                                                       ),
@@ -194,7 +194,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                                     Text(
                                                       "(${"recieved".tr()})",
                                                       // "(recieved)",
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         fontWeight: FontWeight.bold,
                                                         color: Colors.white,
                                                       ),
@@ -216,7 +216,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                                   ),
                                                 );
                                               },
-                                              icon: Icon(Icons.arrow_forward)),
+                                              icon: const Icon(Icons.arrow_forward)),
                                         ],
                                       ),
                                     ),
@@ -230,11 +230,11 @@ class _BillsTabsState extends State<BillsTabs> {
                                             showbottomsheet(context, bill.id);
                                           },
                                           child: Container(
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             child: Column(
                                               children: [
-                                                Icon(Icons.add_box),
-                                                SizedBox(width: 0.0, height: 4),
+                                                const Icon(Icons.add_box),
+                                                const SizedBox(width: 0.0, height: 4),
                                                 Text('receive'.tr()),
                                               ],
                                             ),
@@ -249,11 +249,11 @@ class _BillsTabsState extends State<BillsTabs> {
                                             ),
                                           ),
                                           child: Container(
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             child: Column(
                                               children: [
-                                                Icon(Icons.share),
-                                                SizedBox(width: 0.0, height: 4),
+                                                const Icon(Icons.share),
+                                                const SizedBox(width: 0.0, height: 4),
                                                 Text('share'.tr()),
                                               ],
                                             ),
@@ -268,10 +268,10 @@ class _BillsTabsState extends State<BillsTabs> {
                                           context, bill['id']);*/
                                           },
                                           child: Container(
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             child: Column(
                                               children: [
-                                                ImageIcon(
+                                                const ImageIcon(
                                                   AssetImage(
                                                     "assets/images/wi.png",
                                                   ),
@@ -292,7 +292,7 @@ class _BillsTabsState extends State<BillsTabs> {
                                                 status = await Permission.storage.request();
                                               }
                                               if (status.isGranted) {
-                                                //   const downloadsFolderPath = '/storage/emulated/0/Download/';
+                                                //   downloadsFolderPath = '/storage/emulated/0/Download/';
                                                 //   Directory dir = Directory(downloadsFolderPath);
                                                 // var file=  makePdf(bill,selectedSubPropertyName);
                                                 //   file = File('${dir.path}/$selectedSubPropertyName') as Future<Uint8List>;
@@ -306,11 +306,11 @@ class _BillsTabsState extends State<BillsTabs> {
                                             }
                                           },
                                           child: Container(
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             child: Column(
                                               children: [
-                                                Icon(Icons.downloading_outlined),
-                                                SizedBox(width: 0.0, height: 4),
+                                                const Icon(Icons.downloading_outlined),
+                                                const SizedBox(width: 0.0, height: 4),
                                                 Text('download'.tr()),
                                               ],
                                             ),
@@ -352,7 +352,7 @@ class _BillsTabsState extends State<BillsTabs> {
         builder: (builder) {
           return StatefulBuilder(builder: (context, setstate) {
             return SingleChildScrollView(
-              padding: EdgeInsetsDirectional.only(
+              padding: const EdgeInsetsDirectional.only(
                 start: 20,
                 end: 10,
                 bottom: 30,
@@ -362,7 +362,7 @@ class _BillsTabsState extends State<BillsTabs> {
                 // direction: Axis.vertical,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -370,25 +370,25 @@ class _BillsTabsState extends State<BillsTabs> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.close,
                               color: Colors.black,
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(
                           "Add Recived Rent Payment",
-                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          style: const TextStyle(fontSize: 18, color: Colors.black),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(
                           "Rent paid through",
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                          style: const TextStyle(fontSize: 16, color: Colors.grey),
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -458,7 +458,7 @@ class _BillsTabsState extends State<BillsTabs> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 8,
                       left: 8,
                       right: 8,
@@ -471,14 +471,14 @@ class _BillsTabsState extends State<BillsTabs> {
                       width: MediaQuery.of(context).size.width / 1,
                       //   color: Colors.amber,
                       child: TextFormField(
-                        cursorColor: Color.fromARGB(255, 3, 61, 109),
+                        cursorColor: const Color.fromARGB(255, 3, 61, 109),
                         //  controller: namecontroller,
                         readOnly: true, //this is important
                         onTap: _selectDate, //the method for opening data picker
                         controller: _textControllerdate1,
                         decoration: InputDecoration(
                             hintText: 'choose date',
-                            prefixIcon: Padding(
+                            prefixIcon: const Padding(
                               padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                               child: Icon(Icons.calendar_month),
                             ),
@@ -486,14 +486,14 @@ class _BillsTabsState extends State<BillsTabs> {
                               padding: const EdgeInsets.only(bottom: 10),
                               child: Text(
                                 "Rent Paid date",
-                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
+                                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                               ),
                             )),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 8,
                       left: 8,
                       right: 8,
@@ -506,11 +506,11 @@ class _BillsTabsState extends State<BillsTabs> {
                       width: MediaQuery.of(context).size.width / 1,
                       //   color: Colors.amber,
                       child: TextFormField(
-                        cursorColor: Color.fromARGB(255, 3, 61, 109),
+                        cursorColor: const Color.fromARGB(255, 3, 61, 109),
                         controller: recievedcontroller,
                         decoration: InputDecoration(
                             hintText: 'Rent recived',
-                            prefixIcon: Padding(
+                            prefixIcon: const Padding(
                               padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                               child: Icon(Icons.monetization_on),
                             ),
@@ -518,7 +518,7 @@ class _BillsTabsState extends State<BillsTabs> {
                               padding: const EdgeInsets.only(bottom: 10),
                               child: Text(
                                 "Rent recived",
-                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
+                                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                               ),
                             )),
                       ),
@@ -540,7 +540,7 @@ class _BillsTabsState extends State<BillsTabs> {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           child: Text(
                             "Save",
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -575,7 +575,7 @@ class _BillsTabsState extends State<BillsTabs> {
 
       print("Cycle bill tabs----" + response.body);
       if (response.statusCode == 200) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandloardDashBord()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LandloardDashBord()));
       } else {
         snack("Something went wrong, please try again", context);
         print("Failed to send data. Status code: ${response.statusCode}");

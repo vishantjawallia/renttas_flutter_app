@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, unnecessary_new, prefer_const_constructors, use_build_context_synchronously, avoid_print, sort_child_properties_last, avoid_unnecessary_containers, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unnecessary_this, must_be_immutable
+// ignore_for_file: camel_case_types, unnecessary_new,  use_build_context_synchronously, avoid_print, sort_child_properties_last, avoid_unnecessary_containers, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unnecessary_this, must_be_immutable
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -160,7 +160,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
         title: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,7 +169,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
             ),
             Flexible(fit: FlexFit.tight, child: SizedBox()),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(40)),
@@ -181,7 +181,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: TextButton(
                 child: isloading == true
                     ? CircularProgressIndicator(
@@ -196,7 +196,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                             'Save',
                             style: TextStyle(color: Color(0xff54854C), fontWeight: FontWeight.bold),
                           ),
-                style: const ButtonStyle(
+                style: ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(Colors.white),
                 ),
                 onPressed: () {
@@ -221,7 +221,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Container(
               child: Column(
                 children: [
@@ -239,7 +239,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Container(
                             width: 180,
                             height: 80,
@@ -248,7 +248,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Center(
                                   child: TextFormField(
                                     controller: productnamectr,
@@ -281,7 +281,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Container(
                             width: 180,
                             height: 80,
@@ -290,7 +290,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Center(
                                   child: TextFormField(
                                     controller: productuniqueid,
@@ -323,7 +323,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Container(
                             width: 180,
                             height: 80,
@@ -332,7 +332,7 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Center(
                                   child: TextFormField(
                                     controller: productdescription,
@@ -366,9 +366,9 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
                         ),
                         Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Center(
                                 child: Checkbox(
                                   checkColor: Colors.black,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'ChangePassword.dart';
 import 'MyBuisness.dart';
@@ -18,7 +17,7 @@ class _SettingsViewState extends State<SettingsView> {
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
         automaticallyImplyLeading: false,
-        title: const Text("Settings"),
+        title: Text("Settings"),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
@@ -46,13 +45,12 @@ class _SettingsViewState extends State<SettingsView> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                            height: 50, width: 50, decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)), child: const Icon(Icons.holiday_village, size: 30)),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        Container(height: 50, width: 50, decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)), child: const Icon(Icons.holiday_village, size: 30)),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             "My Businesss",
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
+                            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
                           ),
                         )
                       ],
@@ -90,11 +88,11 @@ class _SettingsViewState extends State<SettingsView> {
                               Icons.password_sharp,
                               size: 30,
                             )),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             "Change Password",
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
+                            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
                           ),
                         )
                       ],
@@ -127,11 +125,11 @@ class _SettingsViewState extends State<SettingsView> {
                           decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(40)),
                           child: const Icon(Icons.delete, size: 30),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             "Delete My Account",
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
+                            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
                           ),
                         )
                       ],
@@ -149,19 +147,19 @@ class _SettingsViewState extends State<SettingsView> {
 
 showAlertDialog(BuildContext context) {
   Widget cancelButton = TextButton(
-    child: const Text("Cancel"),
+    child: Text("Cancel"),
     onPressed: () => Navigator.pop(context),
   );
   Widget continueButton = TextButton(
-    child: const Text("Continue"),
+    child: Text("Continue"),
     onPressed: () {
       Navigator.pop(context);
     },
   );
 
   AlertDialog alert = AlertDialog(
-    title: const Text("Confirmation"),
-    content: const Text("Are you sure want to delete ?"),
+    title: Text("Confirmation"),
+    content: Text("Are you sure want to delete ?"),
     actions: [
       cancelButton,
       continueButton,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'AddQutation.dart';
@@ -18,11 +17,11 @@ class _ViewQutationMainState extends State<ViewQutationMain> {
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
         automaticallyImplyLeading: false,
-        title: const Row(
+        title: Row(
           children: [
             Text("Qutation"),
-            Flexible(fit: FlexFit.tight, child: SizedBox()),
-            Padding(
+            const Flexible(fit: FlexFit.tight, child: SizedBox()),
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(
                 Icons.search,
@@ -42,59 +41,59 @@ class _ViewQutationMainState extends State<ViewQutationMain> {
               color: Colors.white,
               child: Container(
                 padding: const EdgeInsets.all(10),
-                child: const Row(
+                child: Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "hhhh",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Text(
                             "PID- 101",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Text(
                             "Email : abcd@gmail.com",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                           ),
                         ],
                       ),
                     ),
-                    Flexible(fit: FlexFit.tight, child: SizedBox()),
+                    const Flexible(fit: FlexFit.tight, child: SizedBox()),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "30/10/2023",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Text(
                             "0.01",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Text(
                             "Q NO:!",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                           ),
                         ],
                       ),
