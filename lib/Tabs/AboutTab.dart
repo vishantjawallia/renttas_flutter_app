@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously, sized_box_for_whitespace, depend_on_referenced_packages, non_constant_identifier_names, use_super_parameters, sort_child_properties_last, prefer_const_constructors
 
 import 'dart:convert';
+import 'dart:developer';
+
 // import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -72,7 +74,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
   @override
   void initState() {
     //getdoc();
-    _tabController1 = TabController(length: 2, vsync: this);
+    _tabController1 = TabController(length: 1, vsync: this);
 
     super.initState();
     loadData();
@@ -109,17 +111,20 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                     child: TabBar(
                       isScrollable: true,
                       indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
                         color: Color(0xff54854C),
                       ),
                       labelColor: Colors.white,
                       labelStyle: TextStyle(
                         fontSize: 16,
+                        fontWeight: FontWeight.w500,
                       ),
                       controller: _tabController1,
                       unselectedLabelColor: Colors.black,
                       tabs: [
-                        Tab(text: 'property_details'.tr()),
-                        Tab(text: 'rent_detail'.tr()),
+                        Tab(
+                          text: 'property_details'.tr(),
+                        ),
                       ],
                     ),
                   ),
@@ -128,18 +133,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                       controller: _tabController1,
                       children: [
                         Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Center(child: Text('No documents are added',textAlign: TextAlign.center,),),
-                            // SizedBox(height: 100,),
-                            // ElevatedButton(onPressed: (){},
-                            //
-                            //   child: Text(' + Add Document Images'),
-                            //   style: ElevatedButton.styleFrom(primary:Colors.blue, shape: RoundedRectangleBorder(
-                            //       borderRadius: BorderRadius.circular(10)
-                            //   )),
-                            // ),
-
                             Container(
                               alignment: Alignment.topLeft,
                               margin: EdgeInsets.only(top: 20, left: 10),
@@ -152,59 +146,59 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                 textAlign: TextAlign.left,
                               ),
                             ),
-
                             Divider(
                               //  margin:EdgeInsets.only(top: 10),
                               color: Colors.grey,
                             ),
-                            Row(
-                              children: [
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  margin: EdgeInsets.only(left: 8, top: 8),
-                                  padding: EdgeInsets.only(right: 25),
-                                  child: Text(
-                                    "property_name".tr(),
-                                    // 'Property Name',
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "${"property_name".tr()} :-",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  margin: EdgeInsets.only(left: 25, top: 8),
-                                  padding: EdgeInsets.only(left: 30),
-                                  child: Text(selectedPropertyName),
-                                ),
-                              ],
+                                  SizedBox(
+                                    width: 140,
+                                    child: Text(
+                                      selectedPropertyName.capitalizeFirstWord(),
+                                      style: TextStyle(fontSize: 15, color: Colors.black54),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Divider(
-                              //  margin:EdgeInsets.only(top: 10),
                               color: Colors.grey,
                             ),
-                            Row(
-                              children: [
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  margin: EdgeInsets.only(left: 8, top: 8),
-                                  padding: EdgeInsets.only(right: 25),
-                                  child: Text(
-                                    "owner_name".tr(),
-                                    // 'Owner Name',
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "${"owner_name".tr()} :-",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  margin: EdgeInsets.only(left: 25, top: 8),
-                                  padding: EdgeInsets.only(left: 45),
-                                  child: Text(landlordName),
-                                ),
-                              ],
+                                  Container(
+                                    width: 140,
+                                    child: Text(
+                                      landlordName.capitalizeFirstWord(),
+                                      style: TextStyle(fontSize: 15, color: Colors.black54),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(width: 0.0, height: 10),
-                            if (isLocationTheir)
-                              Divider(
-                                //  margin:EdgeInsets.only(top: 10),
-                                color: Colors.grey,
-                              ),
+                            if (isLocationTheir) Divider(color: Colors.grey),
                             if (isLocationTheir)
                               Row(
                                 children: [
@@ -239,11 +233,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                                 ),
                               ),
-                            if (isPanTheir)
-                              Divider(
-                                //  margin:EdgeInsets.only(top: 10),
-                                color: Colors.grey,
-                              ),
+                            if (isPanTheir) Divider(color: Colors.grey),
                             if (isPanTheir)
                               Row(
                                 children: [
@@ -445,36 +435,6 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                   )
                           ],
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Center(
-                              child: Text(
-                                "no_rent_details".tr(),
-                                // 'No rent details are added to the property.',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: Text("click_add_rent".tr()
-                                  // ' +  Click to add rent',
-                                  ),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xff54854C),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),
@@ -531,14 +491,21 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                       controller: pinCode,
                       decoration: InputDecoration(labelText: 'PinCode'),
                     ),
-                    SizedBox(width: 0.0, height: 20),
-                    ElevatedButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xff54854C))),
-                      onPressed: () {
-                        addaddress(addressControler.text, pinCode.text);
-                        //  Navigator.pop(context);
-                      },
-                      child: Text('Save'),
+                    SizedBox(width: 0.0, height: 30),
+                    Container(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            Color(0xff54854C),
+                          ),
+                        ),
+                        onPressed: () => addaddress(addressControler.text, pinCode.text),
+                        child: Text(
+                          'Save',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
                     ),
                     SizedBox(width: 0.0, height: 8),
                   ],
@@ -552,17 +519,20 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
   }
 
   Future<void> addaddress(String address, pincode) async {
-    setState(() {
-      isloaidng = true;
-    });
+    setState(() => isloaidng = true);
     // SharedPreferences logindata = await SharedPreferences.getInstance();
     // String? userid = logindata.getString("userId");
 
-    Map data = {'address': address, 'pincode': pincode, 'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubPropertyId};
+    Map data = {
+      'address': address,
+      'pincode': pincode,
+      'selectedPropertyId': selectedPropertyId,
+      "selectedSubPropertyId": selectedSubPropertyId,
+    };
+    log(data.toString());
     final headerss = {
       'Content-Type': 'application/json',
     };
-    print(data.toString());
 
     final response = await http.post(
       Uri.parse(ApiUrl.addaddressdetails),
@@ -571,34 +541,26 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
     );
 
     print("aaaaaaa======${response.body}");
-    setState(() {
-      isloaidng = false;
-    });
+    setState(() => isloaidng = false);
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
 
       if (resposne['msg'].toString().contains("success")) {
-        //  Navigator.pop(context);
-
-        getaddress();
+        // await getaddress();
         Navigator.pop(context);
-
-        print("Login Successfully Completed !!!!!!!!!!!!!!!!");
-      } else {
-        print("Please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      }
+        await loadData();
+      } else {}
     }
   }
 
   Future<void> getaddress() async {
-    setState(() {
-      isloaidngfirst = true;
-    });
-    // SharedPreferences logindata = await SharedPreferences.getInstance();
-    // String? userid = logindata.getString("userId");
+    setState(() => isloaidngfirst = true);
 
-    Map data = {'selectedPropertyId': selectedPropertyId, "selectedSubPropertyId": selectedSubPropertyId};
+    Map data = {
+      'selectedPropertyId': selectedPropertyId,
+      "selectedSubPropertyId": selectedSubPropertyId,
+    };
     final headerss = {
       'Content-Type': 'application/json',
     };
@@ -608,30 +570,23 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
       headers: headerss,
       body: jsonEncode(data),
     );
-    setState(() {
-      isloaidngfirst = false;
-    });
+    setState(() => isloaidngfirst = false);
     print("get addressss ===${response.body}");
 
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
+      log(resposne.toString());
 
       if (resposne['statuscode'].toString().contains("200")) {
         setState(() {
           address = resposne['address'].toString();
           pincode = resposne['pincode'].toString();
         });
-        // No response code here
-        //String id,address,picode;
-        //  Navigator.pop(context);
-        ///  getdatas();
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {}
     } else {
-      setState(() {
-        stcodeadd = 201.toString();
-      });
+      setState(() => stcodeadd = 201.toString());
     }
   }
 
@@ -717,6 +672,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                         'Add Address',
                         style: TextStyle(fontSize: 18),
                       ),
+                      SizedBox(width: 0.0, height: 10),
                       TextField(
                         controller: propertyOwner,
                         decoration: InputDecoration(

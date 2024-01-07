@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
       backgroundColor: const Color(0xff54854C),
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
-        title: Text(
+        title: const Text(
           'Chat for Support',
         ),
         elevation: 0,
@@ -117,7 +117,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
           Container(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 40, left: 12, right: 12, top: 10),
             color: Colors.white,
             child: ChatWidgets.messageField(
               onSubmit: (TextEditingController controller) async {

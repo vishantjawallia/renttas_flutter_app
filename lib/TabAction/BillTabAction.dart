@@ -112,9 +112,9 @@ class _BillTabActionState extends State<BillTabAction> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
-        title: Text(
+        title: const Text(
           'Add bill',
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -131,9 +131,9 @@ class _BillTabActionState extends State<BillTabAction> {
                 child: Container(
                   height: 20,
                   margin: const EdgeInsets.only(top: 10),
-                  child: Text(
+                  child: const Text(
                     'When Do You Collect Rent',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -150,9 +150,9 @@ class _BillTabActionState extends State<BillTabAction> {
               const SizedBox(width: 0.0, height: 10),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text(
+                child: const Text(
                   'Monthly Fixed Charges',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
@@ -170,9 +170,9 @@ class _BillTabActionState extends State<BillTabAction> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               'Previous Balance',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
@@ -189,15 +189,15 @@ class _BillTabActionState extends State<BillTabAction> {
                                   });
                                 });
                               },
-                              child: Row(
+                              child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Icon(Icons.add),
-                                  const SizedBox(width: 4),
+                                  Icon(Icons.add),
+                                  SizedBox(width: 4),
                                   Text(
                                     'ADD',
-                                    style: const TextStyle(),
+                                    style: TextStyle(),
                                   ),
                                 ],
                               ),
@@ -210,9 +210,9 @@ class _BillTabActionState extends State<BillTabAction> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Previous Balance',
-                                style: const TextStyle(fontSize: 16),
+                                style: TextStyle(fontSize: 16),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -247,9 +247,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Fixed Charges',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   OutlinedButton(
                                     style: ButtonStyle(
@@ -264,15 +264,15 @@ class _BillTabActionState extends State<BillTabAction> {
                                       });
                                       showFixedCharges = false;
                                     },
-                                    child: Row(
+                                    child: const Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        const Icon(Icons.add),
-                                        const SizedBox(width: 4),
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
                                         Text(
                                           'ADD',
-                                          style: const TextStyle(),
+                                          style: TextStyle(),
                                         ),
                                       ],
                                     ),
@@ -292,9 +292,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Rent Amount',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -327,9 +327,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Maintenance Amount ',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -365,9 +365,9 @@ class _BillTabActionState extends State<BillTabAction> {
               const SizedBox(width: 0.0, height: 8),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                child: Text(
+                child: const Text(
                   'Other Fixed Charges',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
@@ -389,9 +389,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Electricity Bill type ',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 16,
                                     ),
                                   ),
@@ -401,12 +401,12 @@ class _BillTabActionState extends State<BillTabAction> {
                                       overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
                                     ),
                                     onPressed: () => _electricityBillType((electricBillCallBack) => setState(() => electricityBillType = electricBillCallBack)),
-                                    child: Row(
+                                    child: const Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        const Icon(Icons.add),
-                                        const SizedBox(width: 4),
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
                                         Text('ADD'),
                                       ],
                                     ),
@@ -417,9 +417,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Electricity Bill type ',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   GestureDetector(
                                     onTap: () => _electricityBillType((electricBillCallBack) => setState(() => electricityBillType = electricBillCallBack)),
@@ -440,9 +440,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Water Bill type ',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   OutlinedButton(
                                     style: ButtonStyle(
@@ -450,12 +450,12 @@ class _BillTabActionState extends State<BillTabAction> {
                                       overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
                                     ),
                                     onPressed: () => _waterBillType((waterBIllCallBack) => waterBillType = waterBIllCallBack),
-                                    child: Row(
+                                    child: const Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        const Icon(Icons.add),
-                                        const SizedBox(width: 4),
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
                                         Text('ADD'),
                                       ],
                                     ),
@@ -466,9 +466,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Water Bill type ',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   GestureDetector(
                                     onTap: () => _waterBillType((waterBIllCallBack) => waterBillType = waterBIllCallBack),
@@ -488,9 +488,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Gas Bill type ',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   OutlinedButton(
                                     style: ButtonStyle(
@@ -500,12 +500,12 @@ class _BillTabActionState extends State<BillTabAction> {
                                     onPressed: () => _gasBillType(
                                       (gasBillCallBack) => gasBillType = gasBillCallBack,
                                     ),
-                                    child: Row(
+                                    child: const Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        const Icon(Icons.add),
-                                        const SizedBox(width: 4),
+                                        Icon(Icons.add),
+                                        SizedBox(width: 4),
                                         Text('ADD'),
                                       ],
                                     ),
@@ -516,9 +516,9 @@ class _BillTabActionState extends State<BillTabAction> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Gas Bill type ',
-                                    style: const TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   GestureDetector(
                                     onTap: () => _gasBillType(
@@ -542,11 +542,11 @@ class _BillTabActionState extends State<BillTabAction> {
                 ),
               ),
               const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
                 child: Text(
                   "Custom Charges",
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
               ),
               selectedItems.isNotEmpty
@@ -593,9 +593,9 @@ class _BillTabActionState extends State<BillTabAction> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 width: double.infinity,
-                child: Text(
+                child: const Text(
                   'Other Optional Charges',
-                  style: const TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
 
@@ -608,12 +608,12 @@ class _BillTabActionState extends State<BillTabAction> {
                     overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
                   ),
                   onPressed: () => _showBottomSheet(context),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(Icons.add),
-                      const SizedBox(width: 4),
+                      Icon(Icons.add),
+                      SizedBox(width: 4),
                       Text('Custom Charges'),
                     ],
                   ),
@@ -649,11 +649,11 @@ class _BillTabActionState extends State<BillTabAction> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Null Parameters'),
+                            title: const Text('Null Parameters'),
                             content: Text(message),
                             actions: [
                               TextButton(
-                                child: Text('OK'),
+                                child: const Text('OK'),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
@@ -682,9 +682,9 @@ class _BillTabActionState extends State<BillTabAction> {
                     }
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff54854C), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
-                  child: Text(
+                  child: const Text(
                     'Save',
-                    style: const TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18),
                   ),
                 ),
               ),
@@ -722,18 +722,18 @@ class _BillTabActionState extends State<BillTabAction> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(18),
+                const Padding(
+                  padding: EdgeInsets.all(18),
                   child: Text(
                     "Rent Cycle important dates",
-                    style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+                    style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 25, left: 18),
-                  child: Text(
+                  child: const Text(
                     'When do you collect rent',
-                    style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
                   ),
                 ),
                 StatefulBuilder(
@@ -777,9 +777,9 @@ class _BillTabActionState extends State<BillTabAction> {
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 30, left: 18),
-                  child: Text(
+                  child: const Text(
                     'Payment Day for the Month Rent Cycle',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.w500,
                     ),
@@ -826,9 +826,9 @@ class _BillTabActionState extends State<BillTabAction> {
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 30, left: 18),
-                  child: Text(
+                  child: const Text(
                     'Rent Payment Required by',
-                    style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
                   ),
                 ),
                 StatefulBuilder(
@@ -882,9 +882,9 @@ class _BillTabActionState extends State<BillTabAction> {
                       });
                       Navigator.of(context).pop();
                     },
-                    child: Text(
+                    child: const Text(
                       'Save',
-                      style: const TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -927,11 +927,11 @@ class _BillTabActionState extends State<BillTabAction> {
                       ),
                     ),
                     const SizedBox(height: 50),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text(
                         "Add Previous Balance",
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
@@ -940,9 +940,9 @@ class _BillTabActionState extends State<BillTabAction> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 15, left: 18),
-                      child: Text(
+                      child: const Text(
                         'Add rent dues or outstanding balance',
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.black54,
                           fontSize: 16,
                         ),
@@ -1038,9 +1038,9 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -1085,10 +1085,10 @@ class _BillTabActionState extends State<BillTabAction> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge for Blab",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
@@ -1143,9 +1143,9 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(14),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -1178,11 +1178,11 @@ class _BillTabActionState extends State<BillTabAction> {
                         size: 35,
                         color: Colors.grey,
                       )),
-                  Padding(
-                    padding: const EdgeInsets.all(18),
+                  const Padding(
+                    padding: EdgeInsets.all(18),
                     child: Text(
                       "How electricity is charged from tenants",
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -1211,18 +1211,18 @@ class _BillTabActionState extends State<BillTabAction> {
                           Container(
                               width: double.infinity,
                               margin: const EdgeInsets.only(top: 10, left: 10),
-                              child: Text(
+                              child: const Text(
                                 'Government/Company Metered',
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               )),
                           Row(
                             children: [
                               Container(
                                   width: 220,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'Tenants directly pay electricity\n bill to Government/Company ',
-                                    style: const TextStyle(color: Colors.grey),
+                                    style: TextStyle(color: Colors.grey),
                                     textAlign: TextAlign.left,
                                   )),
                               Container(
@@ -1260,18 +1260,18 @@ class _BillTabActionState extends State<BillTabAction> {
                           Container(
                               width: double.infinity,
                               margin: const EdgeInsets.only(top: 10, left: 10),
-                              child: Text(
+                              child: const Text(
                                 'Fixed Charges',
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               )),
                           Row(
                             children: [
                               Container(
                                   width: 220,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'You charge a fixed amount \n for electricity',
-                                    style: const TextStyle(color: Colors.grey),
+                                    style: TextStyle(color: Colors.grey),
                                     textAlign: TextAlign.left,
                                   )),
                               Container(
@@ -1313,18 +1313,18 @@ class _BillTabActionState extends State<BillTabAction> {
                           Container(
                               width: double.infinity,
                               margin: const EdgeInsets.only(top: 10, left: 10),
-                              child: Text(
+                              child: const Text(
                                 'No Charges',
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               )),
                           Row(
                             children: [
                               Container(
                                   width: 220,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'You Do Not charge \n for electricity',
-                                    style: const TextStyle(color: Colors.grey),
+                                    style: TextStyle(color: Colors.grey),
                                     textAlign: TextAlign.left,
                                   )),
                               Container(
@@ -1362,11 +1362,11 @@ class _BillTabActionState extends State<BillTabAction> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(18),
+                      const Padding(
+                        padding: EdgeInsets.all(18),
                         child: Text(
                           "How Water is charged from tenants",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.grey,
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
@@ -1394,18 +1394,18 @@ class _BillTabActionState extends State<BillTabAction> {
                               Container(
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'Government/Company Metered',
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   )),
                               Row(
                                 children: [
                                   Container(
                                       width: 220,
                                       margin: const EdgeInsets.only(top: 10, left: 10),
-                                      child: Text(
+                                      child: const Text(
                                         'Tenants directly pay Water\n bill to Government/Company ',
-                                        style: const TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey),
                                         textAlign: TextAlign.left,
                                       )),
                                   Container(
@@ -1447,18 +1447,18 @@ class _BillTabActionState extends State<BillTabAction> {
                               Container(
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'Fixed Charges',
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   )),
                               Row(
                                 children: [
                                   Container(
                                       width: 220,
                                       margin: const EdgeInsets.only(top: 10, left: 10),
-                                      child: Text(
+                                      child: const Text(
                                         'You charge a fixed amount \n for Water',
-                                        style: const TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey),
                                         textAlign: TextAlign.left,
                                       )),
                                   Container(
@@ -1500,18 +1500,18 @@ class _BillTabActionState extends State<BillTabAction> {
                               Container(
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'No Charges',
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   )),
                               Row(
                                 children: [
                                   Container(
                                       width: 220,
                                       margin: const EdgeInsets.only(top: 10, left: 10),
-                                      child: Text(
+                                      child: const Text(
                                         'You Do Not charge \n for electricity',
-                                        style: const TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey),
                                         textAlign: TextAlign.left,
                                       )),
                                   Container(
@@ -1547,10 +1547,10 @@ class _BillTabActionState extends State<BillTabAction> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(18),
+                      const Padding(
+                        padding: EdgeInsets.all(18),
                         child: Text("How Gas is charged from tenants",
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.grey,
                               fontSize: 22.0,
                               fontWeight: FontWeight.bold,
@@ -1580,18 +1580,18 @@ class _BillTabActionState extends State<BillTabAction> {
                               Container(
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'Government/Company Metered',
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   )),
                               Row(
                                 children: [
                                   Container(
                                       width: 220,
                                       margin: const EdgeInsets.only(top: 10, left: 10),
-                                      child: Text(
+                                      child: const Text(
                                         'Tenants directly pay Gas\n bill to Government/Company ',
-                                        style: const TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey),
                                         textAlign: TextAlign.left,
                                       )),
                                   Container(
@@ -1633,18 +1633,18 @@ class _BillTabActionState extends State<BillTabAction> {
                               Container(
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'Fixed Charges',
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   )),
                               Row(
                                 children: [
                                   Container(
                                       width: 220,
                                       margin: const EdgeInsets.only(top: 10, left: 10),
-                                      child: Text(
+                                      child: const Text(
                                         'You charge a fixed amount \n for Gas',
-                                        style: const TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey),
                                         textAlign: TextAlign.left,
                                       )),
                                   Container(
@@ -1686,18 +1686,18 @@ class _BillTabActionState extends State<BillTabAction> {
                               Container(
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(top: 10, left: 10),
-                                  child: Text(
+                                  child: const Text(
                                     'No Charges',
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   )),
                               Row(
                                 children: [
                                   Container(
                                       width: 220,
                                       margin: const EdgeInsets.only(top: 10, left: 10),
-                                      child: Text(
+                                      child: const Text(
                                         'You Do Not charge \n for electricity',
-                                        style: const TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey),
                                         textAlign: TextAlign.left,
                                       )),
                                   Container(
@@ -1732,9 +1732,9 @@ class _BillTabActionState extends State<BillTabAction> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Rent Cycle ',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
@@ -1749,15 +1749,15 @@ class _BillTabActionState extends State<BillTabAction> {
                     paymentRequired = int.parse(paymentDaysList[selectedIndexRentPayment]);
                     _electricBill();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(Icons.add),
-                      const SizedBox(width: 4),
+                      Icon(Icons.add),
+                      SizedBox(width: 4),
                       Text(
                         'ADD',
-                        style: const TextStyle(),
+                        style: TextStyle(),
                       ),
                     ],
                   ),
@@ -1784,9 +1784,9 @@ class _BillTabActionState extends State<BillTabAction> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Rent Cycle',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                     ),
                   ),
@@ -1811,9 +1811,9 @@ class _BillTabActionState extends State<BillTabAction> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Payment Day ',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                     ),
                   ),
@@ -1835,9 +1835,9 @@ class _BillTabActionState extends State<BillTabAction> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Payment Required by ',
-                    style: const TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16),
                   ),
                   InkWell(
                     onTap: () => _electricBill(),
@@ -1907,9 +1907,9 @@ class _BillTabActionState extends State<BillTabAction> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             '* Sub Meter',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
             ),
           ),
@@ -1923,15 +1923,15 @@ class _BillTabActionState extends State<BillTabAction> {
               //   FixedChargeele = fixchargeEleCallback;
               // });
             },
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Icon(Icons.add),
-                const SizedBox(width: 4),
+                Icon(Icons.add),
+                SizedBox(width: 4),
                 Text(
                   'ADD',
-                  style: const TextStyle(),
+                  style: TextStyle(),
                 ),
               ],
             ),
@@ -1974,9 +1974,9 @@ class _BillTabActionState extends State<BillTabAction> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               '* Fixed Charge',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
               ),
             ),
@@ -1990,15 +1990,15 @@ class _BillTabActionState extends State<BillTabAction> {
                   FixedChargeele = fixchargeEleCallback;
                 });
               },
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Icon(Icons.add),
-                  const SizedBox(width: 4),
+                  Icon(Icons.add),
+                  SizedBox(width: 4),
                   Text(
                     'ADD',
-                    style: const TextStyle(),
+                    style: TextStyle(),
                   ),
                 ],
               ),
@@ -2028,9 +2028,9 @@ class _BillTabActionState extends State<BillTabAction> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'Fixed Charge',
-              style: const TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16),
             ),
             GestureDetector(
               onTap: () {
@@ -2060,9 +2060,9 @@ class _BillTabActionState extends State<BillTabAction> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             '* Sub Meter',
-            style: const TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16),
           ),
           OutlinedButton(
             style: ButtonStyle(
@@ -2070,15 +2070,15 @@ class _BillTabActionState extends State<BillTabAction> {
               overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
             ),
             onPressed: () {},
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Icon(Icons.add),
-                const SizedBox(width: 4),
+                Icon(Icons.add),
+                SizedBox(width: 4),
                 Text(
                   'ADD',
-                  style: const TextStyle(),
+                  style: TextStyle(),
                 ),
               ],
             ),
@@ -2121,9 +2121,9 @@ class _BillTabActionState extends State<BillTabAction> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               '* Fixed Charge',
-              style: const TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16),
             ),
             OutlinedButton(
               style: ButtonStyle(
@@ -2135,15 +2135,15 @@ class _BillTabActionState extends State<BillTabAction> {
                   FixedChargegas = fixedChargeGasBillCallback;
                 });
               },
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Icon(Icons.add),
-                  const SizedBox(width: 4),
+                  Icon(Icons.add),
+                  SizedBox(width: 4),
                   Text(
                     'ADD',
-                    style: const TextStyle(),
+                    style: TextStyle(),
                   ),
                 ],
               ),
@@ -2184,9 +2184,9 @@ class _BillTabActionState extends State<BillTabAction> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'Fixed Charge',
-              style: const TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16),
             ),
             GestureDetector(
               onTap: () {
@@ -2216,9 +2216,9 @@ class _BillTabActionState extends State<BillTabAction> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             '* Sub Meter',
-            style: const TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16),
           ),
           OutlinedButton(
             style: ButtonStyle(
@@ -2226,15 +2226,15 @@ class _BillTabActionState extends State<BillTabAction> {
               overlayColor: MaterialStateProperty.all(const Color(0xff54854C).withOpacity(0.1)),
             ),
             onPressed: () {},
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Icon(Icons.add),
-                const SizedBox(width: 4),
+                Icon(Icons.add),
+                SizedBox(width: 4),
                 Text(
                   'ADD',
-                  style: const TextStyle(),
+                  style: TextStyle(),
                 ),
               ],
             ),
@@ -2276,9 +2276,9 @@ class _BillTabActionState extends State<BillTabAction> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               '* Fixed Charge',
-              style: const TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16),
             ),
             OutlinedButton(
               style: ButtonStyle(
@@ -2290,15 +2290,15 @@ class _BillTabActionState extends State<BillTabAction> {
                   FixedChargeele = fixedChargeWaterBillCallback;
                 });
               },
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Icon(Icons.add),
-                  const SizedBox(width: 4),
+                  Icon(Icons.add),
+                  SizedBox(width: 4),
                   Text(
                     'ADD',
-                    style: const TextStyle(),
+                    style: TextStyle(),
                   ),
                 ],
               ),
@@ -2326,9 +2326,9 @@ class _BillTabActionState extends State<BillTabAction> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'Fixed Charge',
-              style: const TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16),
             ),
             GestureDetector(
               onTap: () {
@@ -2382,10 +2382,10 @@ class _BillTabActionState extends State<BillTabAction> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(18),
+                  const Padding(
+                    padding: EdgeInsets.all(18),
                     child: Text("How much do you charge",
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.black,
                           fontSize: 22.0,
                           fontWeight: FontWeight.bold,
@@ -2425,9 +2425,9 @@ class _BillTabActionState extends State<BillTabAction> {
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Save',
-                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -2470,10 +2470,10 @@ class _BillTabActionState extends State<BillTabAction> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.black,
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
@@ -2513,9 +2513,9 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -2556,10 +2556,10 @@ class _BillTabActionState extends State<BillTabAction> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.black,
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
@@ -2599,9 +2599,9 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -2642,10 +2642,10 @@ class _BillTabActionState extends State<BillTabAction> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18),
+                    const Padding(
+                      padding: EdgeInsets.all(18),
                       child: Text("How much do you charge for Blab",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.grey,
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
@@ -2688,9 +2688,9 @@ class _BillTabActionState extends State<BillTabAction> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Save',
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -2735,9 +2735,9 @@ class _BillTabActionState extends State<BillTabAction> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
+                        const Text(
                           "Text Content",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -2798,9 +2798,9 @@ class _BillTabActionState extends State<BillTabAction> {
                             setState(() {});
                           },
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                          child: Text(
+                          child: const Text(
                             "Save",
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

@@ -29,239 +29,239 @@ class _BillViewPageState extends State<BillViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bill & Payment details"),
+        backgroundColor: const Color(0xff54854C),
+        title: const Text(
+          "Bill & Payment details",
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
           child: Column(
             children: [
               const Divider(
                 color: Colors.black,
                 thickness: 2,
               ),
-              Row(
+              SizedBox(width: 0.0, height: 8),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Rent billno",
-                    style: const TextStyle(color: Colors.grey),
+                    "Rent bill no",
+                    style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    "Rent billdate",
-                    style: const TextStyle(color: Colors.grey),
+                    "Rent bill date",
+                    style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
                   )
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Name",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    widget.Data.rentStartDate,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Tenant",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    "Name",
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Total Rent ",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    "₹ " + widget.Data.rentAmount,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Rent Period",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    widget.Data.rentStartDate,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Rent Due date",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    widget.Data.rentEndDate,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Center(
-                child: Text(
-                  "Rent & Maintanance",
-                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              const SizedBox(height: 3),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Name",
+                      style: TextStyle(color: Colors.black54, fontSize: 16),
+                    ),
+                    Text(
+                      widget.Data.rentStartDate,
+                      style: const TextStyle(color: Colors.black54, fontSize: 16),
+                    )
+                  ],
                 ),
               ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Rent",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    "₹ " + widget.Data.rentAmount,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Maintanace",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    "₹ " + widget.Data.maintenanceAmount,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Previous balance",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    "₹ " + widget.Data.previousBalance,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Adjustment",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    "₹ 0",
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Adjustment remark",
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    "₹ 0",
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
-              ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Center(
-                child: Text(
-                  "Electricity",
-                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: Column(
+                  children: [
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Tenant",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "Name",
+                          style: TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Total Rent ",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "₹ " + widget.Data.rentAmount,
+                          style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Rent Period",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          widget.Data.rentStartDate,
+                          style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Rent Due date",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          widget.Data.rentEndDate,
+                          style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Electricity type",
-                    style: const TextStyle(color: Colors.black),
+              Divider(color: Colors.grey.shade300, thickness: 1),
+              Container(
+                padding: const EdgeInsets.only(top: 10),
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  "Rent & Maintanances :-",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
-                  Text(
-                    widget.Data.electricityType,
-                    style: const TextStyle(color: Colors.black),
-                  )
-                ],
+                ),
               ),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: Column(
+                  children: [
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Rent",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "₹ " + widget.Data.rentAmount,
+                          style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Maintanace",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "₹ " + widget.Data.maintenanceAmount,
+                          style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Previous balance",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "₹ " + widget.Data.previousBalance,
+                          style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Adjustment",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "₹ 0",
+                          style: TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Adjustment remark",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "₹ 0",
+                          style: TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                  ],
+                ),
               ),
-              const SizedBox(
-                height: 20,
+              Container(
+                padding: const EdgeInsets.only(top: 10),
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  "Electricity :-",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: Column(
+                  children: [
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Electricity type",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          widget.Data.electricityType,
+                          style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    Divider(color: Colors.grey.shade300, thickness: 1),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -294,10 +294,10 @@ class _BillViewPageState extends State<BillViewPage> {
                           border: Border.all(color: Colors.grey),
                           color: Colors.white,
                         ),
-                        child: Center(
+                        child: const Center(
                             child: Text(
                           "Share",
-                          style: const TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 15, color: Colors.blue, fontWeight: FontWeight.bold),
                         ))),
                   ),
                 ],
@@ -317,12 +317,12 @@ class _BillViewPageState extends State<BillViewPage> {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text("Confirmation"),
+              title: const Text("Confirmation"),
               content: Text(contentText),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text("Cancel"),
+                  child: const Text("Cancel"),
                 ),
                 TextButton(
                   onPressed: () async {
@@ -368,32 +368,32 @@ class _BillViewPageState extends State<BillViewPage> {
 
   List<DataColumn> _buildColumns() {
     return [
-      DataColumn(
+      const DataColumn(
         label: Text(
           'Paid Date',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
 
-      DataColumn(
+      const DataColumn(
         label: Text(
           'Paid by Name',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
-      DataColumn(
+      const DataColumn(
         label: Text(
           'Rent paid',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
-      DataColumn(
+      const DataColumn(
         label: Text(
           'Balance',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       DataColumn(label: _verticalDivider),
@@ -406,26 +406,26 @@ class _BillViewPageState extends State<BillViewPage> {
     return [
       DataRow(
         cells: [
-          DataCell(Text('04- dec-2023')),
+          const DataCell(Text('04- dec-2023')),
           DataCell(_verticalDivider),
-          DataCell(Text('John')),
+          const DataCell(Text('John')),
           DataCell(_verticalDivider),
-          DataCell(Text('500')),
+          const DataCell(Text('500')),
           DataCell(_verticalDivider),
-          DataCell(Text('-300')),
+          const DataCell(Text('-300')),
           DataCell(_verticalDivider),
           const DataCell(Icon(Icons.navigate_next_outlined)),
         ],
       ),
       DataRow(
         cells: [
-          DataCell(Text('24-10-23')),
+          const DataCell(Text('24-10-23')),
           DataCell(_verticalDivider),
-          DataCell(Text('Jane')),
+          const DataCell(Text('Jane')),
           DataCell(_verticalDivider),
-          DataCell(Text('300')),
+          const DataCell(Text('300')),
           DataCell(_verticalDivider),
-          DataCell(Text('2500')),
+          const DataCell(Text('2500')),
           DataCell(_verticalDivider),
           const DataCell(Icon(Icons.navigate_next_outlined)),
           // Add more cells as needed

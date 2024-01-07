@@ -5,6 +5,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
 
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -64,9 +65,7 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
 
         return res.map((e) => GetCompany.fromJson(e)).toList();
       }
-    } catch (e) {
-      
-    }
+    } catch (e) {}
     return companylist;
   }
 
@@ -96,17 +95,17 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
               : ListView.builder(
                   itemCount: companylist.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () => Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => ViewCompanyDetails(id: companylist[index].id, name: companylist[index].companyname, address: companylist[index].address))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(25)),
-                          //    color: Colors.white,
-                          height: 150,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 22),
+                      child: Material(
+                        elevation: 5,
+                        borderRadius: BorderRadius.circular(16),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(16),
+                          onTap: () => Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => ViewCompanyDetails(id: companylist[index].id, name: companylist[index].companyname, address: companylist[index].address))),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                             child: Row(
                               children: [
                                 Padding(
@@ -116,15 +115,15 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        companylist[index].companyname,
-                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+                                        companylist[index].companyname.capitalizeFirstWord(),
+                                        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black),
                                       ),
                                       const SizedBox(
-                                        height: 10,
+                                        height: 5,
                                       ),
                                       Text(
                                         companylist[index].address,
-                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                        style: const TextStyle(fontSize: 15, color: Colors.black54),
                                       ),
                                       const SizedBox(
                                         height: 10,
@@ -136,21 +135,23 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    InkWell(
+                                    const SizedBox(width: 10),
+                                    GestureDetector(
                                       onTap: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => addnewcompany(
-                                                    type: "1",
-                                                    comapnyid: companylist[index].id,
-                                                  ))),
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => AddNewCompanyNew(
+                                            edit: true,
+                                            type: "1",
+                                            name: widget.name!,
+                                            comapnyid: companylist[index].id,
+                                          ),
+                                        ),
+                                      ),
                                       child: Container(
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: Colors.grey,
+                                          color: Colors.grey.shade300,
                                         ),
                                         child: const Padding(
                                           padding: EdgeInsets.all(8),
@@ -158,19 +159,20 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    InkWell(
+                                    const SizedBox(width: 14),
+                                    GestureDetector(
                                       onTap: () => showAlertDialog(context, companylist[index].id),
                                       child: Container(
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: Colors.grey,
+                                          color: Colors.grey.shade300,
                                         ),
                                         child: const Padding(
                                           padding: EdgeInsets.all(8),
-                                          child: Icon(Icons.delete_outline),
+                                          child: Icon(
+                                            Icons.delete_outline,
+                                            color: Colors.red,
+                                          ),
                                         ),
                                       ),
                                     ),

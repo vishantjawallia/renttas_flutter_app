@@ -60,9 +60,9 @@ class _BillsTabsState extends State<BillsTabs> {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BillTabAction()));
           } else {}
         },
-        label: Text(
+        label: const Text(
           'Rent Bill',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.white,
@@ -93,13 +93,13 @@ class _BillsTabsState extends State<BillsTabs> {
                     ),
                   )
                 : widget.list.isEmpty
-                    ? Flexible(
+                    ? const Flexible(
                         child: Center(
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 60.0),
+                            padding: EdgeInsets.only(bottom: 60.0),
                             child: Text(
                               'Bill not found !',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.grey,
@@ -377,16 +377,16 @@ class _BillsTabsState extends State<BillsTabs> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
+                        const Text(
                           "Add Recived Rent Payment",
-                          style: const TextStyle(fontSize: 18, color: Colors.black),
+                          style: TextStyle(fontSize: 18, color: Colors.black),
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        Text(
+                        const Text(
                           "Rent paid through",
-                          style: const TextStyle(fontSize: 16, color: Colors.grey),
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
                         const SizedBox(height: 15),
                         Row(
@@ -476,17 +476,17 @@ class _BillsTabsState extends State<BillsTabs> {
                         readOnly: true, //this is important
                         onTap: _selectDate, //the method for opening data picker
                         controller: _textControllerdate1,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             hintText: 'choose date',
-                            prefixIcon: const Padding(
+                            prefixIcon: Padding(
                               padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                               child: Icon(Icons.calendar_month),
                             ),
                             label: Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
+                              padding: EdgeInsets.only(bottom: 10),
                               child: Text(
                                 "Rent Paid date",
-                                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
+                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                               ),
                             )),
                       ),
@@ -508,17 +508,17 @@ class _BillsTabsState extends State<BillsTabs> {
                       child: TextFormField(
                         cursorColor: const Color.fromARGB(255, 3, 61, 109),
                         controller: recievedcontroller,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             hintText: 'Rent recived',
-                            prefixIcon: const Padding(
+                            prefixIcon: Padding(
                               padding: EdgeInsets.only(top: 15), // add padding to adjust icon
                               child: Icon(Icons.monetization_on),
                             ),
                             label: Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
+                              padding: EdgeInsets.only(bottom: 10),
                               child: Text(
                                 "Rent recived",
-                                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
+                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 3, 61, 109)),
                               ),
                             )),
                       ),
@@ -538,9 +538,9 @@ class _BillsTabsState extends State<BillsTabs> {
                             Navigator.pop(context);
                           },
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                          child: Text(
+                          child: const Text(
                             "Save",
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

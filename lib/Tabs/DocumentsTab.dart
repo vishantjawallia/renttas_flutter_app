@@ -86,9 +86,9 @@ class _DocumentsTabState extends State<DocumentsTab> {
             }
           }
         },
-        label: Text(
+        label: const Text(
           'Document',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.white,
@@ -251,13 +251,13 @@ class _DocumentsTabState extends State<DocumentsTab> {
                                 },
                               )),
                           _imageFile == null
-                              ? Text('No documents selected.')
+                              ? const Text('No documents selected.')
                               : Container(
                                   width: 100, // Specify the desired width
                                   height: 250, // Specify the desired height
                                   child: Image.file(_imageFile!),
                                 ),
-                          Text('Document Type'),
+                          const Text('Document Type'),
                           StatefulBuilder(
                             builder: (BuildContext context, StateSetter setState) {
                               return SingleChildScrollView(
@@ -302,7 +302,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
                               onPressed: () {
                                 saveDoc(_imageFile, docType, docName.text, selectedPropertyId, selectedSubPropertyId);
                               },
-                              child: Text('Add')),
+                              child: const Text('Add')),
                           const SizedBox(
                             height: 100,
                           )
@@ -324,12 +324,12 @@ class _DocumentsTabState extends State<DocumentsTab> {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text("Confirmation"),
+              title: const Text("Confirmation"),
               content: Text(contentText),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text("Cancel"),
+                  child: const Text("Cancel"),
                 ),
                 TextButton(
                   onPressed: () async {

@@ -1,6 +1,7 @@
 // ignore_for_file:  sort_child_properties_last, avoid_print
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:renttas_flutter_app/Common/ApiUrl.dart';
 import 'package:renttas_flutter_app/TabAction/AddTendent.dart';
+import 'package:renttas_flutter_app/api/api_reference.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -58,218 +60,211 @@ class _TenantsTabState extends State<TenantsTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const AddTendent(),
-              ),
-            );
-          },
-          label: Text(
-            'Tenant',
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AddTendent(),
             ),
-          ),
-          icon: const Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-          backgroundColor: const Color(0xff54854C),
-          // backgroundColor: Colors.blue,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
+          );
+        },
+        label: const Text(
+          'Tenant',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
         ),
-        body: Column(
-          children: [
-            // Other widgets
-            isLoading
-                ? const Flexible(
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 60.0),
-                        child: CircularProgressIndicator(
-                          color: Color(0xff54854C),
-                        ),
+        icon: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: const Color(0xff54854C),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      ),
+      body: Column(
+        children: [
+          // Other widgets
+          isLoading
+              ? const Flexible(
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 60.0),
+                      child: CircularProgressIndicator(
+                        color: Color(0xff54854C),
                       ),
                     ),
-                  )
-                : Visibility(
-                    visible: isTenantsTheir,
-                    child: Flexible(
-                      fit: FlexFit.loose,
-                      child: ListView.builder(
-                        shrinkWrap: false,
-                        itemCount: tandent.length,
-                        padding: const EdgeInsets.only(top: 4),
-                        itemBuilder: (context, index) {
-                          final tenant = tandent[index];
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                                child: Column(
-                                  children: [
-                                    const SizedBox(height: 10),
-                                    Row(
+                  ),
+                )
+              : Visibility(
+                  visible: isTenantsTheir,
+                  child: Flexible(
+                    fit: FlexFit.loose,
+                    child: ListView.builder(
+                      shrinkWrap: false,
+                      itemCount: tandent.length,
+                      padding: const EdgeInsets.only(top: 4),
+                      itemBuilder: (context, index) {
+                        final tenant = tandent[index];
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Card(
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          tenant.tenantName,
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          maxLines: 2,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 50),
+                                      Container(
+                                        alignment: Alignment.centerRight,
+                                        width: 140,
+                                        child: Text(
+                                          tenant.phone,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black54,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          maxLines: 2,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: Colors.grey,
+                                    height: 30,
+                                  ),
+                                  Container(
+                                    alignment: Alignment.centerRight,
+                                    padding: const EdgeInsets.only(bottom: 10.0),
+                                    child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        Container(
-                                          alignment: Alignment.centerRight,
-                                          child: Text(
-                                            tenant.tenantName,
-                                            style: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            maxLines: 2,
+                                        TextButton(
+                                          style: ButtonStyle(
+                                            maximumSize: MaterialStateProperty.all(const Size(120, 40)),
+                                            iconColor: MaterialStateProperty.all(Colors.white),
+                                            foregroundColor: MaterialStateProperty.all(Colors.white),
+                                            backgroundColor: MaterialStateProperty.all(Colors.redAccent),
+                                          ),
+                                          onPressed: () => removeHandler(tenant.phone),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              const Icon(Icons.delete),
+                                              const SizedBox(width: 6, height: 0.0),
+                                              Text(
+                                                "remove".tr().toUpperCase(),
+                                                style: const TextStyle(fontSize: 16),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                        const SizedBox(width: 50),
-                                        Container(
-                                          alignment: Alignment.centerRight,
-                                          width: 140,
-                                          child: Text(
-                                            tenant.phone,
-                                            style: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black54,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            maxLines: 2,
+                                        // SizedBox(width: 14),
+                                        TextButton(
+                                          style: ButtonStyle(
+                                            maximumSize: MaterialStateProperty.all(const Size(120, 40)),
+                                            iconColor: MaterialStateProperty.all(Colors.white),
+                                            foregroundColor: MaterialStateProperty.all(Colors.white),
+                                            backgroundColor: MaterialStateProperty.all(Colors.green),
+                                          ),
+                                          onPressed: () => openPhoneDialer(tenant.phone),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              const Icon(Icons.phone),
+                                              const SizedBox(width: 6, height: 0.0),
+                                              Text(
+                                                "call".tr().toUpperCase(),
+                                                // 'CALL',
+                                                style: const TextStyle(fontSize: 16),
+                                              ),
+                                            ],
                                           ),
                                         ),
+                                        // Container(
+                                        //   padding: EdgeInsets.,
+                                        //   color: Colors.redAccent,
+                                        //   child: Row(
+                                        //     children: [
+                                        //       Icon(Icons.delete),
+                                        //       SizedBox(width: 8, height: 0.0),
+                                        //       Text('Remove'),
+                                        //     ],
+                                        //   ),
+                                        // ),
+                                        // SizedBox(
+                                        //   width: 40,
+                                        // ),
+                                        // IconButton(
+                                        //   onPressed: () {
+                                        //     openPhoneDialer(tenant.phone);
+                                        //   },
+                                        //   icon: Icon(Icons.phone),
+                                        // ),
+                                        // Text('Call'),
                                       ],
                                     ),
-                                    const Divider(
-                                      color: Colors.grey,
-                                      height: 30,
-                                    ),
-                                    Container(
-                                      alignment: Alignment.centerRight,
-                                      padding: const EdgeInsets.only(bottom: 10.0),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          TextButton(
-                                            style: ButtonStyle(
-                                              maximumSize: MaterialStateProperty.all(const Size(120, 40)),
-                                              iconColor: MaterialStateProperty.all(Colors.white),
-                                              foregroundColor: MaterialStateProperty.all(Colors.white),
-                                              backgroundColor: MaterialStateProperty.all(Colors.redAccent),
-                                            ),
-                                            onPressed: () {},
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                const Icon(Icons.delete),
-                                                const SizedBox(width: 6, height: 0.0),
-                                                Text(
-                                                  "remove".tr().toUpperCase(),
-                                                  // 'REMOVE',
-                                                  style: const TextStyle(fontSize: 16),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          // SizedBox(width: 14),
-                                          TextButton(
-                                            style: ButtonStyle(
-                                              maximumSize: MaterialStateProperty.all(const Size(120, 40)),
-                                              iconColor: MaterialStateProperty.all(Colors.white),
-                                              foregroundColor: MaterialStateProperty.all(Colors.white),
-                                              backgroundColor: MaterialStateProperty.all(Colors.green),
-                                            ),
-                                            onPressed: () => openPhoneDialer(tenant.phone),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                const Icon(Icons.phone),
-                                                const SizedBox(width: 6, height: 0.0),
-                                                Text(
-                                                  "call".tr().toUpperCase(),
-                                                  // 'CALL',
-                                                  style: const TextStyle(fontSize: 16),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          // Container(
-                                          //   padding: EdgeInsets.,
-                                          //   color: Colors.redAccent,
-                                          //   child: Row(
-                                          //     children: [
-                                          //       Icon(Icons.delete),
-                                          //       SizedBox(width: 8, height: 0.0),
-                                          //       Text('Remove'),
-                                          //     ],
-                                          //   ),
-                                          // ),
-                                          // SizedBox(
-                                          //   width: 40,
-                                          // ),
-                                          // IconButton(
-                                          //   onPressed: () {
-                                          //     openPhoneDialer(tenant.phone);
-                                          //   },
-                                          //   icon: Icon(Icons.phone),
-                                          // ),
-                                          // Text('Call'),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
-                    replacement: Flexible(
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 60.0),
-                          child: Text(
-                            '${"tenants".tr()} not found !',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.grey,
-                            ),
+                  ),
+                  replacement: Flexible(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 60.0),
+                        child: Text(
+                          '${"tenants".tr()} not found !',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
                           ),
                         ),
                       ),
                     ),
-                    // Padding(
-                    //   padding: EdgeInsets.only(top: 250, left: 30),
-                    //   child: Center(
-                    //     child: Text(
-                    //       'No tenants found',
-                    //       style: TextStyle(
-                    //         fontSize: 18,
-                    //         fontWeight: FontWeight.bold,
-                    //         color: Colors.grey,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                  )
-          ],
-        ));
+                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 250, left: 30),
+                  //   child: Center(
+                  //     child: Text(
+                  //       'No tenants found',
+                  //       style: TextStyle(
+                  //         fontSize: 18,
+                  //         fontWeight: FontWeight.bold,
+                  //         color: Colors.grey,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                )
+        ],
+      ),
+    );
   }
 
   Future<void> loadTenants(String propertyCode, String subProperty) async {
@@ -332,6 +327,16 @@ class _TenantsTabState extends State<TenantsTab> {
       await launchUrl((Uri.parse(url)));
     } else {
       throw 'Could not launch $url';
+    }
+  }
+
+  // @removeHandler
+  void removeHandler(String phone) async {
+    log("message");
+    log(phone);
+    final res = await ApiReference.apiPost('${ApiUrl.baseUrl}/propertyTenantDelete', {"mobile": phone});
+    if (res != null) {
+      log(res.toString());
     }
   }
 }

@@ -11,7 +11,14 @@ import 'CommertialDashboard.dart';
 
 class AddNewCompanyNew extends StatefulWidget {
   String type, comapnyid, name;
-  AddNewCompanyNew({super.key, required this.type, required this.comapnyid, this.name = ""});
+  bool? edit;
+  AddNewCompanyNew({
+    super.key,
+    required this.type,
+    required this.comapnyid,
+    this.name = "",
+    this.edit = false,
+  });
 
   @override
   State<AddNewCompanyNew> createState() => _AddNewCompanyNewState();
@@ -29,10 +36,15 @@ class _AddNewCompanyNewState extends State<AddNewCompanyNew> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
-        title: Text(
-          "Add ${widget.name}",
-          style: const TextStyle(color: Colors.white),
-        ),
+        title: widget.edit!
+            ? Text(
+                "Edit ${widget.name}",
+                style: const TextStyle(color: Colors.white),
+              )
+            : Text(
+                "Add ${widget.name}",
+                style: const TextStyle(color: Colors.white),
+              ),
       ),
       body: SingleChildScrollView(
         child: Form(

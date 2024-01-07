@@ -59,190 +59,177 @@ class _ExpensesTabState extends State<ExpensesTab> {
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddExpenses()));
-          },
-          label: Text(
-            'expense'.tr().capitalizeFirstWord(),
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
-          icon: const Icon(
-            Icons.add,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddExpenses()));
+        },
+        label: Text(
+          'expense'.tr().capitalizeFirstWord(),
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
-          backgroundColor: const Color(0xff54854C),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
         ),
-        body: Column(
-          children: [
-            // Other widgets
-            isLoading
-                ? const Flexible(
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 60.0),
-                        child: CircularProgressIndicator(
-                          color: Color(0xff54854C),
-                        ),
+        icon: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: const Color(0xff54854C),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+      ),
+      body: Column(
+        children: [
+          isLoading
+              ? const Flexible(
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 60.0),
+                      child: CircularProgressIndicator(
+                        color: Color(0xff54854C),
                       ),
                     ),
-                  )
-                : Visibility(
-                    visible: isExpensesTheir,
-                    child: Expanded(
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: expenses.length,
-                        padding: const EdgeInsets.only(top: 20),
-                        itemBuilder: (context, index) {
-                          final expense = expenses[index];
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                            child: Material(
+                  ),
+                )
+              : Visibility(
+                  visible: isExpensesTheir,
+                  child: Expanded(
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: expenses.length,
+                      padding: const EdgeInsets.only(top: 20),
+                      itemBuilder: (context, index) {
+                        final expense = expenses[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                          child: Material(
+                            borderRadius: BorderRadius.circular(8),
+                            elevation: 5,
+                            color: Colors.white,
+                            child: InkWell(
                               borderRadius: BorderRadius.circular(8),
-                              elevation: 5,
-                              color: Colors.white,
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(8),
-                                onTap: () {},
-                                child: Container(
-                                    padding: const EdgeInsets.only(left: 16, top: 14, bottom: 14, right: 4),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Flexible(
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Column(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text(
-                                                        expense.name,
-                                                        style: const TextStyle(
-                                                          fontSize: 18,
-                                                          fontWeight: FontWeight.w600,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                      const SizedBox(width: 0.0, height: 3),
-                                                      Text(
-                                                        expense.description.toString(),
-                                                        // Convert amount to string
-                                                        style: const TextStyle(
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.w500,
-                                                          color: Colors.black54,
-                                                        ),
-                                                      ),
-                                                      const SizedBox(width: 0.0, height: 8),
-                                                      Text(
-                                                        "\$ " + expense.amount,
-                                                        // Convert amount to string
-                                                        style: const TextStyle(
-                                                          fontSize: 18,
-                                                          fontWeight: FontWeight.bold,
-                                                          color: Colors.red,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
+                              onTap: () {},
+                              child: Container(
+                                  padding: const EdgeInsets.only(left: 16, top: 14, bottom: 14, right: 4),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Flexible(
+                                        child: Column(
                                           children: [
-                                            IconButton(
-                                              onPressed: () => showAlertDialogdelete(context, expense.id),
-                                              icon: const Icon(
-                                                Icons.delete,
-                                                color: Colors.redAccent,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(right: 16.5),
-                                              child: Text(
-                                                expense.expensesDate.split('T')[0],
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.black54,
+                                            Row(
+                                              children: [
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      expense.name.capitalizeFirstWord(),
+                                                      style: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight: FontWeight.w600,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(width: 0.0, height: 3),
+                                                    Text(
+                                                      expense.description.toString(),
+                                                      style: const TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500,
+                                                        color: Colors.black54,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(width: 0.0, height: 8),
+                                                    Text(
+                                                      "\$ " + expense.amount,
+                                                      style: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Colors.red,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                      ],
-                                    )),
-                              ),
+                                      ),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          IconButton(
+                                            onPressed: () => showAlertDialogdelete(context, expense.id),
+                                            icon: const Icon(
+                                              Icons.delete,
+                                              color: Colors.redAccent,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 16.5),
+                                            child: Text(
+                                              expense.expensesDate.split('T')[0],
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  )),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
-                    replacement: Flexible(
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 60.0),
-                          child: Text(
-                            "${"expense".tr().capitalizeFirstWord()} not found !",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.grey,
-                            ),
+                  ),
+                  replacement: Flexible(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 60.0),
+                        child: Text(
+                          "${"expense".tr().capitalizeFirstWord()} not found !",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
                           ),
                         ),
                       ),
                     ),
-                    // Padding(
-                    //   padding: EdgeInsets.only(top: 230, left: 90),
-                    //   child: Text(
-                    //     'No Expenses found',
-                    //     style: TextStyle(
-                    //       fontSize: 18,
-                    //       fontWeight: FontWeight.bold,
-                    //       color: Colors.grey,
-                    //     ),
-                    //   ),
-                    // ),
                   ),
-          ],
-        ));
+                ),
+        ],
+      ),
+    );
   }
 
-  Future<void> loadExpenses(String selectedPropertyId, String selectedSubPropertyId, String userId) async {
-    setState(() {
-      isLoading = true;
-    });
+  Future<void> loadExpenses(
+    String selectedPropertyId,
+    String selectedSubPropertyId,
+    String userId,
+  ) async {
+    setState(() => isLoading = true);
 
-    // final Map<String, dynamic> requestBody = {
-    //   "propertyId": selectedPropertyId,
-    //   "subPropertyId": selectedSubPropertyId,
-    //   "landlordId": userId,
-    // };
-
-    final Map<String, dynamic> requestBody = {"landlordId": userId, "propertyId": selectedPropertyId, "subPropertyId": selectedSubPropertyId};
+    final Map<String, dynamic> requestBody = {
+      "landlordId": userId,
+      "propertyId": selectedPropertyId,
+      "subPropertyId": selectedSubPropertyId,
+    };
 
     final response = await http.post(
       Uri.parse(ApiUrl.getExpenses),
       body: jsonEncode(requestBody),
       headers: {
-        'Content-Type': 'application/json', // Set the content type header
+        'Content-Type': 'application/json',
       },
     );
     print("expesss--" + response.body);
@@ -263,9 +250,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
       print('Request failed with status: ${response.statusCode}');
     }
 
-    setState(() {
-      isLoading = false; // Set loading state to false after the data is loaded
-    });
+    setState(() => isLoading = false);
   }
 
   showAlertDialogdelete(BuildContext context, String expid) {
@@ -277,18 +262,16 @@ class _ExpensesTabState extends State<ExpensesTab> {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text("Confirmation"),
+              title: const Text("Confirmation"),
               content: Text(contentText),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text("Cancel"),
+                  child: const Text("Cancel"),
                 ),
                 TextButton(
                   onPressed: () async {
-                    setState(() {
-                      isLoading = true;
-                    });
+                    setState(() => isLoading = true);
 
                     final Map<String, dynamic> requestBody = {
                       "expenseid": expid,
@@ -298,7 +281,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
                       Uri.parse(ApiUrl.deleteExp),
                       body: jsonEncode(requestBody),
                       headers: {
-                        'Content-Type': 'application/json', // Set the content type header
+                        'Content-Type': 'application/json',
                       },
                     );
                     if (kDebugMode) {

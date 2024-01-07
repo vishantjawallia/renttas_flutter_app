@@ -98,7 +98,7 @@ class _ProductViewNewState extends State<ProductViewNew> {
         backgroundColor: const Color(0xff54854C),
         title: Row(
           children: [
-            Text("All Products"),
+            const Text("All Products"),
             const Flexible(fit: FlexFit.tight, child: SizedBox()),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -206,17 +206,17 @@ class _ProductViewNewState extends State<ProductViewNew> {
                                             color: Colors.red,
                                           ),
                                           const SizedBox(width: 2),
-                                          Text(
+                                          const Text(
                                             "0.00",
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.red),
+                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.red),
                                           ),
                                           const SizedBox(
                                             width: 10,
                                           ),
                                           const Icon(Icons.equalizer, color: Colors.grey),
-                                          Text(
+                                          const Text(
                                             "= 1.00",
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
                                           ),
                                           const SizedBox(width: 10),
                                         ],
@@ -312,10 +312,10 @@ class _ProductViewNewState extends State<ProductViewNew> {
                           30,
                         ),
                         color: const Color(0xFFFDB730)),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Transaction",
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
                   ),
@@ -410,13 +410,13 @@ class _ProductViewNewState extends State<ProductViewNew> {
                 Flexible(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: Row(
+                    child: const Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.download,
                           color: Colors.greenAccent,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         Text(
@@ -426,9 +426,9 @@ class _ProductViewNewState extends State<ProductViewNew> {
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   "1.00",
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -447,14 +447,14 @@ class _ProductViewNewState extends State<ProductViewNew> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Text("Total Out"),
+                        const Text("Total Out"),
                       ],
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   "1.00",
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -464,10 +464,10 @@ class _ProductViewNewState extends State<ProductViewNew> {
                 Flexible(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: Row(
+                    child: const Row(
                       children: [
-                        const Icon(Icons.handshake, color: Colors.purpleAccent),
-                        const SizedBox(
+                        Icon(Icons.handshake, color: Colors.purpleAccent),
+                        SizedBox(
                           width: 10,
                         ),
                         Text("In Hand"),
@@ -475,9 +475,9 @@ class _ProductViewNewState extends State<ProductViewNew> {
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   "1.00",
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -488,13 +488,13 @@ class _ProductViewNewState extends State<ProductViewNew> {
             const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               children: [
                 Text(
                   "Description :",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
                 Text("description "),
@@ -508,11 +508,11 @@ class _ProductViewNewState extends State<ProductViewNew> {
 
   showAlertDialog(BuildContext context, String id) {
     Widget cancelButton = TextButton(
-      child: Text("Cancel"),
+      child: const Text("Cancel"),
       onPressed: () => Navigator.pop(context),
     );
     Widget continueButton = TextButton(
-      child: Text("Continue"),
+      child: const Text("Continue"),
       onPressed: () async {
         SharedPreferences logindata = await SharedPreferences.getInstance();
         String? userid = logindata.getString("userId");
@@ -547,7 +547,7 @@ class _ProductViewNewState extends State<ProductViewNew> {
                 print("Login Successfully Completed !!!!!!!!!!!!!!!!");
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('Added failed.........'),
                     backgroundColor: Colors.green,
                   ),
@@ -565,8 +565,8 @@ class _ProductViewNewState extends State<ProductViewNew> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Confirmation"),
-      content: Text("Are you sure want to delete ?"),
+      title: const Text("Confirmation"),
+      content: const Text("Are you sure want to delete ?"),
       actions: [
         cancelButton,
         continueButton,
@@ -608,10 +608,10 @@ class _ProductViewNewState extends State<ProductViewNew> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Flexible(
+                const Flexible(
                   child: Text(
                     "Stock Information",
-                    style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17),
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -641,30 +641,30 @@ class _ProductViewNewState extends State<ProductViewNew> {
                 Flexible(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: Row(
+                    child: const Row(
                       children: [
                         Text(
                           "Store",
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10),
                       ],
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   "IN",
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 const SizedBox(width: 20),
-                Text(
+                const Text(
                   "OUT",
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 const SizedBox(width: 20),
-                Text(
+                const Text(
                   "Current \nStock",
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
               ],
             ),
@@ -677,36 +677,36 @@ class _ProductViewNewState extends State<ProductViewNew> {
                 Flexible(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: Row(
+                    child: const Row(
                       children: [
                         Text(
                           "Main Store",
-                          style: const TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                       ],
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   "1.00",
-                  style: const TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15),
                 ),
                 const SizedBox(
                   width: 30,
                 ),
-                Text(
+                const Text(
                   "0.00",
-                  style: const TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15),
                 ),
                 const SizedBox(
                   width: 30,
                 ),
-                Text(
+                const Text(
                   "1.00",
-                  style: const TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15),
                 ),
 
                 // Text(
@@ -778,13 +778,13 @@ class _ProductViewNewState extends State<ProductViewNew> {
                 Flexible(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    child: Row(
+                    child: const Row(
                       children: [
                         Text(
                           "Total",
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: 10,
                         ),
                         // Flexible(fit: FlexFit.tight, child: SizedBox()),
@@ -801,23 +801,23 @@ class _ProductViewNewState extends State<ProductViewNew> {
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   "1.00",
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 const SizedBox(
                   width: 20,
                 ),
-                Text(
+                const Text(
                   "0.00",
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 const SizedBox(
                   width: 20,
                 ),
-                Text(
+                const Text(
                   "1.00",
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
 
                 // Text(

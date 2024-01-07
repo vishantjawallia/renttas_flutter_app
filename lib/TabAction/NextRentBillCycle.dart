@@ -1,4 +1,4 @@
-// ignore_for_file:  avoid_unnecessary_containers, use_key_in_widget_constructors, prefer_interpolation_to_compose_strings, sort_child_properties_last, use_build_context_synchronously, avoid_print, must_be_immutable
+// ignore_for_file:  avoid_unnecessary_containers, use_key_in_widget_constructors, prefer_interpolation_to_compose_strings, sort_child_properties_last, use_build_context_synchronously, avoid_print, must_be_immutable, prefer_const_constructors
 
 import 'dart:convert';
 
@@ -65,600 +65,414 @@ class _NextRentBillCycleState extends State<NextRentBillCycle> {
       appBar: AppBar(
         backgroundColor: const Color(0xff54854C),
         leading: const BackButton(),
-        title: Text('Bill Detail'),
+        title: const Text('Bill Detail'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 16, left: 5),
-                        padding: const EdgeInsets.only(left: 15),
-                        height: 20,
-                        width: double.infinity,
-                        child: Text(
-                          'Next rent bill cycle:-',
-                          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18, color: Colors.black),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 22),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Rent Cycle',
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                            Text(
-                              widget.rentCycle,
-                              style: const TextStyle(fontSize: 16, color: Colors.black54),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 22),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Rent Start Date ',
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                            Text(
-                              widget.rentStartData,
-                              style: const TextStyle(fontSize: 16, color: Colors.black54),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 22),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Rent End Date',
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                            Text(
-                              widget.rentEndDate,
-                              style: const TextStyle(fontSize: 16, color: Colors.black54),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 22),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Collect Rent By',
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                            Text(
-                              widget.collectdBy,
-                              style: const TextStyle(fontSize: 16, color: Colors.black54),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ), //Monthly Fixed Charge
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10, left: 5),
-                        padding: const EdgeInsets.only(left: 15),
-                        height: 20,
-                        width: double.infinity,
-                        child: Text(
-                          'Monthly Fixed  Charges ',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey),
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Previous Balance ',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.perviousBalance.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Rent',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 110),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.rentAmount.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Maintenance',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 45),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.maintenanceAmount.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Total',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 95),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.totalAmount.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 22),
+          child: Column(
+            children: [
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10, left: 5),
-                        padding: const EdgeInsets.only(left: 15),
-                        height: 20,
-                        width: double.infinity,
-                        // color: Colors.grey,
-                        child: Text(
-                          'BillS',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.grey),
-                        ),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 16, left: 5),
+                      padding: const EdgeInsets.only(left: 15),
+                      height: 20,
+                      width: double.infinity,
+                      child: const Text(
+                        'Next rent bill cycle:-',
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18, color: Colors.black),
                       ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Electric Bill',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.electricityType,
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Rent Cycle',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.rentCycle,
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
                       ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Electric Charges',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.electricCharge.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Rent Start Date ',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.rentStartData,
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 10,
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Rent End Date',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.rentEndDate,
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
                       ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Water Bills',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.waterBillType,
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Collect Rent By',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.collectdBy,
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
                       ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Water Charges',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.waterBillCharge.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Gas Bill',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.only(left: 30),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.gasBillType.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(top: 10, left: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(right: 50, left: 10),
-                              child: Text(
-                                'Gas Charge',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        widget.gasBillCharge.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 18),
+                  ],
                 ),
-              ],
-            ),
-          ),
-          if (!isLoading)
-            Row(
-              children: [
-                const SizedBox(
-                  width: 10,
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                Container(
-                  height: 70,
-                  width: 170,
-                  padding: const EdgeInsets.all(10),
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: Text("Total:-" + widget.totalAmount.toString()),
-                    style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 10, left: 5, bottom: 10),
+                      padding: const EdgeInsets.only(left: 15),
+                      height: 20,
+                      width: double.infinity,
+                      child: const Text(
+                        'Monthly Fixed Charges:-',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Previous Balance',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            widget.perviousBalance.toString(),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Rent',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.rentAmount.toString(),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Maintenance',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.maintenanceAmount.toString(),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black45,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text('Total', style: TextStyle(fontSize: 16)),
+                          Text(
+                            widget.totalAmount.toString(),
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 10, left: 5),
+                      padding: const EdgeInsets.only(left: 15),
+                      height: 20,
+                      width: double.infinity,
+                      child: const Text(
+                        'Bills:-',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Electric Bill',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            widget.electricityType,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 4, right: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Electric Charges',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.electricCharge.toString(),
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Water Bills',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            widget.waterBillType,
+                            style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 4, right: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Water Charges',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.waterBillCharge.toString(),
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: const Text(
+                              'Gas Bill',
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                          Text(
+                            widget.gasBillType.toString(),
+                            style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 4, right: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Gas Charge',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            widget.gasBillCharge.toString(),
+                            style: const TextStyle(fontSize: 16, color: Colors.black54),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+              Column(
+                children: [
+                  const SizedBox(height: 20),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Total:- ",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            widget.totalAmount.toString(),
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                Container(
-                  height: 70,
-                  width: 180,
-                  padding: const EdgeInsets.all(10),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        isLoading = true;
-                      });
-                      sendRentData(
-                          widget.landlordId,
-                          widget.propertyId,
-                          widget.subpropertyId,
-                          widget.rentCycle,
-                          widget.rentStartData,
-                          widget.rentEndDate,
-                          widget.collectdBy,
-                          widget.perviousBalance,
-                          widget.rentAmount,
-                          widget.maintenanceAmount,
-                          widget.totalAmount,
-                          widget.electricityType,
-                          widget.electricCharge,
-                          widget.waterBillType,
-                          widget.waterBillCharge,
-                          widget.gasBillType,
-                          widget.gasBillCharge,
-                          widget.selectedItems);
-                    },
-                    child: isLoading == true
-                        ? const CircularProgressIndicator(
-                            color: Color(0xff54854C),
+                  const SizedBox(height: 10),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                    height: 55,
+                    width: double.infinity,
+                    child: isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: const Color(0xff54854C),
+                            ),
                           )
-                        : Text('Save'),
-                    style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                  ),
-                )
-              ],
-            ),
-          if (isLoading)
-            const CircularProgressIndicator(
-              color: Color(0xff54854C),
-            ),
-        ],
+                        : ElevatedButton(
+                            onPressed: () {
+                              setState(() => isLoading = true);
+                              sendRentData(
+                                  widget.landlordId,
+                                  widget.propertyId,
+                                  widget.subpropertyId,
+                                  widget.rentCycle,
+                                  widget.rentStartData,
+                                  widget.rentEndDate,
+                                  widget.collectdBy,
+                                  widget.perviousBalance,
+                                  widget.rentAmount,
+                                  widget.maintenanceAmount,
+                                  widget.totalAmount,
+                                  widget.electricityType,
+                                  widget.electricCharge,
+                                  widget.waterBillType,
+                                  widget.waterBillCharge,
+                                  widget.gasBillType,
+                                  widget.gasBillCharge,
+                                  widget.selectedItems);
+                            },
+                            child: const Text(
+                              'Save',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xff54854C),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            ),
+                          ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

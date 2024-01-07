@@ -15,6 +15,8 @@ AndroidNotificationChannel channel = const AndroidNotificationChannel(
   'High Importance Notifications',
   importance: Importance.high,
   playSound: true,
+
+
 );
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -79,6 +81,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "Renttas",
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
