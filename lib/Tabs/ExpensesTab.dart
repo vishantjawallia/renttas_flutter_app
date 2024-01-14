@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, use_build_context_synchronously, prefer_interpolation_to_compose_strings, avoid_print
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -237,6 +238,7 @@ class _ExpensesTabState extends State<ExpensesTab> {
     if (response.statusCode == 200) {
       final responseData = jsonDecode(response.body);
       List<dynamic> expensesJsonList = responseData['data'];
+      log(jsonEncode(responseData));
       if (expensesJsonList.isNotEmpty) {
         isExpensesTheir = true;
         expenses = expensesJsonList.map((expenseJson) => ExpenseModel.fromJson(expenseJson)).toList();

@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -648,6 +649,7 @@ class _LandloardDashBordState extends State<LandloardDashBord> with SingleTicker
       "currencysymbol": getCurr,
     };
 
+    log(jsonEncode(requestData));
     final request = http.Request(
       'POST',
       Uri.parse(ApiUrl.getPropertyUserID),

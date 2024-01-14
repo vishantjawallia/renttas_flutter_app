@@ -108,7 +108,10 @@ class _AddSubpropertiesState extends State<AddSubproperties> {
     log("sssss====" + propertyId + " suvvvvv==" + subProperty);
 
     setState(() => isLoading = true);
-    final Map<String, dynamic> requestData = {"propertyId": propertyId, "subPropertyName": subProperty};
+    final Map<String, dynamic> requestData = {
+      "propertyId": propertyId,
+      "subPropertyName": subProperty,
+    };
     // Replace with your actual API URL
 
     final response = await http.post(

@@ -268,7 +268,11 @@ class _LandlordLoginNewState extends State<LandlordLoginNew> {
     final headers = {
       'Content-Type': 'application/json',
     };
-    final response = await http.post(url, headers: headers, body: jsonEncode(requestData));
+    final response = await http.post(
+      url,
+      headers: headers,
+      body: jsonEncode(requestData),
+    );
 
     print("responsedooo===" + response.body);
     final Map<String, dynamic> jsonData = jsonDecode(response.body);

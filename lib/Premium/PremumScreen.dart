@@ -11,6 +11,8 @@ import '../Common/ApiUrl.dart';
 import '../landlord/LandloardDashBord.dart';
 
 class PremiumeScreen extends StatefulWidget {
+
+  
   const PremiumeScreen({super.key});
 
   @override
@@ -49,9 +51,10 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
       String? userid = logindata.getString("userId");
 
       Map data = {
-        'userid': "$userid",
-        "countrycode": counrtycode,
+        "userid": "$userid",
+        // "countrycode": counrtycode,
       };
+      log(data.toString());
       final headerss = {
         'Content-Type': 'application/json',
       };
@@ -108,9 +111,9 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
               ? Center(
                   child: Container(
                     height: 60,
-                    child: Text(
+                    child: const Text(
                       "Plan not Found !",
-                      style: const TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.w600),
+                      style: TextStyle(color: Colors.grey, fontSize: 23, fontWeight: FontWeight.w600),
                     ),
                   ),
                 )
@@ -119,19 +122,19 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Column(
                       children: [
-                        Align(
+                        const Align(
                           alignment: Alignment.center,
                           child: Column(
                             children: [
                               Text(
                                 "Get More Features",
-                                style: const TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600),
                               ),
                               Text(
                                 "Current plan : Free Forever",
-                                style: const TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w600),
                               ),
-                              const Center(child: Divider()),
+                              Center(child: Divider()),
                             ],
                           ),
                         ),
@@ -178,10 +181,10 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                                                             height: 20,
                                                             margin: const EdgeInsets.fromLTRB(0, 0, 0, 7),
                                                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: const Color.fromARGB(255, 12, 134, 118)),
-                                                            child: Center(
+                                                            child: const Center(
                                                               child: Text(
                                                                 "Most Popular",
-                                                                style: const TextStyle(color: Colors.white),
+                                                                style: TextStyle(color: Colors.white),
                                                               ),
                                                             ),
                                                           )
@@ -219,45 +222,45 @@ class _PremiumeScreenState extends State<PremiumeScreen> {
                             },
                           ),
                         ),
-                        Align(
+                        const Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Text(
                               "What you will get",
-                              style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.check_outlined,
                                 color: Color.fromARGB(255, 39, 121, 41),
                               ),
-                              const SizedBox(width: 10),
+                              SizedBox(width: 10),
                               Text("SMS & Email Update to Tenants")
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              const Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
-                              const SizedBox(width: 10),
+                              Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
+                              SizedBox(width: 10),
                               Text("Auto Rent Reminders to Tenants via SMS & Email"),
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              const Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
-                              const SizedBox(width: 10),
+                              Icon(Icons.check_outlined, color: Color.fromARGB(255, 39, 121, 41)),
+                              SizedBox(width: 10),
                               Text("Priority On-Call Support"),
                             ],
                           ),
@@ -312,10 +315,10 @@ showBottomSheet(context) {
                 ),
                 Row(
                   children: [
-                    Flexible(
+                    const Flexible(
                       child: Text(
                         "Filter",
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -350,7 +353,7 @@ showBottomSheet(context) {
                 RadioListTile(
                   value: 0,
                   groupValue: _groupValue1,
-                  title: Text("Cash"),
+                  title: const Text("Cash"),
                   onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
                   activeColor: Colors.blue,
                   selected: false,
@@ -358,7 +361,7 @@ showBottomSheet(context) {
                 RadioListTile(
                   value: 1,
                   groupValue: _groupValue1,
-                  title: Text("Online"),
+                  title: const Text("Online"),
                   onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
                   activeColor: Colors.blue,
                   selected: false,
@@ -366,7 +369,7 @@ showBottomSheet(context) {
                 RadioListTile(
                   value: 2,
                   groupValue: _groupValue1,
-                  title: Text("Bank Transfer"),
+                  title: const Text("Bank Transfer"),
                   onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
                   activeColor: Colors.blue,
                   selected: false,

@@ -79,7 +79,13 @@ class _LeacePageState extends State<LeacePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Spaces"),
+              const Text(
+                "Spaces",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               IconButton(
                 onPressed: () {
                   Navigator.push(
@@ -93,8 +99,11 @@ class _LeacePageState extends State<LeacePage> {
                     ),
                   );
                 },
-                icon: const Icon(Icons.add_box_rounded),
-                color: Colors.blue,
+                icon: const Icon(
+                  Icons.add_box_rounded,
+                  size: 30,
+                ),
+                color: Color(0xff54854C),
               )
             ],
           ),
@@ -106,7 +115,21 @@ class _LeacePageState extends State<LeacePage> {
                   child: CircularProgressIndicator(color: Color(0xff54854C)),
                 )
               : leasetlist.isEmpty
-                  ? Center(child: Container(height: 60, width: 60, child: Text("No data")))
+                  ? Flexible(
+                      child: Center(
+                        heightFactor: 9,
+                        child: Container(
+                          height: 60,
+                          // width: 60,
+                          child: const Text("No data found !",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey,
+                              )),
+                        ),
+                      ),
+                    )
                   : ListView.builder(
                       itemCount: leasetlist.length,
                       itemBuilder: (BuildContext context, int index) {

@@ -6,6 +6,7 @@ abstract class ApiUrl {
   static const register = "${baseUrl}registration";
   static const getPropertyUserID = "${baseUrl}property";
   static const createSubProperties = "${baseUrl}createSubProperties";
+  //
   static const saveTenant = "${baseUrl}addPropertyTenant";
   static const getTendentByIds = "${baseUrl}gettenantsbyid";
   static const createExpenses = "${baseUrl}addexpense";

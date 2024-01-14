@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:renttas_flutter_app/Commertial/NewContactadd.dart';
+import 'package:renttas_flutter_app/landlord/lanlordProfile.dart';
 
 import 'AddNewpropertytenant.dart';
 import 'Addfornewsale.dart';
 import 'AddnewProperty.dart';
-import 'CommertialDashboard.dart';
 import 'TapBarClasses/Leace.dart';
 
 class ViewCompanyDetails extends StatefulWidget {
@@ -28,6 +28,7 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
   final phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isLoading = true;
+  int? tabValue = 0;
   late TabController tabController;
 
   @override
@@ -46,43 +47,18 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
+        backgroundColor: const Color(0xff54854C),
         automaticallyImplyLeading: false,
-        actions: [
-          Expanded(
-            child: Row(
-              children: [
-                const SizedBox(width: 10),
-                InkWell(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CommerialDashboard(),
-                    ),
-                  ),
-                  child: const Icon(Icons.arrow_back, size: 30),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("View Details"),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        leading: const BackButton(),
+        elevation: 0,
+        title: const Text(
+          "View Details",
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
             child: Form(
@@ -91,336 +67,112 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.name,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    widget.address,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
-                  ),
-                  const SizedBox(height: 25),
-                  TabBar(
-                    controller: tabController,
-                    isScrollable: true,
-                    tabs: [
-                      Container(
-                        decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Tab(text: 'Leace', height: 30),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Tab(
-                            text: 'Property',
-                            height: 30,
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.only(bottom: 0),
+                    decoration: BoxDecoration(
+                      color: const Color(0xff54854C).withOpacity(0.25),
+                      borderRadius: const BorderRadius.only(
+                          // bottomLeft: Radius.circular(30),
+                          // bottomRight: Radius.circular(30),
+                          // topLeft: Radius.circular(30),
+                          // topRight: Radius.circular(30),
                           ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Tab(
-                            text: 'Forsale',
-                            height: 30,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Tab(
-                            text: 'PropertyTenant',
-                            height: 30,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Tab(
-                            text: 'Contact',
-                            height: 30,
-                          ),
-                        ),
-                      ),
-                    ],
-                    labelColor: Colors.white,
-                  ),
-                  Expanded(
-                    child: TabBarView(
-                      controller: tabController,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        LeacePage(
-                          id: widget.id,
-                          name: widget.name,
-                          address: widget.address,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Property"),
-                                IconButton(
-                                  onPressed: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const AddNewProperty(),
-                                    ),
-                                  ),
-                                  icon: const Icon(
-                                    Icons.add_box_rounded,
-                                  ),
-                                  color: Colors.blue,
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            Center(child: Text("Property")),
-                            const SizedBox(height: 20),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Sale"),
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AddForNewSale()));
-                                  },
-                                  icon: const Icon(
-                                    Icons.add_box_rounded,
-                                  ),
-                                  color: Colors.blue,
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            Center(child: Text("Forsale")),
-                            const SizedBox(height: 20),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Property tenant"),
-                                IconButton(
-                                  onPressed: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const AddNewPropertyTenant(),
-                                    ),
-                                  ),
-                                  icon: const Icon(
-                                    Icons.add_box_rounded,
-                                  ),
-                                  color: Colors.blue,
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              height: 120,
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Co start group",
-                                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
-                                              ),
-                                              const SizedBox(height: 10),
-                                            ],
-                                          ),
-                                        ),
-                                        const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "GD1,GD2,GD3....",
-                                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
-                                          ),
-                                        ),
-                                        //  Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                      ],
-                                    ),
-                                    const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                    Center(
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          InkWell(
-                                            child: Container(
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.grey,
-                                              ),
-                                              child: const Padding(
-                                                padding: EdgeInsets.all(8),
-                                                child: Icon(Icons.edit),
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 10),
-                                          InkWell(
-                                            child: Container(
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.grey,
-                                              ),
-                                              child: const Padding(
-                                                padding: EdgeInsets.all(8),
-                                                child: Icon(Icons.delete_outline),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          width: MediaQuery.of(context).size.width,
+                          height: 80,
+                          color: Colors.white,
+                          padding: const EdgeInsets.only(top: 18, left: 20, right: 20),
+                          child: Column(
+                            children: [
+                              Text(
+                                widget.name.capitalizeFirstWord(),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                  color: Colors.black,
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Contact details"),
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NewContactAdd()));
-                                  },
-                                  icon: const Icon(
-                                    Icons.add_box_rounded,
-                                  ),
-                                  color: Colors.blue,
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 130,
-                                width: 400,
-                                decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(25)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Mobile No : +91 7852463258",
-                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        "Email: abcd@gmail.com ",
-                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                      Center(
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            InkWell(
-                                              child: Container(
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.grey,
-                                                ),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(8),
-                                                  child: Icon(Icons.edit),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(width: 10),
-                                            InkWell(
-                                              child: Container(
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.grey,
-                                                ),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(8),
-                                                  child: Icon(Icons.delete_outline),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                              const SizedBox(height: 4),
+                              Text(
+                                widget.address,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black54,
                                 ),
                               ),
+                              const SizedBox(height: 18),
+                            ],
+                          ),
+                        ),
+                        const Divider(height: 0.1, thickness: 2, color: Colors.white),
+                        // const SizedBox(width: 0.0, height: 18),
+                        Container(
+                          child: TabBar(
+                            padding: const EdgeInsets.symmetric(horizontal: 18),
+                            isScrollable: true,
+                            onTap: (value) {
+                              // tabController.index = value;
+                              setState(() {
+                                tabValue = value;
+                              });
+                            },
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            tabAlignment: TabAlignment.start,
+                            labelStyle: const TextStyle(fontSize: 16),
+                            indicator: BoxDecoration(
+                              // border: Border.all(width: 4, color: const Color(0xff54854C)),
+                              // borderRadius: BorderRadius.circular(6),
+                              color: const Color(0xff54854C),
                             ),
-                          ],
+                            labelColor: Colors.white,
+                            // labelColor: const Color(0xff54854C),
+                            unselectedLabelColor: Colors.black,
+                            controller: tabController,
+                            tabs: const [
+                              Tab(child: Text('Leace')),
+                              Tab(
+                                child: Text('Property'),
+                              ),
+                              Tab(
+                                child: Text('Forsale'),
+                              ),
+                              Tab(
+                                child: Text('PropertyTenant'),
+                              ),
+                              Tab(
+                                child: Text('Contact'),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
+                    ),
+                  ),
+                  Flexible(
+                    fit: FlexFit.loose,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TabBarView(
+                        controller: tabController,
+                        children: [
+                          LeacePage(
+                            id: widget.id,
+                            name: widget.name,
+                            address: widget.address,
+                          ),
+                          _propertyTab(context),
+                          _forSaleTab(context),
+                          _propertyTanentTab(context),
+                          _contactTab(context),
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 100)
@@ -430,6 +182,310 @@ class _ViewCompanyDetailsState extends State<ViewCompanyDetails> with SingleTick
           ),
         ),
       ),
+    );
+  }
+
+  Column _contactTab(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              "Contact details",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NewContactAdd(),
+                ),
+              ),
+              icon: const Icon(
+                Icons.add_box_rounded,
+                size: 30,
+              ),
+              color: const Color(0xff54854C),
+            )
+          ],
+        ),
+        const SizedBox(height: 10),
+        Container(
+          height: 86,
+          margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Mobile No : +91 7852463258",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "Email: abcd@gmail.com ",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              const Flexible(fit: FlexFit.tight, child: SizedBox()),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.grey.shade200,
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Icon(Icons.edit),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    InkWell(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.grey.shade200,
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Icon(
+                            Icons.delete_outline,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column _propertyTanentTab(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              "Property tenant",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddNewPropertyTenant(),
+                ),
+              ),
+              icon: const Icon(
+                Icons.add_box_rounded,
+                size: 30,
+              ),
+              color: const Color(0xff54854C),
+            )
+          ],
+        ),
+        const SizedBox(height: 10),
+        Container(
+          height: 86,
+          margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(12),
+          ),
+          alignment: Alignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Co start group",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(height: 6),
+                  Text(
+                    "GD1,GD2,GD3....",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey.shade200,
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Icon(Icons.edit),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  InkWell(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey.shade200,
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Icon(Icons.delete_outline, color: Colors.red),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+
+  Column _forSaleTab(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              "Sale",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddForNewSale()));
+              },
+              icon: const Icon(
+                Icons.add_box_rounded,
+                size: 30,
+              ),
+              color: const Color(0xff54854C),
+            )
+          ],
+        ),
+        const SizedBox(height: 10),
+        const Center(
+            child: Text(
+          "Forsale",
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.black,
+          ),
+        )),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+
+  Column _propertyTab(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              "Property",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddNewProperty(),
+                ),
+              ),
+              icon: const Icon(
+                Icons.add_box_rounded,
+                size: 30,
+              ),
+              color: const Color(0xff54854C),
+            )
+          ],
+        ),
+        const SizedBox(height: 20),
+        const Center(
+          child: Text(
+            "Property",
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+      ],
     );
   }
 

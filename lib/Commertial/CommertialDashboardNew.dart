@@ -10,7 +10,7 @@ import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
 import 'package:renttas_flutter_app/widgets/global_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Common/ApiUrl.dart';
-import 'AddNewCompany.dart';
+
 import 'AddNewCompanyNew.dart';
 import 'Model/GetCompanyModel.dart';
 import 'ViewCompanyDetails.dart';
@@ -102,8 +102,16 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
                         borderRadius: BorderRadius.circular(16),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(16),
-                          onTap: () => Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => ViewCompanyDetails(id: companylist[index].id, name: companylist[index].companyname, address: companylist[index].address))),
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ViewCompanyDetails(
+                                id: companylist[index].id,
+                                name: companylist[index].companyname,
+                                address: companylist[index].address,
+                              ),
+                            ),
+                          ),
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                             child: Row(
@@ -209,18 +217,18 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
 
   showAlertDialog(BuildContext context, String companyid) {
     Widget cancelButton = TextButton(
-      child: Text("Cancel"),
+      child: const Text("Cancel"),
       onPressed: () => Navigator.pop(context),
     );
     Widget continueButton = TextButton(
-      child: Text("Continue"),
+      child: const Text("Continue"),
       onPressed: () => deletecompany(companyid),
     );
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Confirmation"),
-      content: Text("Are you sure want to delete ?"),
+      title: const Text("Confirmation"),
+      content: const Text("Are you sure want to delete ?"),
       actions: [
         cancelButton,
         continueButton,
@@ -264,7 +272,7 @@ class _CommerialDashboardNewState extends State<CommerialDashboardNew> {
 
         print("Login Successfully Completed !!!!!!!!!!!!!!!!");
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Deletion failed.........'),
           backgroundColor: Colors.green,
         ));

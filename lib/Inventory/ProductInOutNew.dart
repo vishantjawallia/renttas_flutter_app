@@ -93,7 +93,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
 
             print("Login Successfully Completed !!!!!!!!!!!!!!!!");
           } else {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text('Added failed.........'),
               backgroundColor: Colors.green,
             ));
@@ -273,9 +273,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                           ? const CircularProgressIndicator(
                               color: Color(0xff54854C),
                             )
-                          : Text(
+                          : const Text(
                               'Save',
-                              style: const TextStyle(color: Color(0xff54854C), fontWeight: FontWeight.w600, fontSize: 16),
+                              style: TextStyle(color: Color(0xff54854C), fontWeight: FontWeight.w600, fontSize: 16),
                             ),
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.white),
@@ -313,9 +313,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                     height: 80,
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           ' Date ',
-                          style: const TextStyle(color: Colors.grey, fontSize: 17, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 17, fontWeight: FontWeight.bold),
                         ),
                         const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -356,9 +356,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                     height: 80,
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           ' Product * ',
-                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -377,7 +377,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                     ),
                                   )
                                 : productlist.isEmpty
-                                    ? Center(child: Text("No Product"))
+                                    ? const Center(child: Text("No Product"))
                                     : Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(18),
@@ -392,7 +392,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                               Padding(
                                                 padding: const EdgeInsets.only(left: 8.0),
                                                 child: DropdownButton<GetProduct>(
-                                                  hint: Text("Select Product"),
+                                                  hint: const Text("Select Product"),
                                                   underline: const SizedBox(),
                                                   value: dropdownValue,
                                                   icon: const Icon(Icons.arrow_drop_down),
@@ -430,9 +430,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                     height: 80,
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           ' Store * ',
-                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -458,7 +458,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8.0),
                                       child: DropdownButton<GetStore>(
-                                        hint: Text("Select Store"),
+                                        hint: const Text("Select Store"),
                                         underline: const SizedBox(),
                                         value: dropdownValue2,
                                         icon: const Icon(Icons.arrow_drop_down),
@@ -498,9 +498,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                     height: 80,
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           ' Quantity * ',
-                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -540,9 +540,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                     height: 80,
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           ' Rate  ',
-                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(
@@ -580,9 +580,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
                     height: 80,
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           ' Remark  ',
-                          style: const TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         const Flexible(fit: FlexFit.tight, child: SizedBox()),
                         Padding(

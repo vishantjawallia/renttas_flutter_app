@@ -107,7 +107,7 @@ class _AddTendentState extends State<EditMergeProperty> {
           icon: const Icon(Icons.arrow_back),
           color: Colors.black,
         ),
-        title: Text('RENTTAS', style: const TextStyle(color: Colors.black)),
+        title: const Text('RENTTAS', style: TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -116,9 +116,9 @@ class _AddTendentState extends State<EditMergeProperty> {
             Container(
               height: 50,
               margin: const EdgeInsets.only(top: 30, left: 10, right: 10),
-              child: Text(
+              child: const Text(
                 'Edit Tenant',
-                style: const TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, color: Colors.grey, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 10),
@@ -197,7 +197,7 @@ class _AddTendentState extends State<EditMergeProperty> {
                     ? const CircularProgressIndicator(
                         color: Color(0xff54854C),
                       )
-                    : Text("Edit"),
+                    : const Text("Edit"),
               ),
             ),
           ],
@@ -253,11 +253,11 @@ class _AddTendentState extends State<EditMergeProperty> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Register  Failed'),
+          title: const Text('Register  Failed'),
           content: Text(respMsg),
           actions: [
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -273,11 +273,11 @@ class _AddTendentState extends State<EditMergeProperty> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Register  Failed'),
+          title: const Text('Register  Failed'),
           content: Text(respMsg),
           actions: [
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => const LandloardDashBord(),

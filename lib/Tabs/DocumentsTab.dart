@@ -1,5 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages, sort_child_properties_last,  use_build_context_synchronously, sized_box_for_whitespace, avoid_print, prefer_interpolation_to_compose_strings, non_constant_identifier_names, unnecessary_brace_in_string_interps, use_super_parameters, unused_field
 
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -68,6 +70,7 @@ class _DocumentsTabState extends State<DocumentsTab> {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
+    log(jsonEncode(documents));
     return Scaffold(
       resizeToAvoidBottomInset: true,
       floatingActionButton: FloatingActionButton.extended(

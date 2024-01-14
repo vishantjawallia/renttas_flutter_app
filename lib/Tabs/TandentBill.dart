@@ -97,6 +97,7 @@ class _TandentBillState extends State<TandentBill> {
   ];
   @override
   Widget build(BuildContext context) {
+    // log(jsonEncode(tan));
     return isLoading
         ? GlobalWidgets.loading()
         : dataList.isEmpty

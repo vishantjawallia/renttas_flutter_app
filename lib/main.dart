@@ -15,8 +15,6 @@ AndroidNotificationChannel channel = const AndroidNotificationChannel(
   'High Importance Notifications',
   importance: Importance.high,
   playSound: true,
-
-
 );
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();

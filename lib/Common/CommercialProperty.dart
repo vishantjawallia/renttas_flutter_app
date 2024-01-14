@@ -14,7 +14,7 @@ class PropertyCardsApp extends StatelessWidget {
       appBar: AppBar(
         leading: const BackButton(),
         backgroundColor: const Color(0xff54854C),
-        title: Text(
+        title: const Text(
           'Commercial Property List',
         ),
       ),

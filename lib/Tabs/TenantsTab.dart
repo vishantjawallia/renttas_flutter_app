@@ -59,6 +59,7 @@ class _TenantsTabState extends State<TenantsTab> {
 
   @override
   Widget build(BuildContext context) {
+    log(jsonEncode(tandent.map((e) => e.toString()).toString()));
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -270,14 +271,14 @@ class _TenantsTabState extends State<TenantsTab> {
   Future<void> loadTenants(String propertyCode, String subProperty) async {
     print(propertyCode);
     print(subProperty);
-    setState(() {
-      isLoading = true;
-    });
+    setState(() => isLoading = true);
+
     final url = Uri.parse(ApiUrl.getTendentByIds);
     final Map<String, dynamic> requestData = {
       "propertyId": propertyCode,
       "subPropertyId": subProperty,
     };
+    log(requestData.toString());
 
     final headers = {
       'Content-Type': 'application/json',
@@ -288,7 +289,7 @@ class _TenantsTabState extends State<TenantsTab> {
     print(body);
     final data = jsonDecode(body);
     List<dynamic> dataList = data['data'];
-
+    log(jsonEncode(data));
     print("List Dta");
     print(dataList);
     if (dataList.isNotEmpty) {
@@ -299,9 +300,7 @@ class _TenantsTabState extends State<TenantsTab> {
     } else {
       isTenantsTheir = false;
     }
-    setState(() {
-      isLoading = false; // Set loading state to false after the data is loaded
-    });
+    setState(() => isLoading = false);
   }
 
   // Future<void> deleteTenants(String mobileNumber) async {

@@ -19,7 +19,6 @@ class SliderModel {
   void setDescription(String getDescription) {
     description = getDescription;
   }
-  
 
 // getter for image
   String? getImage() {

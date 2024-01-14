@@ -255,11 +255,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                   ),
                                 ],
                               ),
-                            if (isPanTheir)
-                              Divider(
-                                //  margin:EdgeInsets.only(top: 10),
-                                color: Colors.grey,
-                              ),
+                            if (isPanTheir) Divider(color: Colors.grey),
                             if (isPanTheir)
                               Row(
                                 children: [
@@ -277,28 +273,17 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                   ),
                                 ],
                               ),
-                            if (isPanTheir)
-                              Divider(
-                                //  margin:EdgeInsets.only(top: 10),
-                                color: Colors.grey,
-                              ),
+                            if (isPanTheir) Divider(color: Colors.grey),
                             stcodeadd == "201"
                                 ? Padding(
                                     padding: EdgeInsets.only(left: 8, top: 8),
                                     child: Row(
-                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         if (!isLocationTheir)
                                           Padding(
                                             padding: EdgeInsets.only(right: 45),
                                             child: OutlinedButton(
-                                              style: ButtonStyle(
-                                                foregroundColor: MaterialStateProperty.all(Color(0xff54854C)),
-                                                // maximumSize: MaterialStateProperty.all(Size(200, 40)),
-                                                // iconColor: MaterialStateProperty.all(Colors.white),
-                                                // foregroundColor: MaterialStateProperty.all(Colors.white),
-                                                // backgroundColor: MaterialStateProperty.all(Colors.blue.shade100),
-                                              ),
+                                              style: ButtonStyle(foregroundColor: MaterialStateProperty.all(Color(0xff54854C))),
                                               onPressed: () => _showAddressModal(context),
                                               child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -314,16 +299,6 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                               ),
                                             ),
                                           ),
-                                        // Container(
-                                        //   margin: EdgeInsets.only(left: 10, top: 15),
-                                        //   child: InkWell(
-                                        //     child: Text(
-                                        //       '+ Property Address',
-                                        //       style: TextStyle(color: Colors.blue),
-                                        //     ),
-                                        //     onTap: () async => _showAddressModal(context),
-                                        //   ),
-                                        // ),
                                         if (!isPanTheir)
                                           Padding(
                                             padding: EdgeInsets.only(left: 8.0),
@@ -350,24 +325,11 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                               ),
                                             ),
                                           ),
-
-                                        // Container(
-                                        //   margin: EdgeInsets.only(left: 10, top: 15),
-                                        //   child: InkWell(
-                                        //       child: Text(
-                                        //         '+ Property Owner Details',
-                                        //         style: TextStyle(color: Colors.blue),
-                                        //       ),
-                                        //       onTap: () async {
-                                        //         /* _opneBottomOwnerDetatils(context);*/
-                                        //         _openBottomOwnerDetails(context);
-                                        //       }),
-                                        // ),
                                       ],
                                     ),
                                   )
                                 : Flexible(
-                                    // fit: FlexFit.tight,
+                                    fit: FlexFit.loose,
                                     child: SingleChildScrollView(
                                       physics: BouncingScrollPhysics(),
                                       child: Padding(
@@ -380,7 +342,6 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                             children: [
                                               Text(
                                                 "${"document".tr()}:-",
-                                                // "Document:-",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 16,
@@ -396,7 +357,6 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                               ),
                                               Text(
                                                 "${"property_address".tr()}:-",
-                                                // "Property address:-",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 16,
@@ -413,16 +373,13 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
                                               SizedBox(height: 15),
                                               Text(
                                                 "${"owner_details".tr()}:-",
-                                                // "Owner details:-",
                                                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                                               ),
                                               SizedBox(height: 8),
                                               Text(
                                                 "${"owner_name".tr()}: ${ownername.capitalizeFirstWord()}",
                                               ),
-                                              SizedBox(
-                                                height: 5,
-                                              ),
+                                              SizedBox(height: 5),
                                               Text(
                                                 "${"document_name".tr()} : ${Docname.capitalizeFirstWord()}",
                                               ),
@@ -575,7 +532,8 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
 
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
-      log(resposne.toString());
+      log(jsonEncode(resposne));
+      // log(resposne.toString());
 
       if (resposne['statuscode'].toString().contains("200")) {
         setState(() {
@@ -615,6 +573,7 @@ class _AboutTabState extends State<AboutTab> with SingleTickerProviderStateMixin
     print(response.body);
     if (response.statusCode == 200) {
       Map<String, dynamic> resposne = jsonDecode(response.body);
+      log(jsonEncode(resposne));
 
       if (resposne['statuscode'].toString().contains("200")) {
         setState(() {
