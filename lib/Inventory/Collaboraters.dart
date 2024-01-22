@@ -22,8 +22,8 @@ class _CollabratesViewState extends State<CollabratesView> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,34 +71,34 @@ class _CollabratesViewState extends State<CollabratesView> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Ab@123 ',
-                          style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(height: 2),
+                        SizedBox(height: 2),
                         Text(
                           'Ab@gmail.com',
-                          style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                          style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                   ),
                   const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                  Column(
+                  const Column(
                     children: [
                       Text(
                         'Owner',
-                        style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         'Active',
-                        style: const TextStyle(color: Color(0xff54854C), fontSize: 15, fontWeight: FontWeight.w600),
+                        style: TextStyle(color: Color(0xff54854C), fontSize: 15, fontWeight: FontWeight.w600),
                       ),
                     ],
                   )
@@ -119,9 +119,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                             value: valuefirst,
                             onChanged: (bool? value) => setState(() => valuefirst = value!),
                           ),
-                          Text(
+                          const Text(
                             'Product',
-                            style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -137,9 +137,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                               });
                             },
                           ),
-                          Text(
+                          const Text(
                             'Store',
-                            style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -151,9 +151,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                             value: valuefirst,
                             onChanged: (bool? value) => setState(() => valuefirst = value!),
                           ),
-                          Text(
+                          const Text(
                             'Report',
-                            style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -165,9 +165,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                             value: valuefirst,
                             onChanged: (bool? value) => setState(() => valuefirst = value!),
                           ),
-                          Text(
+                          const Text(
                             'Qutation',
-                            style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                            style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -187,9 +187,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                                 value: valuefirst,
                                 onChanged: (bool? value) => setState(() => valuefirst = value!),
                               ),
-                              Text(
+                              const Text(
                                 'Transaction',
-                                style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -205,9 +205,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                                   });
                                 },
                               ),
-                              Text(
+                              const Text(
                                 'PRate',
-                                style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -219,9 +219,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                                 value: valuefirst,
                                 onChanged: (bool? value) => setState(() => valuefirst = value!),
                               ),
-                              Text(
+                              const Text(
                                 'Setting',
-                                style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -243,9 +243,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                                 value: valuefirst,
                                 onChanged: (bool? value) => setState(() => valuefirst = value!),
                               ),
-                              Text(
+                              const Text(
                                 'Collaburate',
-                                style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -257,9 +257,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                                 value: valuefirst,
                                 onChanged: (bool? value) => setState(() => valuefirst = value!),
                               ),
-                              Text(
+                              const Text(
                                 'SRate',
-                                style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -271,9 +271,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                                 value: valuefirst,
                                 onChanged: (bool? value) => setState(() => valuefirst = value!),
                               ),
-                              Text(
+                              const Text(
                                 'Both',
-                                style: const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
+                                style: TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w600),
                               ),
                             ],
                           ),
@@ -314,10 +314,10 @@ class _CollabratesViewState extends State<CollabratesView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(
+                      const Flexible(
                         child: Text(
                           "Filter",
-                          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ),
                       InkWell(
@@ -339,7 +339,7 @@ class _CollabratesViewState extends State<CollabratesView> {
                   RadioListTile(
                     value: 0,
                     groupValue: _groupValue1,
-                    title: Text("All Collaburaters"),
+                    title: const Text("All Collaburaters"),
                     onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
                     activeColor: const Color(0xff54854C),
                     selected: false,
@@ -347,7 +347,7 @@ class _CollabratesViewState extends State<CollabratesView> {
                   RadioListTile(
                     value: 1,
                     groupValue: _groupValue1,
-                    title: Text("Active Collaburaters"),
+                    title: const Text("Active Collaburaters"),
                     onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
                     activeColor: const Color(0xff54854C),
                     selected: false,
@@ -355,7 +355,7 @@ class _CollabratesViewState extends State<CollabratesView> {
                   RadioListTile(
                     value: 2,
                     groupValue: _groupValue1,
-                    title: Text("InActive Collaburaters"),
+                    title: const Text("InActive Collaburaters"),
                     onChanged: (newValue) => setstate(() => _groupValue1 = newValue as int),
                     activeColor: const Color(0xff54854C),
                     selected: false,
@@ -385,10 +385,10 @@ class _CollabratesViewState extends State<CollabratesView> {
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        Flexible(
+                        const Flexible(
                           child: Text(
                             "Invite collaburaters",
-                            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                         ),
                         const SizedBox(width: 50),
@@ -409,32 +409,32 @@ class _CollabratesViewState extends State<CollabratesView> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    Center(
+                    const Center(
                       child: Text(
                         "Scan QR code to join current buisness",
-                        style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        style: TextStyle(color: Colors.black54, fontSize: 16),
                       ),
                     ),
                     const SizedBox(height: 8),
                     const Center(child: Icon(Icons.qr_code_scanner_outlined, size: 200)),
-                    Center(
+                    const Center(
                       child: Text(
                         "OR",
-                        style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Center(
+                    const Center(
                       child: Text(
                         "Share this code with your partner or \nbusiness personso they can accessthis \nbusiness",
-                        style: const TextStyle(color: Colors.black54, fontSize: 16),
+                        style: TextStyle(color: Colors.black54, fontSize: 16),
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Center(
+                    const Center(
                       child: Text(
                         "8JUTGYESX",
-                        style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -458,9 +458,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                                 color: Colors.white,
                               ),
                               TextButton(
-                                child: Text(
+                                child: const Text(
                                   'COPY CODE',
-                                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                                  style: TextStyle(color: Colors.white, fontSize: 16),
                                 ),
                                 style: const ButtonStyle(
                                   backgroundColor: MaterialStatePropertyAll(Color(0xff54854C)),
@@ -492,9 +492,9 @@ class _CollabratesViewState extends State<CollabratesView> {
                               ),
                               Center(
                                 child: TextButton(
-                                  child: Text(
+                                  child: const Text(
                                     'SEND INVITATION',
-                                    style: const TextStyle(color: Colors.black, fontSize: 16),
+                                    style: TextStyle(color: Colors.black, fontSize: 16),
                                   ),
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(Colors.grey.shade200),

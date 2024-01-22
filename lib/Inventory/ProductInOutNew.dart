@@ -71,6 +71,9 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
           "remark": remark,
           "date": date,
         };
+        log(jsonEncode(data));
+        print(jsonEncode(date));
+        // return;
 
         final headerss = {
           'Content-Type': 'application/json',
@@ -135,7 +138,10 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
         if (storeid == "") {
           snack("Please select a store in store view", context);
         } else {
-          Map data = {'userid': userid, "storeid": storeid};
+          Map data = {
+            'userid': userid,
+            "storeid": storeid,
+          };
           final headerss = {
             'Content-Type': 'application/json',
           };
@@ -151,7 +157,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
           if (response.statusCode == 200) {
             final Map<String, dynamic> jsonData = jsonDecode(response.body);
             List res = jsonData["data"];
-
+            log(jsonData.toString());
             return res.map((e) => GetProduct.fromJson(e)).toList();
           }
         }
@@ -193,6 +199,7 @@ class _ProductinOutNewState extends State<ProductinOutNew> {
           if (response.statusCode == 200) {
             final Map<String, dynamic> jsonData = jsonDecode(response.body);
             List res = jsonData["data"];
+            log(jsonEncode(jsonData));
 
             return res.map((e) => GetStore.fromJson(e)).toList();
           }

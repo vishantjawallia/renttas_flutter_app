@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, avoid_print, use_build_context_synchronously, non_constant_identifier_names, prefer_interpolation_to_compose_strings, unnecessary_import
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -71,14 +72,16 @@ class _ProductViewNewState extends State<ProductViewNew> {
             headers: headerss,
             body: jsonEncode(data),
           );
-
+          // log(response.request);
           setState(() {
             isloaidng = false;
           });
 
+          print("body===" + data.toString());
           print("res===" + response.body);
           if (response.statusCode == 200) {
             final Map<String, dynamic> jsonData = jsonDecode(response.body);
+            log(jsonEncode(jsonData));
             List res = jsonData["data"];
 
             return res.map((e) => GetProduct.fromJson(e)).toList();

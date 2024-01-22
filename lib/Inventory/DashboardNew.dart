@@ -118,14 +118,14 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Row(
+                                      child: const Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          const Icon(Icons.add_circle_outline),
-                                          const SizedBox(width: 5),
+                                          Icon(Icons.add_circle_outline),
+                                          SizedBox(width: 5),
                                           Text(
                                             "Product In",
-                                            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                           )
                                         ],
                                       ),
@@ -149,14 +149,14 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      child: Row(
+                                      child: const Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          const Icon(Icons.remove_circle_outline),
-                                          const SizedBox(width: 5),
+                                          Icon(Icons.remove_circle_outline),
+                                          SizedBox(width: 5),
                                           Text(
                                             "Product Out",
-                                            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                           )
                                         ],
                                       ),
@@ -181,30 +181,30 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Overview",
-                                  style: const TextStyle(
+                              const Text("Overview",
+                                  style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   )),
                               const SizedBox(height: 10),
-                              Row(
+                              const Row(
                                 children: [
-                                  const Icon(
+                                  Icon(
                                     Icons.download,
                                     color: Colors.greenAccent,
                                   ),
-                                  const SizedBox(
+                                  SizedBox(
                                     width: 10,
                                   ),
                                   Text(
                                     "Total In",
-                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
                                   ),
-                                  const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
                                   Text(
                                     '1.00',
-                                    style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
@@ -220,14 +220,14 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   const SizedBox(
                                     width: 10,
                                   ),
-                                  Text(
+                                  const Text(
                                     "Total Out",
-                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
                                   ),
                                   const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                  Text(
+                                  const Text(
                                     '0.00',
-                                    style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
@@ -240,14 +240,14 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   const SizedBox(
                                     width: 10,
                                   ),
-                                  Text(
+                                  const Text(
                                     "Products",
-                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
                                   ),
                                   const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                  Text(
+                                  const Text(
                                     '1.00',
-                                    style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
@@ -260,30 +260,30 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   const SizedBox(
                                     width: 10,
                                   ),
-                                  Text(
+                                  const Text(
                                     "Low Stocks",
-                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
                                   ),
                                   const Flexible(fit: FlexFit.tight, child: SizedBox()),
-                                  Text(
+                                  const Text(
                                     '0.00',
-                                    style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 9),
-                              Row(
+                              const Row(
                                 children: [
-                                  const Icon(Icons.handshake, color: Colors.purpleAccent),
-                                  const SizedBox(width: 10),
+                                  Icon(Icons.handshake, color: Colors.purpleAccent),
+                                  SizedBox(width: 10),
                                   Text(
                                     "In Hand",
-                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
                                   ),
-                                  const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                                  Flexible(fit: FlexFit.tight, child: SizedBox()),
                                   Text(
                                     '1.00',
-                                    style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
@@ -324,9 +324,9 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  Text(
+                                  const Text(
                                     "Products",
-                                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                   )
                                 ],
                               ),
@@ -356,9 +356,9 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  Text(
+                                  const Text(
                                     "Low Stocks",
-                                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                   )
                                 ],
                               ),
@@ -380,25 +380,25 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(8),
                           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewTransactions())),
-                          child: SizedBox(
+                          child: const SizedBox(
                             height: 150,
                             width: 150,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Icon(
+                                  Icon(
                                     Icons.transcribe_sharp,
                                     color: Colors.orangeAccent,
                                     size: 50,
                                   ),
-                                  const SizedBox(
+                                  SizedBox(
                                     height: 10,
                                   ),
                                   Text(
                                     "Transactions",
-                                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                   )
                                 ],
                               ),
@@ -415,25 +415,25 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(8),
                               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const StoreView())),
-                              child: SizedBox(
+                              child: const SizedBox(
                                 height: 70,
                                 width: 150,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.store,
                                         color: Colors.greenAccent,
                                         size: 38,
                                       ),
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 10,
                                       ),
                                       Text(
                                         "Stores",
-                                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                       )
                                     ],
                                   ),
@@ -453,23 +453,23 @@ class _InentoryDashboardNewState extends State<InentoryDashboardNew> {
                                   builder: (context) => const ViewQutationMain(),
                                 ),
                               ),
-                              child: SizedBox(
+                              child: const SizedBox(
                                 height: 70,
                                 width: 150,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.note_alt_rounded,
                                         color: Colors.indigoAccent,
                                         size: 38,
                                       ),
-                                      const SizedBox(width: 10),
+                                      SizedBox(width: 10),
                                       Text(
                                         "Qutation",
-                                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
+                                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.black),
                                       )
                                     ],
                                   ),

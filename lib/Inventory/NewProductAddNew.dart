@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types, unnecessary_new,  use_build_context_synchronously, avoid_print, sort_child_properties_last, avoid_unnecessary_containers, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unnecessary_this, must_be_immutable
 
+// import 'dart:developer';
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -43,7 +45,15 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
       if (storeid == "") {
         snack("Please select a store in store view");
       } else {
-        Map data = {'userid': userid, 'storeid': storeid, 'productname': productname, "sku": productid, "description": description};
+        Map data = {
+          'userid': userid,
+          'storeid': storeid,
+          'productname': productname,
+          "sku": productid,
+          "description": description,
+        };
+        log(data.toString());
+        return;
         final headerss = {
           'Content-Type': 'application/json',
         };
@@ -92,7 +102,14 @@ class _NewProductAddNewState extends State<NewProductAddNew> {
       if (storeid == "") {
         snack("Please select a store in store view");
       } else {
-        Map data = {"id": widget.id, 'userid': userid, 'storeid': storeid, 'productname': productname, "sku": productid, "description": description};
+        Map data = {
+          "id": widget.id,
+          'userid': userid,
+          'storeid': storeid,
+          'productname': productname,
+          "sku": productid,
+          "description": description,
+        };
         final headerss = {
           'Content-Type': 'application/json',
         };

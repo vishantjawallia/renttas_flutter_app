@@ -142,6 +142,7 @@ class _StoreViewState extends State<StoreView> {
       });
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = jsonDecode(response.body);
+        log(jsonEncode(jsonData));
         List res = jsonData["data"];
 
         return res.map((e) => GetStore.fromJson(e)).toList();

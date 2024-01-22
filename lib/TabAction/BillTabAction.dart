@@ -1,5 +1,7 @@
 // ignore_for_file: unused_local_variable, avoid_print, non_constant_identifier_names
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:renttas_flutter_app/landlord/LanlordProfile.dart';
@@ -1858,8 +1860,21 @@ class _BillTabActionState extends State<BillTabAction> {
     );
   }
 
-  void actionCalculation(double previousBalance, double rentFee, double maintenanceFee, String rentCycle, int paymentDay, int paymentRequired, String electricityBillType, double electricCharge,
-      String waterBillType, double waterCharges, String gasBillType, double gasCharges, List<ViewBloodHospitalModel> selectedItems) {
+  void actionCalculation(
+    double previousBalance,
+    double rentFee,
+    double maintenanceFee,
+    String rentCycle,
+    int paymentDay,
+    int paymentRequired,
+    String electricityBillType,
+    double electricCharge,
+    String waterBillType,
+    double waterCharges,
+    String gasBillType,
+    double gasCharges,
+    List<ViewBloodHospitalModel> selectedItems,
+  ) {
     double finalPreviousBalance = previousBalance;
     if (previousBalanceType == 'Pending') {
       finalPreviousBalance = -previousBalance;
@@ -1873,6 +1888,11 @@ class _BillTabActionState extends State<BillTabAction> {
     String rentEndData = dateFormat.format(rentEndDatas).toString();
     String rentStartDate = dateFormat.format(rentStartDates).toString();
     String rentCollectBy = dateFormat.format(rentCollectBys).toString();
+
+    log(finalPreviousBalance.toString());
+    log(totalBalance.toString());
+    log(now.toString());
+    // log(rentFee.toString(), maintenanceFee.toString(), electricCharge.toString(), waterCharges, gasCharges.toString());
 
     Navigator.pushReplacement(
       context,
@@ -2706,9 +2726,10 @@ class _BillTabActionState extends State<BillTabAction> {
   TextEditingController valuecontroller = TextEditingController();
   _showBottomSheet(context) {
     return showModalBottomSheet(
-        context: context,
-        builder: (builder) {
-          return StatefulBuilder(builder: (context, setstate) {
+      context: context,
+      builder: (builder) {
+        return StatefulBuilder(
+          builder: (context, setstate) {
             return SingleChildScrollView(
               padding: const EdgeInsetsDirectional.only(
                 start: 20,
@@ -2809,8 +2830,10 @@ class _BillTabActionState extends State<BillTabAction> {
                 ],
               ),
             );
-          });
-        });
+          },
+        );
+      },
+    );
   }
 }
 

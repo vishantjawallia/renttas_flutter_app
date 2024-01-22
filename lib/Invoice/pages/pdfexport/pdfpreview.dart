@@ -21,6 +21,9 @@ class PdfPreviewPage extends StatelessWidget {
         title: Text(subname),
       ),
       body: PdfPreview(
+        scrollViewDecoration: BoxDecoration(
+          color: Colors.amberAccent,
+        ),
         build: (context) => makePdf(invoice, subname),
       ),
     );
